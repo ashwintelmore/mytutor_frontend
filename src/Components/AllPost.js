@@ -7,7 +7,7 @@ function AllPost() {
 
 
 
-      <div className=" w-9/12 p-2 flex flex-col gap-2 overflow-scroll">
+      <div className=" w-full p-2 flex flex-col gap-2 overflow-scroll">
         <div className="flex gap-3 bg-blue-300 w-4/6 p-2 ">
           <div className="h-32 w-2/5   dark:bg-violet-200 bg-pink-200 rounded-xl"></div>
 

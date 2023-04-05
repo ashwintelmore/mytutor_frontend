@@ -11,7 +11,7 @@ const Profile = () => {
   };
   return (
     <div className="flex   w-full h-screen rounded-t-3xl bg-white ">
-      <div className="w-1/3 flex flex-col h-auto items-center p-1 gap-4 overflow-y-hidden rounded-tl-3xl bg-teal-100">
+      <div className="w-1/4 flex flex-col h-auto items-center p-1 gap-4 overflow-y-hidden rounded-tl-3xl bg-teal-100">
         <h3 className="text-lg font-semibold">Profile Photo</h3>
         <div className="h-32 w-32 rounded-full bg-lime-300  relative ">
           <img
@@ -61,8 +61,8 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="w-4/6 flex-col flex overflow-y-auto">
-        <div className="flex sticky top-0 bg-white p-2 gap-2 border border-red-500">
+      <div className="w-3/4 flex-col flex overflow-y-auto">
+        <div className="flex sticky top-0 bg-white p-2 gap-2 border ">
 
           <button className="rounded-2xl bg-amber-300 text-lg p-1"
             onClick={() => setShow('1')}
@@ -77,7 +77,7 @@ const Profile = () => {
 
         </div>
         {/* ccalender and about */}
-        <div className="border border-red-500">
+        <div >
           {
             show == '1' ?
               <About />
@@ -88,7 +88,7 @@ const Profile = () => {
         </div>
       </div>
 
-<div>hii </div>
+ 
 
     </div>
 

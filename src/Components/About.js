@@ -173,7 +173,7 @@ export default function About() {
                     </div>
                     <div className="w-11/12 p-1 m-2">
                         <h4 className="text-md font-semibold">Select available dates</h4>
-                        <div className=" flex flex-wrap  bg-lime-300 p-1     rounded-2xl ">
+                        <div className=" flex flex-wrap  bg-lime-300 p-2 gap-1     rounded-2xl ">
                             <span className="h-14 w-14 p-2 bg-slate-400 rounded-full">Mon</span>
                             <span className="h-14 w-14 p-2 bg-slate-400 rounded-full">Tue</span>
                             <span className="h-14 w-14 p-2 bg-slate-400 rounded-full">Wed</span>
