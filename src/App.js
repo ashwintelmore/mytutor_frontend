@@ -22,7 +22,7 @@ const App = () => {
             <Route path="/content" element={<Content />} />
             <Route path="/dummy" element={<Dummy />} />
             {/* <Route path="/backrop" element={<Backrop />} /> */}
-            <Route path="/allpost" element={<AllPost/>}/>
+            {/* <Route path="/allpost" element={<AllPost/>}/> */}
           </Routes>
         </div>
       </BrowserRouter>
