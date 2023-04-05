@@ -1,6 +1,6 @@
 import React from "react";
 
-const Desktop10 = () => {
+const SearchResult = () => {
   return (
     <>
       <div id="outer" className=" mx-60 my-10">
@@ -94,8 +94,8 @@ const Desktop10 = () => {
                     </h1>
                     <span>Tutor Name</span>
                     <div className="flex flex-row">
-                    <span className="bg-[#05FF00] w-2 h-2 rounded-lg"></span>
-                    <span className="">online</span>
+                      <span className="bg-[#05FF00] w-2 h-2 rounded-lg"></span>
+                      <span className="">online</span>
                     </div>
                     <div className="flex  gap-1 items-center xs:gap-1 xs:text-xs rounded-3xl p-1 bg-[#FFFFFF]  m-1 w-24 font-bold text-orange-400">
                       {" "}
@@ -193,4 +193,4 @@ const Desktop10 = () => {
   );
 };
 
-export default Desktop10;
+export default SearchResult;

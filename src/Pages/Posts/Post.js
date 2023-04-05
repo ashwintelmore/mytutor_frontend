@@ -1,8 +1,8 @@
 import React from "react";
 
-const Content = () => {
+const Post = () => {
   return (
-    <div className="content  h-auto rounded-t-3xl flex dark:text-white dark:bg-zinc-800 bg-slate-100 xs:w-full">
+    <div className="Post  h-auto rounded-t-3xl flex dark:text-white dark:bg-zinc-800 bg-slate-100 xs:w-full">
       <div className="flex flex-col w-3/5 xs:w-full">
         <div className=" h-auto p-2 xs:p-1 ">
           <div className="flex justify-between  p-2 m-4 items-center">
@@ -16,22 +16,22 @@ const Content = () => {
             </h1>
             <div className="flex   items-center gap-5 p-2 xs:gap-0 xs:text-xs xs:p-1 ">
               <div className="flex  gap-1 items-center xs:gap-1 xs:text-xs">
-                
+
                 <i class="fa-solid fa-indian-rupee-sign"></i>
                 <label>59(per hour)</label>
               </div>
               <div className="flex gap-1  items-center xs:gap-1 xs:text-xs">
-                
+
                 <h4>4</h4>
                 <label>sits left</label>
               </div>
               <div className="flex  gap-1 items-center xs:gap-1 xs:text-xs">
-                
+
                 <h4>60</h4>
                 <i class="fa-solid fa-thumbs-up"></i>
               </div>
               <div className="flex gap-1  items-center xs:gap-1 xs:text-xs">
-                
+
                 <h4>60</h4>
                 <i class="fa-solid fa-thumbs-down"></i>
               </div>
@@ -64,7 +64,7 @@ const Content = () => {
             <label>Comments</label>
           </div>
           <div className="flex gap-1 items-center">
-            
+
             <i class="fa-solid fa-bars-staggered"></i> <label>Sort by</label>
           </div>
         </div>
@@ -148,4 +148,4 @@ const Content = () => {
   );
 }
 
-export default Content;
+export default Post;

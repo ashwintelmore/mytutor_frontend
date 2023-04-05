@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import { useState, useEffect, useRef } from "react";
 import Backrop from "./Backrop";
-import Education from "./Education";
+import Education from "../Pages/Profile/Education";
 
 const Header = () => {
   const [openProfile, setOpenProfile] = useState(false);
@@ -76,8 +76,8 @@ const Header = () => {
             onClick={handleThemeSwitch}
           ></i>
 
-          <i className="fa-solid fa-circle-plus"  ref={EducationRef}
-            onClick={() => setOpenEducation((prev) => !prev)}> {openEducation && <Education/>}</i>
+          <i className="fa-solid fa-circle-plus" ref={EducationRef}
+            onClick={() => setOpenEducation((prev) => !prev)}> {openEducation && <Education />}</i>
           <i className="fa-solid fa-bell"></i>
           <div
             className=" flex justify-between items-center gap-2 cursor-pointer "

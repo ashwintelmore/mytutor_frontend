@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const FirstContetnt = () => {
+const Home = () => {
   return (
     <div className="home  h-auto bg-white light dark:text-white dark:bg-neutral-800  p-4 rounded-t-3xl overflow-x-hidden  ">
       <div className="flex w-full  justify-between p-2 xs:items-center xs:font-semibold">
@@ -35,14 +35,14 @@ const FirstContetnt = () => {
         </div>
       </div>
       <div className="flex  overflow-y-hidden dark:text-slate-100">
-        
-          <div className="relative w-max flex m-4 justify-center  ">
-            <div className="w-44 h-44 rounded-full dark:bg-purple-200 bg-orange-400 xs:w-32 xs:h-32 "></div>
-            <div className="absolute text-center p-3 bottom-0 h-12  w-32 dark:bg-amber-500 bg-slate-200 rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
-              Student
-            </div>
+
+        <div className="relative w-max flex m-4 justify-center  ">
+          <div className="w-44 h-44 rounded-full dark:bg-purple-200 bg-orange-400 xs:w-32 xs:h-32 "></div>
+          <div className="absolute text-center p-3 bottom-0 h-12  w-32 dark:bg-amber-500 bg-slate-200 rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
+            Student
           </div>
-        
+        </div>
+
         <div className="relative w-max flex m-4 justify-center  ">
           <div className="w-44 h-44 rounded-full  dark:bg-purple-200 bg-pink-600 xs:w-32 xs:h-32 "></div>
           <div className="absolute text-center p-3 bottom-0 h-12  w-32  dark:bg-amber-500 bg-slate-200 rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
@@ -292,4 +292,4 @@ const FirstContetnt = () => {
   );
 };
 
-export default FirstContetnt;
+export default Home;
