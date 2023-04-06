@@ -10,7 +10,7 @@ const Profile = () => {
 
   };
   return (
-    <div className="flex w-full h-screen rounded-t-3xl bg-white">
+    <div className="flex w-full h-screen rounded-t-3xl bg-white sm: bg-red-800">
       <div className="w-1/4 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden rounded-tl-3xl">
         <h3 className="text-lg font-semibold text-rose-500">Profile Photo</h3>
         <div className="h-28 w-28 rounded-full bg-red-500  relative ">
@@ -103,9 +103,6 @@ const Profile = () => {
           }
         </div>
       </div>
-
-
-
     </div>
 
   );

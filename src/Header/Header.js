@@ -96,7 +96,7 @@ const Header = () => {
                     alt=""
                   />
                   {openProfile && <Backrop />}
-                  <span>User Name</span>
+                  <span> {auth.user.name} </span>
                 </div>
                 :
                 <Link to={'/login'}>
@@ -112,5 +112,7 @@ const Header = () => {
     </>
   );
 };
+
+//thist pranay
 
 export default Header;
