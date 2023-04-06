@@ -1,7 +1,7 @@
 
 import axios from "axios";
-// const END_POINT = "https://odd-pear-fox-hem.cyclic.app/api"
-const END_POINT = "http://localhost:5000/api"
+const END_POINT = "https://odd-pear-fox-hem.cyclic.app/api"
+// const END_POINT = "http://localhost:5000/api"
 
 
 export const getAllUser = async () => {
