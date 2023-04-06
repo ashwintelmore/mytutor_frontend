@@ -64,13 +64,13 @@ const Header = () => {
           </div>
 
           <span className="mytutor">MyTutor</span>
-          <div className="mx-2 bg-white dark:bg-white dark:text-black text-sm  flex  p-1 w-96 justify-between items-center rounded-full xs:w-60 ">
-            <h4>Search</h4>
-            <i className="fa-solid fa-magnifying-glass"></i>
+          <div className="mx-2 relative bg-white dark:bg-white dark:text-black text-sm  flex   w-96  items-center rounded-2xl xs:w-60 ">
+            <input type="text" placeholder="search" className="w-full p-1  rounded-2xl outline-none"></input>
+            <i className="fa-solid fa-magnifying-glass absolute right-0 p-2"></i>
           </div>
         </div>
 
-        <div className="flex justify-between items-center gap-7 p-3 text-lg  xs:hidden ">
+        <div className="flex justify-between items-center gap-7 p-3 text-lg  xs:hidden md:hidden ">
           <i
             className="fa-regular fa-moon cursor-pointer"
             onClick={handleThemeSwitch}

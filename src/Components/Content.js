@@ -2,7 +2,7 @@ import React from "react";
 
 const Content = () => {
   return (
-    <div className="content  h-auto rounded-t-3xl flex dark:text-white dark:bg-zinc-800 bg-slate-100 xs:w-full">
+    <div className="content  h-auto rounded-t-3xl flex dark:text-white dark:bg-zinc-800 bg-slate-100 xs:w-full xs:flex xs:flex-col md:bg-slate-500">
       <div className="flex flex-col w-3/5 xs:w-full">
         <div className=" h-auto p-2 xs:p-1 ">
           <div className="flex justify-between  p-2 m-4 items-center">
@@ -16,28 +16,24 @@ const Content = () => {
             </h1>
             <div className="flex   items-center gap-5 p-2 xs:gap-0 xs:text-xs xs:p-1 ">
               <div className="flex  gap-1 items-center xs:gap-1 xs:text-xs">
-                
                 <i class="fa-solid fa-indian-rupee-sign"></i>
                 <label>59(per hour)</label>
               </div>
               <div className="flex gap-1  items-center xs:gap-1 xs:text-xs">
-                
                 <h4>4</h4>
                 <label>sits left</label>
               </div>
               <div className="flex  gap-1 items-center xs:gap-1 xs:text-xs">
-                
                 <h4>60</h4>
                 <i class="fa-solid fa-thumbs-up"></i>
               </div>
               <div className="flex gap-1  items-center xs:gap-1 xs:text-xs">
-                
                 <h4>60</h4>
                 <i class="fa-solid fa-thumbs-down"></i>
               </div>
             </div>
           </div>
-          <p className="xs:text-xs">
+          <p className="xs:text-xs p-2">
             Discription Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Morbi eget ex in tortor tincidunt consectetur. Etiam at viverra
             justo. Vestibulum ante ipsum primis in faucibus orci luctus et
@@ -64,58 +60,225 @@ const Content = () => {
             <label>Comments</label>
           </div>
           <div className="flex gap-1 items-center">
-            
             <i class="fa-solid fa-bars-staggered"></i> <label>Sort by</label>
           </div>
         </div>
+        <div className="flex flex-col">
+          <div className=" flex items-center p-2 gap-4">
+            <img
+              className="rounded-full h-16 w-16 xs:h-12 xs:w-12 border-2 border-red-500"
+              src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
+              alt=""
+            />
+            <div className="w-5/6  border border-b-2 shadow-slate-400 h-px shadow-sm"></div>
+          </div>
+          <div className="flex flex-col p-4 gap-4 xs:p-2 xs:gap-2 xs:overflow-y-auto">
+            <div className="flex flex-col  gap-1 ">
+              
+              <div className="flex  gap-2  ">
+              <img
+                className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
+                src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
+                alt=""
+              />
+                <div className="flex flex-col text-xs"><h3 className="text-violet-800 ">Ashwin Telmore</h3>
+                <p className="text-sm">Something bio details</p></div>
+                
+              </div>
+              <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
+                  <h4>60</h4>
+                  <i class="fa-solid fa-thumbs-up"></i>
+                  <h4>60</h4>
+                  <i class="fa-solid fa-thumbs-down"></i>
+                  <label>reply</label>
+                </div>
+            </div>
+            <div className="flex flex-col  gap-1 ">
+              
+              <div className="flex  gap-2  ">
+              <img
+                className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
+                src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
+                alt=""
+              />
+                <div className="flex flex-col text-xs"><h3 className="text-violet-800 ">Ashwin Telmore</h3>
+                <p className="text-sm">Something bio details</p></div>
+                
+              </div>
+              <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
+                  <h4>60</h4>
+                  <i class="fa-solid fa-thumbs-up"></i>
+                  <h4>60</h4>
+                  <i class="fa-solid fa-thumbs-down"></i>
+                  <label>reply</label>
+                </div>
+            </div>
+            <div className="flex flex-col  gap-1 ">
+              
+              <div className="flex  gap-2  ">
+              <img
+                className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
+                src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
+                alt=""
+              />
+                <div className="flex flex-col text-xs"><h3 className="text-violet-800 ">Ashwin Telmore</h3>
+                <p className="text-sm">Something bio details</p></div>
+                
+              </div>
+              <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
+                  <h4>60</h4>
+                  <i class="fa-solid fa-thumbs-up"></i>
+                  <h4>60</h4>
+                  <i class="fa-solid fa-thumbs-down"></i>
+                  <label>reply</label>
+                </div>
+            </div>
+            <div className="flex flex-col  gap-1 ">
+              
+              <div className="flex  gap-2  ">
+              <img
+                className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
+                src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
+                alt=""
+              />
+                <div className="flex flex-col text-xs"><h3 className="text-violet-800 ">Ashwin Telmore</h3>
+                <p className="text-sm">Something bio details</p></div>
+                
+                
+              </div>
+              <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
+                  <h4>60</h4>
+                  <i class="fa-solid fa-thumbs-up"></i>
+                  <h4>60</h4>
+                  <i class="fa-solid fa-thumbs-down"></i>
+                  <label>reply</label>
+                </div>
+            </div>
+          
+          </div>
+        </div>
       </div>
-      <div className=" flex  flex-col w-2/5 p-2 xs:hidden">
+      <div className=" flex  flex-col w-2/5 p-2 xs:w-full ">
         <h4 className="text-lg">Select available dates</h4>
-        <div className="flex flex-wrap dark:bg-orange-300 dark:text-black bg-green-200 p-4 gap-2 text-lg font-semibold rounded-2xl ">
-          <span className="h-16 w-16 p-4 bg-slate-400 dark:border-black rounded-full">
+        <div className="flex flex-wrap dark:bg-orange-300 dark:text-black bg-green-200 p-4 gap-2 text-lg font-semibold rounded-2xl xs:gap-1 xs:p-3 xs:font-normal ">
+          <span className="h-16 w-16 p-4  xs:h-11 xs:w-11 xs:p-1 bg-slate-400 dark:border-black rounded-full ">
             Mon
           </span>
-          <span className="h-16 w-16 p-4 bg-slate-400 rounded-full">Tue</span>
-          <span className="h-16 w-16 p-4 bg-slate-400 rounded-full">Wed</span>
-          <span className="h-16 w-16 p-4 bg-slate-400 rounded-full">Thur</span>
-          <span className="h-16 w-16 p-4 bg-slate-400 rounded-full">Fri</span>
-          <span className="h-16 w-16 p-4 bg-slate-400 rounded-full">Sat</span>
-          <span className="h-16 w-16 p-4 bg-slate-400 rounded-full">Sun</span>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">1</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">2</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">3</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">4</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">5</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">6</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">7</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">8</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">9</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">10</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">11</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">12</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">13</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">14</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">15</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">16</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">17</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">18</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">19</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">20</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">21</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">22</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">23</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">24</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">24</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">26</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">27</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">28</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">29</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">30</button>
-          <button className="h-16 w-16 p-4 bg-slate-50 rounded-full">31</button>
+          <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
+            Tue
+          </span>
+          <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
+            Wed
+          </span>
+          <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
+            Thur
+          </span>
+          <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
+            Fri
+          </span>
+          <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
+            Sat
+          </span>
+          <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
+            Sun
+          </span>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            1
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            2
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            3
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            4
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            5
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            6
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            7
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            8
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            9
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            10
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            11
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            12
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            13
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            14
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            15
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            16
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            17
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            18
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            19
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            20
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            21
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            22
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            23
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            24
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            24
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            26
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            27
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            28
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            29
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            30
+          </button>
+          <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
+            31
+          </button>
         </div>
-        <div className="flex flex-col p-3">
+        <div className="flex flex-col p-3 xs:p-1  xs:mt-3 xs:gap-2">
           <h3>Select Available Time Slot</h3>
-          <div className="w-full h-auto p-2 flex flex-wrap gap-2 justify-evenly dark:text-black ">
+          <div className="w-full  h-auto p-2 xs:p-1 flex flex-wrap gap-2 xs:gap-1 justify-evenly dark:text-black ">
             <button className="w-2/5 rounded-2xl bg-orange-300 dark:bg-zinc-50 h-9">
               10:00AM-11:00AM
             </button>
@@ -135,8 +298,7 @@ const Content = () => {
           <input
             className="w-full p-2 rounded-2xl"
             placeholder="Write something..."
-            type={Text}
-          ></input>
+            type={Text}></input>
         </div>
         <div className="flex justify-center">
           <button className="w-48 h-10 bg-slate-300 dark:text-black  rounded-lg p-1">
@@ -146,6 +308,6 @@ const Content = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Content;

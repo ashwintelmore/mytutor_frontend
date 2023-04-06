@@ -10,8 +10,8 @@ const Profile = () => {
 
   };
   return (
-    <div className="flex   w-full h-screen rounded-t-3xl bg-white ">
-      <div className="w-1/4 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden rounded-tl-3xl ">
+    <div className="flex   w-full h-screen rounded-t-3xl bg-white  xs:flex-col xs:overflow-visible">
+      <div className="w-1/4 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden rounded-tl-3xl xs:w-full xs:overflow-y-auto  ">
         <h3 className="text-lg font-semibold text-rose-500">Profile Photo</h3>
         <div className="h-28 w-28 rounded-full bg-red-500  relative ">
           <img
@@ -56,7 +56,7 @@ const Profile = () => {
             <input
               type="text"
               placeholder="Write something"
-              className="rounded-lg border w-full  border-hidden "></input>
+              className="rounded-lg border w-full  outline-none "></input>
              
            
             <button className="absolute rounded-xl text-xs p-px h-5 w-16  text-white right-1   bg-orange-500">Send OTP</button>
@@ -67,9 +67,9 @@ const Profile = () => {
             <input
               type="text"
               placeholder="Write something"
-              className="rounded-lg border w-full border-hidden "></input>
+              className="rounded-lg  w-full outline-none"></input>
              
-           
+        
             <button className="absolute rounded-xl text-xs p-px h-5 w-16  text-white right-1   bg-orange-500">Verify</button>
             <h6 className="text-xs left-2 absolute -bottom-5 ">Something content</h6>
           </div>
@@ -77,7 +77,7 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="w-3/4 flex-col flex overflow-y-auto">
+      <div className="w-3/4 flex-col flex overflow-y-auto xs:flex-col  ">
         <div className="flex sticky top-0 bg-white p-2 gap-4 mt-1  ">
 
           <button className="rounded-2xl bg-indigo-200 text-sm w-24 h-8 shadow-md shadow-slate-500 "
@@ -93,7 +93,7 @@ const Profile = () => {
 
         </div>
         {/* ccalender and about */}
-        <div >
+        <div   >
           {
             show === '1' ?
               <About />
