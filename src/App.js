@@ -8,17 +8,23 @@ import Header from "./Header/Header";
 import Profile from "./Pages/Profile/Profile";
 import VerticalNav from "./Header/VerticalNav";
 import AllPost from "./Pages/Profile/AllPost";
+import LoginForm from "./Auth/LoginForm";
+import Register from "./Auth/Register";
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
         <Header />
-        <div className="flex">
+        <div className="flex ">
           <VerticalNav />
           <Routes>
             <Route path="/" element={<Home />} />
+
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<LoginForm />} />
             <Route path="/profile" element={<Profile />} />
+
             <Route path="/content" element={<Content />} />
             <Route path="/dummy" element={<Dummy />} />
             {/* <Route path="/backrop" element={<Backrop />} /> */}

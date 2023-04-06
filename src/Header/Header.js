@@ -3,9 +3,11 @@ import Sidebar from "./Sidebar";
 import { useState, useEffect, useRef } from "react";
 import Backrop from "./Backrop";
 import Education from "../Pages/Profile/Education";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [openProfile, setOpenProfile] = useState(false);
+  const [isUser, setisUser] = useState(false)
   let menuRef = useRef();
   useEffect(() => {
     let handler = (e) => {
@@ -84,13 +86,26 @@ const Header = () => {
             ref={menuRef}
             onClick={() => setOpenProfile((prev) => !prev)}
           >
-            <img
-              className="rounded-full h-11 w-11"
-              src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-              alt=""
-            />
-            {openProfile && <Backrop />}
-            <span>Ashwin Telmore</span>
+
+            {
+              isUser ?
+                <div className="flex gap-2">
+                  <img
+                    className="rounded-full h-11 w-11"
+                    src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
+                    alt=""
+                  />
+                  {openProfile && <Backrop />}
+                  <span>Ashwin Telmore</span>
+                </div>
+                :
+                <Link to={'/login'}>
+                  <button className="bg-pink-200 rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid">
+                    Register/Login
+                  </button>
+                </Link>
+
+            }
           </div>
         </div>
       </div>
