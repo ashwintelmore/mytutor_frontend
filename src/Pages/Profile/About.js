@@ -38,43 +38,43 @@ export default function About() {
                                     Edit
                                 </button>{" "}
                                 <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold">
-                                    Add 
+                                    Add
                                 </button>{" "}
                             </div>
                         </div>
                         <div className="flex flex-col p-2 gap-3">
                             <div className="flex flex-col gap-3">
-                            <div className="flex flex-col ">
-                                <div className=" flex justify-between">
-                                <h3 className="font-bold text-lg text-violet-800">Heading</h3> <i class="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
-                                <div className="flex justify-between ">
-                                {" "}
-                                <label>Location ! at company</label>{" "}
-                                <label className="font-semibold">FEB2022-MAY2023</label>
-                            </div>
-                            </div>
-                            
-                            <p>
-                                I am passionate about developing web apps | Clean maintainable and
-                                scalable code | FrontEnd Performance Matters a LotCurrently
-                                getting
-                            </p></div>
+                                <div className="flex flex-col ">
+                                    <div className=" flex justify-between">
+                                        <h3 className="font-bold text-lg text-violet-800">Heading</h3> <i class="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
+                                    <div className="flex justify-between ">
+                                        {" "}
+                                        <label>Location ! at company</label>{" "}
+                                        <label className="font-semibold">FEB2022-MAY2023</label>
+                                    </div>
+                                </div>
+
+                                <p>
+                                    I am passionate about developing web apps | Clean maintainable and
+                                    scalable code | FrontEnd Performance Matters a LotCurrently
+                                    getting
+                                </p></div>
                             <div className="flex flex-col gap-3">
-                            <div className="flex flex-col ">
-                                <div className=" flex justify-between">
-                                <h3 className="font-bold text-lg text-violet-800">Heading</h3> <i class="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
-                                <div className="flex justify-between ">
-                                {" "}
-                                <label>Location ! at company</label>{" "}
-                                <label className="font-semibold">FEB2022-MAY2023</label>
-                            </div>
-                            </div>
-                            
-                            <p>
-                                I am passionate about developing web apps | Clean maintainable and
-                                scalable code | FrontEnd Performance Matters a LotCurrently
-                                getting
-                            </p></div>
+                                <div className="flex flex-col ">
+                                    <div className=" flex justify-between">
+                                        <h3 className="font-bold text-lg text-violet-800">Heading</h3> <i class="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
+                                    <div className="flex justify-between ">
+                                        {" "}
+                                        <label>Location ! at company</label>{" "}
+                                        <label className="font-semibold">FEB2022-MAY2023</label>
+                                    </div>
+                                </div>
+
+                                <p>
+                                    I am passionate about developing web apps | Clean maintainable and
+                                    scalable code | FrontEnd Performance Matters a LotCurrently
+                                    getting
+                                </p></div>
                         </div>
                     </div>
                     <div className="flex flex-col p-2 gap-6 ">
@@ -85,43 +85,43 @@ export default function About() {
                                     Edit
                                 </button>{" "}
                                 <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold">
-                                    Add 
+                                    Add
                                 </button>{" "}
                             </div>
                         </div>
                         <div className="flex flex-col p-2 gap-3">
                             <div className="flex flex-col gap-3">
-                            <div className="flex flex-col ">
-                                <div className=" flex justify-between">
-                                <h3 className="font-bold text-lg text-violet-800">Heading</h3> <i class="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
-                                <div className="flex justify-between ">
-                                {" "}
-                                <label>Location ! at company</label>{" "}
-                                <label className="font-semibold">FEB2022-MAY2023</label>
-                            </div>
-                            </div>
-                            
-                            <p>
-                                I am passionate about developing web apps | Clean maintainable and
-                                scalable code | FrontEnd Performance Matters a LotCurrently
-                                getting
-                            </p></div>
+                                <div className="flex flex-col ">
+                                    <div className=" flex justify-between">
+                                        <h3 className="font-bold text-lg text-violet-800">Heading</h3> <i class="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
+                                    <div className="flex justify-between ">
+                                        {" "}
+                                        <label>Location ! at company</label>{" "}
+                                        <label className="font-semibold">FEB2022-MAY2023</label>
+                                    </div>
+                                </div>
+
+                                <p>
+                                    I am passionate about developing web apps | Clean maintainable and
+                                    scalable code | FrontEnd Performance Matters a LotCurrently
+                                    getting
+                                </p></div>
                             <div className="flex flex-col gap-3">
-                            <div className="flex flex-col ">
-                                <div className=" flex justify-between">
-                                <h3 className="font-bold text-lg text-violet-800">Heading</h3> <i class="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
-                                <div className="flex justify-between ">
-                                {" "}
-                                <label>Location ! at company</label>{" "}
-                                <label className="font-semibold">FEB2022-MAY2023</label>
-                            </div>
-                            </div>
-                            
-                            <p>
-                                I am passionate about developing web apps | Clean maintainable and
-                                scalable code | FrontEnd Performance Matters a LotCurrently
-                                getting
-                            </p></div>
+                                <div className="flex flex-col ">
+                                    <div className=" flex justify-between">
+                                        <h3 className="font-bold text-lg text-violet-800">Heading</h3> <i class="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
+                                    <div className="flex justify-between ">
+                                        {" "}
+                                        <label>Location ! at company</label>{" "}
+                                        <label className="font-semibold">FEB2022-MAY2023</label>
+                                    </div>
+                                </div>
+
+                                <p>
+                                    I am passionate about developing web apps | Clean maintainable and
+                                    scalable code | FrontEnd Performance Matters a LotCurrently
+                                    getting
+                                </p></div>
                         </div>
                     </div>
                     <div className="flex flex-col p-2 gap-6 ">
@@ -132,43 +132,43 @@ export default function About() {
                                     Edit
                                 </button>{" "}
                                 <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold">
-                                    Add 
+                                    Add
                                 </button>{" "}
                             </div>
                         </div>
                         <div className="flex flex-col p-2 gap-3">
                             <div className="flex flex-col gap-3">
-                            <div className="flex flex-col ">
-                                <div className=" flex justify-between">
-                                <h3 className="font-bold text-lg text-violet-800">Heading</h3> <i class="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
-                                <div className="flex justify-between ">
-                                {" "}
-                                <label>Location ! at company</label>{" "}
-                                <label className="font-semibold">FEB2022-MAY2023</label>
-                            </div>
-                            </div>
-                            
-                            <p>
-                                I am passionate about developing web apps | Clean maintainable and
-                                scalable code | FrontEnd Performance Matters a LotCurrently
-                                getting
-                            </p></div>
+                                <div className="flex flex-col ">
+                                    <div className=" flex justify-between">
+                                        <h3 className="font-bold text-lg text-violet-800">Heading</h3> <i class="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
+                                    <div className="flex justify-between ">
+                                        {" "}
+                                        <label>Location ! at company</label>{" "}
+                                        <label className="font-semibold">FEB2022-MAY2023</label>
+                                    </div>
+                                </div>
+
+                                <p>
+                                    I am passionate about developing web apps | Clean maintainable and
+                                    scalable code | FrontEnd Performance Matters a LotCurrently
+                                    getting
+                                </p></div>
                             <div className="flex flex-col gap-3">
-                            <div className="flex flex-col ">
-                                <div className=" flex justify-between">
-                                <h3 className="font-bold text-lg text-violet-800">Heading</h3> <i class="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
-                                <div className="flex justify-between ">
-                                {" "}
-                                <label>Location ! at company</label>{" "}
-                                <label className="font-semibold">FEB2022-MAY2023</label>
-                            </div>
-                            </div>
-                            
-                            <p>
-                                I am passionate about developing web apps | Clean maintainable and
-                                scalable code | FrontEnd Performance Matters a LotCurrently
-                                getting
-                            </p></div>
+                                <div className="flex flex-col ">
+                                    <div className=" flex justify-between">
+                                        <h3 className="font-bold text-lg text-violet-800">Heading</h3> <i class="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
+                                    <div className="flex justify-between ">
+                                        {" "}
+                                        <label>Location ! at company</label>{" "}
+                                        <label className="font-semibold">FEB2022-MAY2023</label>
+                                    </div>
+                                </div>
+
+                                <p>
+                                    I am passionate about developing web apps | Clean maintainable and
+                                    scalable code | FrontEnd Performance Matters a LotCurrently
+                                    getting
+                                </p></div>
                         </div>
                     </div>
                 </div>
@@ -328,7 +328,7 @@ export default function About() {
                                 alt=""
                             />
                             <div>
-                                <h3 className="text-violet-800">Ashwin Telmore</h3>
+                                <h3 className="text-violet-800">User Name</h3>
                                 <p>Something bio details</p>
                             </div>
                         </div>
@@ -339,7 +339,7 @@ export default function About() {
                                 alt=""
                             />
                             <div>
-                                <h3 className="text-violet-800">Ashwin Telmore</h3>
+                                <h3 className="text-violet-800">User Name</h3>
                                 <p>Something bio details</p>
                             </div>
                         </div>
@@ -350,7 +350,7 @@ export default function About() {
                                 alt=""
                             />
                             <div>
-                                <h3 className="text-violet-800">Ashwin Telmore</h3>
+                                <h3 className="text-violet-800">User Name</h3>
                                 <p>Something bio details</p>
                             </div>
                         </div>

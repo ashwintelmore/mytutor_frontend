@@ -1,10 +1,32 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, redirect, useNavigate } from "react-router-dom";
+import { login } from "../App/Api";
 import loginImage from '../assets/bacgroun3.jpg'
+import { useAuth } from "../providers/auth";
 
 export default function LoginForm() {
+   const navaigat = useNavigate()
+   const [email, setEmail] = useState('')
+   const [password, setPassword] = useState('')
+   const [error, setError] = useState('Welcome Back! Please enter your details.')
 
+   const auth = useAuth()
+   console.log('auth :>> ', auth);
 
+   async function fetchData() {
+      const res = await login({
+         email, password
+      });
+
+      console.log('response :>> ', res);
+      if (res.data.error) {
+         //error
+         setError(res.data.error.errMessage)
+      } else if (res.data.payload) {
+         auth.setUser(res.data.payload)
+         localStorage.setItem('_id', res.data.payload._id)
+      }
+   }
    return (
       <div className="w-[100%] overflow-auto scrollbar-hide md:scrollbar-default">
          <div className="w=full h-screen flex items-start " >
@@ -22,17 +44,29 @@ export default function LoginForm() {
                <div className="w-full flex flex-col max-w-[500px] ">
                   <div className="w-full flex flex-col mb-2">
                      <h3 className="text-3xl font-semibold mb-2 text-[#075985]">Login</h3>
-                     <p className="text-sm mb-2">Welcome Back! Please enter your details.</p>
+                     <p className="text-sm mb-2">{error}</p>
                   </div>
                   <div className="w-full flex flex-col">
-                     <input className="w-full text-black py-2 my-2 bg-transparent border-b border-[#075985] outline-none focus:outline-none" type="email" placeholder="Email" />
-                     <input className="w-full text-black py-2 my-2 bg-transparent border-b border-[#075985] outline-none focus:outline-none" type="password" placeholder="Password" />
+                     <input className="w-full text-black py-2 my-2 bg-transparent border-b border-[#075985] outline-none focus:outline-none"
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                     />
+                     <input className="w-full text-black py-2 my-2 bg-transparent border-b border-[#075985] outline-none focus:outline-none"
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                     />
                   </div>
                   <div className="w-full flex items-center justify-betwwen">
                      <p className="text-sm font-medium whitespace-nowrap cursor-pointer underline underline-offset-2">Forget Password?</p>
                   </div>
                   <div className="w-full flex flex-col my-4">
-                     <button className="w-full text-white my-2 bg-[#075985] rounded-md p-4 text-center flext items-center justify-center cursor-pointer hover:bg-sky-500/50">
+                     <button className="w-full text-white my-2 bg-[#075985] rounded-md p-4 text-center flext items-center justify-center cursor-pointer hover:bg-sky-500/50"
+                        onClick={() => fetchData()}
+                     >
                         Log in
                      </button>
                      <Link to={'/register'}>

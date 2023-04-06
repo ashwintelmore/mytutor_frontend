@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getAllUser, register } from "../App/Api";
 import loginImage from '../assets/bacground4.jpg'
 import Google from '../assets/Google-logo.png'
+import { useAuth } from "../providers/auth";
 
 export default function Register() {
+   const [name, setName] = useState('')
+   const [email, setEmail] = useState('')
+   const [password, setPassword] = useState('')
+   const [confiPass, setConfiPass] = useState('')
+   const [error, setError] = useState('Please enter your details.')
+
+   const auth = useAuth()
+   console.log('auth :>> ', auth);
+
+   async function fetchData() {
+      const res = await register({
+         name, email, password
+      });
+      console.log('response :>> ', res);
+      if (res.data.error) {
+         //error
+         setError(res.data.error.errMessage)
+      } else if (res.data.payload) {
+         auth.setUser(res.data.payload)
+         localStorage.setItem('_id', res.data.payload._id)
+      }
+   }
+
    return (
       <div className="w=full h-screen flex items-start">
          <div className="relative w-1/2 h-full flex flex-col">
@@ -20,17 +45,39 @@ export default function Register() {
             <div className="w-full flex flex-col max-w-[500px] ">
                <div className="w-full flex flex-col mb-2">
                   <h3 className="text-3xl font-semibold mb-2 text-stone-700">Register</h3>
-                  <p className="text-sm mb-2">Please enter your details.</p>
+                  <p className="text-sm mb-2">{error}</p>
                </div>
                <div className="w-full flex flex-col">
-                  <input className="w-full text-black py-2 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none" type="text" placeholder="FullName" />
-                  <input className="w-full text-black py-2 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none" type="email" placeholder="Email" />
-                  <input className="w-full text-black py-2 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none" type="password" placeholder="Password" />
-                  <input className="w-full text-black py-2 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none" type="password" placeholder="ConfirmPassword" />
+                  <input className="w-full text-black py-2 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none"
+                     type="text"
+                     placeholder="FullName"
+                     value={name}
+                     onChange={(e) => setName(e.target.value)}
+                  />
+                  <input className="w-full text-black py-2 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none"
+                     type="email"
+                     placeholder="Email"
+                     value={email}
+                     onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <input className="w-full text-black py-2 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none"
+                     type="password"
+                     placeholder="Password"
+                     value={password}
+                     onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <input className="w-full text-black py-2 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none"
+                     type="password"
+                     placeholder="ConfirmPassword"
+                     value={name}
+                     onChange={(e) => setPassword(e.target.value)}
+                  />
                </div>
 
                <div className="w-full flex flex-col my-4">
-                  <button className="w-full text-white my-2 bg-stone-700 rounded-md p-4 text-center flext items-center justify-center cursor-pointer">
+                  <button className="w-full text-white my-2 bg-stone-700 rounded-md p-4 text-center flext items-center justify-center cursor-pointer"
+                     onClick={() => fetchData()}
+                  >
                      Register
                   </button>
                </div>

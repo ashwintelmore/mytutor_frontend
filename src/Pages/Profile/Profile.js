@@ -10,8 +10,8 @@ const Profile = () => {
 
   };
   return (
-    <div className="flex   w-full h-screen rounded-t-3xl bg-white ">
-      <div className="w-1/4 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden rounded-tl-3xl ">
+    <div className="flex w-full h-screen rounded-t-3xl bg-white">
+      <div className="w-1/4 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden rounded-tl-3xl">
         <h3 className="text-lg font-semibold text-rose-500">Profile Photo</h3>
         <div className="h-28 w-28 rounded-full bg-red-500  relative ">
           <img
@@ -19,7 +19,7 @@ const Profile = () => {
             src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
             alt=""
           />
-          <i class="fa-solid fa-user-pen absolute bottom-2 h-8 w-8 bg-slate-50 rounded-full p-2 right-0 "></i>
+          <i className="fa-solid fa-user-pen absolute bottom-2 h-8 w-8 bg-slate-50 rounded-full p-2 right-0 "></i>
         </div>
         <div className="flex-col flex items-center text-lg  ">
           <label className="text-violet-800">UserName</label>
@@ -41,38 +41,38 @@ const Profile = () => {
           </div>
         </div>
         <div className="flex flex-col items-center gap-1 text-lg p-1">
-          <label  className="text-violet-800">Bio</label>
+          <label className="text-violet-800">Bio</label>
           <p className="text-sm p-1 ">
-                    I am passionate about developing web apps | Clean maintainable and
+            I am passionate about developing web apps | Clean maintainable and
             scalable code | FrontEnd Performance Matters a LotCurrently getting
             hands on Mobile native and React native development I write here
             https://dev.to/ashwintelmore
           </p>
         </div>
-        <div className=" text-lg w-11/12 gap-3 flex flex-col ">
-          <h3  className="text-violet-800 ">Something Heading</h3>
+        <div className="text-lg w-11/12 gap-3 flex flex-col">
+          <h3 className="text-violet-800 ">Something Heading</h3>
           <div className="flex flex-col gap-10">
-          <div className="flex  relative border border-gray-500 shadow-slate-400 shadow-md text-sm   rounded-xl p-1  ">
-            <input
-              type="text"
-              placeholder="Write something"
-              className="rounded-lg border w-full  border-hidden "></input>
-             
-           
-            <button className="absolute rounded-xl text-xs p-px h-5 w-16  text-white right-1   bg-orange-500">Send OTP</button>
-            <h6 className="text-xs left-2 absolute -bottom-5 ">Something content</h6>
-          </div>
-         
-          <div className="flex relative border border-gray-500 shadow-slate-400 shadow-md text-sm rounded-xl p-1  ">
-            <input
-              type="text"
-              placeholder="Write something"
-              className="rounded-lg border w-full border-hidden "></input>
-             
-           
-            <button className="absolute rounded-xl text-xs p-px h-5 w-16  text-white right-1   bg-orange-500">Verify</button>
-            <h6 className="text-xs left-2 absolute -bottom-5 ">Something content</h6>
-          </div>
+            <div className="flex  relative border border-gray-500 shadow-slate-400 shadow-md text-sm   rounded-xl p-1  ">
+              <input
+                type="text"
+                placeholder="Write something"
+                className="rounded-lg border w-full  border-hidden "></input>
+
+
+              <button className="absolute rounded-xl text-xs p-px h-5 w-16  text-white right-1   bg-orange-500">Send OTP</button>
+              <h6 className="text-xs left-2 absolute -bottom-5 ">Something content</h6>
+            </div>
+
+            <div className="flex relative border border-gray-500 shadow-slate-400 shadow-md text-sm rounded-xl p-1  ">
+              <input
+                type="text"
+                placeholder="Write something"
+                className="rounded-lg border w-full border-hidden "></input>
+
+
+              <button className="absolute rounded-xl text-xs p-px h-5 w-16  text-white right-1   bg-orange-500">Verify</button>
+              <h6 className="text-xs left-2 absolute -bottom-5 ">Something content</h6>
+            </div>
           </div>
         </div>
       </div>

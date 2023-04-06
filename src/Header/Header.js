@@ -4,10 +4,11 @@ import { useState, useEffect, useRef } from "react";
 import Backrop from "./Backrop";
 import Education from "../Pages/Profile/Education";
 import { Link } from "react-router-dom";
+import { useAuth } from "../providers/auth";
 
 const Header = () => {
   const [openProfile, setOpenProfile] = useState(false);
-  const [isUser, setisUser] = useState(false)
+  const auth = useAuth()
   let menuRef = useRef();
   useEffect(() => {
     let handler = (e) => {
@@ -86,9 +87,8 @@ const Header = () => {
             ref={menuRef}
             onClick={() => setOpenProfile((prev) => !prev)}
           >
-
             {
-              isUser ?
+              auth.user._id ?
                 <div className="flex gap-2">
                   <img
                     className="rounded-full h-11 w-11"
@@ -96,7 +96,7 @@ const Header = () => {
                     alt=""
                   />
                   {openProfile && <Backrop />}
-                  <span>Ashwin Telmore</span>
+                  <span>User Name</span>
                 </div>
                 :
                 <Link to={'/login'}>
