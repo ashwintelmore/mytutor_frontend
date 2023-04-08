@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Link, redirect, useNavigate } from "react-router-dom";
+import { Link,   useNavigate } from "react-router-dom";
 import { login } from "../App/Api";
 import loginImage from '../assets/bacgroun3.jpg'
 import { useAuth } from "../providers/auth";
 
 export default function LoginForm() {
-   const navaigat = useNavigate()
+   const navaigate = useNavigate()
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
    const [error, setError] = useState('Welcome Back! Please enter your details.')
@@ -29,8 +29,8 @@ export default function LoginForm() {
    }
    return (
       <div className="w-[100%] overflow-auto scrollbar-hide md:scrollbar-default">
-         <div className="w=full h-screen flex items-start " >
-            <div className="relative w-1/2 h-full flex flex-col">
+         <div className="w=full h-screen flex items-start xs:flex-col" >
+            <div className="relative w-1/2 h-full flex flex-col xs:hidden">
                <div className="absolute top-[25%] left-[10%] flex flex-col">
                   <h1 className="text-6xl text-white font-bold my-4 drop-shadow-xl">Welcome To My Tutor</h1>
                   <p className="text-2xl text-white font-semibold drop-shadow-xl">Start for free and get attractive offers from the community</p>
@@ -38,7 +38,7 @@ export default function LoginForm() {
                <img className="w-full h-full object-cover" src={loginImage} />
             </div>
 
-            <div className="w-1/2  mx-auto h-full bg-[#f5f5f5] flex flex-col p-20 justify-between items-center">
+            <div className="w-1/2 xs:w-full xs:bg-[#ffff] xs:mx-1 xs:p-7 xs:justify-evenly mx-auto h-full bg-[#f5f5f5] flex flex-col p-20  justify-between items-center">
                <h1 className="text-4xl text-[#075985] font-semibold">My Tutor</h1>
 
                <div className="w-full flex flex-col max-w-[500px] ">
@@ -63,14 +63,14 @@ export default function LoginForm() {
                   <div className="w-full flex items-center justify-betwwen">
                      <p className="text-sm font-medium whitespace-nowrap cursor-pointer underline underline-offset-2">Forget Password?</p>
                   </div>
-                  <div className="w-full flex flex-col my-4">
-                     <button className="w-full text-white my-2 bg-[#075985] rounded-md p-4 text-center flext items-center justify-center cursor-pointer hover:bg-sky-500/50"
+                  <div className="w-full flex flex-col my-2 font-semibold text-lg">
+                     <button className="w-full text-white my-2 bg-[#f6ab2a] rounded-md p-4 text-center flext items-center justify-center cursor-pointer hover:bg-sky-500/50 shadow-sm shadow-black"
                         onClick={() => fetchData()}
                      >
                         Log in
                      </button>
                      <Link to={'/register'}>
-                        <button className="w-full text-[#060606] font-semibold my-2 bg-white border-2 border-black/40 rounded-md p-4 text-center flext items-center justify-center cursor-pointer hover:bg-gray-400">
+                        <button className="w-full text-[#060606] font-semibold my-2 bg-white border-2 border-black/40 rounded-md p-4 text-center flex justify-center items-center  cursor-pointer shadow-sm shadow-black hover:bg-gray-400">
                            Register
                         </button>
                      </Link>

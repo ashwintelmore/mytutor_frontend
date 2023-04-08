@@ -20,7 +20,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Header />
-        <div className="flex ">
+        <div className="flex w-full bg-[#EAF0FF] relative">
           <VerticalNav />
           <Routes>
 

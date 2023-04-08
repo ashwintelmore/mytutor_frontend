@@ -30,8 +30,8 @@ export default function Register() {
    }
 
    return (
-      <div className="w=full h-screen flex items-start">
-         <div className="relative w-1/2 h-full flex flex-col">
+      <div className="w-full h-screen xs:flex xs:flex-col flex items-start">
+         <div className="relative w-1/2 h-full flex flex-col xs:hidden">
             <div className="absolute top-[25%] left-[10%] flex flex-col">
                <h1 className="text-6xl text-white font-bold my-4 drop-shadow-xl">Welcome To My Tutor</h1>
                <p className="text-2xl text-white font-semibold drop-shadow-xl">Start for free and get attractive offers from the community</p>
@@ -39,7 +39,7 @@ export default function Register() {
             <img className="w-full h-full object-cover" src={loginImage} />
          </div>
 
-         <div className="w-1/2  mx-auto h-full bg-[#f5f5f5] flex flex-col p-20 justify-between items-center">
+         <div className="w-1/2 xs:w-full xs:p-8 xs:bg-[#f7f256] xs:ml-2   mx-auto h-full bg-[#f5f5f5] flex flex-col p-20 justify-between items-center">
             <h1 className="text-4xl text-stone-700 font-bold">My Tutors</h1>
 
             <div className="w-full flex flex-col max-w-[500px] ">
