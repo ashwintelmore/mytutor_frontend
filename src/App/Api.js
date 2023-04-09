@@ -8,7 +8,7 @@ export const getAllUser = async () => {
 
     return await axios.get(`${END_POINT}/allUsers`)
         .then(function (response) {
-            // handle success
+            // handle successy
             console.log(response);
             return response
         })

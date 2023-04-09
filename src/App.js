@@ -11,6 +11,7 @@ import AllPost from "./Pages/Profile/AllPost";
 import LoginForm from "./Auth/LoginForm";
 import Register from "./Auth/Register";
 import { useAuth } from "./providers/auth";
+import Education from "./Pages/Profile/Education";
 
 const App = () => {
 
@@ -20,7 +21,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Header />
-        <div className="flex ">
+        <div className="flex w-full bg-[#EAF0FF] relative">
           <VerticalNav />
           <Routes>
 
@@ -60,6 +61,8 @@ const App = () => {
               }
             />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/education" element={<Education/>} />
+
             <Route path="/content" element={<Content />} />
             <Route path="/dummy" element={<Dummy />} />
             {/* <Route path="/backrop" element={<Backrop />} /> */}

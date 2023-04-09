@@ -1,6 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect  } from "react";
 import { Link } from "react-router-dom";
+
 
 const Sidebar = ({ isOpen, toggle }) => {
   const [theme, setTheme] = useState("light");
@@ -14,6 +15,9 @@ const Sidebar = ({ isOpen, toggle }) => {
   const handleThemeSwitch = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+
+
+   
 
   return (
     <div className={isOpen ? "sidebar open" : "sidebar"}>
@@ -36,7 +40,8 @@ const Sidebar = ({ isOpen, toggle }) => {
         </div>
         <div className="flex gap-2 items-center ">
           
-          <i className="fa-solid fa-circle-plus"> </i>
+        <i className="fa-solid fa-circle-plus" 
+            ></i>
           <label>Upload</label>
         </div>
         <div className="flex gap-2 items-center">

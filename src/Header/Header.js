@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import { useState, useEffect, useRef } from "react";
 import Backrop from "./Backrop";
-import Education from "../Pages/Profile/Education";
+
 import { Link } from "react-router-dom";
 import { useAuth } from "../providers/auth";
 
@@ -22,19 +22,7 @@ const Header = () => {
     };
   });
 
-  const [openEducation, setOpenEducation] = useState(false);
-  let EducationRef = useRef();
-  useEffect(() => {
-    let handler = (e) => {
-      if (!EducationRef.current.contains(e.target)) {
-        setOpenEducation(false);
-      }
-    };
-    document.addEventListener("mouseup", handler);
-    return () => {
-      document.removeEventListener("mouseup", handler);
-    };
-  });
+  
 
   const [theme, setTheme] = useState("light");
   useEffect(() => {
@@ -56,7 +44,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex w-full bg-indigo-100 sticky top-0 z-10 dark:bg-zinc-900 dark:text-white  justify-between p-2 h-16 xs:z-10">
+      <div className="flex w-screen sm:w-full bg-[#EAF0FF] sticky top-0 z-10 dark:bg-zinc-900 dark:text-white  justify-between p-2 h-16 xs:z-10">
         <div className="flex items-center gap-9 p-2 text-lg xs:gap-4  xs:w-full ">
           <div>
             <i
@@ -67,20 +55,19 @@ const Header = () => {
           </div>
 
           <span className="mytutor">MyTutor</span>
-          <div className="mx-2 relative bg-white dark:bg-white dark:text-black text-sm  flex   w-96  items-center rounded-2xl xs:w-60 ">
+          <div className="mx-2 relative bg-white dark:bg-white dark:text-black text-sm  flex   w-96 sm:w-52 items-center rounded-2xl xs:w-60 ">
             <input type="text" placeholder="search" className="w-full p-1  rounded-2xl outline-none"></input>
             <i className="fa-solid fa-magnifying-glass absolute right-0 p-2"></i>
           </div>
         </div>
 
-        <div className="flex justify-between items-center gap-7 p-3 text-lg  xs:hidden md:hidden ">
+        <div className="flex justify-between items-center gap-7 p-3 text-lg  xs:hidden sm:hidden ">
           <i
             className="fa-regular fa-moon cursor-pointer"
             onClick={handleThemeSwitch}
           ></i>
-
-          <i className="fa-solid fa-circle-plus" ref={EducationRef}
-            onClick={() => setOpenEducation((prev) => !prev)}> {openEducation && <Education />}</i>
+<Link to ={"/education"}><i className="fa-solid fa-circle-plus xs:hidden" >
+          </i></Link>
           <i className="fa-solid fa-bell"></i>
           <div
             className=" flex justify-between items-center gap-2 cursor-pointer "

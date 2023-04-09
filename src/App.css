@@ -1,5 +1,5 @@
 body  {
-background-color:rgb(211, 238, 251) ;
+
 }
 ::-webkit-scrollbar {
   width: 16px;
@@ -20,6 +20,7 @@ background-color:rgb(211, 238, 251) ;
 
 .home {
   width: 95%;
+  
 }
 
 .dropdownprofile {
@@ -53,19 +54,14 @@ background-color:rgb(211, 238, 251) ;
   border-left: 1px solid white;
   border-top: 1px solid white;
 }
-.education {
-  position: absolute;
-  top: 4rem;
-  z-index: 1;
-  right: 17rem;
-  width: 900px;
-  height: 450px;
-  padding: 1rem;
-  border-radius: 1rem;
-  background-color: rgb(133, 251, 212);
-  border: 1px solid black;
+ 
+@media screen and (max-width: 385px) {
+  .education {
+    left: 2rem;
+    height: 350px;
+    width: 300px;
+  }
 }
-
  
 .dark .sidebar {
   background-color: rgb(56, 51, 51);
@@ -75,11 +71,13 @@ background-color:rgb(211, 238, 251) ;
   top: 0;
   left: 0;
   width: 300px;
-  height: 670px;
-  background-color: #8ae4eb;
+  height: 700px;
+  background-color: #d4eaec;
   padding: 20px;
   box-sizing: border-box;
   z-index: 1;
+  border:  rgb(150, 137, 137);
+  border-style: solid;
   border-radius: 0 2rem 2rem 0;
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
@@ -97,17 +95,22 @@ background-color:rgb(211, 238, 251) ;
     visibility: visible;
   }
 }
-.content {
-  width: 95%;
+.Post {
+  width: 100%;
 }
 @media screen and (max-width: 385px) {
   .home {
     width: 99%;
   }
 }
+@media screen and (max-width: 425px) {
+  .home {
+    width: 99%;
+  }
+}
 @media screen and (max-width: 385px) {
   .sidebar {
-    width: 60%;
+    width: 75%;
   }
 }
 
@@ -115,13 +118,22 @@ background-color:rgb(211, 238, 251) ;
   .footer {
     width: 100%;
     z-index: 2;
-    position: absolute;
-    bottom: 0%;
+    /* position: absolute;
+    bottom: 0%; */
+    
+  }
+}
+@media screen and (max-width: 425px) {
+  .footer {
+    width: 100%;
+    z-index: 2;
+    /* position: absolute;
+    bottom: 0%; */
     
   }
 }
 @media screen and (max-width: 385px) {
-  .content {
-    width: 99%;
+  .Post {
+    width: 100%;
   }
 }
