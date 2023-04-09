@@ -16,7 +16,6 @@ import Education from "./Pages/Profile/Education";
 const App = () => {
 
   const auth = useAuth()
-  console.log("auth", auth)
   return (
     <>
       <BrowserRouter>
@@ -61,7 +60,7 @@ const App = () => {
               }
             />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/education" element={<Education/>} />
+            <Route path="/education" element={<Education />} />
 
             <Route path="/content" element={<Content />} />
             <Route path="/dummy" element={<Dummy />} />

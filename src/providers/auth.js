@@ -11,9 +11,7 @@ export const AuthProvider = (props) => {
 
     async function fetchData() {
       const res = await getUser(userStorage);
-      console.log('userStorage :>> ', userStorage);
       if (res.data.error) {
-        console.log('response :>> ', res.data.error);
         setUser({})
       } else if (res.data.payload) {
         setUser(res.data.payload)

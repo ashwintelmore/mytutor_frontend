@@ -5,8 +5,10 @@ import Backrop from "./Backrop";
 
 import { Link } from "react-router-dom";
 import { useAuth } from "../providers/auth";
+import Education from "../Pages/Profile/Education";
 
 const Header = () => {
+  const [show, setShow] = useState(false)
   const [openProfile, setOpenProfile] = useState(false);
   const auth = useAuth()
   let menuRef = useRef();
@@ -22,7 +24,7 @@ const Header = () => {
     };
   });
 
-  
+
 
   const [theme, setTheme] = useState("light");
   useEffect(() => {
@@ -66,8 +68,10 @@ const Header = () => {
             className="fa-regular fa-moon cursor-pointer"
             onClick={handleThemeSwitch}
           ></i>
-<Link to ={"/education"}><i className="fa-solid fa-circle-plus xs:hidden" >
-          </i></Link>
+          <i className="fa-solid fa-circle-plus xs:hidden"
+            onClick={() => setShow(true)}
+          >
+          </i>
           <i className="fa-solid fa-bell"></i>
           <div
             className=" flex justify-between items-center gap-2 cursor-pointer "
@@ -95,11 +99,14 @@ const Header = () => {
             }
           </div>
         </div>
+        <Education
+          show={show}
+          setShow={() => setShow(!show)}
+        />
       </div>
     </>
   );
 };
 
-//thist pranay
 
 export default Header;

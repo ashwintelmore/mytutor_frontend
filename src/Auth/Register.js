@@ -13,13 +13,11 @@ export default function Register() {
    const [error, setError] = useState('Please enter your details.')
 
    const auth = useAuth()
-   console.log('auth :>> ', auth);
 
    async function fetchData() {
       const res = await register({
          name, email, password
       });
-      console.log('response :>> ', res);
       if (res.data.error) {
          //error
          setError(res.data.error.errMessage)

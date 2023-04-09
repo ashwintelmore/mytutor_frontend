@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import About from "./About";
 import AllPost from "./AllPost";
 
-const Profile = () => { 
+const Profile = () => {
   const [show, setShow] = useState('1')
 
   const change = () => {
 
   };
+
+  useEffect(() => {
+    return () => {
+      console.log("test")
+    };
+  }, [])
   return (
     <div className="flex w-full h-screen rounded-t-3xl bg-white dark:bg-slate-800 dark:text-white xs:flex-col   xs:h-full " >
       <div className="w-1/4 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl xs:w-full   ">

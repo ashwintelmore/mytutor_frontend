@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link,   useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../App/Api";
 import loginImage from '../assets/bacgroun3.jpg'
 import { useAuth } from "../providers/auth";
@@ -11,14 +11,11 @@ export default function LoginForm() {
    const [error, setError] = useState('Welcome Back! Please enter your details.')
 
    const auth = useAuth()
-   console.log('auth :>> ', auth);
-
    async function fetchData() {
       const res = await login({
          email, password
       });
 
-      console.log('response :>> ', res);
       if (res.data.error) {
          //error
          setError(res.data.error.errMessage)

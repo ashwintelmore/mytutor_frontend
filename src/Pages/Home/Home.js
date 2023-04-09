@@ -52,7 +52,7 @@ const Home = () => {
         <div className="relative w-max flex m-4 justify-center sm:m-1 ">
           <div className="w-44 h-44 sm:w-36 sm:h-36 rounded-full border-2 border-[#40B59F]  dark:bg-purple-200 bg-[#FF942E] xs:w-32 xs:h-32 "></div>
           <div className="absolute text-center p-2 bottom-0 h-10  w-28  bg-white shadow-sm shadow-black dark:bg-amber-500  rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
-          Psychologist
+            Psychologist
           </div>
         </div>
         <div className="relative w-max flex m-4 justify-center  sm:m-1 ">
@@ -79,11 +79,11 @@ const Home = () => {
             Food
           </div>
         </div>
-        
+
       </div>
       <div className="flex flex-wrap  mt-3 sm:w-full sm:h-auto sm:mt-1 font-semibold overflow-y-auto  sm:overflow-y-auto w-full xs:w-full xs:mt-2   ">
         <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
-      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#FEE4CB] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
+          <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#FEE4CB] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
             <div className="flex justify-between sm:text-sm xs:text-xs">
               <span>May 5,2021</span>
               <i className="fa-solid fa-ellipsis-vertical"></i>
@@ -96,7 +96,7 @@ const Home = () => {
               </div>
               <div className="flex items-center gap-1 p-2 text-lg className  xs:text-xs">
                 <span >69</span>
-                <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
+                <i className="fa-solid fa-thumbs-up text-[#EDA600]"></i>
               </div>
             </div>
             <div className="flex justify-between p-1  item-center xs:text-xs ">
@@ -105,10 +105,10 @@ const Home = () => {
                 Rs.69(per hour)
               </button>
             </div>
-          </div></Link> 
+          </div></Link>
         </div>
         <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
-      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#C9ECFF] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
+          <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#C9ECFF] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
             <div className="flex justify-between sm:text-sm">
               <span>May 5,2021</span>
               <i className="fa-solid fa-ellipsis-vertical"></i>
@@ -121,7 +121,7 @@ const Home = () => {
               </div>
               <div className="flex items-center gap-1 p-2 text-lg   xs:text-xs">
                 <span >69</span>
-                <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
+                <i className="fa-solid fa-thumbs-up text-[#EDA600]"></i>
               </div>
             </div>
             <div className="flex justify-between p-1  item-center xs:text-xs">
@@ -130,10 +130,10 @@ const Home = () => {
                 Rs.69(per hour)
               </button>
             </div>
-          </div></Link> 
+          </div></Link>
         </div>
         <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
-      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#E0FFDB] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
+          <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#E0FFDB] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
             <div className="flex justify-between sm:text-sm xs:text-xs">
               <span>May 5,2021</span>
               <i className="fa-solid fa-ellipsis-vertical"></i>
@@ -146,7 +146,7 @@ const Home = () => {
               </div>
               <div className="flex items-center gap-1 p-2 text-lg className  xs:text-xs">
                 <span >69</span>
-                <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
+                <i className="fa-solid fa-thumbs-up text-[#EDA600]"></i>
               </div>
             </div>
             <div className="flex justify-between p-1  item-center xs:text-xs ">
@@ -155,10 +155,10 @@ const Home = () => {
                 Rs.69(per hour)
               </button>
             </div>
-          </div></Link> 
+          </div></Link>
         </div>
         <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
-      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#FECBCB] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
+          <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#FECBCB] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
             <div className="flex justify-between sm:text-sm">
               <span>May 5,2021</span>
               <i className="fa-solid fa-ellipsis-vertical"></i>
@@ -171,7 +171,7 @@ const Home = () => {
               </div>
               <div className="flex items-center gap-1 p-2 text-lg   xs:text-xs">
                 <span >69</span>
-                <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
+                <i className="fa-solid fa-thumbs-up text-[#EDA600]"></i>
               </div>
             </div>
             <div className="flex justify-between p-1  item-center xs:text-xs">
@@ -180,10 +180,10 @@ const Home = () => {
                 Rs.69(per hour)
               </button>
             </div>
-          </div></Link> 
+          </div></Link>
         </div>
         <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
-      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#FECBF6] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
+          <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#FECBF6] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
             <div className="flex justify-between sm:text-sm xs:text-xs">
               <span>May 5,2021</span>
               <i className="fa-solid fa-ellipsis-vertical"></i>
@@ -196,7 +196,7 @@ const Home = () => {
               </div>
               <div className="flex items-center gap-1 p-2 text-lg className  xs:text-xs">
                 <span >69</span>
-                <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
+                <i className="fa-solid fa-thumbs-up text-[#EDA600]"></i>
               </div>
             </div>
             <div className="flex justify-between p-1  item-center xs:text-xs ">
@@ -205,10 +205,10 @@ const Home = () => {
                 Rs.69(per hour)
               </button>
             </div>
-          </div></Link> 
+          </div></Link>
         </div>
         <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
-      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#CBFEF8] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
+          <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#CBFEF8] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
             <div className="flex justify-between sm:text-sm">
               <span>May 5,2021</span>
               <i className="fa-solid fa-ellipsis-vertical"></i>
@@ -221,7 +221,7 @@ const Home = () => {
               </div>
               <div className="flex items-center gap-1 p-2 text-lg   xs:text-xs">
                 <span >69</span>
-                <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
+                <i className="fa-solid fa-thumbs-up text-[#EDA600]"></i>
               </div>
             </div>
             <div className="flex justify-between p-1  item-center xs:text-xs">
@@ -230,10 +230,10 @@ const Home = () => {
                 Rs.69(per hour)
               </button>
             </div>
-          </div></Link> 
+          </div></Link>
         </div>
         <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
-      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#E8CBFE] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
+          <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#E8CBFE] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
             <div className="flex justify-between sm:text-sm xs:text-xs">
               <span>May 5,2021</span>
               <i className="fa-solid fa-ellipsis-vertical"></i>
@@ -246,7 +246,7 @@ const Home = () => {
               </div>
               <div className="flex items-center gap-1 p-2 text-lg className  xs:text-xs">
                 <span >69</span>
-                <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
+                <i className="fa-solid fa-thumbs-up text-[#EDA600]"></i>
               </div>
             </div>
             <div className="flex justify-between p-1  item-center xs:text-xs ">
@@ -255,10 +255,10 @@ const Home = () => {
                 Rs.69(per hour)
               </button>
             </div>
-          </div></Link> 
+          </div></Link>
         </div>
         <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
-      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#f0ffc9] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
+          <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#f0ffc9] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
             <div className="flex justify-between sm:text-sm">
               <span>May 5,2021</span>
               <i className="fa-solid fa-ellipsis-vertical"></i>
@@ -271,7 +271,7 @@ const Home = () => {
               </div>
               <div className="flex items-center gap-1 p-2 text-lg   xs:text-xs">
                 <span >69</span>
-                <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
+                <i className="fa-solid fa-thumbs-up text-[#EDA600]"></i>
               </div>
             </div>
             <div className="flex justify-between p-1  item-center xs:text-xs">
@@ -280,9 +280,9 @@ const Home = () => {
                 Rs.69(per hour)
               </button>
             </div>
-          </div></Link> 
+          </div></Link>
         </div>
-       
+
       </div>
     </div>
   );
