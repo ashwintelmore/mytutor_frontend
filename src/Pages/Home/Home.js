@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="home  sm:relative ml-16 sm:w-full sm:m-2 xs:m-2 h-auto bg-white light dark:text-white dark:bg-neutral-800  p-4 rounded-t-3xl  ">
+    <div className="home  sm:relative ml-16 sm:w-full sm:m-2 xs:p-1  h-auto bg-white light dark:text-white dark:bg-neutral-800  p-2 rounded-t-3xl  ">
       <div className="flex w-full sm:text-sm sm:sticky top-0  justify-between p-2 xs:items-center xs:font-semibold">
         <div className="flex-col text-lg sm:text-sm  ">
           <h1 className="font-bold text-2xl sm:text-xl">Results</h1>
@@ -81,16 +81,16 @@ const Home = () => {
         </div>
         
       </div>
-      <div className="flex flex-wrap  mt-3 sm:w-full sm:h-auto sm:mt-1 font-semibold overflow-y-auto  sm:overflow-y-auto w-full xs:w-full  ">
+      <div className="flex flex-wrap  mt-3 sm:w-full sm:h-auto sm:mt-1 font-semibold overflow-y-auto  sm:overflow-y-auto w-full xs:w-full xs:mt-2   ">
         <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
-      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2  m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#FEE4CB] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-2 ">
-            <div className="flex justify-between sm:text-sm">
+      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#FEE4CB] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
+            <div className="flex justify-between sm:text-sm xs:text-xs">
               <span>May 5,2021</span>
               <i className="fa-solid fa-ellipsis-vertical"></i>
             </div>
-            <div className="h-32 xs:h-24 sm:h-24 w-full mx-auto my-3 dark:bg-violet-200 bg-[#F8AF6A] rounded-2xl"></div>
+            <div className="h-32  sm:h-24 w-full mx-auto my-3 dark:bg-violet-200 bg-[#F8AF6A] rounded-2xl"></div>
             <div className="flex justify-between text-sm ">
-              <div className="flex flex-col  xs:text-xs">
+              <div className="flex flex-col  ">
                 <span className="xs:text-xs sm:text-sm font-bold ">What is Design Thinking ?</span>
                 <span className="text-[#6F6F6F] sm:text-sm">Tutor Name</span>
               </div>
@@ -99,7 +99,7 @@ const Home = () => {
                 <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
               </div>
             </div>
-            <div className="flex justify-between p-1  item-center ">
+            <div className="flex justify-between p-1  item-center xs:text-xs ">
               <label>Online</label>
               <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid sm:text-xs xs:text-xs">
                 Rs.69(per hour)
@@ -108,12 +108,12 @@ const Home = () => {
           </div></Link> 
         </div>
         <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
-      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2  m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#C9ECFF] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-2 ">
+      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#C9ECFF] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
             <div className="flex justify-between sm:text-sm">
               <span>May 5,2021</span>
               <i className="fa-solid fa-ellipsis-vertical"></i>
             </div>
-            <div className="h-32 xs:h-24 sm:h-24  w-full mx-auto my-3 dark:bg-violet-200 bg-[#006DFF] rounded-2xl"></div>
+            <div className="h-32  sm:h-24  w-full mx-auto my-3 dark:bg-violet-200 bg-[#006DFF] rounded-2xl"></div>
             <div className="flex justify-between text-sm">
               <div className="flex flex-col xs:text-xs">
                 <span className="xs:text-xs font-bold text-base sm:text-sm">What is Design Thinking ?</span>
@@ -124,159 +124,159 @@ const Home = () => {
                 <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
               </div>
             </div>
-            <div className="flex justify-between p-1  item-center ">
+            <div className="flex justify-between p-1  item-center xs:text-xs">
               <label>Online</label>
-              <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid xs:text-xs sm:text-xs">
+              <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid  sm:text-xs">
                 Rs.69(per hour)
               </button>
             </div>
           </div></Link> 
         </div>
-        <div className="w-1/4 h-80  p-1 sm:h-auto sm:w-1/2 xs:w-1/2 sm:text-base xs:h-auto xs:text-xs">
-        <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2  m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#E0FFDB] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-2 ">
-            <div className="flex sm:text-sm justify-between">
+        <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
+      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#E0FFDB] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
+            <div className="flex justify-between sm:text-sm xs:text-xs">
               <span>May 5,2021</span>
               <i className="fa-solid fa-ellipsis-vertical"></i>
             </div>
-            <div className="h-32 xs:h-24 sm:h-24  w-full mx-auto my-3 dark:bg-violet-200 bg-[#00FF47] rounded-2xl"></div>
-            <div className="flex justify-between text-sm">
-              <div className="flex flex-col  xs:text-xs">
-                <span className="xs:text-xs sm:text-sm font-bold text-base">What is Design Thinking ?</span>
-                <span className="text-[#6F6F6F]">Tutor Name</span>
+            <div className="h-32  sm:h-24 w-full mx-auto my-3 dark:bg-violet-200 bg-[#00FF47] rounded-2xl"></div>
+            <div className="flex justify-between text-sm ">
+              <div className="flex flex-col  ">
+                <span className="xs:text-xs sm:text-sm font-bold ">What is Design Thinking ?</span>
+                <span className="text-[#6F6F6F] sm:text-sm">Tutor Name</span>
               </div>
-              <div className="flex items-center gap-1 p-2 text-lg className  ">
+              <div className="flex items-center gap-1 p-2 text-lg className  xs:text-xs">
                 <span >69</span>
                 <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
               </div>
             </div>
-            <div className="flex justify-between p-1  item-center ">
+            <div className="flex justify-between p-1  item-center xs:text-xs ">
               <label>Online</label>
-              <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid xs:text-xs sm:text-xs">
+              <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid sm:text-xs xs:text-xs">
                 Rs.69(per hour)
               </button>
             </div>
           </div></Link> 
         </div>
-        <div className="w-1/4 h-80  p-1 sm:h-auto sm:w-1/2 sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
-        <Link to={"/content"} ><div className="h-auto p-3 sm:p-2 w-full  m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#FECBCB] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-2 ">
+        <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
+      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#FECBCB] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
             <div className="flex justify-between sm:text-sm">
               <span>May 5,2021</span>
               <i className="fa-solid fa-ellipsis-vertical"></i>
             </div>
-            <div className="h-32 xs:h-24 sm:h-24  w-full mx-auto my-3 dark:bg-violet-200 bg-[#F86A6A] rounded-2xl"></div>
-            <div className="flex justify-between text-sm">
-              <div className="flex flex-col xs:text-xs">
-                <span className="xs:text-xs sm:text-sm font-bold text-base">What is Design Thinking ?</span>
-                <span className="text-[#6F6F6F]">Tutor Name</span>
-              </div>
-              <div className="flex items-center gap-1 p-2 text-lg className xs:text-xs ">
-                <span >69</span>
-                <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
-              </div>
-            </div>
-            <div className="flex justify-between p-1  item-center ">
-              <label>Online</label>
-              <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid xs:text-xs sm:text-xs">
-                Rs.69(per hour)
-              </button>
-            </div>
-          </div></Link> 
-        </div>
-        <div className="w-1/4 h-80 sm:h-auto sm:w-1/2 sm:text-base p-1 xs:w-1/2 xs:h-auto xs:text-xs">
-        <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2  m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#FECBF6] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-2 ">
-            <div className="flex justify-between sm:text-sm">
-              <span>May 5,2021</span>
-              <i className="fa-solid fa-ellipsis-vertical"></i>
-            </div>
-            <div className="h-32 xs:h-24  sm:h-24 w-full mx-auto my-3 dark:bg-violet-200 bg-[#F86AE1] rounded-2xl"></div>
-            <div className="flex justify-between text-sm">
-              <div className="flex flex-col xs:text-xs">
-                <span className="xs:text-xs font-bold sm:text-sm">What is Design Thinking ?</span>
-                <span className="text-[#6F6F6F]">Tutor Name</span>
-              </div>
-              <div className="flex items-center gap-1 p-2 text-lg className xs:text-xs ">
-                <span >69</span>
-                <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
-              </div>
-            </div>
-            <div className="flex justify-between p-1  item-center ">
-              <label>Online</label>
-              <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid xs:text-xs sm:text-xs">
-                Rs.69(per hour)
-              </button>
-            </div>
-          </div></Link> 
-        </div>
-        <div className="w-1/4 h-80  p-1 sm:h-auto sm:w-1/2 sm:text-base xs:w-1/2  xs:h-auto xs:text-xs">
-        <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2  m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#CBFEF8] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-2 ">
-            <div className="flex justify-between sm:text-sm">
-              <span>May 5,2021</span>
-              <i className="fa-solid fa-ellipsis-vertical"></i>
-            </div>
-            <div className="h-32 xs:h-24 sm:h-24 w-full mx-auto my-3 dark:bg-violet-200 bg-[#6AF8F8] rounded-2xl"></div>
+            <div className="h-32  sm:h-24  w-full mx-auto my-3 dark:bg-violet-200 bg-[#F86A6A] rounded-2xl"></div>
             <div className="flex justify-between text-sm">
               <div className="flex flex-col xs:text-xs">
                 <span className="xs:text-xs font-bold text-base sm:text-sm">What is Design Thinking ?</span>
-                <span className="text-[#6F6F6F]">Tutor Name</span>
+                <span className="text-[#6F6F6F] sm:text-sm">Tutor Name</span>
               </div>
-              <div className="flex items-center gap-1 p-2 text-lg className xs:text-xs ">
+              <div className="flex items-center gap-1 p-2 text-lg   xs:text-xs">
                 <span >69</span>
                 <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
               </div>
             </div>
-            <div className="flex justify-between p-1  item-center ">
+            <div className="flex justify-between p-1  item-center xs:text-xs">
               <label>Online</label>
-              <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid xs:text-xs text-xs">
+              <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid  sm:text-xs">
                 Rs.69(per hour)
               </button>
             </div>
           </div></Link> 
         </div>
-        <div className="w-1/4 h-80  p-1 sm:h-auto sm:w-1/2 xs:w-1/2 xs:h-auto xs:text-xs sm:text-base">
-        <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#E8CBFE] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-2 ">
-            <div className="flex justify-between sm:text-sm">
+        <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
+      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#FECBF6] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
+            <div className="flex justify-between sm:text-sm xs:text-xs">
               <span>May 5,2021</span>
               <i className="fa-solid fa-ellipsis-vertical"></i>
             </div>
-            <div className="h-32 xs:h-24 sm:h-24  w-full mx-auto my-3 dark:bg-violet-200 bg-[#A06AF8] rounded-2xl"></div>
-            <div className="flex justify-between text-sm">
-              <div className="flex flex-col xs:text-xs">
-                <span className="xs:text-xs font-bold text-base sm:text-sm">What is Design Thinking ?</span>
-                <span className="text-[#6F6F6F]">Tutor Name</span>
+            <div className="h-32  sm:h-24 w-full mx-auto my-3 dark:bg-violet-200 bg-[#F86AE1] rounded-2xl"></div>
+            <div className="flex justify-between text-sm ">
+              <div className="flex flex-col  ">
+                <span className="xs:text-xs sm:text-sm font-bold ">What is Design Thinking ?</span>
+                <span className="text-[#6F6F6F] sm:text-sm">Tutor Name</span>
               </div>
-              <div className="flex items-center gap-1 p-2 text-lg className xs:text-xs ">
+              <div className="flex items-center gap-1 p-2 text-lg className  xs:text-xs">
                 <span >69</span>
                 <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
               </div>
             </div>
-            <div className="flex justify-between p-1  item-center ">
+            <div className="flex justify-between p-1  item-center xs:text-xs ">
               <label>Online</label>
-              <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid xs:text-xs sm:text-xs">
+              <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid sm:text-xs xs:text-xs">
                 Rs.69(per hour)
               </button>
             </div>
           </div></Link> 
         </div>
-        <div className="w-1/4 h-80   p-1 sm:h-auto sm:text-base sm:w-1/2 xs:w-1/2 xs:h-auto xs:text-xs">
-        <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2  m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#f5fecb] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-2 ">
+        <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
+      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#CBFEF8] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
             <div className="flex justify-between sm:text-sm">
               <span>May 5,2021</span>
               <i className="fa-solid fa-ellipsis-vertical"></i>
             </div>
-            <div className="h-32 xs:h-24 sm:h-24 w-full mx-auto my-3 dark:bg-violet-200 bg-[#d8ef06] rounded-2xl"></div>
+            <div className="h-32  sm:h-24  w-full mx-auto my-3 dark:bg-violet-200 bg-[#6AF8F8] rounded-2xl"></div>
             <div className="flex justify-between text-sm">
               <div className="flex flex-col xs:text-xs">
                 <span className="xs:text-xs font-bold text-base sm:text-sm">What is Design Thinking ?</span>
-                <span className="text-[#6F6F6F]">Tutor Name</span>
+                <span className="text-[#6F6F6F] sm:text-sm">Tutor Name</span>
               </div>
-              <div className="flex items-center gap-1 p-2 text-lg className xs:text-xs">
+              <div className="flex items-center gap-1 p-2 text-lg   xs:text-xs">
                 <span >69</span>
                 <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
               </div>
             </div>
-            <div className="flex justify-between p-1  item-center ">
+            <div className="flex justify-between p-1  item-center xs:text-xs">
               <label>Online</label>
-              <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid xs:text-xs sm:text-xs">
+              <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid  sm:text-xs">
+                Rs.69(per hour)
+              </button>
+            </div>
+          </div></Link> 
+        </div>
+        <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
+      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#E8CBFE] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
+            <div className="flex justify-between sm:text-sm xs:text-xs">
+              <span>May 5,2021</span>
+              <i className="fa-solid fa-ellipsis-vertical"></i>
+            </div>
+            <div className="h-32  sm:h-24 w-full mx-auto my-3 dark:bg-violet-200 bg-[#CBFEF8] rounded-2xl"></div>
+            <div className="flex justify-between text-sm ">
+              <div className="flex flex-col  ">
+                <span className="xs:text-xs sm:text-sm font-bold ">What is Design Thinking ?</span>
+                <span className="text-[#6F6F6F] sm:text-sm">Tutor Name</span>
+              </div>
+              <div className="flex items-center gap-1 p-2 text-lg className  xs:text-xs">
+                <span >69</span>
+                <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
+              </div>
+            </div>
+            <div className="flex justify-between p-1  item-center xs:text-xs ">
+              <label>Online</label>
+              <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid sm:text-xs xs:text-xs">
+                Rs.69(per hour)
+              </button>
+            </div>
+          </div></Link> 
+        </div>
+        <div className="w-1/4 h-80  p-1 sm:w-1/2 sm:h-auto sm:text-base xs:w-1/2 xs:h-auto xs:text-xs">
+      <Link to={"/content"} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-md dark:bg-zinc-700 bg-[#f0ffc9] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
+            <div className="flex justify-between sm:text-sm">
+              <span>May 5,2021</span>
+              <i className="fa-solid fa-ellipsis-vertical"></i>
+            </div>
+            <div className="h-32  sm:h-24  w-full mx-auto my-3 dark:bg-violet-200 bg-[#ddf313] rounded-2xl"></div>
+            <div className="flex justify-between text-sm">
+              <div className="flex flex-col xs:text-xs">
+                <span className="xs:text-xs font-bold text-base sm:text-sm">What is Design Thinking ?</span>
+                <span className="text-[#6F6F6F] sm:text-sm">Tutor Name</span>
+              </div>
+              <div className="flex items-center gap-1 p-2 text-lg   xs:text-xs">
+                <span >69</span>
+                <i class="fa-solid fa-thumbs-up text-[#EDA600]"></i>
+              </div>
+            </div>
+            <div className="flex justify-between p-1  item-center xs:text-xs">
+              <label>Online</label>
+              <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid  sm:text-xs">
                 Rs.69(per hour)
               </button>
             </div>

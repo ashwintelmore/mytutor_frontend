@@ -2,7 +2,7 @@ import React from "react";
 
 const Post = () => {
   return (
-    <div className="Post ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-zinc-800 bg-slate-100 xs:w-full xs:flex-col">
+    <div className="Post ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-zinc-800 bg-white xs:w-full xs:flex-col xs:m-0">
       <div className="flex flex-col w-3/5 xs:w-full">
         <div className=" h-auto p-1 xs:p-1 ">
           <div className="flex justify-between  p-2 m-1 items-center">
@@ -10,8 +10,8 @@ const Post = () => {
             <i class="fa-sharp fa-solid fa-ellipsis-vertical xs:text-xs"></i>
           </div>
           <div className="bg-[#F8AF6A] dark:bg-slate-600 h-80 p-2 rounded-xl  m-4 xs:h-40 xs:p-1 xs:m-2"></div>
-          <div className="flex justify-between p-1 mx-2 items-center text-xl xs:text-sm xs:p-1">
-            <h1 className="xs:text-xs  font-semibold xs:font-normal">
+          <div className="flex justify-between p-1 mx-1 items-center text-xl xs:text-xs xs:p-0">
+            <h1 className="xs:text-xs  font-semibold xs:font-semibold">
               What is Design thinking ?
             </h1>
             <div className="flex   items-center gap-5 p-2 xs:gap-0 xs:text-xs xs:p-1 ">

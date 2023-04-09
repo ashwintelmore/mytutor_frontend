@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import { useState, useEffect, useRef } from "react";
 import Backrop from "./Backrop";
-import Education from "../Pages/Profile/Education";
+
 import { Link } from "react-router-dom";
 import { useAuth } from "../providers/auth";
 
@@ -22,19 +22,7 @@ const Header = () => {
     };
   });
 
-  const [openEducation, setOpenEducation] = useState(false);
-  let EducationRef = useRef();
-  useEffect(() => {
-    let handler = (e) => {
-      if (!EducationRef.current.contains(e.target)) {
-        setOpenEducation(false);
-      }
-    };
-    document.addEventListener("mouseup", handler);
-    return () => {
-      document.removeEventListener("mouseup", handler);
-    };
-  });
+  
 
   const [theme, setTheme] = useState("light");
   useEffect(() => {
@@ -78,9 +66,8 @@ const Header = () => {
             className="fa-regular fa-moon cursor-pointer"
             onClick={handleThemeSwitch}
           ></i>
-
-          <i className="fa-solid fa-circle-plus" ref={EducationRef}
-            onClick={() => setOpenEducation((prev) => !prev)}> {openEducation && <Education />}</i>
+<Link to ={"/education"}><i className="fa-solid fa-circle-plus xs:hidden" >
+          </i></Link>
           <i className="fa-solid fa-bell"></i>
           <div
             className=" flex justify-between items-center gap-2 cursor-pointer "

@@ -19,7 +19,7 @@ body  {
 }
 
 .home {
-  width: 96%;
+  width: 95%;
   
 }
 
@@ -54,19 +54,14 @@ body  {
   border-left: 1px solid white;
   border-top: 1px solid white;
 }
-.education {
-  position: absolute;
-  top: 4rem;
-  z-index: 1;
-  right: 17rem;
-  width: 900px;
-  height: 450px;
-  padding: 1rem;
-  border-radius: 1rem;
-  background-color: rgb(133, 251, 212);
-  border: 1px solid black;
+ 
+@media screen and (max-width: 385px) {
+  .education {
+    left: 2rem;
+    height: 350px;
+    width: 300px;
+  }
 }
-
  
 .dark .sidebar {
   background-color: rgb(56, 51, 51);
@@ -138,7 +133,7 @@ body  {
   }
 }
 @media screen and (max-width: 385px) {
-  .content {
-    width: 99%;
+  .Post {
+    width: 100%;
   }
 }
