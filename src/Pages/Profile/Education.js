@@ -31,7 +31,7 @@ function Education() {
       </div>
       <div className="p-2">
         <h2>Description :</h2>
-        <textarea  rows={5} cols={50} className="rounded-2xl xs:h-24 xs:w-11/12 shadow-sm shadow-black"></textarea>
+        <textarea  rows={5} cols={50} className="rounded-2xl xs:h-24 xs:w-11/12  shadow-sm shadow-black"></textarea>
       </div>
       <div className="flex p-2 xs:w-full xs:justify-evenly gap-2 w-2/5 justify-between"><button className="xs:w-2/5 bg-[#F8AF6A] rounded-xl p-2 w-2/5" >Add</button> <button  className=" xs:w-2/5 bg-[#F8AF6A] rounded-xl p-2 w-2/5">Cancel</button></div>
      </div>

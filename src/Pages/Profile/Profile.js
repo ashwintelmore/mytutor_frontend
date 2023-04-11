@@ -10,7 +10,7 @@ const Profile = () => {
 
   };
   return (
-    <div className="flex w-full h-screen rounded-t-3xl bg-white dark:bg-slate-800 dark:text-white xs:flex-col   xs:h-full " >
+    <div className="flex w-full ml-16 h-screen rounded-t-3xl bg-white dark:bg-slate-800 dark:text-white xs:flex-col   xs:h-full " >
       <div className="w-1/4 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl xs:w-full   ">
         <h3 className="text-lg font-semibold text-[#FF0000]">Profile Photo</h3>
         <div className="h-28 w-28 rounded-full bg-[#FF0000]  relative ">
@@ -56,10 +56,10 @@ const Profile = () => {
               <input
                 type="text"
                 placeholder="Write something"
-                className="rounded-lg border w-full  outline-none "></input>
+                className="rounded-lg px-1 w-full  outline-none "></input>
 
 
-              <button className="absolute rounded-xl text-xs p-px h-5 w-16  text-white right-1   bg-orange-500">Send OTP</button>
+              <button className="absolute rounded-xl text-xs  h-5 w-16  text-white right-1   bg-orange-500">Send OTP</button>
               <h6 className="text-xs left-2 absolute -bottom-5 ">Something content</h6>
             </div>
 
@@ -67,7 +67,7 @@ const Profile = () => {
               <input
                 type="text"
                 placeholder="Write something"
-                className="rounded-lg border w-full outline-none "></input>
+                className="rounded-lg  w-full outline-none "></input>
 
 
               <button className="absolute rounded-xl text-xs p-px h-5 w-16  text-white right-1   bg-orange-500">Verify</button>
