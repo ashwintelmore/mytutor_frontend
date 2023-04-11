@@ -36,8 +36,8 @@ function TagsInput() {
   };
   useEffect(() => {
     const prevTags = getTagToLocal('userDetails');
-
-    setTags([...prevTags.item])
+    if (prevTags)
+      setTags([...prevTags.item])
     return () => {
       // console.log("test")
     };

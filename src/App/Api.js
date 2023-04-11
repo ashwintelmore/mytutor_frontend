@@ -24,6 +24,7 @@ export const getUser = async (id) => {
         })
         .catch(function (error) {
             // handle error
+            console.log('error :>> ', error);
             return error.response
         })
 
@@ -40,6 +41,16 @@ export const register = async (data) => {
 };
 
 export const login = async (data) => {
+    return await axios.post(`${END_POINT}/login`, data)
+        .then(function (response) {
+            return response;
+        })
+        .catch(function (error) {
+            return error.response
+        });
+};
+
+export const update = async (data) => {
     return await axios.post(`${END_POINT}/login`, data)
         .then(function (response) {
             return response;

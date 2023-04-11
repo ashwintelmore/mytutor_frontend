@@ -21,6 +21,7 @@ export default function LoginForm() {
          setError(res.data.error.errMessage)
       } else if (res.data.payload) {
          auth.setUser(res.data.payload)
+
          localStorage.setItem('_id', res.data.payload._id)
       }
    }
