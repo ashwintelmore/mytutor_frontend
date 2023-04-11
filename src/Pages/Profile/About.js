@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useAuth } from '../../providers/auth'
+import Education from './Education'
 import TagsInput from './TagsInput'
 
 export default function About() {
+  const [show, setShow] = useState(false)
+  const auth = useAuth()
+  console.log('auth :>> ', auth.user);
+
+
+
+
   return (
     <>
 
@@ -13,147 +22,53 @@ export default function About() {
             <h2 className="font-semibold text-lg text-[#1A0970]">Skills</h2>
             <TagsInput />
           </div>
+          {/* education section */}
           <div className="flex flex-col p-2 gap-6 ">
             <div className="flex  justify-between">
               <label className="font-semibold text-lg text-[#FF0000] ">Education</label>
               <div>
-                <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold">
+                {/* <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold">
                   Edit
-                </button>{" "}
-                <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold">
+                </button> */}
+                <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold"
+                  onClick={() => setShow(!show)}
+                >
                   Add
-                </button>{" "}
+                </button>
               </div>
             </div>
-            <div className="flex flex-col p-2 gap-3">
-              <div className="flex flex-col gap-3">
-                <div className="flex flex-col ">
-                  <div className=" flex justify-between">
-                    <h3 className="font-semibold text-lg text-[#1A0970]">Heading</h3> <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
-                  <div className="flex justify-between ">
-                    {" "}
-                    <label className="text-[#6B6976]">Location | at company</label>{" "}
-                    <label className="font-semibold">FEB2022-MAY2023</label>
+            {console.log(auth.user._id)}
+            {
+              auth.user._id ?
+                auth.user.education.map((item, i) => {
+                  return <div className="flex flex-col p-2 gap-3">
+                    <div className="flex flex-col gap-3">
+                      <div className="flex flex-col ">
+                        <div className=" flex justify-between">
+                          <h3 className="font-semibold text-lg text-[#1A0970]">{item.title}</h3>
+                          <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"
+                            onClick={() => setShow(!show)}
+                          >
+                          </i>
+                        </div>
+                        <div className="flex justify-between ">
+                          <label className="text-[#6B6976]">{item.location} | {item.orginization}</label>{" "}
+                          <label className="font-semibold">{item.from}-{item.to}</label>
+                        </div>
+                      </div>
+                      <p className="text-[#0D0E2F]">
+                        {item.descrp}
+                      </p>
+                    </div>
                   </div>
-                </div>
-
-                <p className="text-[#0D0E2F]">
-                  I am passionate about developing web apps | Clean maintainable and
-                  scalable code | FrontEnd Performance Matters a LotCurrently
-                  getting
-                </p></div>
-              <div className="flex flex-col gap-3">
-                <div className="flex flex-col ">
-                  <div className=" flex justify-between">
-                    <h3 className="font-semibold text-lg text-[#1A0970]">Heading</h3> <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
-                  <div className="flex justify-between ">
-                    {" "}
-                    <label className="text-[#6B6976]" >Location | at company</label>{" "}
-                    <label className="font-semibold">FEB2022-MAY2023</label>
-                  </div>
-                </div>
-
-                <p className="text-[#0D0E2F]">
-                  I am passionate about developing web apps | Clean maintainable and
-                  scalable code | FrontEnd Performance Matters a LotCurrently
-                  getting
-                </p></div>
-            </div>
+                })
+                :
+                null
+            }
           </div>
-          <div className="flex flex-col p-2 gap-6 ">
-            <div className="flex  justify-between">
-              <label className="font-semibold text-lg text-[#FF0000] ">Work Experience</label>
-              <div>
-                <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold">
-                  Edit
-                </button>{" "}
-                <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold">
-                  Add
-                </button>{" "}
-              </div>
-            </div>
-            <div className="flex flex-col p-2 gap-3">
-              <div className="flex flex-col gap-3">
-                <div className="flex flex-col ">
-                  <div className=" flex justify-between">
-                    <h3 className="font-semibold text-lg text-[#1A0970]">Heading</h3> <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
-                  <div className="flex justify-between ">
-                    {" "}
-                    <label className="text-[#6B6976]">Location | at company</label>{" "}
-                    <label className="font-semibold">FEB2022-MAY2023</label>
-                  </div>
-                </div>
 
-                <p className="text-[#0D0E2F]">
-                  I am passionate about developing web apps | Clean maintainable and
-                  scalable code | FrontEnd Performance Matters a LotCurrently
-                  getting
-                </p></div>
-              <div className="flex flex-col gap-3">
-                <div className="flex flex-col ">
-                  <div className=" flex justify-between">
-                    <h3 className="font-semibold text-lg text-[#1A0970]">Heading</h3> <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
-                  <div className="flex justify-between ">
-                    {" "}
-                    <label className="text-[#6B6976]">Location | at company</label>{" "}
-                    <label className="font-semibold">FEB2022-MAY2023</label>
-                  </div>
-                </div>
 
-                <p className="text-[#0D0E2F]">
-                  I am passionate about developing web apps | Clean maintainable and
-                  scalable code | FrontEnd Performance Matters a LotCurrently
-                  getting
-                </p></div>
-            </div>
-          </div>
-          <div className="flex flex-col p-2 gap-6 ">
-            <div className="flex  justify-between">
-              <label className="font-semibold text-lg text-[#FF0000]">Achievement</label>
-              <div>
-                <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold">
-                  Edit
-                </button>{" "}
-                <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold">
-                  Add
-                </button>{" "}
-              </div>
-            </div>
-            <div className="flex flex-col p-2 gap-3">
-              <div className="flex flex-col gap-3">
-                <div className="flex flex-col ">
-                  <div className=" flex justify-between">
-                    <h3 className="font-semibold text-lg text-[#1A0970]">Heading</h3> <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
-                  <div className="flex justify-between ">
-                    {" "}
-                    <label className="text-[#6B6976]">Location | at company</label>{" "}
-                    <label className="font-semibold">FEB2022-MAY2023</label>
-                  </div>
-                </div>
 
-                <p className="text-[#0D0E2F]">
-                  I am passionate about developing web apps | Clean maintainable and
-                  scalable code | FrontEnd Performance Matters a LotCurrently
-                  getting
-                </p></div>
-              <div className="flex flex-col gap-3">
-                <div className="flex flex-col ">
-                  <div className=" flex justify-between">
-                    <h3 className="font-semibold text-lg text-[#1A0970]">Heading</h3> <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"></i>{" "}</div>
-                  <div className="flex justify-between ">
-                    {" "}
-                    <label className="text-[#6B6976]">Location | at company</label>{" "}
-                    <label className="font-semibold">FEB2022-MAY2023</label>
-                  </div>
-                </div>
-
-                <p className="text-[#0D0E2F]">
-                  I am passionate about developing web apps | Clean maintainable and
-                  scalable code | FrontEnd Performance Matters a LotCurrently
-                  getting
-                </p></div>
-            </div>
-          </div>
         </div>
         {/* right */}
         <div className="w-1/2  xs:flex-col xs:w-full ">
@@ -351,7 +266,11 @@ export default function About() {
         </div>
       </div>
 
-
+      <Education
+        show={show}
+        setShow={() => setShow(!show)
+        }
+      />
     </>
   )
 }

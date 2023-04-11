@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 
 import About from "./About";
 import AllPost from "./AllPost";
+import Education from "./Education";
 
 const Profile = () => {
-  const [show, setShow] = useState('1')
+  const [profileToggler, setProfileToggler] = useState('1')
+  const [show, setShow] = useState(false)
 
   const change = () => {
 
@@ -12,12 +14,12 @@ const Profile = () => {
 
   useEffect(() => {
     return () => {
-      console.log("test")
+
     };
   }, [])
   return (
     <div className="flex w-full h-screen rounded-t-3xl bg-white dark:bg-slate-800 dark:text-white xs:flex-col   xs:h-full " >
-      <div className="w-1/4 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl xs:w-full   ">
+      <div className="test   ">
         <h3 className="text-lg font-semibold text-[#FF0000]">Profile Photo</h3>
         <div className="h-28 w-28 rounded-full bg-[#FF0000]  relative ">
           <img
@@ -87,12 +89,12 @@ const Profile = () => {
         <div className="flex top-0 sticky bg-white p-2 gap-4 mt-1  ">
 
           <button className="rounded-2xl bg-[#EAF0FF] text-sm w-24 h-8 shadow-md shadow-slate-500 "
-            onClick={() => setShow('1')}
+            onClick={() => setProfileToggler('1')}
           >
             About
           </button>
           <button className="rounded-2xl bg-[#EAF0FF] text-sm w-24 h-8 shadow-md shadow-slate-500"
-            onClick={() => setShow('2')}
+            onClick={() => setProfileToggler('2')}
           >
             All Post
           </button>
@@ -101,7 +103,7 @@ const Profile = () => {
         {/* ccalender and about */}
         <div className=" xs:overflow-y-auto " >
           {
-            show === '1' ?
+            profileToggler === '1' ?
               <About />
               :
               <AllPost />
@@ -109,6 +111,10 @@ const Profile = () => {
           }
         </div>
       </div>
+      <Education
+        show={show}
+        setShow={() => setShow(!show)}
+      />
     </div>
 
   );
