@@ -26,6 +26,14 @@ function Education({ show, setShow }) {
       education: edcs
     })
     setShow(!show)
+    setUserData({
+      title: '',
+      orginization: '',
+      location: '',
+      descrp: '',
+      from: '',
+      to: ''
+    })
   };
 
   if (!show)

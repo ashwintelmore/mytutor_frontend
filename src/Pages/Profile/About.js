@@ -66,8 +66,50 @@ export default function About() {
                 null
             }
           </div>
-
-
+          {/* Work experience section */}
+          <div className="flex flex-col p-2 gap-6 ">
+            <div className="flex  justify-between">
+              <label className="font-semibold text-lg text-[#FF0000] ">Work Experience</label>
+              <div>
+                {/* <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold">
+                  Edit
+                </button> */}
+                <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold"
+                  onClick={() => setShow(!show)}
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+            {console.log(auth.user._id)}
+            {
+              auth.user._id ?
+                auth.user.education.map((item, i) => {
+                  return <div className="flex flex-col p-2 gap-3">
+                    <div className="flex flex-col gap-3">
+                      <div className="flex flex-col ">
+                        <div className=" flex justify-between">
+                          <h3 className="font-semibold text-lg text-[#1A0970]">{item.title}</h3>
+                          <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"
+                            onClick={() => setShow(!show)}
+                          >
+                          </i>
+                        </div>
+                        <div className="flex justify-between ">
+                          <label className="text-[#6B6976]">{item.location} | {item.orginization}</label>{" "}
+                          <label className="font-semibold">{item.from}-{item.to}</label>
+                        </div>
+                      </div>
+                      <p className="text-[#0D0E2F]">
+                        {item.descrp}
+                      </p>
+                    </div>
+                  </div>
+                })
+                :
+                null
+            }
+          </div>
 
         </div>
         {/* right */}
