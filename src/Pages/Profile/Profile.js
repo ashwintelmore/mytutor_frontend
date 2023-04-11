@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import About from "./About";
 import AllPost from "./AllPost";
 
-const Profile = () => { 
+const Profile = () => {
   const [show, setShow] = useState('1')
 
   const change = () => {
@@ -56,21 +56,21 @@ const Profile = () => {
               <input
                 type="text"
                 placeholder="Write something"
-                className="rounded-lg px-1 w-full  outline-none "></input>
+                className="rounded-lg  w-full  outline-none "></input>
 
 
               <button className="absolute rounded-xl text-xs  h-5 w-16  text-white right-1   bg-orange-500">Send OTP</button>
               <h6 className="text-xs left-2 absolute -bottom-5 ">Something content</h6>
             </div>
 
-            <div className="flex relative border border-gray-500 shadow-slate-400 shadow-md text-sm rounded-xl p-1  ">
+            <div className="flex items-center relative border border-gray-500 shadow-slate-400 shadow-md text-sm rounded-xl p-1  ">
               <input
                 type="text"
                 placeholder="Write something"
-                className="rounded-lg  w-full outline-none "></input>
+                className="rounded-lg w-full outline-none px-2 py-1 "></input>
 
 
-              <button className="absolute rounded-xl text-xs p-px h-5 w-16  text-white right-1   bg-orange-500">Verify</button>
+              <button className="absolute rounded-xl text-xs p-4 h-5 w-16 text-white right-1   bg-orange-500">Verify</button>
               <h6 className="text-xs left-2 absolute -bottom-5 ">Something content</h6>
             </div>
           </div>
