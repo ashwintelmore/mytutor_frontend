@@ -1,9 +1,9 @@
 
 import axios from "axios";
 // const END_POINT = "https:/ / odd - pear - fox - hem.cyclic.app / api"
-// const END_POINT = "http://localhost:5000/api"
-const END_POINT = process.env
+const END_POINT = process.env.END_POINT
 console.log('END_POINT :>> ', END_POINT);
+
 
 export const getAllUser = async () => {
 

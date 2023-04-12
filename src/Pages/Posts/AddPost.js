@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../providers/auth";
 
 
@@ -6,30 +7,14 @@ function AddPost({ show, setShow, }) {
     const auth = useAuth()
     const [userData, setUserData] = useState({
         title: '',
-        orginization: '',
-        location: '',
+        thumbnail: '',
+        charges: '',
         descrp: '',
-        from: '',
-        to: ''
     })
     const onAddDetails = () => {
         if (!auth.user._id)
             return
-        let edcs = [...auth.user.education];
-        edcs.push(userData)
-        auth.setUser({
-            ...auth.user,
-            education: edcs
-        })
-        setShow(!show)
-        setUserData({
-            title: '',
-            orginization: '',
-            location: '',
-            descrp: '',
-            from: '',
-            to: ''
-        })
+
     };
 
     const onCancelBtn = () => {
@@ -41,12 +26,12 @@ function AddPost({ show, setShow, }) {
         return null;
     return (
         <div className="flex w-full  items-center justify-center xs:flex-col absolute top-4 left-0">
-            <div className=" bg-[#fff] relative w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
-                <h2 className="text-[#f48c2b] top-0 left-2 text-6xl p-2 absolute ">Education</h2>
+            <div className=" bg-[#fff] relative w-4/6 h-auto px-6 py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
+                <h2 className="text-[#f48c2b] top-0 left-2 text-3xl p-2 absolute ">Add Post</h2>
 
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
-                        <label className="w-full p-2 text-base xs:text-base">Name of Education</label>
+                        <label className="w-full p-2 text-base xs:text-base">Title Of Post</label>
                         <input className="rounded-xl w-full shadow-sm shadow-black p-2" type="text"
                             name="title"
                             onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
@@ -55,11 +40,11 @@ function AddPost({ show, setShow, }) {
                         <label className="text-xs ml-2 p-1">Write something</label>
                     </div>
                     <div className="flex flex-col   w-[45%] p-2 xs:w-full">
-                        <label className="w-full p-2 text-base xs:text-base">School/College/University</label>
-                        <input className="rounded-xl w-full shadow-sm shadow-black p-2" type="text"
-                            name="orginization"
+                        <label className="w-full p-2 text-base xs:text-base"> Thumbnail </label>
+                        <input className="rounded-xl w-full shadow-sm shadow-black p-2" type="file"
+                            name="thumbnail"
                             onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
-                            value={userData.orginization}
+                            value={userData.thumbnail}
                         />
                         <label className="text-xs ml-2 p-1">Write something</label>
                     </div>
@@ -67,35 +52,24 @@ function AddPost({ show, setShow, }) {
 
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                     <div className="flex flex-col   w-[45%]  p-2  xs:w-full  ">
-                        <label className="w-full text-base p-2 ">From</label>
-                        <input className="  rounded-xl w-full  p-2 shadow-sm shadow-black" type="date"
-                            name="from"
+                        <label className="w-full text-base p-2 ">Charges</label>
+                        <input className="  rounded-xl w-full  p-2 shadow-sm shadow-black" type="number"
+                            name="charges"
                             onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
-                            value={userData.from}
+                            value={userData.charges}
                         />
-                        <label className="text-xs ml-2 p-1">Write something</label>
-                    </div>
-                    <div className="flex  flex-col  w-[45%]  p-2 xs:w-full">
-                        <label className="w-full p-2 text-base xs:w-1/4">Location</label>
-                        <input className="  rounded-xl w-full p-2  shadow-sm shadow-black" type="text"
-                            name="location"
-                            onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
-                            value={userData.location}
-
-                        />
-                        <label className="text-xs ml-2 p-1">Write something</label>
+                        <label className="text-xs ml-2 p-1">Per hour</label>
                     </div>
                 </div>
 
                 <div className="flex p-1    w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                     <div className="flex flex-col  xs:w-full  w-[45%] p-2 justify-around  ">
-                        <label className="w-full text-base p-2">To</label>
-                        <input className="  rounded-xl w-full p-2  shadow-sm shadow-black" type="date"
-                            name="to"
-                            onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
-                            value={userData.date}
-                        />
-                        <label className="text-xs ml-2 p-1">Write something</label>
+                        <Link to={'/profile'}>
+                            <label className="w-full text-base p-2 text-blue-700 cursor-pointer"
+                                onClick={() => setShow(!show)}
+                            >Click here to Update Slots time and date</label>
+                        </Link>
+                        <label className="text-xs ml-2 p-1">You can change time and date slot from your profile</label>
                     </div>
                 </div>
 

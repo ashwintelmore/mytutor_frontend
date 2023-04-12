@@ -1,7 +1,7 @@
 # TODO list
 ## Tasks
 - loader for login page
-- add popup
+- envirenment variable
 
 
 ## Status
@@ -11,4 +11,4 @@
 ### working
 - 
 ### done
-- 
+- add popup
