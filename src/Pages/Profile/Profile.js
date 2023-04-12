@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import About from "./About";
 import AllPost from "./AllPost";
-import Education from "./Education";
+import Education from "./AddComp/Education";
 
 const Profile = () => {
   const [profileToggler, setProfileToggler] = useState('1')

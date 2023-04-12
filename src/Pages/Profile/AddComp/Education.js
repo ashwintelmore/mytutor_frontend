@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { useAuth } from "../../providers/auth";
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../../../providers/auth";
 
 
 
-function Education({ show, setShow }) {
+function Education({ show, setShow, }) {
+  console.log("eefasdfa")
   const auth = useAuth()
   const [userData, setUserData] = useState({
     title: '',
@@ -13,9 +14,9 @@ function Education({ show, setShow }) {
     from: '',
     to: ''
   })
-
+  // console.log('data :>> ', data);
   const onAddDetails = () => {
-
+    console.log("test")
     if (!auth.user._id)
       return
     let edcs = [...auth.user.education];
@@ -36,13 +37,17 @@ function Education({ show, setShow }) {
     })
   };
 
+  const onCancelBtn = () => {
+    setShow(!show)
+  };
+
+
   if (!show)
     return null;
   return (
     <div className="flex w-full  items-center justify-center xs:flex-col absolute top-4 left-0">
-      <div className=" bg-[#fff] relative w-4/6 h-auto py-8  rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
-        <div className="flex w-full px-5 text-lg">
-        <h2 className="text-[#f48c2b]  ">Education</h2></div>
+      <div className=" bg-[#fff] relative w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
+        <h2 className="text-[#f48c2b] top-0 left-2 text-lg p-2 absolute ">Education</h2>
 
         <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
           <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
@@ -57,9 +62,9 @@ function Education({ show, setShow }) {
           <div className="flex flex-col   w-[45%] p-2 xs:w-full">
             <label className="w-full p-2 text-base xs:text-base">School/College/University</label>
             <input className="rounded-xl w-full shadow-sm shadow-black p-2" type="text"
-              name="title"
+              name="orginization"
               onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
-              value={userData.title}
+              value={userData.orginization}
             />
             <label className="text-xs ml-2 p-1">Write something</label>
           </div>
@@ -73,22 +78,9 @@ function Education({ show, setShow }) {
               onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
               value={userData.from}
             />
-              <label className="text-xs ml-2 p-1">Write something</label>
+            <label className="text-xs ml-2 p-1">Write something</label>
           </div>
-          <div className="flex flex-col  xs:w-full  w-[45%] p-2 justify-around  ">
-            <label className="w-full text-base p-2">To</label>
-            <input className="  rounded-xl w-full p-2  shadow-sm shadow-black" type="date"
-              name="to"
-              onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
-              value={userData.date}
-            />
-              <label className="text-xs ml-2 p-1">Write something</label>
-          </div>
-         
-        </div>
-
-        <div className="flex p-1    w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
-        <div className="flex  flex-col  w-[45%]  p-2 xs:w-full">
+          <div className="flex  flex-col  w-[45%]  p-2 xs:w-full">
             <label className="w-full p-2 text-base xs:w-1/4">Location</label>
             <input className="  rounded-xl w-full p-2  shadow-sm shadow-black" type="text"
               name="location"
@@ -96,7 +88,19 @@ function Education({ show, setShow }) {
               value={userData.location}
 
             />
-              <label className="text-xs ml-2 p-1">Write something</label>
+            <label className="text-xs ml-2 p-1">Write something</label>
+          </div>
+        </div>
+
+        <div className="flex p-1    w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
+          <div className="flex flex-col  xs:w-full  w-[45%] p-2 justify-around  ">
+            <label className="w-full text-base p-2">To</label>
+            <input className="  rounded-xl w-full p-2  shadow-sm shadow-black" type="date"
+              name="to"
+              onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
+              value={userData.date}
+            />
+            <label className="text-xs ml-2 p-1">Write something</label>
           </div>
         </div>
 
