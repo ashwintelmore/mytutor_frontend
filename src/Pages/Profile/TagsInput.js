@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useAuth } from '../../providers/auth';
 
 function TagsInput() {
   const [tags, setTags] = useState([]);
   const [inputValue, setInputValue] = useState('');
+  const auth = useAuth()
 
   const setTagToLocal = (item, obj) => {
     let o = { item: obj }
@@ -23,8 +25,11 @@ function TagsInput() {
       }
       const newTags = [...tags, inputValue.trim()];
       setTags(newTags);
-      setTagToLocal('userDetails', newTags)
-
+      //have to remove
+      auth.setUser({
+        ...auth.user,
+        skills: newTags
+      })
       setInputValue('');
     }
   };
@@ -32,12 +37,14 @@ function TagsInput() {
   const handleRemoveTag = (tag) => {
     const newTags = tags.filter((t) => t !== tag);
     setTags(newTags)
-    setTagToLocal('userDetails', newTags)
+    auth.setUser({
+      ...auth.user,
+      skills: newTags
+    })
   };
   useEffect(() => {
-    const prevTags = getTagToLocal('userDetails');
-    if (prevTags)
-      setTags([...prevTags.item])
+    if (auth.user._id)
+      setTags(auth.user.skills)
     return () => {
       // console.log("test")
     };

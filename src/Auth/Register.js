@@ -67,7 +67,7 @@ export default function Register() {
                   <input className="w-full text-black py-2 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none"
                      type="password"
                      placeholder="ConfirmPassword"
-                     value={name}
+                     value={confiPass}
                      onChange={(e) => setPassword(e.target.value)}
                   />
                </div>

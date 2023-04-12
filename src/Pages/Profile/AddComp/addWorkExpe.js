@@ -3,7 +3,7 @@ import { useAuth } from "../../../providers/auth";
 
 
 
-function UpdateEducation({ show, setShow, data, setData }) {
+function AddWorkExpe({ show, setShow, }) {
     const auth = useAuth()
     const [userData, setUserData] = useState({
         title: '',
@@ -13,19 +13,15 @@ function UpdateEducation({ show, setShow, data, setData }) {
         from: '',
         to: ''
     })
-    const onUpdateDetails = () => {
-
+    const onAddDetails = () => {
         if (!auth.user._id)
             return
-
-        let edcs = auth.user.education;
-        edcs[data] = userData
+        let edcs = [...auth.user.workExperience];
+        edcs.push(userData)
         auth.setUser({
             ...auth.user,
-            // education: edcs
-            education: edcs
+            workExperience: edcs
         })
-        // setData(userData)
         setShow(!show)
         setUserData({
             title: '',
@@ -35,48 +31,14 @@ function UpdateEducation({ show, setShow, data, setData }) {
             from: '',
             to: ''
         })
-    };
-
-    const onDeleteDetails = () => {
-
-        if (!auth.user._id)
-            return
-
-        let edcs = auth.user.education.filter((e, i) => i != data);
-        auth.setUser({
-            ...auth.user,
-            education: edcs
-        })
-        // setData(userData)
-        setShow(!show)
-        setUserData({
-            title: '',
-            orginization: '',
-            location: '',
-            descrp: '',
-            from: '',
-            to: ''
-        })
-    };
-
-    const onCancelBtn = () => {
-        setShow(!show)
-        setData(null)
     };
 
     const onHandleChange = (e) => {
-        setUserData({ ...userData, [e.target.name]: [e.target.value] })
-
+        setUserData({ ...userData, [e.target.name]: e.target.value })
     };
-
-    useEffect(() => {
-        if (data != null && auth.user.education.length > 0) {
-            setUserData(auth.user.education[data])
-        }
-        return () => {
-            console.log("updated exit")
-        };
-    }, [data])
+    const onCancelBtn = () => {
+        setShow(!show)
+    };
 
 
     if (!show)
@@ -84,7 +46,7 @@ function UpdateEducation({ show, setShow, data, setData }) {
     return (
         <div className="flex w-full  items-center justify-center xs:flex-col absolute top-4 left-0">
             <div className=" bg-[#fff] relative w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
-                <h2 className="text-[#f48c2b] top-0 left-2 text-lg p-2 absolute ">Education</h2>
+                <h2 className="text-[#f48c2b] top-0 left-2 text-lg p-2 absolute ">Add Work Experience</h2>
 
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
@@ -153,16 +115,11 @@ function UpdateEducation({ show, setShow, data, setData }) {
                 <div className="flex p-2 xs:w-full xs:justify-evenly gap-2 w-full justify-end">
                     <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
 
-                        onClick={() => onDeleteDetails()}
-                    >Delete
-                    </button>
-                    <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
-
-                        onClick={() => onUpdateDetails()}
-                    >Update
+                        onClick={() => onAddDetails()}
+                    >Add
                     </button>
                     <button className=" xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
-                        onClick={() => onCancelBtn()}
+                        onClick={() => setShow(!show)}
                     >Cancel
                     </button>
                 </div>
@@ -171,4 +128,4 @@ function UpdateEducation({ show, setShow, data, setData }) {
     );
 }
 
-export default UpdateEducation;
+export default AddWorkExpe;

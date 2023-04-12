@@ -4,7 +4,6 @@ import { useAuth } from "../../../providers/auth";
 
 
 function Education({ show, setShow, }) {
-  console.log("eefasdfa")
   const auth = useAuth()
   const [userData, setUserData] = useState({
     title: '',
@@ -14,16 +13,13 @@ function Education({ show, setShow, }) {
     from: '',
     to: ''
   })
-  // console.log('data :>> ', data);
   const onAddDetails = () => {
-    console.log("test")
     if (!auth.user._id)
       return
     let edcs = [...auth.user.education];
     edcs.push(userData)
     auth.setUser({
       ...auth.user,
-      // education: edcs
       education: edcs
     })
     setShow(!show)

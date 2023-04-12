@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 
 import About from "./About";
 import AllPost from "./AllPost";
-import Education from "./AddComp/Education";
+import { useAuth } from "../../providers/auth";
 
 const Profile = () => {
   const [profileToggler, setProfileToggler] = useState('1')
-  const [show, setShow] = useState(false)
+  const auth = useAuth()
 
   const change = () => {
 
   };
 
+  console.log('auth :>> ', auth);
   useEffect(() => {
     return () => {
 
@@ -111,10 +112,6 @@ const Profile = () => {
           }
         </div>
       </div>
-      <Education
-        show={show}
-        setShow={() => setShow(!show)}
-      />
     </div>
 
   );

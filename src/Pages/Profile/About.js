@@ -1,20 +1,37 @@
 import React, { useState } from 'react'
 import { useAuth } from '../../providers/auth'
-import Education from './AddComp/Education'
+import AddWorkExpe from './AddComp/addWorkExpe'
+import Education from './AddComp/addEducation'
 import TagsInput from './TagsInput'
 import UpdateEducation from './UpdateComp/update.edcation'
+import UpdateWorkExpe from './UpdateComp/update.workExpe'
+import AddOther from './AddComp/addOther'
+import UpdateOther from './UpdateComp/update.other'
 
 export default function About() {
   const [show, setShow] = useState(false)
-
   const [upEdu, setUpEdu] = useState(false)
-  const [data, setData] = useState(null)
+
+  const [WorEx, setWorEx] = useState(false)
+  const [upWorEx, setUpWorEx] = useState(false)
+
+  const [other, setOther] = useState(false)
+  const [upOther, setUpOther] = useState(false)
+
+  const [index, setIndex] = useState(null)
+
   const auth = useAuth()
 
 
   const onUpdate = (item, i) => {
-    setUpEdu(!show)
-    setData(i)
+    if (item == 'edu')
+      setUpEdu(!upEdu)
+    else if (item == 'work')
+      setUpWorEx(!upWorEx)
+    else if (item == 'other')
+      setUpOther(!upOther)
+
+    setIndex(i)
   };
 
 
@@ -54,7 +71,7 @@ export default function About() {
                         <div className=" flex justify-between">
                           <h3 className="font-semibold text-lg text-[#1A0970]">{item.title}</h3>
                           <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"
-                            onClick={() => onUpdate(item, i)}
+                            onClick={() => onUpdate("edu", i)}
                           >
                           </i>
                         </div>
@@ -73,8 +90,87 @@ export default function About() {
                 null
             }
           </div>
-          {/* Work experience section */}
 
+          {/* Work experience section */}
+          <div className="flex flex-col p-2 gap-6 ">
+            <div className="flex  justify-between">
+              <label className="font-semibold text-lg text-[#FF0000] "> Work Experience </label>
+              <div>
+                <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold"
+                  onClick={() => setWorEx(!WorEx)}
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+            {
+              auth.user._id ?
+                auth.user.workExperience.map((item, i) => {
+                  return <div className="flex flex-col p-2 gap-3" key={i}>
+                    <div className="flex flex-col gap-3">
+                      <div className="flex flex-col ">
+                        <div className=" flex justify-between">
+                          <h3 className="font-semibold text-lg text-[#1A0970]">{item.title}</h3>
+                          <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"
+                            onClick={() => onUpdate("work", i)}
+                          >
+                          </i>
+                        </div>
+                        <div className="flex justify-between ">
+                          <label className="text-[#6B6976]">{item.location} | {item.orginization}</label>{" "}
+                          <label className="font-semibold">{item.from}-{item.to}</label>
+                        </div>
+                      </div>
+                      <p className="text-[#0D0E2F]">
+                        {item.descrp}
+                      </p>
+                    </div>
+                  </div>
+                })
+                :
+                null
+            }
+          </div>
+          {/* Other section */}
+          <div className="flex flex-col p-2 gap-6 ">
+            <div className="flex  justify-between">
+              <label className="font-semibold text-lg text-[#FF0000] "> Achivement/Project/Other </label>
+              <div>
+                <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold"
+                  onClick={() => setOther(!other)}
+                >
+                  Add
+                </button>
+              </div>
+            </div>
+            {
+              auth.user._id ?
+                auth.user.achievements.map((item, i) => {
+                  return <div className="flex flex-col p-2 gap-3" key={i}>
+                    <div className="flex flex-col gap-3">
+                      <div className="flex flex-col ">
+                        <div className=" flex justify-between">
+                          <h3 className="font-semibold text-lg text-[#1A0970]">{item.title}</h3>
+                          <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"
+                            onClick={() => onUpdate("other", i)}
+                          >
+                          </i>
+                        </div>
+                        <div className="flex justify-between ">
+                          <label className="text-[#6B6976]">{item.location} | {item.orginization}</label>{" "}
+                          <label className="font-semibold">{item.from}-{item.to}</label>
+                        </div>
+                      </div>
+                      <p className="text-[#0D0E2F]">
+                        {item.descrp}
+                      </p>
+                    </div>
+                  </div>
+                })
+                :
+                null
+            }
+          </div>
         </div>
         {/* right */}
         <div className="w-1/2  xs:flex-col xs:w-full ">
@@ -275,14 +371,36 @@ export default function About() {
       <Education
         show={show}
         setShow={() => setShow(!show)}
-
       />
       <UpdateEducation
         show={upEdu}
         setShow={() => setUpEdu(!upEdu)}
-        data={data}
-        setData={(e) => setData(e)}
+        data={index}
+        setData={(e) => setIndex(e)}
       />
+
+      <AddWorkExpe
+        show={WorEx}
+        setShow={() => setWorEx(!setWorEx)}
+      />
+      <UpdateWorkExpe
+        show={upWorEx}
+        setShow={() => setUpWorEx(!upWorEx)}
+        data={index}
+        setData={(e) => setIndex(e)}
+      />
+
+      <AddOther
+        show={other}
+        setShow={() => setOther(!other)}
+      />
+      <UpdateOther
+        show={upOther}
+        setShow={() => setUpOther(!upOther)}
+        data={index}
+        setData={(e) => setIndex(e)}
+      />
+
     </>
   )
 }

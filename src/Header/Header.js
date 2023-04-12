@@ -5,7 +5,6 @@ import Backrop from "./Backrop";
 
 import { Link } from "react-router-dom";
 import { useAuth } from "../providers/auth";
-import Education from "../Pages/Profile/AddComp/Education";
 
 const Header = () => {
   const [show, setShow] = useState(false)
@@ -99,10 +98,6 @@ const Header = () => {
             }
           </div>
         </div>
-        <Education
-          show={show}
-          setShow={() => setShow(!show)}
-        />
       </div>
     </>
   );

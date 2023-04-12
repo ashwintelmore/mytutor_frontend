@@ -11,13 +11,11 @@ import AllPost from "./Pages/Profile/AllPost";
 import LoginForm from "./Auth/LoginForm";
 import Register from "./Auth/Register";
 import { useAuth } from "./providers/auth";
-import Education from "./Pages/Profile/AddComp/Education";
 import { ProfileProvider } from "./providers/profile";
 
 const App = () => {
 
   const auth = useAuth()
-  // console.log('auth :>> ', auth);
 
   return (
     <>
@@ -63,8 +61,6 @@ const App = () => {
               }
             />
             <Route path="/profile" element={<Profile />} />
-
-            <Route path="/education" element={<Education />} />
 
             <Route path="/content" element={<Content />} />
             <Route path="/dummy" element={<Dummy />} />
