@@ -4,6 +4,7 @@ import { useAuth } from "../../../providers/auth";
 
 
 function Education({ show, setShow, }) {
+  console.log("eefasdfa")
   const auth = useAuth()
   const [userData, setUserData] = useState({
     title: '',
@@ -15,7 +16,7 @@ function Education({ show, setShow, }) {
   })
   // console.log('data :>> ', data);
   const onAddDetails = () => {
-
+    console.log("test")
     if (!auth.user._id)
       return
     let edcs = [...auth.user.education];
@@ -61,9 +62,9 @@ function Education({ show, setShow, }) {
           <div className="flex flex-col   w-[45%] p-2 xs:w-full">
             <label className="w-full p-2 text-base xs:text-base">School/College/University</label>
             <input className="rounded-xl w-full shadow-sm shadow-black p-2" type="text"
-              name="title"
+              name="orginization"
               onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
-              value={userData.title}
+              value={userData.orginization}
             />
             <label className="text-xs ml-2 p-1">Write something</label>
           </div>

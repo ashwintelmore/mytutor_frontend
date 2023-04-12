@@ -48,7 +48,7 @@ export default function About() {
             {
               auth.user._id ?
                 auth.user.education.map((item, i) => {
-                  return <div className="flex flex-col p-2 gap-3">
+                  return <div className="flex flex-col p-2 gap-3" key={i}>
                     <div className="flex flex-col gap-3">
                       <div className="flex flex-col ">
                         <div className=" flex justify-between">

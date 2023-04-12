@@ -128,7 +128,7 @@ function UpdateEducation({ show, setShow, data, setData }) {
                     <button className="xs:w-2/5 bg-[#F8AF6A] rounded-xl p-2 w-2/5"
 
                         onClick={() => onUpdateDetails()}
-                    >Add
+                    >Update
                     </button>
                     <button className=" xs:w-2/5 bg-[#F8AF6A] rounded-xl p-2 w-2/5"
                         onClick={() => onCancelBtn()}
