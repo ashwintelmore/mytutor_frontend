@@ -22,7 +22,7 @@ function AllPost() {
           </button>
         </div>
       </div>
-      <div className="flex gap-3 bg-indigo-100 w-4/6 p-2 rounded-2xl shadow-md shadow-slate-400 xs:w-full xs:text-xs">
+      <div className="flex gap-3 bg-indigo-100 w-4/6 p-2 rounded-2xl shadow-md shadow-slate-400 xs:w-full xs:text-xs" >
         <div className="h-32 w-2/5   dark:bg-violet-200 bg-orange-400 xs:h-24 xs:w-1/2 rounded-xl"></div>
 
         <div className="flex flex-col ">

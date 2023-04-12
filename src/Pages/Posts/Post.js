@@ -2,42 +2,42 @@ import React from "react";
 
 const Post = () => {
   return (
-    <div className="Post ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-zinc-800 bg-white xs:w-full xs:flex-col xs:m-0">
-      <div className="flex flex-col w-3/5 xs:w-full">
+    <div className="Post ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-zinc-800 bg-white xs:w-full xs:flex-col xs:m-0 sm:m-0 sm:flex-col sm:w-full">
+      <div className="flex flex-col w-3/5 xs:w-full sm:w-full">
         <div className=" h-auto p-1 xs:p-1 ">
           <div className="flex justify-between  p-2 m-1 items-center">
             <h4 className="xs:text-xs text-[#6F6F6F]"> May 5, 2023</h4>
             <i className="fa-sharp fa-solid fa-ellipsis-vertical xs:text-xs"></i>
           </div>
-          <div className="bg-[#F8AF6A] dark:bg-slate-600 h-80 p-2 rounded-xl  m-4 xs:h-40 xs:p-1 xs:m-2"></div>
-          <div className="flex justify-between p-1 mx-1 items-center text-xl xs:text-xs xs:p-0">
-            <h1 className="xs:text-xs  font-semibold xs:font-semibold">
+          <div className="bg-[#F8AF6A] dark:bg-slate-600 h-80 p-2 rounded-xl  m-4 xs:w-[97%]  xs:m-1 sm:h-40"></div>
+          <div className="flex justify-between p-1 mx-1 items-center text-xl sm:text-xs xs:p-0">
+            <h1 className="  font-semibold  sm:text-xs">
               What is Design thinking ?
             </h1>
-            <div className="flex   items-center gap-5 p-2 xs:gap-0 xs:text-xs xs:p-1 ">
-              <div className="flex  gap-1 items-center xs:gap-0 xs:text-xs">
-
-                <i className="fa-solid fa-indian-rupee-sign text-[#FFB300] xs:text-xs">59</i>
-                <label className="text-[#FFB300] text-sm">(per hour)</label>
+            <div className="flex   items-center gap-5 p-2 xs:gap-0  xs:p-1 sm:text-xs  sm:gap-1 px-4 ">
+              <div className="flex  gap-1 items-center xs:gap-0 sm:text-xs">
+                <i className="fa-solid fa-indian-rupee-sign text-[#FFB300] sm:text-xs">
+                  59
+                </i>
+                <h6 className="text-[#FFB300] ">
+                  (/hr)
+                </h6>
               </div>
               <div className="flex gap-1  items-center xs:gap-0 xs:text-xs ">
-
                 <h4>4</h4>
                 <label className="text-sm text-[#6F6F6F]">sits left</label>
               </div>
               <div className="flex  gap-1 items-center xs:gap-1 xs:text-xs">
-
                 <h4>60</h4>
                 <i className="fa-solid fa-thumbs-up text-[#FFB300]"></i>
               </div>
               <div className="flex gap-1  items-center xs:gap-1 xs:text-xs">
-
                 <h4>60</h4>
                 <i className="fa-solid fa-thumbs-down text-[#FFB300]"></i>
               </div>
             </div>
           </div>
-          <p className="xs:text-xs xs:p-2 p-2 text-[#6F6F6F]">
+          <p className="xs:text-xs xs:p-2 p-2 sm:p-4 text-[#6F6F6F]">
             Discription Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Morbi eget ex in tortor tincidunt consectetur. Etiam at viverra
             justo. Vestibulum ante ipsum primis in faucibus orci luctus et
@@ -64,8 +64,8 @@ const Post = () => {
             <label>Comments</label>
           </div>
           <div className="flex gap-1 items-center">
-
-            <i className="fa-solid fa-bars-staggered"></i> <label>Sort by</label>
+            <i className="fa-solid fa-bars-staggered"></i>{" "}
+            <label>Sort by</label>
           </div>
         </div>
         <div className="flex flex-col">
@@ -75,20 +75,23 @@ const Post = () => {
               src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
               alt=""
             />
-            <input type="text" placeholder="Add a public comment" className="w-11/12 border-b-2 outline-none border-[#303030]" ></input>
+            <input
+              type="text"
+              placeholder="Add a public comment"
+              className="w-11/12 border-b-2 outline-none border-[#303030]"></input>
           </div>
           <div className="flex flex-col p-4 gap-4 xs:p-2 xs:gap-2 xs:overflow-y-auto">
             <div className="flex flex-col  gap-1 ">
-
               <div className="flex  gap-2  ">
                 <img
                   className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
                   src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
                   alt=""
                 />
-                <div className="flex flex-col text-xs"><h3 className="text-violet-800 ">Ashwin Telmore</h3>
-                  <p className="text-sm">Something bio details</p></div>
-
+                <div className="flex flex-col text-xs">
+                  <h3 className="text-violet-800 ">Ashwin Telmore</h3>
+                  <p className="text-sm">Something bio details</p>
+                </div>
               </div>
               <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
                 <h4>60</h4>
@@ -99,16 +102,16 @@ const Post = () => {
               </div>
             </div>
             <div className="flex flex-col  gap-1 ">
-
               <div className="flex  gap-2  ">
                 <img
                   className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
                   src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
                   alt=""
                 />
-                <div className="flex flex-col text-xs"><h3 className="text-violet-800 ">Ashwin Telmore</h3>
-                  <p className="text-sm">Something bio details</p></div>
-
+                <div className="flex flex-col text-xs">
+                  <h3 className="text-violet-800 ">Ashwin Telmore</h3>
+                  <p className="text-sm">Something bio details</p>
+                </div>
               </div>
               <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
                 <h4>60</h4>
@@ -119,16 +122,16 @@ const Post = () => {
               </div>
             </div>
             <div className="flex flex-col  gap-1 ">
-
               <div className="flex  gap-2  ">
                 <img
                   className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
                   src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
                   alt=""
                 />
-                <div className="flex flex-col text-xs"><h3 className="text-violet-800 ">Ashwin Telmore</h3>
-                  <p className="text-sm">Something bio details</p></div>
-
+                <div className="flex flex-col text-xs">
+                  <h3 className="text-violet-800 ">Ashwin Telmore</h3>
+                  <p className="text-sm">Something bio details</p>
+                </div>
               </div>
               <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
                 <h4>60</h4>
@@ -139,17 +142,16 @@ const Post = () => {
               </div>
             </div>
             <div className="flex flex-col  gap-1 ">
-
               <div className="flex  gap-2  ">
                 <img
                   className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
                   src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
                   alt=""
                 />
-                <div className="flex flex-col text-xs"><h3 className="text-violet-800 ">Ashwin Telmore</h3>
-                  <p className="text-sm">Something bio details</p></div>
-
-
+                <div className="flex flex-col text-xs">
+                  <h3 className="text-violet-800 ">Ashwin Telmore</h3>
+                  <p className="text-sm">Something bio details</p>
+                </div>
               </div>
               <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
                 <h4>60</h4>
@@ -159,14 +161,13 @@ const Post = () => {
                 <label>reply</label>
               </div>
             </div>
-
           </div>
         </div>
       </div>
 
-      <div className=" flex  flex-col w-2/5 p-2 xs:w-full xs:p-1 ">
+      <div className=" flex  flex-col w-2/5 p-2 xs:w-full xs:p-1 sm:w-full  ">
         <h4 className="text-lg font-semibold mt-2">Select available dates</h4>
-        <div className="flex flex-wrap dark:bg-orange-300 dark:text-black bg-green-200 p-4 gap-2 text-lg font-semibold rounded-2xl xs:gap-1 xs:p-2 xs:font-normal ">
+        <div className="flex flex-wrap dark:bg-orange-300 dark:text-black bg-green-200 p-4 gap-2 text-lg font-semibold rounded-2xl xs:gap-1 xs:p-2 xs:font-normal sm:text-xs sm:p-2 sm:gap-1 ">
           <span className="h-16 w-16 p-4  xs:h-11 xs:w-11 xs:p-1 bg-slate-400 dark:border-black rounded-full ">
             Mon
           </span>
@@ -314,6 +315,6 @@ const Post = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Post;
