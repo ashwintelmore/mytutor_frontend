@@ -5,6 +5,7 @@ import Backrop from "./Backrop";
 
 import { Link } from "react-router-dom";
 import { useAuth } from "../providers/auth";
+import AddPost from "../Pages/Posts/AddPost";
 
 const Header = () => {
   const [show, setShow] = useState(false)
@@ -98,6 +99,10 @@ const Header = () => {
             }
           </div>
         </div>
+        <AddPost
+          show={show}
+          setShow={() => setShow(!show)}
+        />
       </div>
     </>
   );
