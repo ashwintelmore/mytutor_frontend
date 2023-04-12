@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useAuth } from "../../providers/auth";
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../../../providers/auth";
 
 
 
-function Education({ show, setShow }) {
+function Education({ show, setShow, }) {
   const auth = useAuth()
   const [userData, setUserData] = useState({
     title: '',
@@ -13,7 +13,7 @@ function Education({ show, setShow }) {
     from: '',
     to: ''
   })
-
+  // console.log('data :>> ', data);
   const onAddDetails = () => {
 
     if (!auth.user._id)
@@ -35,6 +35,11 @@ function Education({ show, setShow }) {
       to: ''
     })
   };
+
+  const onCancelBtn = () => {
+    setShow(!show)
+  };
+
 
   if (!show)
     return null;
@@ -109,7 +114,7 @@ function Education({ show, setShow }) {
           >Add
           </button>
           <button className=" xs:w-2/5 bg-[#F8AF6A] rounded-xl p-2 w-2/5"
-            onClick={() => setShow(!show)}
+            onClick={() => onCancelBtn()}
           >Cancel
           </button>
         </div>

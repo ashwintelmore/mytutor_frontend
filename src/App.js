@@ -11,7 +11,7 @@ import AllPost from "./Pages/Profile/AllPost";
 import LoginForm from "./Auth/LoginForm";
 import Register from "./Auth/Register";
 import { useAuth } from "./providers/auth";
-import Education from "./Pages/Profile/Education";
+import Education from "./Pages/Profile/AddComp/Education";
 import { ProfileProvider } from "./providers/profile";
 
 const App = () => {
