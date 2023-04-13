@@ -1,18 +1,17 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 // import Backrop from "./Components/Backrop";
-import Content from "./Pages/Posts/Post";
 import Dummy from "./Components/Helper/Dummy";
 import Home from "./Pages/Home/Home";
 import Header from "./Header/Header";
 import Profile from "./Pages/Profile/Profile";
 import VerticalNav from "./Header/VerticalNav";
-import AllPost from "./Pages/Profile/AllPost";
 import LoginForm from "./Auth/LoginForm";
 import Register from "./Auth/Register";
 import { useAuth } from "./providers/auth";
 import { ProfileProvider } from "./providers/profile";
 import Comment from "./Pages/Posts/comments/Comment";
+import Post from "./Pages/Posts/Post";
 
 const App = () => {
 
@@ -63,11 +62,11 @@ const App = () => {
             />
             <Route path="/profile" element={<Profile />} />
 
-            <Route path="/content" element={<Content />} />
+            <Route path="/postcontent/:id?" element={<Post />} />
             <Route path="/dummy" element={<Dummy />} />
             {/* <Route path="/backrop" element={<Backrop />} /> */}
             {/* <Route path="/allpost" element={<AllPost/>}/> */}
-             <Route path="/comment" element={<Comment/>}/>
+            <Route path="/comment" element={<Comment />} />
           </Routes>
         </div>
       </BrowserRouter>
