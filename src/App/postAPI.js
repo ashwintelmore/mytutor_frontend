@@ -15,6 +15,29 @@ export const getAllPosts = async () => {
         })
 
 };
+export const getUserAllPosts = async (id) => {
+
+    return await axios.get(`${END_POINT}/getallposts/${id}`)
+        .then(function (response) {
+            return response.data
+        })
+        .catch(function (error) {
+            return error.response.data
+        })
+
+};
+
+export const getPost = async (id) => {
+
+    return await axios.get(`${END_POINT}/getPost/${id}`)
+        .then(function (response) {
+            return response.data
+        })
+        .catch(function (error) {
+            return error.response.data
+        })
+
+};
 
 export const getUser = async (id) => {
     return await axios.get(`${END_POINT}/getUser/${id}`)
@@ -32,6 +55,7 @@ export const getUser = async (id) => {
 
 export const createPost = async (data) => {
     const payload = { payload: { ...data } }
+    console.log(data)
     // return
     return await axios.post(`${END_POINT}/createpost`, payload)
         .then(function (response) {

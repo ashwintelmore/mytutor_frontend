@@ -176,13 +176,15 @@ export default function About() {
         <div className="w-1/2  xs:flex-col xs:w-full ">
           <div className="p-2 gap-2 flex flex-col">
             <h2 className="text-lg text-[#FF0000]">Set Slot</h2>
-            <div className="flex"> <label htmlFor="slots">Available :</label>
-              <select placeholder="select option" name="slots" className="w-3/5 rounded-2xl p-1">
+            <div className="flex">
+              <label className="w-full p-2 text-base xs:text-base" htmlFor="slots">Available :</label>
+              <select placeholder="select option" name="slots" className="rounded-xl w-full shadow-sm shadow-black p-2" >
                 <option>Everyday</option>
                 <option>Wekend</option>
                 <option>Week days</option>
                 <option>Not Available</option>
-              </select></div>
+              </select>
+            </div>
           </div>
           <div className="flex flex-wrap dark:bg-orange-300 dark:text-black bg-gray-200 p-2 gap-2 text-lg font-semibold mt-20 rounded-2xl xs:gap-1 xs:p-2 xs:ml-2 xs:font-normal ">
             <span className="h-16 w-16 p-4  xs:h-11 xs:w-11 xs:p-1 bg-slate-400 dark:border-black rounded-full ">

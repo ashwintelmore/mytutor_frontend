@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { createPost } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
+import TagsInput from "../Profile/TagsInput";
 
 
 function AddPost({ show, setShow, }) {
@@ -11,6 +12,10 @@ function AddPost({ show, setShow, }) {
         thumbnailUrl: '',
         charges: '',
         descrp: '',
+
+        postType: '',
+        category: '',
+        tags: []
     })
     const onAddDetails = async () => {
         if (!auth.user._id)
@@ -19,6 +24,7 @@ function AddPost({ show, setShow, }) {
         const res = await createPost({
             ...userData,
             createdTutor: auth.user._id,
+            createdTutorName: auth.user.name,
             slots: auth.user.slots
         })
         if (res.error) {
@@ -30,18 +36,55 @@ function AddPost({ show, setShow, }) {
                 thumbnailUrl: '',
                 charges: '',
                 descrp: '',
+                postType: '',
+                category: '',
+                tags: []
             })
         }
         setShow(!show)
     };
+    console.log(userData)
 
     if (!show)
         return null;
     return (
-        <div className="flex w-full  items-center justify-center xs:flex-col absolute top-4 left-0">
-            <div className=" bg-[#fff] relative w-4/6 h-auto px-6 py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
+        // <form action="/" enctype="multipart/form-data">
+        <div className="flex w-full  items-center justify-center xs:flex-col absolute  z-10">
+            <div className=" bg-[#fff] relative w-4/6 h-auto px-6 py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12   ">
                 <h2 className="text-[#f48c2b] top-0 left-2 text-3xl p-2 absolute ">Add Post</h2>
 
+                <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
+                    <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
+                        <label className="w-full p-2 text-base xs:text-base" htmlFor="slots">Post Typle :</label>
+                        <select
+                            placeholder="select option"
+                            name="postType"
+                            className="rounded-xl w-full shadow-sm shadow-black p-2"
+                            onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
+                            value={userData.postType}
+                        >
+                            <option value={''}>Select</option>
+                            <option value={'learner'}>Learner</option>
+                            <option value={'tutor'}>Tutor</option>
+                        </select>
+                        <label className="text-xs ml-2 p-1">Select what is type of your post</label>
+                    </div>
+                    <div className="flex flex-col   w-[45%] p-2 xs:w-full">
+                        <label className="w-full p-2 text-base xs:text-base" htmlFor="slots">Post Category :</label>
+                        <select
+                            placeholder="select option"
+                            name="category"
+                            className="rounded-xl w-full shadow-sm shadow-black p-2"
+                            onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
+                            value={userData.category}
+                        >
+                            <option value={''}>Select</option>
+                            <option value={'student'}>Student</option>
+                            <option value={'sports'}>Sports</option>
+                        </select>
+                        <label className="text-xs ml-2 p-1">Select what is type of your post</label>
+                    </div>
+                </div>
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                         <label className="w-full p-2 text-base xs:text-base">Title Of Post</label>
@@ -65,11 +108,19 @@ function AddPost({ show, setShow, }) {
 
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                     <div className="flex flex-col   w-[45%]  p-2  xs:w-full  ">
-                        <label className="w-full text-base p-2 ">Charges</label>
+                        <label className="w-full text-base p-2 ">Offering Charges</label>
                         <input className="  rounded-xl w-full  p-2 shadow-sm shadow-black" type="number"
                             name="charges"
                             onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
                             value={userData.charges}
+                        />
+                        <label className="text-xs ml-2 p-1">Per hour</label>
+                    </div>
+                    <div className="flex flex-col   w-[45%]  p-2  xs:w-full  ">
+                        <label className="w-full text-base p-2 ">Offering Charges</label>
+                        <TagsInput
+                            setResTags={(e) => setUserData({ ...userData, tags: e })}
+                            resTags={userData.tags}
                         />
                         <label className="text-xs ml-2 p-1">Per hour</label>
                     </div>
@@ -108,6 +159,7 @@ function AddPost({ show, setShow, }) {
                 </div>
             </div>
         </div>
+        // </form>
     );
 }
 

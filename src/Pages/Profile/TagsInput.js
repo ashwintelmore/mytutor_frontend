@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../providers/auth';
 
-function TagsInput() {
+function TagsInput({ resTags, setResTags }) {
   const [tags, setTags] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const auth = useAuth()
-
-  const setTagToLocal = (item, obj) => {
-    let o = { item: obj }
-    localStorage.setItem(item, JSON.stringify(o))
-  };
-  const getTagToLocal = (item) => {
-    return JSON.parse(localStorage.getItem(item))
-  };
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
@@ -26,10 +18,7 @@ function TagsInput() {
       const newTags = [...tags, inputValue.trim()];
       setTags(newTags);
       //have to remove
-      auth.setUser({
-        ...auth.user,
-        skills: newTags
-      })
+      setResTags(newTags)
       setInputValue('');
     }
   };
@@ -37,17 +26,14 @@ function TagsInput() {
   const handleRemoveTag = (tag) => {
     const newTags = tags.filter((t) => t !== tag);
     setTags(newTags)
-    auth.setUser({
-      ...auth.user,
-      skills: newTags
-    })
+    setResTags(newTags)
   };
   useEffect(() => {
     if (auth.user._id)
-      setTags(auth.user.skills)
-    return () => {
-      // console.log("test")
-    };
+      // setTags(auth.user.skills)
+      return () => {
+        // console.log("test")
+      };
   }, [])
   return (
     <div className="flex flex-col-reverse gap-2 ">
@@ -65,7 +51,7 @@ function TagsInput() {
         ))}
       </div>
       <input
-        className="border-b-2 outline-none shadow-sm shadow-slate-400"
+        className="  rounded-xl w-full  p-2 shadow-sm shadow-black"
         type="text"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
