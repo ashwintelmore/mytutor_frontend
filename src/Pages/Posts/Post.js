@@ -1,6 +1,37 @@
 import React from "react";
+import Comment from "./comments/Comment";
+import useNode from "./comments/useNode";
+import { useState } from "react";
+
+const comments = {
+  id: 1,
+  items: [],
+};
 
 const Post = () => {
+
+  const [commentsData, setCommentsData] = useState(comments);
+
+  const { insertNode, editNode, deleteNode } = useNode();
+
+  const handleInsertNode = (folderId, item) => {
+    const finalStructure = insertNode(commentsData, folderId, item);
+    setCommentsData(finalStructure);
+  };
+
+  const handleEditNode = (folderId, value) => {
+    const finalStructure = editNode(commentsData, folderId, value);
+    setCommentsData(finalStructure);
+  };
+
+  const handleDeleteNode = (folderId) => {
+    const finalStructure = deleteNode(commentsData, folderId);
+    const temp = { ...finalStructure };
+    setCommentsData(temp);
+  };
+
+
+
   return (
     <div className="Post ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-zinc-800 bg-white xs:w-full xs:flex-col xs:m-0 sm:m-0 sm:flex-col sm:w-full">
       <div className="flex flex-col w-3/5 xs:w-full sm:w-full">
@@ -80,88 +111,14 @@ const Post = () => {
               placeholder="Add a public comment"
               className="w-11/12 border-b-2 outline-none border-[#303030]"></input>
           </div>
-          <div className="flex flex-col p-4 gap-4 xs:p-2 xs:gap-2 xs:overflow-y-auto">
-            <div className="flex flex-col  gap-1 ">
-              <div className="flex  gap-2  ">
-                <img
-                  className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
-                  src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                  alt=""
-                />
-                <div className="flex flex-col text-xs">
-                  <h3 className="text-violet-800 ">Ashwin Telmore</h3>
-                  <p className="text-sm">Something bio details</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
-                <h4>60</h4>
-                <i className="fa-solid fa-thumbs-up"></i>
-                <h4>60</h4>
-                <i className="fa-solid fa-thumbs-down"></i>
-                <label>reply</label>
-              </div>
-            </div>
-            <div className="flex flex-col  gap-1 ">
-              <div className="flex  gap-2  ">
-                <img
-                  className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
-                  src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                  alt=""
-                />
-                <div className="flex flex-col text-xs">
-                  <h3 className="text-violet-800 ">Ashwin Telmore</h3>
-                  <p className="text-sm">Something bio details</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
-                <h4>60</h4>
-                <i className="fa-solid fa-thumbs-up"></i>
-                <h4>60</h4>
-                <i className="fa-solid fa-thumbs-down"></i>
-                <label>reply</label>
-              </div>
-            </div>
-            <div className="flex flex-col  gap-1 ">
-              <div className="flex  gap-2  ">
-                <img
-                  className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
-                  src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                  alt=""
-                />
-                <div className="flex flex-col text-xs">
-                  <h3 className="text-violet-800 ">Ashwin Telmore</h3>
-                  <p className="text-sm">Something bio details</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
-                <h4>60</h4>
-                <i className="fa-solid fa-thumbs-up"></i>
-                <h4>60</h4>
-                <i className="fa-solid fa-thumbs-down"></i>
-                <label>reply</label>
-              </div>
-            </div>
-            <div className="flex flex-col  gap-1 ">
-              <div className="flex  gap-2  ">
-                <img
-                  className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
-                  src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                  alt=""
-                />
-                <div className="flex flex-col text-xs">
-                  <h3 className="text-violet-800 ">Ashwin Telmore</h3>
-                  <p className="text-sm">Something bio details</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
-                <h4>60</h4>
-                <i className="fa-solid fa-thumbs-up"></i>
-                <h4>60</h4>
-                <i className="fa-solid fa-thumbs-down"></i>
-                <label>reply</label>
-              </div>
-            </div>
-          </div>
+          <div className="App">
+      <Comment
+        handleInsertNode={handleInsertNode}
+        handleEditNode={handleEditNode}
+        handleDeleteNode={handleDeleteNode}
+        comment={commentsData}
+      />
+    </div>
         </div>
       </div>
 

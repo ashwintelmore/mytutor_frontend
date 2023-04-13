@@ -43,7 +43,8 @@ function Education({ show, setShow, }) {
   return (
     <div className="flex w-full  items-center justify-center xs:flex-col absolute top-4 left-0">
       <div className=" bg-[#fff] relative w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
-        <h2 className="text-[#f48c2b] top-0 left-2 text-lg p-2 absolute ">Education</h2>
+        <div className="flex w-full">
+        <h2 className="text-[#f48c2b] text-xl font-bold px-3  ">Education</h2></div>
 
         <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
           <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
@@ -53,7 +54,7 @@ function Education({ show, setShow, }) {
               onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
               value={userData.title}
             />
-            <label className="text-xs ml-2 p-1">Write something</label>
+            <p className="text-xs ml-2 p-1">Write something</p>
           </div>
           <div className="flex flex-col   w-[45%] p-2 xs:w-full">
             <label className="w-full p-2 text-base xs:text-base">School/College/University</label>
@@ -62,7 +63,7 @@ function Education({ show, setShow, }) {
               onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
               value={userData.orginization}
             />
-            <label className="text-xs ml-2 p-1">Write something</label>
+            <p className="text-xs ml-2 p-1">Write something</p>
           </div>
         </div>
 
@@ -74,8 +75,22 @@ function Education({ show, setShow, }) {
               onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
               value={userData.from}
             />
-            <label className="text-xs ml-2 p-1">Write something</label>
+            <p className="text-xs ml-2 p-1">Write something</p>
           </div>
+          <div className="flex flex-col  xs:w-full  w-[45%] p-2 justify-around  ">
+            <label className="w-full text-base p-2">To</label>
+            <input className="  rounded-xl w-full p-2  shadow-sm shadow-black" type="date"
+              name="to"
+              onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
+              value={userData.date}
+            />
+            <p className="text-xs ml-2 p-1">Write something</p>
+          </div>
+        </div>
+
+        <div className="flex p-1    w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
+         
+
           <div className="flex  flex-col  w-[45%]  p-2 xs:w-full">
             <label className="w-full p-2 text-base xs:w-1/4">Location</label>
             <input className="  rounded-xl w-full p-2  shadow-sm shadow-black" type="text"
@@ -84,25 +99,13 @@ function Education({ show, setShow, }) {
               value={userData.location}
 
             />
-            <label className="text-xs ml-2 p-1">Write something</label>
-          </div>
-        </div>
-
-        <div className="flex p-1    w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
-          <div className="flex flex-col  xs:w-full  w-[45%] p-2 justify-around  ">
-            <label className="w-full text-base p-2">To</label>
-            <input className="  rounded-xl w-full p-2  shadow-sm shadow-black" type="date"
-              name="to"
-              onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
-              value={userData.date}
-            />
-            <label className="text-xs ml-2 p-1">Write something</label>
+            <p className="text-xs ml-2 p-1">Write something</p>
           </div>
         </div>
 
         <div className="p-1">
           <h2>Description :</h2>
-          <textarea rows={5} cols={100} className="rounded-2xl pl-2 xs:h-24 w-4/5 xs:w-11/12 shadow-sm shadow-black"
+          <textarea rows={5} cols={100} className="rounded-2xl px-2 py-1 xs:h-24 w-4/5 xs:w-11/12 shadow-sm shadow-black"
             name="descrp"
             onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
             value={userData.descrp}

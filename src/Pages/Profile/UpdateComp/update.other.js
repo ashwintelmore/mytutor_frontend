@@ -83,8 +83,9 @@ function UpdateOther({ show, setShow, data, setData }) {
     return (
         <div className="flex w-full  items-center justify-center xs:flex-col absolute top-4 left-0">
             <div className=" bg-[#fff] relative w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
-                <h2 className="text-[#f48c2b] top-0 left-2 text-lg p-2 absolute ">Update Other/Achievements/Project</h2>
-
+                <div className="flex w-full px-3 font-bold text-xl">
+                <h2 className="text-[#f48c2b] ">Update Other/Achievements/Project</h2>
+                </div>
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                         <label className="w-full p-2 text-base xs:text-base">Name of Education</label>
@@ -116,25 +117,26 @@ function UpdateOther({ show, setShow, data, setData }) {
                         />
                         <label className="text-xs ml-2 p-1">Write something</label>
                     </div>
-                    <div className="flex  flex-col  w-[45%]  p-2 xs:w-full">
-                        <label className="w-full p-2 text-base xs:w-1/4">Location</label>
-                        <input className="  rounded-xl w-full p-2  shadow-sm shadow-black" type="text"
-                            name="location"
+                     <div className="flex flex-col  xs:w-full  w-[45%] p-2 justify-around  ">
+                        <label className="w-full text-base p-2">To</label>
+                        <input className="  rounded-xl w-full p-2  shadow-sm shadow-black" type="date"
+                            name="to"
                             onChange={(e) => onHandleChange(e)}
-                            value={userData.location}
-
+                            value={userData.date}
                         />
                         <label className="text-xs ml-2 p-1">Write something</label>
                     </div>
                 </div>
 
                 <div className="flex p-1    w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
-                    <div className="flex flex-col  xs:w-full  w-[45%] p-2 justify-around  ">
-                        <label className="w-full text-base p-2">To</label>
-                        <input className="  rounded-xl w-full p-2  shadow-sm shadow-black" type="date"
-                            name="to"
+                
+                       <div className="flex  flex-col  w-[45%]  p-2 xs:w-full">
+                        <label className="w-full p-2 text-base xs:w-1/4">Location</label>
+                        <input className="  rounded-xl w-full p-2  shadow-sm shadow-black" type="text"
+                            name="location"
                             onChange={(e) => onHandleChange(e)}
-                            value={userData.date}
+                            value={userData.location}
+
                         />
                         <label className="text-xs ml-2 p-1">Write something</label>
                     </div>

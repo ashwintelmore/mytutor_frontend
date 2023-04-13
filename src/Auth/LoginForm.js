@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../App/Api";
-import loginImage from '../assets/bacgroun3.jpg'
+import loginImage from '../assets/bacground3.jpg'
 import { useAuth } from "../providers/auth";
 
 export default function LoginForm() {
