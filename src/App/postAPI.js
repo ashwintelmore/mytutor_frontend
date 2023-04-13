@@ -1,18 +1,17 @@
 
 import axios from "axios";
 // const END_POINT = "https:/ / odd - pear - fox - hem.cyclic.app / api"
-const END_POINT = process.env.END_POINT
-console.log('END_POINT :>> ', END_POINT);
+const END_POINT = process.env.REACT_APP_END_POINT
 
 
-export const getAllUser = async () => {
+export const getAllPosts = async () => {
 
-    return await axios.get(`${END_POINT}/allUsers`)
+    return await axios.get(`${END_POINT}/getallposts`)
         .then(function (response) {
-            return response
+            return response.data
         })
         .catch(function (error) {
-            return error.response
+            return error.response.data
         })
 
 };
@@ -31,32 +30,14 @@ export const getUser = async (id) => {
 
 };
 
-export const register = async (data) => {
-    return await axios.post(`${END_POINT}/register`, data)
+export const createPost = async (data) => {
+    const payload = { payload: { ...data } }
+    // return
+    return await axios.post(`${END_POINT}/createpost`, payload)
         .then(function (response) {
-            return response;
+            return response.data;
         })
         .catch(function (error) {
-            return error.response
-        });
-};
-
-export const login = async (data) => {
-    return await axios.post(`${END_POINT}/login`, data)
-        .then(function (response) {
-            return response;
-        })
-        .catch(function (error) {
-            return error.response
-        });
-};
-
-export const update = async (data) => {
-    return await axios.post(`${END_POINT}/login`, data)
-        .then(function (response) {
-            return response;
-        })
-        .catch(function (error) {
-            return error.response
+            return error.response.data
         });
 };

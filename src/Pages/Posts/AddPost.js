@@ -1,26 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { createPost } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
 
 
 function AddPost({ show, setShow, }) {
     const auth = useAuth()
     const [userData, setUserData] = useState({
-        title: '',
-        thumbnail: '',
+        postTitle: '',
+        thumbnailUrl: '',
         charges: '',
         descrp: '',
     })
-    const onAddDetails = () => {
+    const onAddDetails = async () => {
         if (!auth.user._id)
             return
-
-    };
-
-    const onCancelBtn = () => {
+        console.log(userData)
+        const res = await createPost({
+            ...userData,
+            createdTutor: auth.user._id,
+            slots: auth.user.slots
+        })
+        if (res.error) {
+            //handle error
+        } else if (res.payload) {
+            //handle sussece responce
+            setUserData({
+                postTitle: '',
+                thumbnailUrl: '',
+                charges: '',
+                descrp: '',
+            })
+        }
         setShow(!show)
     };
-
 
     if (!show)
         return null;
@@ -33,18 +46,18 @@ function AddPost({ show, setShow, }) {
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                         <label className="w-full p-2 text-base xs:text-base">Title Of Post</label>
                         <input className="rounded-xl w-full shadow-sm shadow-black p-2" type="text"
-                            name="title"
+                            name="postTitle"
                             onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
-                            value={userData.title}
+                            value={userData.postTitle}
                         />
                         <label className="text-xs ml-2 p-1">Write something</label>
                     </div>
                     <div className="flex flex-col   w-[45%] p-2 xs:w-full">
                         <label className="w-full p-2 text-base xs:text-base"> Thumbnail </label>
                         <input className="rounded-xl w-full shadow-sm shadow-black p-2" type="file"
-                            name="thumbnail"
+                            name="thumbnailUrl"
                             onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
-                            value={userData.thumbnail}
+                            value={userData.thumbnailUrl}
                         />
                         <label className="text-xs ml-2 p-1">Write something</label>
                     </div>
