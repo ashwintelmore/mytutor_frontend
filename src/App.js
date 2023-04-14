@@ -10,7 +10,7 @@ import LoginForm from "./Auth/LoginForm";
 import Register from "./Auth/Register";
 import { useAuth } from "./providers/auth";
 import { ProfileProvider } from "./providers/profile";
-import Comment from "./Pages/Posts/comments/Comment";
+
 import Post from "./Pages/Posts/Post";
 
 const App = () => {
@@ -66,7 +66,7 @@ const App = () => {
             <Route path="/dummy" element={<Dummy />} />
             {/* <Route path="/backrop" element={<Backrop />} /> */}
             {/* <Route path="/allpost" element={<AllPost/>}/> */}
-            <Route path="/comment" element={<Comment />} />
+            
           </Routes>
         </div>
       </BrowserRouter>

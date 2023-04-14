@@ -1,0 +1,22 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.App {
+  
+  width: 100%;
+  // margin-left: 4rem;
+  height: auto;
+  overflow-x: hidden;
+  background-color: rgb(255, 159, 127);
+  display: flex;
+  flex-direction: column;
+  flex-direction: column-reverse;
+  // justify-content: center;
+  // align-items: center;
+   gap: 1rem;
+  
+  // @include media-md() {
+  //   gap: 10px;
+  //   padding: 2rem 0;
+  // }
+}

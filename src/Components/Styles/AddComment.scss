@@ -1,0 +1,88 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.add-comment {
+  display: flex;
+position: sticky;
+top: 0%;
+// background-color: rgb(236, 255, 255);
+  width: 100%;
+
+
+  animation: come-in 1.5s ease-in-out;
+
+  .profile-pic {
+    width: 80px;
+    height: 80px;
+    background: url(../../assets/avatars/image-juliusomo.png);
+    background-size: cover;
+    border-radius: 100%;
+  }
+  .profile-input {
+    display: flex;
+    gap: 1rem;
+    position: relative;
+    width: 100%;
+    align-items: center;
+  }
+
+  .comment-input {
+    
+    height: 40px;
+    width: 100%;
+    opacity: 0.5;
+    border: transparent;
+    border-bottom: black;
+  outline: none;
+
+     &:focus{
+      border-bottom: 2px solid black;
+     }
+  }
+
+  .add-btn {
+    color: $white;
+    position: absolute;
+    right: 0%;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    background: $moderate-blue;
+    border: 0%;
+    border-radius: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      opacity: 0.65;
+    }
+  }
+
+  @include media-md() {
+    width: 735px;
+    flex-direction: row;
+    padding: 25px;
+    gap: 25px;
+
+    .comment-input {
+      width: 100%;
+    }
+  }
+}
+
+@keyframes come-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  75% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
