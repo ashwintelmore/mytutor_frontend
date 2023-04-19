@@ -183,7 +183,7 @@ const Post = () => {
                 </div>
               </div>
               <div className="flex flex-col">
-                <div className=" flex items-center p-2 gap-4">
+                <div className=" relative flex items-center p-2 gap-4">
                   <img
                     className="rounded-full h-16 w-16 xs:h-12 xs:w-12 border-2 border-red-500"
                     src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
@@ -195,6 +195,7 @@ const Post = () => {
                     className="w-11/12 border-b-2 outline-none border-[#303030]">
 
                   </input>
+                  <button className="absolute bg-orange-400 right-2 rounded-xl p-2 top-2 text-white">Comment</button>
                 </div>
                 <div className="flex flex-col p-4 gap-4 xs:p-2 xs:gap-2 xs:overflow-y-auto">
                   <div className="flex flex-col  gap-1 ">
@@ -204,9 +205,11 @@ const Post = () => {
                         src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
                         alt=""
                       />
-                      <div className="flex flex-col text-xs">
+                      <div className="flex justify-between w-full">
+                        <div className="flex flex-col text-xs">
                         <h3 className="text-violet-800 ">Ashwin Telmore</h3>
-                        <p className="text-sm">Something bio details</p>
+                        <p className="text-sm">Something bio details</p></div>
+                        <div className="text-lg font-extrabold"><i class="fa-solid fa-ellipsis-vertical"></i></div>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
@@ -224,9 +227,11 @@ const Post = () => {
                         src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
                         alt=""
                       />
-                      <div className="flex flex-col text-xs">
+                      <div className="flex justify-between w-full">
+                        <div className="flex flex-col text-xs">
                         <h3 className="text-violet-800 ">Ashwin Telmore</h3>
-                        <p className="text-sm">Something bio details</p>
+                        <p className="text-sm">Something bio details</p></div>
+                        <div className="text-lg font-extrabold"><i class="fa-solid fa-ellipsis-vertical"></i></div>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
@@ -244,29 +249,11 @@ const Post = () => {
                         src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
                         alt=""
                       />
-                      <div className="flex flex-col text-xs">
+                      <div className="flex justify-between w-full">
+                        <div className="flex flex-col text-xs">
                         <h3 className="text-violet-800 ">Ashwin Telmore</h3>
-                        <p className="text-sm">Something bio details</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
-                      <h4>60</h4>
-                      <i className="fa-solid fa-thumbs-up"></i>
-                      <h4>60</h4>
-                      <i className="fa-solid fa-thumbs-down"></i>
-                      <label>reply</label>
-                    </div>
-                  </div>
-                  <div className="flex flex-col  gap-1 ">
-                    <div className="flex  gap-2  ">
-                      <img
-                        className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
-                        src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                        alt=""
-                      />
-                      <div className="flex flex-col text-xs">
-                        <h3 className="text-violet-800 ">Ashwin Telmore</h3>
-                        <p className="text-sm">Something bio details</p>
+                        <p className="text-sm">Something bio details</p></div>
+                        <div className="text-lg font-extrabold"><i class="fa-solid fa-ellipsis-vertical"></i></div>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
