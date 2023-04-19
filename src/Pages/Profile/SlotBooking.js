@@ -1,136 +1,98 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Dropdown, TimePicker, Tag } from 'antd'
+import MultipleDatePicker from '../../Components/Helper/multiDate'
+import moment from 'moment'
+import { useAuth } from '../../providers/auth'
 
 function SlotBooking() {
+    const auth = useAuth()
+    const [dates, setDates] = useState([]);
+    const [slot, setSlot] = useState({
+        available: "",//ath.user.slots.available
+        customDates: [],//array of selected date
+        isEveryTime: false,
+        timeRange: []
+
+    })
+
+    const [available, setAvailable] = useState('')
+
+    const [fromTime, setFromTime] = useState("00:00")
+    const [toTime, setToTime] = useState("00:00")
+
+    const [isEveryTime, setIsEveryTime] = useState(false)
+    const [slotTime, setSlotTime] = useState([])
+
+    const [error, setError] = useState('')
+
+    const handleAddClick = (e) => {
+        if (toTime == "00:00" || fromTime == "00:00") {
+            setError("Invalid Time")
+            return
+        }
+
+        // var duration = moment.duration(toTime.diff(fromTime));
+        // var days = `${duration.asHours()} + ${duration.asMinutes()}`;
+        // console.log("duration.asDays()", duration.asDays())
+        // console.log("duration.asHours()", duration.asHours())
+        // console.log("duration.asHours()", duration.asHours())
+        // console.log('days', days)
+
+        setError('')
+        let slot = {
+            from: moment(fromTime).format('hh:mm A'),
+            to: moment(toTime).format('hh:mm A')
+        }
+        let t = [...auth.user.slots.timeRange]
+        t.push(slot);
+        setFromTime('00:00')
+        setToTime('00:00')
+
+        auth.setUser({ ...auth.user, slots: { ...auth.user.slots, timeRange: t } })
+
+    };
+
+    const onChange = (value, t) => {
+        if (t === "from") {
+            setFromTime(moment(value, 'hh:mm A'));
+
+        }
+        else if (t === "to") {
+            setToTime(moment(value, 'hh:mm A'));
+        };
+
+    }
     return (
         <>
+
             <div className="w-1/2  xs:flex-col xs:w-full ">
                 <div className="p-2 gap-2 flex flex-col">
                     <h2 className="text-lg text-[#FF0000]">Set Slot</h2>
                     <div className="flex">
-                        <label className="w-full p-2 text-base xs:text-base" htmlFor="slots">Available :</label>
-                        <select placeholder="select option" name="slots" className="rounded-xl w-full shadow-sm shadow-black p-2" >
-                            <option>Everyday</option>
-                            <option>Wekend</option>
-                            <option>Week days</option>
-                            <option>Not Available</option>
+                        <label className="w-1/5 p-2 text-base xs:text-base" htmlFor="slots">Available :</label>
+                        <select
+                            placeholder="select option"
+                            name="slots"
+                            className="rounded-xl w-10/12 shadow-sm shadow-black p-2"
+                            value={auth.user.slots.available}
+                            onChange={(e) => auth.setUser({ ...auth.user, slots: { ...auth.user.slots, available: e.target.value } })}
+                        >
+                            <option value={''}>Custom Select</option>
+                            <option value={'everyday'}>Everyday</option>
+                            <option value={'weekend'}>Weekend</option>
+                            <option value={'weekdays'}>Week days</option>
+                            <option value={'not'}>Not Available</option>
                         </select>
                     </div>
                 </div>
-                <div className="flex flex-wrap dark:bg-orange-300 dark:text-black bg-gray-200 p-2 gap-2 text-lg font-semibold mt-20 rounded-2xl xs:gap-1 xs:p-2 xs:ml-2 xs:font-normal ">
-                    <span className="h-16 w-16 p-4  xs:h-11 xs:w-11 xs:p-1 bg-slate-400 dark:border-black rounded-full ">
-                        Mon
-                    </span>
-                    <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
-                        Tue
-                    </span>
-                    <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
-                        Wed
-                    </span>
-                    <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
-                        Thur
-                    </span>
-                    <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
-                        Fri
-                    </span>
-                    <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
-                        Sat
-                    </span>
-                    <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
-                        Sun
-                    </span>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        1
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        2
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        3
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        4
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        5
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        6
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        7
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        8
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        9
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        10
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        11
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        12
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        13
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        14
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        15
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        16
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        17
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        18
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        19
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        20
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        21
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        22
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        23
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        24
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        24
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        26
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        27
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        28
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        29
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        30
-                    </button>
-                    <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                        31
-                    </button>
+                <div className=" border border-blue-100 w-full dark:bg-orange-300 dark:text-black bg-gray-200 p-2text-lg font-semibold mt-2 rounded-2xl xs:gap-1 xs:p-2 xs:ml-2 xs:font-normal ">
+
+                    <MultipleDatePicker
+                        value={auth.user.slots.customDates}
+                        onChange={(dates) => auth.setUser({ ...auth.user, slots: { ...auth.user.slots, customDates: dates } })}
+                        available={auth.user.slots.available}
+                    />
+
                 </div>
                 <div className=" flex flex-col gap-5 p-2 ">
                     <h2 className="font-semibold">Select Time Range</h2>
@@ -139,38 +101,73 @@ function SlotBooking() {
                             type="checkbox"
                             id='everytime'
                             className='w-4 h-4 mr-2'
+                            checked={auth.user.slots.isEveryTime}
+                            onChange={(e) => auth.setUser({ ...auth.user, slots: { ...auth.user.slots, isEveryTime: !auth.user.slots.isEveryTime } })}
                         />
                         <label htmlFor="everytime">Every Time</label>
                     </div>
                     <div className="flex gap-4">
-                        {" "}
-                        From{" "}
-                        <button className="w-24 text-xs rounded-xl border shadow-md shadow-slate-400 h-7">
-                            02:00Am
-                        </button>{" "}
-                        to{" "}
-                        <button className="w-24 text-xs rounded-xl border shadow-md shadow-slate-400 h-7">
-                            02:00Pm
-                        </button>{" "}
-                        <button className="rounded-xl  w-20 h-7 bg-orange-300">add</button>{" "}
+                        <div className="flex gap-4">
+
+                            From
+                            <TimePicker
+                                disabled={auth.user.slots.isEveryTime}
+                                showTime={{ format: 'hh:mm A', use12Hours: true }}
+
+                                showSecond={false}
+                                value={moment(fromTime, 'hh:mm A')}
+                                onChange={(value) => {
+                                    console.log('onchange', value);
+                                }}
+                                onSelect={(e) => onChange(e, 'from')}
+                            />
+                            to
+                            <TimePicker
+                                disabled={auth.user.slots.isEveryTime}
+                                showTime={{ format: 'hh:mm A', use12Hours: true }}
+                                showSecond={false}
+                                value={moment(toTime, 'hh:mm A')}
+                                onChange={(value) => {
+                                    console.log('onchange', value);
+                                }}
+                                onSelect={(e) => onChange(e, 'to')}
+                            />
+                        </div>
+
+                        <button className="rounded-xl  w-20 h-7 bg-orange-300"
+                            onClick={() => handleAddClick()}
+                            disabled={auth.user.slots.isEveryTime}
+                        >add</button>{" "}
                     </div>
+                    <p>{error}</p>
                     <div className="w-full h-auto p-1 gap-4 flex flex-wrap xs:w-full" >
-                        <button className="w-2/5 text-sm border shadow-lg shadow-gray-400 rounded-xl   p-2">
-                            10:00AM-11:00AM
-                        </button>
-                        <button className="w-2/5 text-sm border shadow-lg shadow-gray-400 rounded-xl     p-2">
-                            10:00AM-11:00AM
-                        </button>
-                        <button className="w-2/5 text-sm border shadow-lg shadow-gray-400 rounded-xl    p-2">
-                            10:00AM-11:00AM
-                        </button>
-                        <button className="w-2/5 text-sm border shadow-lg shadow-gray-400 rounded-xl    p-2">
-                            10:00AM-11:00AM
-                        </button>
+                        {/* <button className="w-2/5 text-sm border shadow-lg shadow-gray-400 rounded-xl   p-2">
+                            {moment(fromTime).format('hh:mm A')} - {moment(toTime).format('hh:mm A')}
+                        </button> */}
+                        {
+                            !auth.user.slots.isEveryTime && auth.user.slots.timeRange?.map((item, i) => (
+
+                                <Tag
+                                    onClose={(e) => console.log(e)}
+                                    closable
+                                    className=" text-sm border shadow-lg shadow-gray-400 rounded-xl p-2 pr-3"
+                                    title={"bbjn"}
+                                    key={i}
+                                >
+                                    {item.from} - {item.to}
+                                </Tag>
+
+                            ))
+                        }
                     </div>
                 </div>
+
+
                 <div className="p-2 flex  flex-col gap-2">
-                    <h2 className="text-red-600">Recomendation</h2>
+                    <h2 className="text-red-600"
+
+
+                    >Recomendation</h2>
                     <div className="flex items-center p-1 gap-3">
                         <img
                             className="rounded-full h-16 w-16  border-4 border-red-500"

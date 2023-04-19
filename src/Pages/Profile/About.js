@@ -10,6 +10,8 @@ import UpdateOther from './UpdateComp/update.other'
 import SlotBooking from './SlotBooking'
 
 export default function About() {
+  const [tags, setTags] = useState([])
+
   const [show, setShow] = useState(false)
   const [upEdu, setUpEdu] = useState(false)
 
@@ -22,7 +24,7 @@ export default function About() {
   const [index, setIndex] = useState(null)
 
   const auth = useAuth()
-
+  console.log(tags)
 
   const onUpdate = (item, i) => {
     if (item == 'edu')
@@ -45,7 +47,11 @@ export default function About() {
 
           <div className="p-2 flex flex-col gap-1">
             <h2 className="font-semibold text-lg text-[#1A0970]">Skills</h2>
-            <TagsInput />
+            <TagsInput
+
+              setResTags={(tagsarray) => auth.setUser({ ...auth.user, skills: tagsarray })}
+              resTags={auth.user.skills}
+            />
           </div>
 
           {/* education section */}

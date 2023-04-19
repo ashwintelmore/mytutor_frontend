@@ -39,19 +39,6 @@ export const getPost = async (id) => {
 
 };
 
-export const getUser = async (id) => {
-    return await axios.get(`${END_POINT}/getUser/${id}`)
-        .then(function (response) {
-            // handle success
-            return response
-        })
-        .catch(function (error) {
-            // handle error
-            console.log('error :>> ', error);
-            return error.response
-        })
-
-};
 
 export const createPost = async (data) => {
     const payload = { payload: { ...data } }
@@ -62,6 +49,20 @@ export const createPost = async (data) => {
             return response.data;
         })
         .catch(function (error) {
+            console.log('error :>> ', error);
+            return error.response.data
+        });
+};
+
+export const updatePost = async (payload) => {
+
+    // return
+    return await axios.put(`${END_POINT}/updatePosts`, payload)
+        .then(function (response) {
+            return response.data;
+        })
+        .catch(function (error) {
+            console.log('error :>> ', error);
             return error.response.data
         });
 };

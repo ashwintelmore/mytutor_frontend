@@ -4,6 +4,7 @@ import { getAllUser, register } from "../App/Api";
 import loginImage from '../assets/bacground4.jpg'
 import Google from '../assets/Google-logo.png'
 import { useAuth } from "../providers/auth";
+import Loader from "../Components/Helper/Loader";
 
 export default function Register() {
    const [name, setName] = useState('')
@@ -15,17 +16,22 @@ export default function Register() {
    const auth = useAuth()
 
    async function fetchData() {
+      auth.setLoading(true)
       const res = await register({
          name, email, password
       });
       if (res.data.error) {
          //error
          setError(res.data.error.errMessage)
+         auth.setLoading(false)
+
       } else if (res.data.payload) {
          auth.setUser(res.data.payload)
          localStorage.setItem('_id', res.data.payload._id)
+         auth.setLoading(false)
       }
    }
+
 
    return (
       <div className="w-full h-screen xs:flex xs:flex-col flex items-start">
@@ -68,16 +74,28 @@ export default function Register() {
                      type="password"
                      placeholder="ConfirmPassword"
                      value={confiPass}
-                     onChange={(e) => setPassword(e.target.value)}
+                     onChange={(e) => setConfiPass(e.target.value)}
                   />
                </div>
 
                <div className="w-full flex flex-col my-4">
-                  <button className="w-full text-white my-2 bg-[#fbb110] rounded-md p-4 text-center flext items-center justify-center shadow-sm shadow-slate-500 cursor-pointer"
-                     onClick={() => fetchData()}
-                  >
-                     Register
-                  </button>
+
+                  {
+                     auth.loading ?
+                        <button className="w-full text-white my-2 bg-[#78653b] rounded-md p-4 text-center flext items-center justify-center shadow-sm shadow-slate-500 cursor-pointer"
+                           disabled={true}
+
+                        >
+                           loading...
+                        </button>
+                        :
+                        <button className="w-full text-white my-2 bg-[#fbb110] rounded-md p-4 text-center flext items-center justify-center shadow-sm shadow-slate-500 cursor-pointer"
+                           onClick={() => fetchData()}
+                        >
+                           Register
+                        </button>
+                  }
+
                </div>
 
                <div className="w-full flex items-center justify-center relative py-2">
@@ -97,6 +115,6 @@ export default function Register() {
             </div>
 
          </div>
-      </div>
+      </div >
    )
 }

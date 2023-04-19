@@ -5,16 +5,22 @@ export const AuthContext = React.createContext({});
 
 export const AuthProvider = (props) => {
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const userStorage = localStorage.getItem("_id");
 
     async function fetchData() {
+      setLoading(true)
       const res = await getUser(userStorage);
-      if (res.data.error) {
+      if (res.error) {
         setUser({})
-      } else if (res.data.payload) {
-        setUser(res.data.payload)
+        setLoading(false)
+
+      } else if (res.payload) {
+        setUser(res.payload)
+        setLoading(false)
+
       }
     }
     if (userStorage) {
@@ -23,7 +29,7 @@ export const AuthProvider = (props) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser, loading, setLoading }}>
       {props.children}
     </AuthContext.Provider>
   );

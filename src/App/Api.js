@@ -19,7 +19,7 @@ export const getUser = async (id) => {
     return await axios.get(`${END_POINT}/getUser/${id}`)
         .then(function (response) {
             // handle success
-            return response
+            return response.data
         })
         .catch(function (error) {
             // handle error
@@ -49,12 +49,17 @@ export const login = async (data) => {
         });
 };
 
-export const update = async (data) => {
-    return await axios.post(`${END_POINT}/login`, data)
+export const updateUser = async (data) => {
+    console.log('data', data)
+    let updatedData = {
+        id: data._id,
+        payload: data
+    }
+    return await axios.post(`${END_POINT}/upadateUserDetails`, updatedData)
         .then(function (response) {
-            return response;
+            return response.data;
         })
         .catch(function (error) {
-            return error.response
+            return error.response.data
         });
 };
