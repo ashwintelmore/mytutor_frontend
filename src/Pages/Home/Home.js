@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
 import { getAllPosts } from "../../App/postAPI";
+import { useAuth } from "../../providers/auth";
+import Loader from "../../Components/Helper/Loader";
 
 const Home = () => {
-
+  const auth = useAuth()
   const [posts, setPosts] = useState([])
   const [err, setErr] = useState('')
   useEffect(() => {
@@ -22,6 +25,8 @@ const Home = () => {
     };
   }, [])
 
+  if (auth.loading)
+    return <Loader />
   return (
     <div className="home  sm:relative ml-16 sm:w-full sm:m-2 xs:p-1  h-auto bg-white light dark:text-white dark:bg-neutral-800  p-2 rounded-t-3xl  ">
       <div className="flex w-full sm:text-sm sm:sticky top-0  justify-between p-2 xs:items-center xs:font-semibold">

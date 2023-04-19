@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../providers/auth';
 
 function TagsInput({ resTags, setResTags }) {
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState(resTags);
   const [inputValue, setInputValue] = useState('');
   const auth = useAuth()
 

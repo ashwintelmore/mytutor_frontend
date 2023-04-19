@@ -20,7 +20,6 @@ function AddPost({ show, setShow, }) {
     const onAddDetails = async () => {
         if (!auth.user._id)
             return
-        console.log(userData)
         const res = await createPost({
             ...userData,
             createdTutor: auth.user._id,
@@ -43,7 +42,6 @@ function AddPost({ show, setShow, }) {
         }
         setShow(!show)
     };
-    console.log(userData)
 
     if (!show)
         return null;

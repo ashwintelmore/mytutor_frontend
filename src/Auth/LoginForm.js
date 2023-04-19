@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { login } from "../App/Api";
 import loginImage from '../assets/bacground3.jpg'
 import { useAuth } from "../providers/auth";
+import Loader from "../Components/Helper/Loader";
 
 export default function LoginForm() {
    const navaigate = useNavigate()
@@ -12,6 +13,7 @@ export default function LoginForm() {
 
    const auth = useAuth()
    async function fetchData() {
+      auth.setLoading(true)
       const res = await login({
          email, password
       });
@@ -19,12 +21,18 @@ export default function LoginForm() {
       if (res.data.error) {
          //error
          setError(res.data.error.errMessage)
+         auth.setLoading(false)
       } else if (res.data.payload) {
          auth.setUser(res.data.payload)
+         auth.setLoading(false)
+
 
          localStorage.setItem('_id', res.data.payload._id)
       }
    }
+
+   if (auth.loading)
+      return <Loader />
    return (
       <div className="w-[100%] overflow-auto scrollbar-hide md:scrollbar-default">
          <div className="w=full h-screen flex items-start xs:flex-col" >
@@ -62,11 +70,22 @@ export default function LoginForm() {
                      <p className="text-sm font-medium whitespace-nowrap cursor-pointer underline underline-offset-2">Forget Password?</p>
                   </div>
                   <div className="w-full flex flex-col my-2 font-semibold text-lg">
-                     <button className="w-full text-white my-2 bg-[#f6ab2a] rounded-md p-4 text-center flext items-center justify-center cursor-pointer hover:bg-sky-500/50 shadow-sm shadow-black"
-                        onClick={() => fetchData()}
-                     >
-                        Log in
-                     </button>
+
+                     {
+                        auth.loading ?
+                           <button className="w-full text-white my-2 bg-[#78653b] rounded-md p-4 text-center flext items-center justify-center shadow-sm shadow-slate-500 cursor-pointer"
+                              disabled={true}
+
+                           >
+                              loading...
+                           </button>
+                           :
+                           <button className="w-full text-white my-2 bg-[#fbb110] rounded-md p-4 text-center flext items-center justify-center shadow-sm shadow-slate-500 cursor-pointer"
+                              onClick={() => fetchData()}
+                           >
+                              Login
+                           </button>
+                     }
                      <Link to={'/register'}>
                         <button className="w-full text-[#060606] font-semibold my-2 bg-white border-2 border-black/40 rounded-md p-4 text-center flex justify-center items-center  cursor-pointer shadow-sm shadow-black hover:bg-gray-400">
                            Register

@@ -1,15 +1,34 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { getPost } from "../../App/postAPI";
+import React, { useState, useEffect, useMemo } from "react";
+import { Link, useParams } from "react-router-dom";
+import { getPost, updatePost } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
+import MultipleDatePicker from "../../Components/Helper/multiDate";
+import { getUser } from "../../App/Api";
+import { Radio, Tag } from "antd";
+import Loader from "../../Components/Helper/Loader";
 
 const Post = () => {
-  const param = useParams()
-  const [post, setpost] = useState()
-  const [err, setErr] = useState('')
   const auth = useAuth()
-  useEffect(() => {
+  const param = useParams()
+  const [post, setpost] = useState({})
+  const [err, setErr] = useState('')
 
+  const [userData, setUserData] = useState({})
+
+  const hourArr = useMemo(() => {
+    return ['0', '1', ' 2', '3', '4', '5', '6']
+  }, [])
+
+
+  const [reqData, setReqData] = useState({
+    reqID: '',
+    reqDates: [],
+    reqTime: '',//hour
+    reqMassege: '',
+    reqAccept: false,//true or false
+  })
+
+  useEffect(() => {
     const fetchgetPost = async () => {
       const res = await getPost(param.id);
       if (res.error) {
@@ -17,20 +36,91 @@ const Post = () => {
         setErr(res.error.errMessage)
       } else if (res.payload) {
         //handle sussece responce
+
         setpost(res.payload)
       }
     };
-    fetchgetPost()
+    if (!post._id)
+      fetchgetPost()
+
+    if (post._id && auth.user._id) {
+      const temp = post.reqSlot
+      const index = temp.findIndex(e => e.reqID == auth.user._id);
+      if (index !== -1) {//found
+        setReqData(temp[index])
+      }
+    }
+    return () => {
+
+    };
+  }, [post._id, auth.user._id])
+
+  useEffect(() => {
+
+    const fetchgetUserData = async () => {
+      const res = await getUser(post.createdTutor);
+      if (res.error) {
+        //handle error
+        setErr(res.error.errMessage)
+      } else if (res.payload) {
+        //handle sussece responce
+        setUserData(res.payload)
+      }
+    };
+
+    if (!userData._id && post.createdTutor)
+      fetchgetUserData()
 
     return () => {
 
     };
-  }, [])
-  console.log('post :>> ', post);
+  }, [post])
+
+  const onHandleClicked = async (e) => {
+    let data = {
+      ...reqData,
+      reqID: auth.user._id
+    }
+
+    let temp = [...post.reqSlot]
+    const index = temp.findIndex(e => e.reqID == auth.user._id);
+    if (index !== -1) {//found
+      temp[index] = data
+      // temp.splice(index, 1);
+    } else {//not found
+      temp.push(data);
+    }
+
+    const payload = {
+      postId: post._id,
+      payload: { reqSlot: temp }
+    }
+
+    const res = await updatePost(payload)
+    console.log('res', res)
+    if (res.error) {
+      //error
+      // setError(res.data.error.errMessage)
+      // auth.setLoading(false)
+
+    } else if (res.payload) {
+      // auth.setUser(res.data.payload)
+      // localStorage.setItem('_id', res.data.payload._id)
+      // auth.setLoading(false)
+    }
+
+
+  };
+  console.log('post', post)
+  if (auth.loading)
+    return <Loader />
+  if (!post._id || !auth.user._id)
+    return null
+
   return (
     <>
       {
-        post ?
+        post && userData._id ?
           <div className="Post ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-zinc-800 bg-white xs:w-full xs:flex-col xs:m-0 sm:m-0 sm:flex-col sm:w-full">
             <div className="flex flex-col w-3/5 xs:w-full sm:w-full">
               <div className=" h-auto p-1 xs:p-1 ">
@@ -74,7 +164,7 @@ const Post = () => {
                 <div className="flex items-center gap-2 xs:gap-1 ">
                   <div className="bg-[#D9D9D9] rounded-full h-14 w-14 xs:h-10 xs:w-10 "></div>
                   <div className="flex flex-col xs:text-xs">
-                    <label>{post.createdTutorName}</label>
+                    <label>{userData.name}</label>
                     <label className="text-[#828282]">1.2k Favourite</label>
                   </div>
                 </div>
@@ -191,157 +281,128 @@ const Post = () => {
               </div>
             </div>
 
-            <div className=" flex  flex-col w-2/5 p-2 xs:w-full xs:p-1 sm:w-full  ">
-              <h4 className="text-lg font-semibold mt-2">Select available dates</h4>
-              <div className="flex flex-wrap dark:bg-orange-300 dark:text-black bg-green-200 p-4 gap-2 text-lg font-semibold rounded-2xl xs:gap-1 xs:p-2 xs:font-normal sm:text-xs sm:p-2 sm:gap-1 ">
-                <span className="h-16 w-16 p-4  xs:h-11 xs:w-11 xs:p-1 bg-slate-400 dark:border-black rounded-full ">
-                  Mon
-                </span>
-                <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
-                  Tue
-                </span>
-                <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
-                  Wed
-                </span>
-                <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
-                  Thur
-                </span>
-                <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
-                  Fri
-                </span>
-                <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
-                  Sat
-                </span>
-                <span className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-400 rounded-full">
-                  Sun
-                </span>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  1
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  2
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  3
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  4
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  5
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  6
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  7
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  8
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  9
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  10
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  11
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  12
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  13
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  14
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  15
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  16
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  17
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  18
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  19
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  20
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  21
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  22
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  23
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  24
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  24
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  26
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  27
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  28
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  29
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  30
-                </button>
-                <button className="h-16 w-16 p-4   xs:h-11 xs:w-11 xs:p-1 bg-slate-50 rounded-full">
-                  31
-                </button>
-              </div>
-              <div className="flex flex-col p-3 xs:p-1  xs:mt-3 xs:gap-2">
-                <h3 className="font-semibold">Select Available Time Slot</h3>
-                <div className="w-full xs:w-full  h-auto p-2 xs:p-1 flex flex-wrap gap-2 xs:gap-1 justify-evenly dark:text-black ">
-                  <button className="w-2/5 xs:w-2/5 xs:text-xs  rounded-2xl text-black font-semibold bg-white shadow-sm shadow-slate-500 dark:bg-zinc-50 h-9">
-                    10:00AM-11:00AM
-                  </button>
-                  <button className="w-2/5 xs:w-2/5 xs:text-xs rounded-2xl text-black font-semibold bg-white shadow-sm shadow-slate-500  dark:bg-zinc-50 h-9">
-                    10:00AM-11:00AM
-                  </button>
-                  <button className="w-2/5 xs:w-2/5 xs:text-xs rounded-2xl text-black font-semibold bg-white shadow-sm shadow-slate-500 dark:bg-zinc-50 h-9">
-                    10:00AM-11:00AM
-                  </button>
-                  <button className="w-2/5 xs:w-2/5 xs:text-xs rounded-2xl text-black font-semibold bg-white shadow-sm shadow-slate-500 dark:bg-zinc-50 h-9">
-                    10:00AM-11:00AM
-                  </button>
-                </div>
-              </div>
-              <div className="p-3 w-4/5 flex flex-col gap-1">
-                <h3 className="font-semibold">Message</h3>
-                <input
-                  className="w-full p-2 rounded-2xl outline-none shadow-sm shadow-slate-500"
-                  placeholder="Write something..."
-                  type='text'>
+            {
+              post.createdTutor == auth.user._id ?
+                <div className=" flex  flex-col w-2/5 p-2 xs:w-full xs:p-1 sm:w-full  ">
+                  <h4 className="text-lg font-semibold mt-2">All your requests  </h4>
+                  <div className="flex flex-col p-4 gap-4 xs:p-2 xs:gap-2 xs:overflow-y-auto">
 
-                </input>
-              </div>
-              <div className="flex justify-center">
-                <button className="w-32 h-10 bg-[#F8AF6A] text-white font-semibold dark:text-black  rounded-lg p-1">
-                  Book Slot
-                </button>
-              </div>
-            </div>
-          </div>
+                    {
+                      post.reqSlot.map((item, i) => (
+                        <div className="flex flex-col  gap-1 ">
+                          <div className="flex  gap-2  ">
+                            <img
+                              className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
+                              src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
+                              alt=""
+                            />
+                            <div className="flex flex-col text-xs">
+                              <h3 className="text-violet-800 ">{item.reqID}</h3>
+                              <p className="text-sm">{item.reqMassege}</p>
+                              <p className="text-sm">Request for {item.reqTime} hour</p>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
+                            <h4>Accept</h4>
+                            <i className="fa-solid fa-thumbs-up"></i>
+                            <h4>Reject</h4>
+                            <i className="fa-solid fa-thumbs-down"></i>
+                          </div>
+                        </div>
+                      ))
+                    }
+
+                  </div>
+                </div>
+                :
+                <div className=" flex  flex-col w-2/5 p-2 xs:w-full xs:p-1 sm:w-full  ">
+                  <h4 className="text-lg font-semibold mt-2">Select available dates</h4>
+                  {/* calender */}
+                  <MultipleDatePicker
+                    value={userData.slots.customDates}
+                    available={userData.slots.available}
+                    reqValue={reqData.reqDates}
+                    onChangeReValue={e => setReqData({ ...reqData, reqDates: e })}
+                  />
+                  <div className="flex flex-col p-3 xs:p-1  xs:mt-3 xs:gap-2">
+                    <h3 className="">Available Time Ranges</h3>
+                    <div>
+                      {
+                        !userData.slots.isEveryTime && userData.slots.timeRange?.map((item, i) => (
+
+                          <Tag
+                            onClose={(e) => console.log(e)}
+                            className=" text-sm border shadow-lg shadow-gray-400 rounded-xl p-2"
+                            title={"bbjn"}
+                            key={i}
+                          >
+                            {item.from} - {item.to}
+                          </Tag>
+
+                        ))
+                      }
+                    </div>
+                    <h3 className="mt-5">Select Available Time</h3>
+                    <div className="w-full xs:w-full  h-auto p-2 xs:p-1 flex flex-wrap gap-2 xs:gap-1 justify-evenly dark:text-black ">
+
+
+                      <Radio.Group
+                        buttonStyle="solid"
+                        optionType="button"
+                        defaultValue={reqData.reqTime}
+                        value={reqData.reqTime}
+                        onChange={(e) => setReqData({ ...reqData, reqTime: e.target.value })}
+                      >
+                        {
+                          hourArr.map((item, i) =>
+                            <Radio.Button
+                              value={item}
+                              key={i}
+                              style={{
+                                margin: 10
+                              }}
+                            >
+                              {item ? item : '< 1'} hour
+                            </Radio.Button>
+                          )
+                        }
+                      </Radio.Group>
+                    </div>
+                  </div>
+                  <div className="p-3 w-4/5 flex flex-col gap-1">
+                    <h3 className="font-semibold">Message</h3>
+                    <input
+                      className="w-full p-2 rounded-2xl outline-none shadow-sm shadow-slate-500"
+                      placeholder="Write something..."
+                      type='text'
+                      value={reqData.reqMassege}
+                      onChange={e => setReqData({ ...reqData, reqMassege: e.target.value })}
+                    >
+
+                    </input>
+                  </div>
+                  <div className="flex justify-center">
+                    {
+                      auth.user._id ?
+                        <button className="w-fit h-10 px-2 bg-[#F8AF6A] text-white font-semibold dark:text-black  rounded-lg p-1"
+                          onClick={() => onHandleClicked()}
+                        >
+                          {reqData.reqID ? "Update" : "Request for slot"}
+                        </button>
+                        :
+                        <Link to={'/login'}>
+                          <button className="w-32 h-10 bg-[#F8AF6A] text-white font-semibold dark:text-black  rounded-lg p-1"
+
+                          >
+                            go to login
+                          </button>
+                        </Link>
+                    }
+
+                  </div>
+                </div>
+            }
+          </div >
           :
           <p>Not found</p>
       }
