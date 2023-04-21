@@ -141,7 +141,6 @@ const Profile = () => {
           >
             All Post
           </button>
-
         </div>
         {/* ccalender and about */}
         <div className=" xs:overflow-y-auto " >
@@ -150,7 +149,6 @@ const Profile = () => {
               <About />
               :
               <AllPost />
-
           }
         </div>
       </div>

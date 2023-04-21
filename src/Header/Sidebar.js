@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect  } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
@@ -17,7 +17,7 @@ const Sidebar = ({ isOpen, toggle }) => {
   };
 
 
-   
+
 
   return (
     <div className={isOpen ? "sidebar open" : "sidebar"}>
@@ -30,7 +30,6 @@ const Sidebar = ({ isOpen, toggle }) => {
       </div>
       <div className="flex flex-col gap-3 list-none p-2">
         <div className="flex gap-2 items-center  " onClick={handleThemeSwitch}>
-          
           <i className="fa-solid fa-moon cursor-pointer"> </i>
           <label>Dark Mode</label>
         </div>
@@ -39,9 +38,8 @@ const Sidebar = ({ isOpen, toggle }) => {
           <label>Notifications</label>
         </div>
         <div className="flex gap-2 items-center ">
-          
-        <i className="fa-solid fa-circle-plus" 
-            ></i>
+          <i className="fa-solid fa-circle-plus"
+          ></i>
           <label>Upload</label>
         </div>
         <div className="flex gap-2 items-center">
@@ -49,14 +47,14 @@ const Sidebar = ({ isOpen, toggle }) => {
           <label>Setting</label>
         </div>
       </div>
-  <Link to={"/profile"} >  <div className="flex bottom-2 absolute items-center gap-20 xs:gap-10">
+      <Link to={"/profile"} >  <div className="flex bottom-2 absolute items-center gap-20 xs:gap-10">
         <img
           className="rounded-full h-14 w-14"
           src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
           alt=""
         />
         <label>TutorName</label>
-      </div></Link> 
+      </div></Link>
     </div>
   );
 };

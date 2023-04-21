@@ -12,6 +12,8 @@ import { useAuth } from "./providers/auth";
 import { ProfileProvider } from "./providers/profile";
 import Comment from "./Pages/Posts/comments/Comment";
 import Post from "./Pages/Posts/Post";
+import SearchResult from "./Pages/Search/SearchResult";
+import Appointement from "./Pages/Request/Appointement";
 
 const App = () => {
 
@@ -67,6 +69,7 @@ const App = () => {
             {/* <Route path="/backrop" element={<Backrop />} /> */}
             {/* <Route path="/allpost" element={<AllPost/>}/> */}
             <Route path="/comment" element={<Comment />} />
+            <Route path="/appointement" element={<Appointement />} />
           </Routes>
         </div>
       </BrowserRouter>

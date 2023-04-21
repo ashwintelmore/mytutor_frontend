@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getAllPosts, getUserAllPosts } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
 
-function AllPost() {
+function AllPost({ resPost = false }) {
   const [posts, setPosts] = useState([])
   const [err, setErr] = useState('')
   const auth = useAuth()
@@ -18,11 +18,15 @@ function AllPost() {
         setPosts(res.payload)
       }
     };
-    getallpost()
+    if (!resPost)
+      getallpost()
+    else
+      setPosts(resPost)
     return () => {
 
     };
   }, [])
+
   return (
     <div className=" w-full p-4 flex flex-col gap-4 overflow-scroll xs:w-full xs:p-1 xs:ml-1">
 
@@ -53,7 +57,7 @@ function AllPost() {
             </Link>
           ))
           :
-          <p>{err}</p>
+          <p> No data available {err}</p>
       }
 
 
