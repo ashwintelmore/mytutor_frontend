@@ -36,7 +36,7 @@ export default function LoginForm() {
    return (
       <div className="w-[100%] overflow-auto scrollbar-hide md:scrollbar-default">
          <div className="w=full h-screen flex items-start xs:flex-col" >
-            <div className="relative w-1/2 h-full flex flex-col xs:hidden">
+            <div className="relative w-1/2 h-full flex flex-col xs:hidden sm:hidden">
                <div className="absolute top-[25%] left-[10%] flex flex-col">
                   <h1 className="text-6xl text-white font-bold my-4 drop-shadow-xl">Welcome To My Tutor</h1>
                   <p className="text-2xl text-white font-semibold drop-shadow-xl">Start for free and get attractive offers from the community</p>
@@ -44,22 +44,22 @@ export default function LoginForm() {
                <img className="w-full h-full object-cover" src={loginImage} />
             </div>
 
-            <div className="w-1/2 xs:w-full xs:bg-[#ffff] xs:mx-1 xs:p-7 xs:justify-evenly mx-auto h-full bg-[#f5f5f5] flex flex-col p-20  justify-between items-center">
+            <div className="w-1/2 xs:w-full sm:w-full xs:bg-[#ffff] sm:p-8 xs:mx-1 xs:p-7 xs:justify-evenly sm:justify-evenly sm:mx-1 mx-auto h-full bg-[#f5f5f5] flex flex-col p-20  justify-between items-center">
                <h1 className="text-4xl text-[#075985] font-semibold">My Tutor</h1>
 
-               <div className="w-full flex flex-col max-w-[500px] ">
+               <div className="w-full flex flex-col  ">
                   <div className="w-full flex flex-col mb-2">
                      <h3 className="text-3xl font-semibold mb-2 text-[#075985]">Login</h3>
                      <p className="text-sm mb-2">{error}</p>
                   </div>
                   <div className="w-full flex flex-col">
-                     <input className="w-full text-black py-2 my-2 bg-transparent border-b border-[#075985] outline-none focus:outline-none"
+                     <input className="w-full text-black px-2 py-2 my-2 bg-transparent border-b border-[#075985] outline-none focus:outline-none"
                         type="email"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                      />
-                     <input className="w-full text-black py-2 my-2 bg-transparent border-b border-[#075985] outline-none focus:outline-none"
+                     <input className="w-full px-2 text-black py-2 my-2 bg-transparent border-b border-[#075985] outline-none focus:outline-none"
                         type="password"
                         placeholder="Password"
                         value={password}
@@ -73,21 +73,21 @@ export default function LoginForm() {
 
                      {
                         auth.loading ?
-                           <button className="w-full text-white my-2 bg-[#78653b] rounded-md p-4 text-center flext items-center justify-center shadow-sm shadow-slate-500 cursor-pointer"
+                           <button className="w-full text-white my-2 bg-[#78653b] rounded-md p-4 sm:p-3 text-center flext items-center justify-center shadow-sm shadow-slate-500 cursor-pointer"
                               disabled={true}
 
                            >
                               loading...
                            </button>
                            :
-                           <button className="w-full text-white my-2 bg-[#fbb110] rounded-md p-4 text-center flext items-center justify-center shadow-sm shadow-slate-500 cursor-pointer"
+                           <button className="w-full text-white my-2 bg-[#fbb110] rounded-md p-4 sm:p-3 text-center flext items-center justify-center shadow-sm shadow-slate-500 cursor-pointer"
                               onClick={() => fetchData()}
                            >
                               Login
                            </button>
                      }
                      <Link to={'/register'}>
-                        <button className="w-full text-[#060606] font-semibold my-2 bg-white border-2 border-black/40 rounded-md p-4 text-center flex justify-center items-center  cursor-pointer shadow-sm shadow-black hover:bg-gray-400">
+                        <button className="w-full text-[#060606] font-semibold my-2 bg-white border-2 border-black/40 rounded-md p-4 sm:p-3 text-center flex justify-center items-center  cursor-pointer shadow-sm shadow-black hover:bg-gray-400">
                            Register
                         </button>
                      </Link>

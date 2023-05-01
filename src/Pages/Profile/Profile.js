@@ -48,8 +48,8 @@ const Profile = () => {
   if (!auth.user._id)
     return null
   return (
-    <div className="flex w-full ml-16 h-screen rounded-t-3xl bg-white dark:bg-slate-800 dark:text-white xs:flex-col xs:ml-0  xs:h-full " >
-      <div className="w-1/4 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl xs:w-full   ">
+    <div className="flex w-full ml-16 h-screen rounded-t-3xl bg-white dark:bg-slate-800 dark:text-white xs:flex-col xs:ml-0 sm:p-2  xs:h-full sm:ml-0 sm:flex-col sm:h-full sm:w-full" >
+      <div className="w-1/4 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl xs:w-full sm:w-full  ">
         <h3 className="text-lg font-semibold text-[#FF0000]">Profile Photo</h3>
         <div className="h-28 w-28 rounded-full bg-[#FF0000]  relative ">
           <img
@@ -128,7 +128,7 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="w-3/4 flex-col flex overflow-y-auto xs:w-full xs:relative   ">
+      <div className="w-3/4 flex-col flex overflow-y-auto xs:w-full xs:relative sm:w-full ">
         <div className="flex top-0 sticky bg-white p-2 gap-4 mt-1  ">
 
           <button className="rounded-2xl bg-[#EAF0FF] text-sm w-24 h-8 shadow-md shadow-slate-500 "
@@ -143,7 +143,7 @@ const Profile = () => {
           </button>
         </div>
         {/* ccalender and about */}
-        <div className=" xs:overflow-y-auto " >
+        <div className=" xs:overflow-y-auto sm:flex sm:flex-col  " >
           {
             profileToggler === '1' ?
               <About />

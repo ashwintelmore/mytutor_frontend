@@ -41,9 +41,9 @@ export default function About() {
   return (
     <>
 
-      <div className="flex xs:flex-col xs:w-full xs:overflow-y-auto  ">
+      <div className="flex xs:flex-col xs:w-full xs:overflow-y-auto sm:flex-col sm:w-full ">
         {/* left */}
-        <div className="w-1/2  p-2 flex flex-col gap-3  xs:w-full h-auto ">
+        <div className="w-1/2  p-2 flex flex-col gap-3  xs:w-full h-auto sm:w-full ">
 
           <div className="p-2 flex flex-col gap-1">
             <h2 className="font-semibold text-lg text-[#1A0970]">Skills</h2>

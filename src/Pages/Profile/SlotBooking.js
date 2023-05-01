@@ -65,19 +65,19 @@ function SlotBooking() {
     return (
         <>
 
-            <div className="w-1/2  xs:flex-col xs:w-full ">
+            <div className="w-1/2  xs:flex-col xs:w-full sm:w-full sm:p-1">
                 <div className="p-2 gap-2 flex flex-col">
                     <h2 className="text-lg text-[#FF0000]">Set Slot</h2>
-                    <div className="flex">
-                        <label className="w-1/5 p-2 text-base xs:text-base" htmlFor="slots">Available :</label>
+                    <div className="flex sm:w-full sm:items-center">
+                        <label className="w-1/5 p-2 text-base xs:text-base sm:w-[30%] sm:text-lg" htmlFor="slots">Available :</label>
                         <select
                             placeholder="select option"
                             name="slots"
-                            className="rounded-xl w-10/12 shadow-sm shadow-black p-2"
+                            className="rounded-xl w-10/12 shadow-sm shadow-black p-2 sm:w-[60%] sm:p-1 sm:text-base sm:outline-none "
                             value={auth.user.slots.available}
                             onChange={(e) => auth.setUser({ ...auth.user, slots: { ...auth.user.slots, available: e.target.value } })}
                         >
-                            <option value={''}>Custom Select</option>
+                            <option  value={''}>Custom Select</option>
                             <option value={'everyday'}>Everyday</option>
                             <option value={'weekend'}>Weekend</option>
                             <option value={'weekdays'}>Week days</option>

@@ -35,7 +35,7 @@ export default function Register() {
 
    return (
       <div className="w-full h-screen xs:flex xs:flex-col flex items-start">
-         <div className="relative w-1/2 h-full flex flex-col xs:hidden">
+         <div className="relative w-1/2 h-full flex flex-col xs:hidden sm:hidden ">
             <div className="absolute top-[25%] left-[10%] flex flex-col">
                <h1 className="text-6xl text-white font-bold my-4 drop-shadow-xl">Welcome To My Tutor</h1>
                <p className="text-2xl text-white font-semibold drop-shadow-xl">Start for free and get attractive offers from the community</p>
@@ -43,7 +43,7 @@ export default function Register() {
             <img className="w-full h-full object-cover" src={loginImage} />
          </div>
 
-         <div className="w-1/2 xs:w-full xs:p-8 xs:bg-[#ffff] xs:ml-2 xs:justify-center xs:gap-4   mx-auto h-full bg-[#f5f5f5] flex flex-col p-20 justify-between items-center">
+         <div className="w-1/2 xs:w-full sm:w-full sm:p-7 xs:p-8 xs:bg-[#ffff] xs:ml-2 xs:justify-center sm:justify-center xs:gap-4 sm:gap-3   mx-auto h-full bg-[#f5f5f5] flex flex-col p-20 justify-between items-center">
             <h1 className="text-4xl text-stone-700 font-bold">My Tutors</h1>
 
             <div className="w-full xs:w-full flex flex-col max-w-[500px] ">
@@ -52,25 +52,25 @@ export default function Register() {
                   <p className="text-sm mb-2">{error}</p>
                </div>
                <div className="w-full flex flex-col">
-                  <input className="w-full text-black py-2 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none"
+                  <input className="w-full text-black py-2 px-1 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none"
                      type="text"
                      placeholder="FullName"
                      value={name}
                      onChange={(e) => setName(e.target.value)}
                   />
-                  <input className="w-full text-black py-2 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none"
+                  <input className="w-full px-1 text-black py-2 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none"
                      type="email"
                      placeholder="Email"
                      value={email}
                      onChange={(e) => setEmail(e.target.value)}
                   />
-                  <input className="w-full text-black py-2 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none"
+                  <input className="w-full text-black py-2 px-1 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none"
                      type="password"
                      placeholder="Password"
                      value={password}
                      onChange={(e) => setPassword(e.target.value)}
                   />
-                  <input className="w-full text-black py-2 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none"
+                  <input className="w-full px-1 text-black py-2 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none"
                      type="password"
                      placeholder="ConfirmPassword"
                      value={confiPass}
@@ -89,7 +89,7 @@ export default function Register() {
                            loading...
                         </button>
                         :
-                        <button className="w-full text-white my-2 bg-[#fbb110] rounded-md p-4 text-center flext items-center justify-center shadow-sm shadow-slate-500 cursor-pointer"
+                        <button className="w-full text-white my-2 bg-[#fbb110] rounded-md p-4 text-center flext items-center justify-center sm:w-[95%] shadow-sm shadow-slate-500 cursor-pointer"
                            onClick={() => fetchData()}
                         >
                            Register
