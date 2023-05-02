@@ -50,7 +50,7 @@ const Header = () => {
         <div className="flex items-center gap-9 p-2 text-lg xs:gap-4  xs:w-full ">
           <div>
             <i
-              className="fa-solid fa-bars cursor-pointer  "
+              className="fa-solid fa-bars cursor-pointer"
               onClick={toggleSidebar}
             ></i>
             <Sidebar isOpen={isOpen} toggle={toggleSidebar} />

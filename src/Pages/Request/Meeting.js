@@ -19,6 +19,7 @@ function Meeting({ show, setShow, data, setData }) {
             e,
         });
     };
+
     const [loadings, setLoadings] = useState(false)
     const [reqData, setReqData] = useState({
         reqDates: '',
@@ -26,89 +27,76 @@ function Meeting({ show, setShow, data, setData }) {
         reqMassege: '',
         reqAccept: null,//true or false
     })
+
     const [meeting, setMeeting] = useState({
         tutorId: '',
-        name: '',
-        code: '',
+        meetingName: '',
+        meetingCode: '',
         participants: []
     })
+
     const [meets, setMeets] = useState([])
+
     // all meeting fetch
     useEffect(() => {
         const fetchAllUserMeeting = async () => {
             const res = await getUserallMeets(auth.user._id)
-            console.log('res', res)
             if (res.payload) {
                 setMeets(res.payload)
                 showNotification("All meet fetch")
-                // setLoadings(false)
             } else if (res.error) {
-                // setLoadings(false)
                 showNotification("Something Went Wrong")
-
             }
         };
-        if (!reqData._id)
-            fetchAllUserMeeting()
+        // if (!reqData._id)
+        fetchAllUserMeeting()
         return () => {
 
         };
-    }, [reqData._id])
+    }, [])
 
-    //request updated from data
+    // request updated from data
     useEffect(() => {
-        if (data._id) {
+        if (data._id && !reqData._id) {
             setReqData({
                 ...reqData,
                 ...data,
             })
-            let temp = [...meets]
-
-            temp = temp.filter(e => e._id == data.meeting)
-            if (temp.length > 0)
-                setMeeting({
-                    ...temp[0]
-                })
         }
-        return () => {
+    }, [data])
 
-        };
-    }, [data, meeting.name])
-
-    // meeting on seelct change input field
+    //updated meeting data from previeouse meeting data seted
     useEffect(() => {
-        if (data._id) {
+        if (data._id && meets.length > 0) {
             let temp = [...meets]
-
-            temp = temp.filter(e => e.name == meeting.name)
-            if (temp.length > 0)
-                setMeeting({
-                    ...temp[0]
-                })
+            temp = temp.filter(m => m._id == data.meetingId)
+            setMeeting({
+                ...temp[0]
+            })
         }
-        return () => {
-
-        };
-    }, [meeting.name])
-
+    }, [meets, data._id])
 
     const generateMeetId = async () => {
         setLoadings(true)
-        const res = await generateMeetingId()
-        console.log('res', res)
-        if (res) {
-            setMeeting({
+        const id = await generateMeetingId()
+        if (id) {
+            const _data = {
                 ...meeting,
                 tutorId: auth.user._id,
-                code: res
-            })
-            onCreateMeeting()
-            showNotification("Meeting is Created")
-            setLoadings(false)
+                meetingCode: id
+            }
+            const resp = await createMeeting(_data)
+            if (resp.payload) {
+                setMeeting(resp.payload)
+                showNotification("Meeting is created")
+                setLoadings(false)
+            } else if (resp.error) {
+                setLoadings(false)
+                showNotification("Something Went Wrong")
+            }
         } else {
             setLoadings(false)
-            showNotification("Something Went Wrong")
-
+            showNotification("Code is not generating, try after some time or contact support")
         }
     };
 
@@ -118,30 +106,37 @@ function Meeting({ show, setShow, data, setData }) {
             name: data.requesterName,
         }
 
+        //! TODO after click send meeting should update meeting wiht "participants" array
+        // const _meeting = {
+        //     ...meeting,
+        //     participants: participant
+        // }
+        // const resp = await createMeeting(_meeting)
+        // console.log('resp', resp)
+        // if (resp.payload) {
+        //     setMeeting(resp.payload)
+        //     showNotification("Meeting is created")
+        //     setLoadings(false)
+        // } else if (resp.error) {
+        //     setLoadings(false)
+        //     showNotification("Something Went Wrong")
+        // }
 
 
         const _data = {
             ...data,
             ...reqData,
-            meeting: meeting._id
+            meetingId: meeting._id,
+            meetingName: meeting.meetingName,
+            meetingCode: meeting.meetingCode
         }
-
-        const payload = {
-            id: data._id,
-            payload: _data
-        }
-
-        console.log('_data', _data)
-        const res = await updateRequest(payload)
-        console.log('res', res)
+        const res = await updateRequest(_data)
         if (res.payload) {
             setMeeting(res.payload)
-            showNotification("Request sended back")
-            // setLoadings(false)
+            showNotification("Request sended Successfull")
+            setShow(!show)
         } else if (res.error) {
-            // setLoadings(false)
-            showNotification("Something Went Wrong")
-
+            showNotification(res.error.errMessage)
         }
     };
 
@@ -169,7 +164,25 @@ function Meeting({ show, setShow, data, setData }) {
         }
     };
 
+    const onMeetingChange = (e) => {
+        if (e.target.value == '') {
+            //create new meeting
+            setMeeting({
+                tutorId: '',
+                meetingName: '',
+                meetingCode: '',
+                participants: []
+            })
+        } else if (meets.length > 0) {
+            //select exitsting meeting
+            let temp = [...meets]
 
+            temp = temp.filter(m => m.meetingName == e.target.value)
+            setMeeting({
+                ...temp[0]
+            })
+        }
+    };
 
     if (!show)
         return null;
@@ -212,121 +225,134 @@ function Meeting({ show, setShow, data, setData }) {
                         </div>
                         <label className="text-xs ml-2 p-1">Write something</label>
                     </div>
-                    <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
-                        <label className="w-full p-2 text-base xs:text-base">Select Meeting date</label>
-                        <Radio.Group
-                            buttonStyle="solid"
-                            optionType="button"
-                        // value={reqData.reqDates[0]}
-                        // onChange={(e) => setReqData({ ...reqData, reqDates: [e.target.value] })}
-                        >
-                            {
-                                data.reqDates.map((_item, i) =>
-                                    <Radio.Button
-                                        value={_item}
-                                        key={i}
-                                        style={{
-                                            // margin: 10
-                                        }}
-                                    >
-                                        {_item}
-                                    </Radio.Button>
-                                )
-                            }
-                        </Radio.Group>
-                        <label className="text-xs ml-2 p-1">Write something</label>
-                    </div>
-                </div>
-
-                <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
-
-                    <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
-                        <label className="w-full p-2 text-base xs:text-base" htmlFor="slots">Choose meeting :</label>
-                        <select
-                            placeholder="select option"
-                            name="meeting"
-                            className="rounded-xl w-full shadow-sm shadow-black p-2"
-                            value={meeting.name}
-                            onChange={(e) => setMeeting({ ...meeting, name: e.target.value })}
-                        >
-                            <option value={''}>Creating new Meeting</option>
-                            {
-                                meets.map((item, i) => (
-                                    <option
-                                        value={item.name}
-                                        key={i}
-                                    >{item.name}</option>
-                                ))
-                            }
-                        </select>
-                        <label className="text-xs ml-2 p-1">Select what is type of your post</label>
-                    </div>
-
-                    <div className=" gap-2 relative  w-[45%] p-2  xs:w-full">
-                        <label className="w-full p-2 text-base xs:text-base" htmlFor="slots">Set time :</label>
-
-                        <div className="flex gap-2 relative  w-full p-2 ">
-                            <label htmlFor="from">Meeting Start at</label>
-                            <TimePicker
-                                id="from"
-                                className="h-fit"
-                                showTime={{ format: 'hh:mm A', use12Hours: true }}
-                                showSecond={false}
-
-                                value={reqData.reqTime == '' ? '' : moment(reqData.reqTime, 'hh:mm A')}
-
-                                onSelect={(value) => setReqData({ ...reqData, reqTime: value.format('hh:mm A') })}
-                            />
-                        </div>
-                        <label className="text-xs ml-2 p-1">Write something</label>
-                    </div>
-                </div>
-
-                <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
-                    <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
-                        <label className="w-full p-2 text-base xs:text-base">Name of Meeting</label>
-                        <div className="flex items-center  relative border border-gray-500 shadow-slate-400 shadow-md text-sm   rounded-xl p-1  ">
-                            <input
-                                type="text"
-                                placeholder="Write something"
-                                className="rounded-lg px-2 py-1  w-full  outline-none "
-                                value={meeting.name}
-                                onChange={(e) => setMeeting({ ...meeting, name: e.target.value })}
-                            ></input>
-
-                            <Button
-                                className="absolute rounded-xl text-sm  h-7 w-fit  text-white right-1   bg-blue-500"
-                                type="primary"
-                                // loading={loadings}
-                                onClick={() => generateMeetId()}
+                    {
+                        reqData.reqAccept
+                        &&
+                        <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
+                            <label className="w-full p-2 text-base xs:text-base">Select Meeting date</label>
+                            <Radio.Group
+                                buttonStyle="solid"
+                                optionType="button"
+                                value={reqData.reqDates[0]}
+                                onChange={(e) => setReqData({ ...reqData, reqDates: [e.target.value] })}
                             >
-                                Create
-                            </Button>
+                                {
+                                    data.reqDates.map((_item, i) =>
+                                        <Radio.Button
+                                            value={_item}
+                                            key={i}
+                                            style={{
+                                                // margin: 10
+                                            }}
+                                        >
+                                            {_item}
+                                        </Radio.Button>
+                                    )
+                                }
+                            </Radio.Group>
+                            <label className="text-xs ml-2 p-1">Write something</label>
+                        </div>
+                    }
+                </div>
 
+                {
+                    reqData.reqAccept
+                    &&
+                    <>
+                        <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
 
+                            <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
+                                <label className="w-full p-2 text-base xs:text-base" htmlFor="slots">Choose meeting :</label>
+                                <select
+                                    placeholder="select option"
+                                    name="meeting"
+                                    className="rounded-xl w-full shadow-sm shadow-black p-2"
+                                    value={meeting.meetingName}
+                                    onChange={(e) => onMeetingChange(e)}
+                                >
+                                    <option value={''}>Creating new Meeting</option>
+                                    {
+                                        meets.map((item, i) => (
+                                            <option
+                                                value={item.meetingName}
+                                                key={i}
+                                            >{item.meetingName}</option>
+                                        ))
+                                    }
+                                </select>
+                                <label className="text-xs ml-2 p-1">Select what is type of your post</label>
+                            </div>
+
+                            <div className=" gap-2 relative  w-[45%] p-2  xs:w-full">
+                                <label className="w-full p-2 text-base xs:text-base" htmlFor="slots">Set time :</label>
+
+                                <div className="flex gap-2 relative  w-full p-2 ">
+                                    <label htmlFor="from">Meeting Start at</label>
+                                    <TimePicker
+                                        id="from"
+                                        className="h-fit"
+                                        showTime={{ format: 'hh:mm A', use12Hours: true }}
+                                        showSecond={false}
+
+                                        value={reqData.reqTime == '' || reqData.reqTime.length < 2 ? '' : moment(reqData.reqTime, 'hh:mm A')}
+
+                                        onSelect={(value) => setReqData({ ...reqData, reqTime: value.format('hh:mm A') })}
+                                    />
+                                </div>
+                                <label className="text-xs ml-2 p-1">Write something</label>
+                            </div>
                         </div>
 
-                        <label className="text-xs ml-2 p-1">Write something</label>
-                    </div>
-                    <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
-                        <label className="w-full p-2 text-base xs:text-base">Meeting Code</label>
-                        <input
-                            className="rounded-xl w-full shadow-sm shadow-black p-2"
-                            type="text"
-                            name="code"
-                            value={meeting.code}
-                            disabled
-                        />
-                        <label className="text-xs ml-2 p-1">Copy meeeting link</label>
-                    </div>
-                </div>
-                <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
-                    <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
-                        <label className="w-full p-2 text-base xs:text-base">Go to meeting</label>
-                        <label className="text-xs ml-2 p-1">Write something</label>
-                    </div>
-                </div>
+                        <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
+                            <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
+                                <label className="w-full p-2 text-base xs:text-base">Name of Meeting</label>
+                                <div className="flex items-center  relative border border-gray-500 shadow-slate-400 shadow-md text-sm   rounded-xl p-1  ">
+                                    <input
+                                        type="text"
+                                        placeholder="Write something"
+                                        className="rounded-lg px-2 py-1  w-full  outline-none "
+                                        value={meeting.meetingName}
+                                        onChange={(e) => setMeeting({ ...meeting, meetingName: e.target.value })}
+                                    ></input>
+                                    {
+                                        !meeting._id
+                                        &&
+                                        <Button
+                                            className="absolute rounded-xl text-sm  h-7 w-fit  text-white right-1   bg-blue-500"
+                                            type="primary"
+                                            loading={loadings}
+                                            onClick={() => generateMeetId()}
+                                        >
+                                            Create
+                                        </Button>
+                                    }
 
+
+
+                                </div>
+
+                                <label className="text-xs ml-2 p-1">Write something</label>
+                            </div>
+                            <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
+                                <label className="w-full p-2 text-base xs:text-base">Meeting Code</label>
+                                <input
+                                    className="rounded-xl w-full shadow-sm shadow-black p-2"
+                                    type="text"
+                                    name="code"
+                                    value={meeting.meetingCode}
+                                    disabled
+                                />
+                                <label className="text-xs ml-2 p-1">Copy meeeting link</label>
+                            </div>
+                        </div>
+                        <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
+                            <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
+                                <label className="w-full p-2 text-base xs:text-base">Go to meeting</label>
+                                <label className="text-xs ml-2 p-1">Write something</label>
+                            </div>
+                        </div>
+                    </>
+                }
 
 
                 <div className="flex p-2 xs:w-full xs:justify-evenly gap-2 w-full justify-end">

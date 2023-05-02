@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getAllPosts, getUserAllPosts } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
+import { ConfigProvider, FloatButton } from "antd";
+import { useUserData } from "../../providers/userData";
 
-function AllPost({ resPost = false }) {
+function AllPost({ resPost = false, isEditable = true }) {
   const [posts, setPosts] = useState([])
   const [err, setErr] = useState('')
   const auth = useAuth()
+  const userData = useUserData()
   useEffect(() => {
-    const getallpost = async () => {
-      const res = await getUserAllPosts(auth.user._id);
+    const getallpost = async (id) => {
+      const res = await getUserAllPosts(id);
       if (res.error) {
         //handle error
         setErr(res.error.errMessage)
@@ -18,8 +21,10 @@ function AllPost({ resPost = false }) {
         setPosts(res.payload)
       }
     };
-    if (!resPost)
-      getallpost()
+
+    if (!resPost) {
+      isEditable ? getallpost(auth.user._id) : getallpost(userData.userDetails._id)
+    }
     else
       setPosts(resPost)
     return () => {
@@ -34,7 +39,7 @@ function AllPost({ resPost = false }) {
         posts.length > 0 ?
           posts.map((item, i) => (
             <Link to={'/postcontent/' + item._id}>
-              <div className="flex gap-3 bg-indigo-100 w-4/6 p-2 rounded-2xl shadow-md shadow-slate-400 xs:w-full xs:text-xs">
+              <div className="flex gap-3 bg-indigo-100 w-4/6 p-2 rounded-2xl shadow-md shadow-slate-400 xs:w-full xs:text-xs" key={i}>
                 <div className="h-32 w-2/5   dark:bg-violet-200 bg-orange-400 xs:h-24 xs:w-1/2 rounded-xl">
                   {/* thanmbail image */}
                 </div>
@@ -59,8 +64,6 @@ function AllPost({ resPost = false }) {
           :
           <p> No data available {err}</p>
       }
-
-
     </div>
   );
 }

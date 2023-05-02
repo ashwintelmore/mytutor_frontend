@@ -17,9 +17,12 @@ export const createRequest = async (data) => {
         });
 };
 export const updateRequest = async (data) => {
-    console.log(data)
+    const payload = {
+        id: data._id,
+        payload: data
+    }
     // return
-    return await axios.put(`${END_POINT}/updaterequest`, data)
+    return await axios.put(`${END_POINT}/updaterequest`, payload)
         .then(function (response) {
             return response.data;
         })
@@ -42,6 +45,29 @@ export const getAllRequester = async (id) => {
 export const getAllRequested = async (id) => {
 
     return await axios.get(`${END_POINT}/getAllRequestedReqs/${id}`)
+        .then(function (response) {
+            return response.data
+        })
+        .catch(function (error) {
+            return error.response.data
+        })
+
+};
+export const getAllPostRequested = async (postId, requestedId) => {
+
+    return await axios.get(`${END_POINT}/getAllPostAndRequestedReq/${postId}/${requestedId}`)
+        .then(function (response) {
+            return response.data
+        })
+        .catch(function (error) {
+            return error.response.data
+        })
+
+};
+
+export const getAllPostRequester = async (postId, requesterId) => {
+
+    return await axios.get(`${END_POINT}/getAllPostAndRequesterReq/${postId}/${requesterId}`)
         .then(function (response) {
             return response.data
         })

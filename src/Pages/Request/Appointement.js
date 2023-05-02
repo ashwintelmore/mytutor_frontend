@@ -6,13 +6,14 @@ import { getAllRequested, getAllRequester } from "../../App/RequestApi";
 import { useAuth } from "../../providers/auth";
 import Meeting from "./Meeting";
 import { Radio } from "antd";
+import RecievedReq from "./RecievedReq";
+import SendReq from "./SendReq";
 
 const Appointement = () => {
     const auth = useAuth()
-    const [profileToggler, setProfileToggler] = useState('2')
-    const [show, setShow] = useState(false)
+    const [profileToggler, setProfileToggler] = useState('1')
     const [requests, setRequests] = useState([])
-    const [reqData, setReqData] = useState({})
+
 
     useEffect(() => {
         const getListAppointements = async () => {
@@ -30,23 +31,11 @@ const Appointement = () => {
                 setRequests(res.payload)
             }
         };
-
-        console.log('requests', requests)
         getListAppointements()
         return () => {
 
         };
     }, [profileToggler])
-
-    const onManageClick = (item, i) => {
-        setShow(!show)
-        setReqData(item)
-    };
-
-
-    const [meetings, setMeetings] = useState([])
-
-    console.log('requests', requests)
 
     return (
         <>
@@ -82,145 +71,17 @@ const Appointement = () => {
                     <div className=" xs:overflow-y-auto " >
                         {
                             profileToggler === '1' ?
-                                <div className=" w-full p-4 flex flex-col gap-4 overflow-scroll xs:w-full xs:p-1 xs:ml-1">
-
-                                    {
-                                        requests.length > 0 ?
-                                            requests.map((item, i) => (
-                                                <Link to={'/postcontent/' + item.postId}
-                                                    key={i}
-                                                >
-                                                    {/* Comment card */}
-                                                    <div className="flex flex-col  gap-1 "
-                                                        key={i}
-                                                    >
-                                                        <div className="flex  gap-2  ">
-                                                            <img
-                                                                className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
-                                                                src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                                                                alt=""
-                                                            />
-                                                            <div className="flex justify-between w-full">
-                                                                <div className="flex flex-col text-xs">
-                                                                    <h3 className="text-violet-800 ">{item.requestedName}</h3>
-                                                                    <p className="text-sm">{item.postName}</p>
-                                                                    <p className="text-sm">{item.reqAccept ? "Accepeted" : "Not Accepted"}</p>
-                                                                    <p className="text-sm">{item.reqAccept ? "MeetingLink" : ""}</p>
-                                                                    {
-                                                                        item.reqAccept
-                                                                        &&
-                                                                        <>
-                                                                            <p className="text-sm">on Dated {item.reqDates[0]}</p>
-                                                                            <p className="text-sm">At time {item.reqTime}</p>
-                                                                            <p className="text-sm">{item.reqAccept ? item.meeting : ""}</p>
-                                                                        </>
-                                                                    }
-
-
-                                                                    {
-                                                                        item.reqAccept
-                                                                        &&
-                                                                        <div>
-                                                                            <button className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-500 mr-2"
-                                                                            >Cancel Meeting
-                                                                            </button>
-
-                                                                            <a href="http://github.com/" target="_blank">
-                                                                                <button className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-500"
-                                                                                >Go to Meeting
-                                                                                </button>
-                                                                            </a>
-                                                                        </div>
-
-                                                                    }
-
-
-                                                                </div>
-                                                                <div className="text-lg font-extrabold"><i className="fa-solid fa-ellipsis-vertical"></i></div>
-                                                            </div>
-                                                        </div>
-                                                        {/* <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
-                                                            <h4>60</h4>
-                                                            <i className="fa-solid fa-thumbs-up"></i>
-                                                            <h4>60</h4>
-                                                            <i className="fa-solid fa-thumbs-down"></i>
-                                                            <label>reply</label>
-                                                        </div> */}
-                                                    </div>
-                                                </Link>
-                                            ))
-                                            :
-                                            <p> No data available </p>
-                                    }
-
-
-                                </div>
+                                <SendReq
+                                    requests={requests}
+                                />
                                 :
-                                <div className=" w-full p-4 flex flex-col gap-4 overflow-scroll xs:w-full xs:p-1 xs:ml-1">
-
-                                    {
-                                        requests.length > 0 ?
-                                            requests.map((item, i) => (
-
-                                                <div className="flex flex-col  gap-1 "
-                                                    key={i}
-                                                >
-                                                    <div className="flex  gap-2  ">
-                                                        <img
-                                                            className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
-                                                            src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                                                            alt=""
-                                                        />
-                                                        <div className="flex justify-between w-full">
-                                                            <div className="flex flex-col text-xs">
-                                                                <h2 className="text-violet-800 ">{item.requesterName}
-                                                                    <span className=" text-gray-600"> Requesting for {item.reqTime} hour </span>
-
-                                                                </h2>
-                                                                <Link to={'/postcontent/' + item.postId}
-                                                                    key={i}
-                                                                >
-
-                                                                    <p className="text-lg">{item.postName}</p>
-                                                                </Link>
-                                                                <p className="text-sm text-gray-600">
-                                                                    {item.reqMassege}
-                                                                </p>
-                                                                {/* <p className="text-sm text-gray-600">
-                                                                    meetingLink
-                                                                </p> */}
-
-
-                                                                <div className="mt-2">
-                                                                    <button className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-500"
-                                                                        onClick={() => onManageClick(item, i)}
-                                                                    >Manage Meeting
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                            <div className="text-lg font-extrabold">
-                                                                <i className="fa-solid fa-ellipsis-vertical"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            ))
-                                            :
-                                            <p> No data available </p>
-                                    }
-
-
-                                </div>
+                                <RecievedReq
+                                    requests={requests}
+                                />
                         }
                     </div>
                 </div>
             </div >
-            <Meeting
-                show={show}
-                setShow={() => setShow(!show)}
-                data={reqData}
-            />
         </>
     );
 };
