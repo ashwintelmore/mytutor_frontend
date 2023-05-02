@@ -130,9 +130,9 @@ const Post = () => {
                         (/hr)
                       </h6>
                     </div>
-                    <div className="flex gap-1  items-center xs:gap-0 xs:text-xs ">
+                    <div className="flex gap-1  items-center xs:gap-0 xs:text-[12px] ">
                       <h4>4</h4>
-                      <label className="text-sm text-[#6F6F6F]">sits left</label>
+                      <label className="text-sm sm:text-[7px] text-[#6F6F6F]">(sits left)</label>
                     </div>
                     <div className="flex gap-1 items-center xs:gap-1 xs:text-xs">
                       <h4>60</h4>
@@ -187,9 +187,9 @@ const Post = () => {
                     className="w-11/12 border-b-2 outline-none border-[#303030]">
 
                   </input>
-                  <button className="absolute bg-orange-400 right-2 rounded-xl p-2 top-2 text-white">Comment</button>
+                  <button className="absolute bg-orange-400 right-2 rounded-xl p-2 top-2 text-white xs:p-2 xs:text-xs ">Comment</button>
                 </div>
-                <div className="flex flex-col p-4 gap-4 xs:p-2 xs:gap-2 xs:overflow-y-auto">
+                <div className="flex flex-col p-4 gap-4 xs:p-4 xs:gap-2 xs:overflow-y-auto">
                   {/* Comment card */}
                   <div className="flex flex-col  gap-1 ">
                     <div className="flex  gap-2  ">

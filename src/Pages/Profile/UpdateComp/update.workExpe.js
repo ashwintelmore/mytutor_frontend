@@ -80,7 +80,7 @@ function UpdateWorkExpe({ show, setShow, data, setData }) {
         <div className="flex w-full  items-center justify-center xs:flex-col absolute top-4 left-0">
             <div className=" bg-[#fff] relative w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
                 <div className="flex w-full text-xl font-bold px-3">
-                <h2 className="text-[#f48c2b] ">Update Work Experience</h2>
+                    <h2 className="text-[#f48c2b] ">Update Work Experience</h2>
                 </div>
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
@@ -113,7 +113,7 @@ function UpdateWorkExpe({ show, setShow, data, setData }) {
                         />
                         <p className="text-xs ml-2 p-1">Write something</p>
                     </div>
-                     <div className="flex flex-col  xs:w-full  w-[45%] p-2 justify-around  ">
+                    <div className="flex flex-col  xs:w-full  w-[45%] p-2 justify-around  ">
                         <label className="w-full text-base p-2">To</label>
                         <input className="  rounded-xl w-full p-2  shadow-sm shadow-black" type="date"
                             name="to"
@@ -125,8 +125,8 @@ function UpdateWorkExpe({ show, setShow, data, setData }) {
                 </div>
 
                 <div className="flex p-1    w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
-                  
-                     <div className="flex  flex-col  w-[45%]  p-2 xs:w-full">
+
+                    <div className="flex  flex-col  w-[45%]  p-2 xs:w-full">
                         <label className="w-full p-2 text-base xs:w-1/4">Location</label>
                         <input className="  rounded-xl w-full p-2  shadow-sm shadow-black" type="text"
                             name="location"
