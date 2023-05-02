@@ -150,11 +150,11 @@ const Post = () => {
               </div>
               <div className="flex justify-between  p-3 xs:p-2">
                 <Link to={'/showProfile/' + post.createdTutor}>
-                  <div className="flex items-center gap-2 xs:gap-1 ">
+                  <div className="flex items-center gap-2 xs:gap-1 cursor-pointer ">
 
                     <div className="bg-[#D9D9D9] rounded-full h-14 w-14 xs:h-10 xs:w-10 "></div>
 
-                    <div className="flex flex-col xs:text-xs">
+                    <div className="flex flex-col xs:text-xs cursor-pointer">
                       <label>{userData.name}</label>
                       <label className="text-[#828282]">1.2k Favourite</label>
                     </div>

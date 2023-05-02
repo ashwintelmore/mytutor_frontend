@@ -15,7 +15,7 @@ export default function SendReq({ requests }) {
                             <div className="flex flex-col  gap-1 " key={i}>
                                 <div className="flex  gap-2  ">
                                     <div clas>
-                                        <i class="fa-solid fa-up-right-from-square "></i>
+                                        <i className="fa-solid fa-up-right-from-square "></i>
                                     </div>
                                     <div className="flex justify-between w-full">
                                         <div className="flex flex-col text-xs">

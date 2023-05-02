@@ -51,8 +51,8 @@ export default function About({ isEditable = true }) {
             <h2 className="font-semibold text-lg text-[#1A0970]">Skills</h2>
             <TagsInput
               isEditable={isEditable}
-              // setResTags={(tagsarray) => auth.setUser({ ...userData.userDetails, skills: tagsarray })}
-              resTags={userData.userDetails.skills}
+              setResTags={(tagsarray) => auth.setUser({ ...auth.user, skills: tagsarray })}
+              resTags={auth.user.skills}
             />
           </div>
 
@@ -61,11 +61,15 @@ export default function About({ isEditable = true }) {
             <div className="flex  justify-between">
               <label className="font-semibold text-lg text-[#FF0000] ">Education</label>
               <div>
-                <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold"
-                  onClick={() => setShow(!show)}
-                >
-                  Add
-                </button>
+                {
+                  isEditable
+                  &&
+                  <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold"
+                    onClick={() => setShow(!show)}
+                  >
+                    Add
+                  </button>
+                }
               </div>
             </div>
             {
@@ -76,10 +80,14 @@ export default function About({ isEditable = true }) {
                       <div className="flex flex-col ">
                         <div className=" flex justify-between">
                           <h3 className="font-semibold text-lg text-[#1A0970]">{item.title}</h3>
-                          <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"
-                            onClick={() => onUpdate("edu", i)}
-                          >
-                          </i>
+                          {
+                            isEditable
+                            &&
+                            <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"
+                              onClick={() => onUpdate("edu", i)}
+                            >
+                            </i>
+                          }
                         </div>
                         <div className="flex justify-between ">
                           <label className="text-[#6B6976]">{item.location} | {item.orginization}</label>{" "}
@@ -102,11 +110,15 @@ export default function About({ isEditable = true }) {
             <div className="flex  justify-between">
               <label className="font-semibold text-lg text-[#FF0000] "> Work Experience </label>
               <div>
-                <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold"
-                  onClick={() => setWorEx(!WorEx)}
-                >
-                  Add
-                </button>
+                {
+                  isEditable
+                  &&
+                  <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold"
+                    onClick={() => setWorEx(!WorEx)}
+                  >
+                    Add
+                  </button>
+                }
               </div>
             </div>
             {
@@ -117,10 +129,14 @@ export default function About({ isEditable = true }) {
                       <div className="flex flex-col ">
                         <div className=" flex justify-between">
                           <h3 className="font-semibold text-lg text-[#1A0970]">{item.title}</h3>
-                          <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"
-                            onClick={() => onUpdate("work", i)}
-                          >
-                          </i>
+                          {
+                            isEditable
+                            &&
+                            <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"
+                              onClick={() => onUpdate("work", i)}
+                            >
+                            </i>
+                          }
                         </div>
                         <div className="flex justify-between ">
                           <label className="text-[#6B6976]">{item.location} | {item.orginization}</label>{" "}
@@ -142,11 +158,15 @@ export default function About({ isEditable = true }) {
             <div className="flex  justify-between">
               <label className="font-semibold text-lg text-[#FF0000] "> Achivement/Project/Other </label>
               <div>
-                <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold"
-                  onClick={() => setOther(!other)}
-                >
-                  Add
-                </button>
+                {
+                  isEditable
+                  &&
+                  <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold"
+                    onClick={() => setOther(!other)}
+                  >
+                    Add
+                  </button>
+                }
               </div>
             </div>
             {
@@ -157,10 +177,14 @@ export default function About({ isEditable = true }) {
                       <div className="flex flex-col ">
                         <div className=" flex justify-between">
                           <h3 className="font-semibold text-lg text-[#1A0970]">{item.title}</h3>
-                          <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"
-                            onClick={() => onUpdate("other", i)}
-                          >
-                          </i>
+                          {
+                            isEditable
+                            &&
+                            <i className="fa-solid fa-pencil bg-slate-50 rounded-full shadow-sm shadow-slate-500 p-1"
+                              onClick={() => onUpdate("other", i)}
+                            >
+                            </i>
+                          }
                         </div>
                         <div className="flex justify-between ">
                           <label className="text-[#6B6976]">{item.location} | {item.orginization}</label>{" "}
@@ -181,7 +205,10 @@ export default function About({ isEditable = true }) {
         {/* right */}
 
 
-        <SlotBooking />
+        <SlotBooking
+
+          isEditable={isEditable}
+        />
 
       </div>
 

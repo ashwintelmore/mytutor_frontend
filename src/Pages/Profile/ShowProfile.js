@@ -70,20 +70,20 @@ const ShowProfile = () => {
                         value={userData.userDetails.name}
                         disabled
                     />
-                    <label className="text-sm">Teacher</label>
+                    <label className="text-sm">{userData.userDetails.analytics.favorite}</label>
                 </div>
 
                 <div className="flex gap-12 text-lg">
                     <div className="flex-col flex items-center ">
-                        <label className="text-[#1A0970]">17</label>
+                        <label className="text-[#1A0970]">{userData.userDetails.analytics.lectures}</label>
                         <label className="text-sm">Lectures</label>
                     </div>
                     <div className="flex-col flex items-center ">
-                        <label className="text-[#1A0970]">1.2k</label>
+                        <label className="text-[#1A0970]">{userData.userDetails.analytics.hours}</label>
                         <label className="text-sm">Hours</label>
                     </div>
                     <div className="flex-col flex items-center ">
-                        <label className="text-[#1A0970]">10</label>
+                        <label className="text-[#1A0970]">{userData.userDetails.analytics.learners}</label>
                         <label className="text-sm">Learners </label>
                     </div>
                 </div>
@@ -142,6 +142,7 @@ const ShowProfile = () => {
                             />
                             :
                             <AllPost
+                                isEditable={false}
 
                             />
                     }
