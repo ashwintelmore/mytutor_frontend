@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../providers/auth';
+import { useUserData } from '../../providers/userData';
 
-function TagsInput({ resTags, setResTags }) {
+function TagsInput({ resTags, setResTags, isEditable }) {
   const [tags, setTags] = useState(resTags);
   const [inputValue, setInputValue] = useState('');
   const auth = useAuth()
+  const userData = useUserData()
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
@@ -42,22 +44,31 @@ function TagsInput({ resTags, setResTags }) {
           <span key={tag} className="rounded-2xl bg-[#EDEDED]
            text-sm px-1 flex items-center gap-2" >
             {tag}
+            {
+              isEditable
+              &&
+              <i
+                className="fa-solid fa-xmark text-red-600 cursor-pointer" onClick={() => handleRemoveTag(tag)}
 
-            <i
-              className="fa-solid fa-xmark text-red-600 cursor-pointer" onClick={() => handleRemoveTag(tag)}
-
-            ></i>
+              ></i>
+            }
           </span>
         ))}
       </div>
-      <input
-        className="  rounded-xl w-full  p-2 shadow-sm shadow-black"
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder="Add skills"
-      />
+      {
+        isEditable
+        &&
+        <input
+          className="  rounded-xl w-full  p-2 shadow-sm shadow-black"
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="Add skills"
+          disabled={!isEditable}
+        />
+      }
+
     </div>
   );
 }

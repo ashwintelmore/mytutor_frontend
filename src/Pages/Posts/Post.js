@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import { getPost, updatePost } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
 import MultipleDatePicker from "../../Components/Helper/multiDate";
@@ -149,13 +149,17 @@ const Post = () => {
                 </p>
               </div>
               <div className="flex justify-between  p-3 xs:p-2">
-                <div className="flex items-center gap-2 xs:gap-1 ">
-                  <div className="bg-[#D9D9D9] rounded-full h-14 w-14 xs:h-10 xs:w-10 "></div>
-                  <div className="flex flex-col xs:text-xs">
-                    <label>{userData.name}</label>
-                    <label className="text-[#828282]">1.2k Favourite</label>
+                <Link to={'/showProfile/' + post.createdTutor}>
+                  <div className="flex items-center gap-2 xs:gap-1 ">
+
+                    <div className="bg-[#D9D9D9] rounded-full h-14 w-14 xs:h-10 xs:w-10 "></div>
+
+                    <div className="flex flex-col xs:text-xs">
+                      <label>{userData.name}</label>
+                      <label className="text-[#828282]">1.2k Favourite</label>
+                    </div>
                   </div>
-                </div>
+                </Link>
                 <button className="bg-[#F8AF6A] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9 ">
                   Favourite
                 </button>

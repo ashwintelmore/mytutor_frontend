@@ -8,8 +8,9 @@ import UpdateWorkExpe from './UpdateComp/update.workExpe'
 import AddOther from './AddComp/addOther'
 import UpdateOther from './UpdateComp/update.other'
 import SlotBooking from './SlotBooking'
+import { useUserData } from '../../providers/userData'
 
-export default function About() {
+export default function About({ isEditable = true }) {
   const [tags, setTags] = useState([])
 
   const [show, setShow] = useState(false)
@@ -24,6 +25,7 @@ export default function About() {
   const [index, setIndex] = useState(null)
 
   const auth = useAuth()
+  const userData = useUserData()
   console.log(tags)
 
   const onUpdate = (item, i) => {
@@ -48,9 +50,9 @@ export default function About() {
           <div className="p-2 flex flex-col gap-1">
             <h2 className="font-semibold text-lg text-[#1A0970]">Skills</h2>
             <TagsInput
-
-              setResTags={(tagsarray) => auth.setUser({ ...auth.user, skills: tagsarray })}
-              resTags={auth.user.skills}
+              isEditable={isEditable}
+              // setResTags={(tagsarray) => auth.setUser({ ...userData.userDetails, skills: tagsarray })}
+              resTags={userData.userDetails.skills}
             />
           </div>
 
@@ -59,9 +61,6 @@ export default function About() {
             <div className="flex  justify-between">
               <label className="font-semibold text-lg text-[#FF0000] ">Education</label>
               <div>
-                {/* <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold">
-                  Edit
-                </button> */}
                 <button className="rounded-2xl bg-orange-400 text-xs w-14 text-white p-2 font-semibold"
                   onClick={() => setShow(!show)}
                 >
@@ -70,8 +69,8 @@ export default function About() {
               </div>
             </div>
             {
-              auth.user._id ?
-                auth.user.education.map((item, i) => {
+              userData.userDetails._id ?
+                userData.userDetails.education.map((item, i) => {
                   return <div className="flex flex-col p-2 gap-3" key={i}>
                     <div className="flex flex-col gap-3">
                       <div className="flex flex-col ">
@@ -111,8 +110,8 @@ export default function About() {
               </div>
             </div>
             {
-              auth.user._id ?
-                auth.user.workExperience.map((item, i) => {
+              userData.userDetails._id ?
+                userData.userDetails.workExperience.map((item, i) => {
                   return <div className="flex flex-col p-2 gap-3" key={i}>
                     <div className="flex flex-col gap-3">
                       <div className="flex flex-col ">
@@ -151,8 +150,8 @@ export default function About() {
               </div>
             </div>
             {
-              auth.user._id ?
-                auth.user.achievements.map((item, i) => {
+              userData.userDetails._id ?
+                userData.userDetails.achievements.map((item, i) => {
                   return <div className="flex flex-col p-2 gap-3" key={i}>
                     <div className="flex flex-col gap-3">
                       <div className="flex flex-col ">

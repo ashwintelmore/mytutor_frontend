@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getAllPosts, getUserAllPosts } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
+import { ConfigProvider, FloatButton } from "antd";
 
 function AllPost({ resPost = false }) {
   const [posts, setPosts] = useState([])
@@ -60,7 +61,25 @@ function AllPost({ resPost = false }) {
           <p> No data available {err}</p>
       }
 
-
+      {/* <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: '#00b96b',
+              fontSize: '40',
+              lineWidth: '50',
+              padding: '50',
+              width: "100%",
+            },
+          }}
+        >
+          <FloatButto
+            onClick={() => console.log('click')}
+            description={"Updated"}
+            shape="square"
+            style={{ color: "red" }}
+            type="primary"
+          />
+        </ConfigProvider> */}
     </div>
   );
 }

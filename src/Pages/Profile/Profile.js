@@ -5,50 +5,43 @@ import AllPost from "./AllPost";
 import { useAuth } from "../../providers/auth";
 import { updateUser } from "../../App/Api";
 import Loader from "../../Components/Helper/Loader";
+import { ConfigProvider, FloatButton, notification } from "antd";
 
 const Profile = () => {
   const [profileToggler, setProfileToggler] = useState('1')
-  const [name, setName] = useState('')
-  const [bio, setBio] = useState('')
-  const [number, setNumber] = useState('')
   const auth = useAuth()
+  const [api, contextHolder] = notification.useNotification();
 
-  const change = () => {
-
+  const showNotification = (e) => {
+    api.info({
+      message: ` ${e}`,
+      description: "test",
+      e,
+    });
   };
 
+  const updateUserData = async (data) => {
 
-  useEffect(() => {
-    if (auth.user._id) {
-      setName(auth.user.name)
-      setBio(auth.user.bio)
-      setNumber(auth.user.phoneNumber)
+    const res = await updateUser(data);
+    if (res.error) {
+      //handle error
+      console.log('res.error', res.error)
+      showNotification("res.error.errMessage")
+
+      // setErr(res.error.errMessage)
+    } else if (res.payload) {
+      //handle sussece responce
+      showNotification("Profile Updated successfully")
+      console.log('res.payload', res.payload)
     }
-    return () => {
-      console.log(' prifle exit :>> ', auth);
-
-      const updateUserData = async () => {
-        const res = await updateUser(auth.user);
-        if (res.error) {
-          //handle error
-          console.log('res.error', res.error)
-          // setErr(res.error.errMessage)
-        } else if (res.payload) {
-          //handle sussece responce
-          console.log('res.payload', res.payload)
-          // setpost(res.payload)
-        }
-      };
-      updateUserData()
-    };
-  }, [])
-
+  };
   if (auth.loading)
     return <Loader />
   if (!auth.user._id)
     return null
   return (
     <div className="flex w-full ml-16 h-screen rounded-t-3xl bg-white dark:bg-slate-800 dark:text-white xs:flex-col xs:ml-0  xs:h-full " >
+      {contextHolder}
       <div className="w-1/4 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl xs:w-full   ">
         <h3 className="text-lg font-semibold text-[#FF0000]">Profile Photo</h3>
         <div className="h-28 w-28 rounded-full bg-[#FF0000]  relative ">
@@ -152,6 +145,23 @@ const Profile = () => {
           }
         </div>
       </div>
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: '#rgb(251 146 60 )',
+            fontSize: '25',
+            lineHeight: '0'
+          },
+        }}
+      >
+        <FloatButton
+          onClick={() => updateUserData(auth.user)}
+          description={"Update"}
+          shape="square"
+          style={{ right: '40%', width: 100 }}
+          type="primary"
+        />
+      </ConfigProvider>
     </div>
 
   );
