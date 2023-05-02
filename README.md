@@ -8,8 +8,14 @@
 ##### post
 - all post api chages only for user
 - on every post should be fetch userdata of creator
+- selected date should show bcoz if month changes user get deficulty to find previos selected dates
 - ###### Errors
   - no data is not showing
+##### Request/Appoitments
+- UI design for card
+- meeting link should show
+- cancel meeting for future
+- ###### Errors
 
 ##### Profile
 - ###### Errors
