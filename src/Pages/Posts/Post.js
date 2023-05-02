@@ -181,9 +181,9 @@ const Post = () => {
                         (/hr)
                       </h6>
                     </div>
-                    <div className="flex gap-1  items-center xs:gap-0 xs:text-xs ">
+                    <div className="flex gap-1  items-center xs:gap-0 xs:text-[12px] ">
                       <h4>4</h4>
-                      <label className="text-sm text-[#6F6F6F]">sits left</label>
+                      <label className="text-sm sm:text-[7px] text-[#6F6F6F]">(sits left)</label>
                     </div>
                     <div className="flex  gap-1 items-center xs:gap-1 xs:text-xs">
                       <h4>60</h4>
@@ -207,7 +207,7 @@ const Post = () => {
                     <label className="text-[#828282]">1.2k Favourite</label>
                   </div>
                 </div>
-                <button className="bg-[#F8AF6A] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9 ">
+                <button className="bg-[#F8AF6A] text-white w-24 h-11 rounded-md xs:w-20 sm:text-xs xs:p-1 xs:h-9 ">
                   Favourite
                 </button>
               </div>

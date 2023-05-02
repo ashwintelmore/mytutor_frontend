@@ -68,12 +68,12 @@ function SlotBooking() {
             <div className="w-1/2  xs:flex-col xs:w-full sm:w-full sm:p-1">
                 <div className="p-2 gap-2 flex flex-col">
                     <h2 className="text-lg text-[#FF0000]">Set Slot</h2>
-                    <div className="flex sm:w-full sm:items-center">
-                        <label className="w-1/5 p-2 text-base xs:text-base sm:w-[30%] sm:text-lg" htmlFor="slots">Available :</label>
+                    <div className="flex sm:w-full sm:items-center xs:items-center xs:w-full ">
+                        <label className="w-1/5 p-1 xs:w-[50%]   sm:w-[40%] xs:text-[8px] sm:text-lg" htmlFor="slots">Available :</label>
                         <select
                             placeholder="select option"
                             name="slots"
-                            className="rounded-xl w-10/12 shadow-sm shadow-black p-2 sm:w-[60%] sm:p-1 sm:text-base sm:outline-none "
+                            className="rounded-xl w-10/12 shadow-sm shadow-black p-2 xs:w-[50%] sm:w-[60%] sm:p-1 sm:text-base sm:outline-none "
                             value={auth.user.slots.available}
                             onChange={(e) => auth.setUser({ ...auth.user, slots: { ...auth.user.slots, available: e.target.value } })}
                         >

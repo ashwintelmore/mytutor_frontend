@@ -43,9 +43,9 @@ function AddOther({ show, setShow, }) {
         return null;
     return (
         <div className="flex w-full  items-center justify-center xs:flex-col absolute top-4 left-0">
-            <div className=" bg-[#fff] relative w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12 sm:w-[95%]">
+            <div className=" bg-[#fff] relative w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12 sm:z-[5] sm:w-[95%]">
                 <div className="flex w-full px-3 font-bold text-xl">
-                <h2 className="text-[#f48c2b]  ">Add Achievements/Project/Other</h2>
+                <h2 className="text-[#f48c2b] sm:text-lg  ">Add Achievements/Project/Other</h2>
                 </div>
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full sm:flex-col">
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full sm:w-full">
