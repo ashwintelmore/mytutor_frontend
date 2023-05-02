@@ -28,16 +28,11 @@ const ShowProfile = () => {
 
     useEffect(() => {
         async function fetchData(id) {
-            // setLoading(true)
             const res = await getUser(id);
             if (res.error) {
                 userData.setUserDetails({})
-                // setLoading(false)
-
             } else if (res.payload) {
                 userData.setUserDetails(res.payload)
-                // setLoading(false)
-
             }
         }
         if (param.id)

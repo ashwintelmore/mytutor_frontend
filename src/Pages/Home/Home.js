@@ -25,6 +25,7 @@ const Home = () => {
     };
   }, [])
 
+
   if (auth.loading)
     return <Loader />
   return (

@@ -13,6 +13,7 @@ export const AuthProvider = (props) => {
     async function fetchData() {
       setLoading(true)
       const res = await getUser(userStorage);
+      console.log('res', res)
       if (res.error) {
         setUser({})
         setLoading(false)
@@ -20,7 +21,6 @@ export const AuthProvider = (props) => {
       } else if (res.payload) {
         setUser(res.payload)
         setLoading(false)
-
       }
     }
     if (userStorage) {

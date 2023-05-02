@@ -57,14 +57,8 @@ export default function ChoseSlot({ post, userData, _reqData }) {
         const res = await updatePost(payload)
         console.log('res post', res)
         if (res.error) {
-            //error
-            // setError(res.data.error.errMessage)
-            // auth.setLoading(false)
 
         } else if (res.payload) {
-            // auth.setUser(res.data.payload)
-            // localStorage.setItem('_id', res.data.payload._id)
-            // auth.setLoading(false)
         }
 
 

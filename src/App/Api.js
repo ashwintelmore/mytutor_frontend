@@ -24,7 +24,7 @@ export const getUser = async (id) => {
         .catch(function (error) {
             // handle error
             console.log('error :>> ', error);
-            return error.response
+            return error.response.data
         })
 
 };

@@ -13,7 +13,7 @@ export default function LoginForm() {
 
    const auth = useAuth()
    async function fetchData() {
-      auth.setLoading(true)
+      // auth.setLoading(true)
       const res = await login({
          email, password
       });
@@ -25,8 +25,6 @@ export default function LoginForm() {
       } else if (res.data.payload) {
          auth.setUser(res.data.payload)
          auth.setLoading(false)
-
-
          localStorage.setItem('_id', res.data.payload._id)
       }
    }

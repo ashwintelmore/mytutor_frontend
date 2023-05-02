@@ -19,6 +19,7 @@ import Appointement from "./Pages/Request/Appointement";
 const App = () => {
 
   const auth = useAuth()
+  console.log('auth', auth)
 
   return (
     <>
