@@ -25,7 +25,7 @@ const Post = () => {
 
   const [requests, setRequests] = useState([])
 
-  const [isFavourite, setisFavourite] = useState(true)
+  const [isFavourite, setisFavourite] = useState(false)
 
   console.log('userData', userData)
 
@@ -126,7 +126,13 @@ const Post = () => {
   }, [post._id, auth.user._id])
 
   const onClickFavourit = (e) => {
+    setisFavourite(!isFavourite)
+    if (isFavourite)//plus one in favourit
+    {
 
+    } else {//minus one favourite
+
+    }
   };
 
   if (auth.loading || loading.post || loading.userData || loading.slot)
@@ -197,16 +203,16 @@ const Post = () => {
                   </div>
                 </Link>
                 <button
-                  className={isFavourite ? "bg-[#F8AF6A] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9" : "bg-[#837e7a] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9"}
-                  onClick={(e) => setisFavourite(!isFavourite)}
+                  className={!isFavourite ? "bg-[#F8AF6A] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9" : "bg-[#837e7a] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9"}
+                  onClick={(e) => onClickFavourit(e)}
                 >
-                  {isFavourite ? "Favourite" : "unfavourite"}
+                  {!isFavourite ? "Favourite" : "unfavourite"}
                 </button>
               </div>
               <div className="flex items-center p-2 gap-3 xs:text-sm ">
                 <div className="flex p-1 gap-1 ">
                   <h3>286</h3>
-                  <label>Comments</label> 
+                  <label>Comments</label>
                 </div>
                 <div className="flex gap-1 items-center">
                   <i className="fa-solid fa-bars-staggered"></i>{" "}
