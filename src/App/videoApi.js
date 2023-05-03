@@ -1,8 +1,9 @@
 import axios from "axios";
 const END_POINT = process.env.REACT_APP_END_POINT
+const VIDEOSDK_TOKEN = process.env.REACT_APP_VIDEOSDK_TOKEN
 
 export const generateMeetingId = async (data) => {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiI0NDZkNjNmYy1mYmRkLTRhNWMtOTdmYy02M2JjMzIwZDlhNzMiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTY4MDMzNTIwNSwiZXhwIjoxNjg4MTExMjA1fQ.wmZi4tXHBvMx8eHUTr0hPBhZRb961-l8QFvTXdxyL80'
+    const token = VIDEOSDK_TOKEN
     const res = await fetch(`https://api.videosdk.live/v2/rooms`, {
         method: "POST",
         headers: {
