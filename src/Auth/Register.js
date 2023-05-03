@@ -40,7 +40,7 @@ export default function Register() {
                <h1 className="text-6xl text-white font-bold my-4 drop-shadow-xl">Welcome To My Tutor</h1>
                <p className="text-2xl text-white font-semibold drop-shadow-xl">Start for free and get attractive offers from the community</p>
             </div>
-            <img className="w-full h-full object-cover" src={loginImage} />
+            <img className="w-full ml-16  h-full object-cover" src={loginImage} />
          </div>
 
          <div className="w-1/2 xs:w-full sm:w-full sm:p-7 xs:p-8 xs:bg-[#ffff] xs:ml-2 xs:justify-center sm:justify-center xs:gap-4 sm:gap-3   mx-auto h-full bg-[#f5f5f5] flex flex-col p-20 justify-between items-center">

@@ -113,7 +113,7 @@ const Home = () => {
         {
           posts.length > 0 ?
             posts.map((item, i) => (
-              <div className="w-1/4 h-80  p-1 sm:w-[49%]  sm:text-sm xs:w-1/2 sm:h-auto xs:text-xs"
+              <div className="w-[24%] h-80  p-1 sm:w-[49%]  sm:text-sm xs:w-1/2 sm:h-auto xs:text-xs"
                 key={i}
               >
                 <Link to={"/postcontent/" + item._id} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#FEE4CB] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
@@ -134,7 +134,7 @@ const Home = () => {
                   </div>
                   <div className="flex justify-between p-1  item-center xs:text-[10px] ">
                     <label>Online</label>
-                    <button className="bg-white shadow-sm shadow-black text-[#F8AF6A] rounded-xl  dark:bg-zinc-900 dark:border-white dark:border-solid sm:text-[10px] sm:w-auto sm:p-px xs:text-xs">
+                    <button className="bg-white shadow-sm p-[2px] shadow-black text-[#F8AF6A] rounded-xl  dark:bg-zinc-900 dark:border-white dark:border-solid sm:text-[10px] sm:w-auto sm:p-px xs:text-xs">
                       Rs.{item.pricePerHour || item.charges}(per hour)
                     </button>
                   </div>

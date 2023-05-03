@@ -206,7 +206,7 @@ const Post = () => {
               <div className="flex items-center p-2 gap-3 xs:text-sm ">
                 <div className="flex p-1 gap-1 ">
                   <h3>286</h3>
-                  <label>Comments</label>
+                  <label>Comments</label> 
                 </div>
                 <div className="flex gap-1 items-center">
                   <i className="fa-solid fa-bars-staggered"></i>{" "}
@@ -326,6 +326,8 @@ const Post = () => {
                   />
 
             }
+
+
           </div >
           :
           <p>Not found</p>

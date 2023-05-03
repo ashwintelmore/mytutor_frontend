@@ -51,7 +51,7 @@ function AddWorkExpe({ show, setShow, }) {
                 </div>
                 <div className="flex p-1   w-full justify-between items-center text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
-                        <label className="w-full p-2 text-base xs:text-base">Name of Education</label>
+                        <label className="w-full p-2 text-base xs:text-base">Role</label>
                         <input className="rounded-xl w-full shadow-sm shadow-black p-2" type="text"
                             name="title"
                             onChange={(e) => onHandleChange(e)}
@@ -60,7 +60,7 @@ function AddWorkExpe({ show, setShow, }) {
                         <p className="text-xs ml-2 p-1">Write something</p>
                     </div>
                     <div className="flex flex-col   w-[45%] p-2 xs:w-full">
-                        <label className="w-full p-2 text-base xs:text-base">School/College/University</label>
+                        <label className="w-full p-2 text-base xs:text-base">Institute/University</label>
                         <input className="rounded-xl w-full shadow-sm shadow-black p-2" type="text"
                             name="orginization"
                             onChange={(e) => onHandleChange(e)}

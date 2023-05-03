@@ -39,7 +39,7 @@ export default function LoginForm() {
                   <h1 className="text-6xl text-white font-bold my-4 drop-shadow-xl">Welcome To My Tutor</h1>
                   <p className="text-2xl text-white font-semibold drop-shadow-xl">Start for free and get attractive offers from the community</p>
                </div>
-               <img className="w-full h-full object-cover" src={loginImage} />
+               <img className="w-full ml-16 h-full object-cover" src={loginImage} />
             </div>
 
             <div className="w-1/2 xs:w-full sm:w-full xs:bg-[#ffff] sm:p-8 xs:mx-1 xs:p-7 xs:justify-evenly sm:justify-evenly sm:mx-1 mx-auto h-full bg-[#f5f5f5] flex flex-col p-20  justify-between items-center">

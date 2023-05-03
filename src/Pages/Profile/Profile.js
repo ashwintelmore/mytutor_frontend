@@ -78,13 +78,14 @@ const Profile = () => {
             <label className="text-sm">Learners </label>
           </div>
         </div>
-        <div className="flex flex-col items-center gap-1 text-lg p-1">
+        <div className="flex flex-col w-full  items-center gap-1 text-base p-1">
           <label className="text-[#1A0970]">Bio</label>
-          <p className="text-sm p-1 ">
-            <input
+          <p className="w-full ">
+            <textarea
+          
               type="text"
               placeholder="Write something"
-              className="rounded-lg w-full outline-none "
+              className="rounded-lg w-full text-sm px-2 py-1 border-zinc-700 shadow-sm shadow-slate-500 outline-none "
               value={auth.user.bio}
               onChange={(e) => auth.setUser({ ...auth.user, bio: e.target.value })}
             />
