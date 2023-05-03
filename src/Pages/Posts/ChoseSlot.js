@@ -55,7 +55,6 @@ export default function ChoseSlot({ post, userData, _reqData }) {
         }
 
         const res = await updatePost(payload)
-        console.log('res post', res)
         if (res.error) {
 
         } else if (res.payload) {
@@ -127,8 +126,6 @@ export default function ChoseSlot({ post, userData, _reqData }) {
         }
     };
 
-
-    console.log('reqData', reqData)
 
     useEffect(() => {
         setReqData(_reqData)

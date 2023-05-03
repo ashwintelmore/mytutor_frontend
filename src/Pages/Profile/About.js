@@ -39,6 +39,13 @@ export default function About({ isEditable = true }) {
     setIndex(i)
   };
 
+  const isLogedInUser = (isEditable) => {
+    if (isEditable) {//userdata
+      return auth.user
+    } else {//nonlogeduser
+      return userData.userDetails
+    }
+  };
 
   return (
     <>
@@ -52,7 +59,7 @@ export default function About({ isEditable = true }) {
             <TagsInput
               isEditable={isEditable}
               setResTags={(tagsarray) => auth.setUser({ ...auth.user, skills: tagsarray })}
-              resTags={auth.user.skills}
+              resTags={isLogedInUser(isEditable).skills}
             />
           </div>
 
@@ -73,8 +80,8 @@ export default function About({ isEditable = true }) {
               </div>
             </div>
             {
-              userData.userDetails._id ?
-                userData.userDetails.education.map((item, i) => {
+              isLogedInUser(isEditable)._id ?
+                isLogedInUser(isEditable).education.map((item, i) => {
                   return <div className="flex flex-col p-2 gap-3" key={i}>
                     <div className="flex flex-col gap-3">
                       <div className="flex flex-col ">
@@ -122,8 +129,8 @@ export default function About({ isEditable = true }) {
               </div>
             </div>
             {
-              userData.userDetails._id ?
-                userData.userDetails.workExperience.map((item, i) => {
+              isLogedInUser(isEditable)._id ?
+                isLogedInUser(isEditable).workExperience.map((item, i) => {
                   return <div className="flex flex-col p-2 gap-3" key={i}>
                     <div className="flex flex-col gap-3">
                       <div className="flex flex-col ">
@@ -170,8 +177,8 @@ export default function About({ isEditable = true }) {
               </div>
             </div>
             {
-              userData.userDetails._id ?
-                userData.userDetails.achievements.map((item, i) => {
+              isLogedInUser(isEditable)._id ?
+                isLogedInUser(isEditable).achievements.map((item, i) => {
                   return <div className="flex flex-col p-2 gap-3" key={i}>
                     <div className="flex flex-col gap-3">
                       <div className="flex flex-col ">

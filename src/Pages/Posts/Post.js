@@ -15,12 +15,19 @@ const Post = () => {
   const auth = useAuth()
   const param = useParams()
   const [post, setpost] = useState({})
-  const [isAccepetReq, setIsAccepetReq] = useState(null)
+  const [loading, setLoading] = useState({
+    post: false,
+    slot: false,
+    userData: false,
+  })
   const [err, setErr] = useState('')
   const [userData, setUserData] = useState({})
 
   const [requests, setRequests] = useState([])
 
+  const [isFavourite, setisFavourite] = useState(true)
+
+  console.log('userData', userData)
 
 
   const [reqData, setReqData] = useState({
@@ -34,11 +41,14 @@ const Post = () => {
   //get all details of post
   useEffect(() => {
     const fetchgetPost = async () => {
+      setLoading({ ...loading, post: true })
       const res = await getPost(param.id);
       if (res.error) {
         setErr(res.error.errMessage)
+        setLoading({ ...loading, post: false })
       } else if (res.payload) {
         setpost(res.payload)
+        setLoading({ ...loading, post: false })
       }
     };
     if (!post._id)
@@ -52,11 +62,15 @@ const Post = () => {
   useEffect(() => {
 
     const fetchgetUserData = async () => {
+      setLoading({ ...loading, userData: true })
+
       const res = await getUser(post.createdTutor);
       if (res.error) {
         setErr(res.error.errMessage)
+        setLoading({ ...loading, userData: false })
       } else if (res.payload) {
         setUserData(res.payload)
+        setLoading({ ...loading, userData: false })
       }
     };
 
@@ -74,14 +88,21 @@ const Post = () => {
     const fetchUserAllRequest = async () => {
       let res
       if (post.createdTutor == auth.user._id) {
+        setLoading({ ...loading, post: true })
+
         res = await getAllPostRequested(post._id, auth.user._id);
         if (res.error) {
           //handle error
           setErr(res.error.errMessage)
+          setLoading({ ...loading, post: false })
+
         } else if (res.payload) {
           setRequests(res.payload)
+          setLoading({ ...loading, post: false })
+
         }
       } else {
+        setLoading({ ...loading, post: true })
         res = await getAllPostRequester(post._id, auth.user._id);
         if (res.error) {
           //handle error
@@ -89,9 +110,13 @@ const Post = () => {
         } else if (res.payload) {
           if (res.payload.length > 0) {
             setReqData(res.payload[0])
+            setLoading({ ...loading, post: false })
+
           } else {
             console.log("user not requested to this post")
             setErr("user not requested to this post")
+            setLoading({ ...loading, post: false })
+
           }
         }
       }
@@ -100,8 +125,11 @@ const Post = () => {
       fetchUserAllRequest()
   }, [post._id, auth.user._id])
 
+  const onClickFavourit = (e) => {
 
-  if (auth.loading)
+  };
+
+  if (auth.loading || loading.post || loading.userData || loading.slot)
     return <Loader />
   if (!post._id || !auth.user._id)
     return null
@@ -134,10 +162,13 @@ const Post = () => {
                       <h4>4</h4>
                       <label className="text-sm sm:text-[7px] text-[#6F6F6F]">(sits left)</label>
                     </div>
+
+
                     <div className="flex gap-1 items-center xs:gap-1 xs:text-xs">
                       <h4>60</h4>
                       <i className="fa-solid fa-thumbs-up text-[#FFB300]"></i>
                     </div>
+
                     <div className="flex gap-1  items-center xs:gap-1 xs:text-xs">
                       <h4>60</h4>
                       <i className="fa-solid fa-thumbs-down text-[#FFB300]"></i>
@@ -154,14 +185,22 @@ const Post = () => {
 
                     <div className="bg-[#D9D9D9] rounded-full h-14 w-14 xs:h-10 xs:w-10 "></div>
 
-                    <div className="flex flex-col xs:text-xs cursor-pointer">
-                      <label>{userData.name}</label>
-                      <label className="text-[#828282]">1.2k Favourite</label>
-                    </div>
+                    {
+                      loading.userData ?
+                        <Loader />
+                        :
+                        <div className="flex flex-col xs:text-xs cursor-pointer">
+                          <label>{userData.name}</label>
+                          <label className="text-[#828282]">{userData.analytics.favorite} Favourite</label>
+                        </div>
+                    }
                   </div>
                 </Link>
-                <button className="bg-[#F8AF6A] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9 ">
-                  Favourite
+                <button
+                  className={isFavourite ? "bg-[#F8AF6A] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9" : "bg-[#837e7a] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9"}
+                  onClick={(e) => setisFavourite(!isFavourite)}
+                >
+                  {isFavourite ? "Favourite" : "unfavourite"}
                 </button>
               </div>
               <div className="flex items-center p-2 gap-3 xs:text-sm ">

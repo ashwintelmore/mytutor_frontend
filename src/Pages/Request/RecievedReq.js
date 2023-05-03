@@ -56,7 +56,7 @@ export default function RecievedReq({ requests }) {
                                                 {
                                                     item.reqAccept
                                                     &&
-                                                    <a href="http://github.com/" target="_blank">
+                                                    <a href="https://myturt.onrender.com/" target="_blank">
                                                         <button className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-500"
                                                         >Go to Meeting
                                                         </button>
