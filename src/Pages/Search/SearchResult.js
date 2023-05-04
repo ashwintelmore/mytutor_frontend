@@ -48,7 +48,8 @@ const SearchResult = ({ search }) => {
 
   return (
     <>
-      <div id="outer" className=" mx-60 my-10">
+    <div className="bg-yellow-400 w-full ha">
+      <div id="outer" className="  mx-60 my-10">
 
         <div id="filter" className="p-5 flex">
           <div className="mx-2 relative bg-white dark:bg-white dark:text-black text-sm  flex   w-96 sm:w-52 items-center rounded-2xl xs:w-60 ">
@@ -223,6 +224,7 @@ const SearchResult = ({ search }) => {
           </div>
 
         </div>
+      </div>
       </div>
     </>
   );
