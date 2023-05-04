@@ -8,26 +8,32 @@ import Loader from "../../Components/Helper/Loader";
 const Home = () => {
   const auth = useAuth()
   const [posts, setPosts] = useState([])
+  const [loader, setLoader] = useState({
+    posts: false,
+  })
   const [err, setErr] = useState('')
   useEffect(() => {
     const getallpost = async () => {
+      setLoader({ ...loader, posts: true })
       const res = await getAllPosts();
       if (res.error) {
         //handle error
         setErr(res.error.errMessage)
+        setLoader({ ...loader, posts: false })
       } else if (res.payload) {
         //handle sussece responce
         setPosts(res.payload)
+        setLoader({ ...loader, posts: false })
       }
     };
     getallpost()
     return () => {
     };
   }, [])
-
-
+  console.log('auth.loader', auth.loading)
   if (auth.loading)
     return <Loader />
+
   return (
     <div className="home  sm:relative ml-16 sm:w-full sm:m-1 xs:p-1  h-auto bg-white light dark:text-white dark:bg-neutral-800  p-2 rounded-t-3xl  ">
       <div className="flex w-full sm:text-sm sm:sticky top-0  justify-between p-2 xs:items-center xs:font-semibold">
@@ -108,6 +114,8 @@ const Home = () => {
         </div>
 
       </div>
+
+
       <div className="flex flex-wrap  mt-3 sm:w-full sm:h-auto sm:mt-1 font-semibold overflow-y-auto  sm:overflow-y-auto w-full xs:w-full xs:mt-2   ">
         {/* one post card */}
         {
@@ -146,6 +154,7 @@ const Home = () => {
         }
 
       </div>
+
     </div>
   );
 };
