@@ -17,6 +17,12 @@ export default function Register() {
 
    async function fetchData() {
       auth.setLoading(true)
+      console.log('password', password)
+      console.log('confiPass', confiPass)
+      if (password != confiPass) {
+         setError("Password does not match")
+         return
+      }
       const res = await register({
          name, email, password
       });
@@ -24,7 +30,6 @@ export default function Register() {
          //error
          setError(res.data.error.errMessage)
          auth.setLoading(false)
-
       } else if (res.data.payload) {
          auth.setUser(res.data.payload)
          localStorage.setItem('_id', res.data.payload._id)
