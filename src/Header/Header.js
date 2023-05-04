@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar";
 import { useState, useEffect, useRef } from "react";
 import Backrop from "./Backrop";
 
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../providers/auth";
 import AddPost from "../Pages/Posts/AddPost";
 
@@ -57,19 +57,20 @@ const Header = () => {
             ></i>
             <Sidebar isOpen={isOpen} toggle={toggleSidebar} />
           </div>
+          <NavLink to={'/'}>
+            <span className="mytutor">MyTutor</span>
+          </NavLink>
 
-          <span className="mytutor">MyTutor</span>
-         
         </div>
 
         <div className="flex justify-between  items-center gap-10 p-3 text-xl   ">
-        
-             
-             <Link to={'/search'}>
-               <i className="fa-solid fa-magnifying-glass  "></i>
-             </Link>
-           
-          
+
+
+          <Link to={'/search'}>
+            <i className="fa-solid fa-magnifying-glass  "></i>
+          </Link>
+
+
           <i
             className="fa-regular fa-moon cursor-pointer xs:hidden sm:hidden "
             onClick={handleThemeSwitch}

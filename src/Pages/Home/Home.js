@@ -36,36 +36,7 @@ const Home = () => {
 
   return (
     <div className="home  sm:relative ml-16 sm:w-full sm:m-1 xs:p-1  h-auto bg-white light dark:text-white dark:bg-neutral-800  p-2 rounded-t-3xl  ">
-      <div className="flex w-full sm:text-sm sm:sticky top-0  justify-between p-2 xs:items-center xs:font-semibold">
-        <div className="flex-col text-lg sm:text-[10px]  ">
-          <h1 className="font-bold text-2xl sm:text-base">Results</h1>
-          <div className="flex gap-4 text-semibold text-lg  xs:gap-2 sm:text-xs">
-            <span className="flex flex-col  items-center">
-              <h4>65</h4>
-              <p>online</p>
-            </span>
-            <span className="flex flex-col  items-center">
-              <h4>12</h4>
-              <p>offline</p>
-            </span>
-            <span className="flex flex-col  items-center">
-              <h4>88</h4>
-              <p>Total</p>
-            </span>
-          </div>
-        </div>
-        <div className="flex flex-col text-lg xs:gap-2 sm:text-sm">
-          <h3 className="text-right p-1 ">December , 15</h3>
-          <div className="flex justify-evenly">
-            <Link to={"/dummy"}>
-              <i className="fa-solid fa-list"></i>
-            </Link>
-            <Link to={"/dummy"}>
-              <i className="fa-solid fa-list"></i>
-            </Link>
-          </div>
-        </div>
-      </div>
+
       {/* category card  box*/}
       <div className="flex mt-3  overflow-y-hidden dark:text-slate-100">
 
