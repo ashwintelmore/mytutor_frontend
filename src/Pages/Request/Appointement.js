@@ -40,7 +40,7 @@ const Appointement = () => {
     return (
         <>
             <div className="flex w-full ml-16 h-screen rounded-t-3xl bg-white dark:bg-slate-800 dark:text-white xs:flex-col xs:ml-0  xs:h-full " >
-                <div className="w-1/3 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl xs:w-full   ">
+                <div className="w-1/3 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl xs:w-full  xs:hidden sm:hidden sm:ml-0 xs:ml-0  ">
                     <h3 className="text-lg font-semibold text-[#FF0000]">Your Appointements</h3>
 
                     <MultipleDatePicker
