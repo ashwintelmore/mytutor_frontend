@@ -48,8 +48,8 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex  sm:w-full bg-[#EAF0FF] sticky top-0 z-20 dark:bg-zinc-900 dark:text-white  justify-between p-2 h-16 xs:z-10">
-        <div className="flex items-center gap-9 p-2 text-lg xs:gap-4  xs:w-full ">
+      <div className="flex justify-between sm:w-full bg-[#EAF0FF] sticky top-0 z-20 dark:bg-zinc-900 dark:text-white  justify-between p-2 h-16 xs:z-10">
+        <div className="flex items-center gap-9 p-2 text-lg xs:gap-4   ">
           <div>
             <i
               className="fa-solid fa-bars cursor-pointer"
@@ -62,23 +62,23 @@ const Header = () => {
          
         </div>
 
-        <div className="flex justify-between items-center gap-10 p-3 text-xl  xs:hidden sm:hidden ">
+        <div className="flex justify-between  items-center gap-10 p-3 text-xl   ">
         
              
              <Link to={'/search'}>
-               <i className="fa-solid fa-magnifying-glass "></i>
+               <i className="fa-solid fa-magnifying-glass  "></i>
              </Link>
            
           
           <i
-            className="fa-regular fa-moon cursor-pointer"
+            className="fa-regular fa-moon cursor-pointer xs:hidden sm:hidden "
             onClick={handleThemeSwitch}
           ></i>
-          <i className="fa-solid fa-circle-plus xs:hidden"
+          <i className="fa-solid fa-circle-plus xs:hidden sm:hidden"
             onClick={() => setShow(true)}
           >
           </i>
-          <i className="fa-solid fa-bell"></i>
+          <i className="fa-solid fa-bell xs:hidden sm:hidden"></i>
           <div
             className=" flex justify-between items-center gap-2 cursor-pointer "
             ref={menuRef}
