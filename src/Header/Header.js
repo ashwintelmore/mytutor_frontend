@@ -59,17 +59,17 @@ const Header = () => {
           </div>
 
           <span className="mytutor">MyTutor</span>
-          <div className="mx-2 relative bg-white dark:bg-white dark:text-black text-sm  flex   w-96 sm:w-52 items-center rounded-2xl xs:w-60 ">
-            <input type="text" placeholder="search" className="w-full p-1  rounded-2xl outline-none">
-
-            </input>
-            <Link to={'/search'}>
-              <i className="fa-solid fa-magnifying-glass absolute right-0 p-2"></i>
-            </Link>
-          </div>
+         
         </div>
 
-        <div className="flex justify-between items-center gap-7 p-3 text-lg  xs:hidden sm:hidden ">
+        <div className="flex justify-between items-center gap-10 p-3 text-xl  xs:hidden sm:hidden ">
+        
+             
+             <Link to={'/search'}>
+               <i className="fa-solid fa-magnifying-glass "></i>
+             </Link>
+           
+          
           <i
             className="fa-regular fa-moon cursor-pointer"
             onClick={handleThemeSwitch}
