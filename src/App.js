@@ -64,15 +64,23 @@ const App = () => {
                 )
               }
             />
+            <Route
+              path="appointement"
+              element={
+                auth.user._id ? (
+                  <Appointement />
+                ) : (
+                  <Navigate replace to="/login" />
+                )
+              }
+            />
             <Route path="/profile" element={<Profile />} />
             <Route path="/showProfile/:id?" element={<ShowProfile />} />
-
             <Route path="/postcontent/:id?" element={<Post />} />
             <Route path="/dummy" element={<Dummy />} />
-            {/* <Route path="/backrop" element={<Backrop />} /> */}
-            {/* <Route path="/allpost" element={<AllPost/>}/> */}
             <Route path="/comment" element={<Comment />} />
             <Route path="/appointement" element={<Appointement />} />
+            <Route path="/search" element={<SearchResult />} />
           </Routes>
         </div>
       </BrowserRouter>

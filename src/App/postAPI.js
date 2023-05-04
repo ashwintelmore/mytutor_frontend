@@ -66,3 +66,19 @@ export const updatePost = async (payload) => {
             return error.response.data
         });
 };
+
+
+export const searchPost = async ({ search, sort, postType, type, page, limit }) => {
+    // console.log('search, sort, postType, type=> ', search, sort, postType, type)
+    const url = `search=${search}&sort=${sort}&type=${type}&limit=${limit}&postType=${postType}&page=${page}`
+
+    return await axios.get(`${END_POINT}/search?${url}`)
+        .then(function (response) {
+            return response.data
+        })
+        .catch(function (error) {
+            return error.response.data
+        })
+
+};
+

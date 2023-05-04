@@ -44,6 +44,8 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
+
+
   return (
     <>
       <div className="flex  sm:w-full bg-[#EAF0FF] sticky top-0 z-20 dark:bg-zinc-900 dark:text-white  justify-between p-2 h-16 xs:z-10">
@@ -58,8 +60,12 @@ const Header = () => {
 
           <span className="mytutor">MyTutor</span>
           <div className="mx-2 relative bg-white dark:bg-white dark:text-black text-sm  flex   w-96 sm:w-52 items-center rounded-2xl xs:w-60 ">
-            <input type="text" placeholder="search" className="w-full p-1  rounded-2xl outline-none"></input>
-            <i className="fa-solid fa-magnifying-glass absolute right-0 p-2"></i>
+            <input type="text" placeholder="search" className="w-full p-1  rounded-2xl outline-none">
+
+            </input>
+            <Link to={'/search'}>
+              <i className="fa-solid fa-magnifying-glass absolute right-0 p-2"></i>
+            </Link>
           </div>
         </div>
 
