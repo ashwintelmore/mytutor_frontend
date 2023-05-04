@@ -19,6 +19,7 @@ const Post = () => {
     post: false,
     slot: false,
     userData: false,
+    request: false
   })
   const [err, setErr] = useState('')
   const [userData, setUserData] = useState({})
@@ -43,13 +44,16 @@ const Post = () => {
     const fetchgetPost = async () => {
       setLoading({ ...loading, post: true })
       const res = await getPost(param.id);
+      // console.log('res', res)
       if (res.error) {
         setErr(res.error.errMessage)
         setLoading({ ...loading, post: false })
       } else if (res.payload) {
         setpost(res.payload)
         setLoading({ ...loading, post: false })
+        console.log('res.payload', res.payload)
       }
+
     };
     if (!post._id)
       fetchgetPost()
@@ -88,8 +92,7 @@ const Post = () => {
     const fetchUserAllRequest = async () => {
       let res
       if (post.createdTutor == auth.user._id) {
-        setLoading({ ...loading, post: true })
-
+        setLoading({ ...loading, request: true })
         res = await getAllPostRequested(post._id, auth.user._id);
         if (res.error) {
           //handle error
@@ -98,7 +101,7 @@ const Post = () => {
 
         } else if (res.payload) {
           setRequests(res.payload)
-          setLoading({ ...loading, post: false })
+          setLoading({ ...loading, request: false })
 
         }
       } else {
@@ -110,13 +113,12 @@ const Post = () => {
         } else if (res.payload) {
           if (res.payload.length > 0) {
             setReqData(res.payload[0])
-            setLoading({ ...loading, post: false })
+            setLoading({ ...loading, request: false })
 
           } else {
             console.log("user not requested to this post")
             setErr("user not requested to this post")
-            setLoading({ ...loading, post: false })
-
+            setLoading({ ...loading, resqust: false })
           }
         }
       }
@@ -135,6 +137,7 @@ const Post = () => {
     }
   };
 
+  console.log('loading', loading)
   if (auth.loading || loading.post || loading.userData || loading.slot)
     return <Loader />
   if (!post._id || !auth.user._id)
