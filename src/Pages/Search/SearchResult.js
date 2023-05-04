@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { searchPost } from "../../App/postAPI";
 import moment from "moment";
+import { Link } from "react-router-dom";
 const SearchResult = ({ search }) => {
 
   const [queryData, setQueryData] = useState({
@@ -48,16 +49,16 @@ const SearchResult = ({ search }) => {
 
   return (
     <>
-    <div className="bg-yellow-400 w-full ha">
-      <div id="outer" className="  mx-60 my-10">
+    <div className="bg-white w-full h-full ">
+      <div id="outer" className=" w-[80%] mx-24 h-full  my-10">
 
         <div id="filter" className="p-5 flex">
-          <div className="mx-2 relative bg-white dark:bg-white dark:text-black text-sm  flex   w-96 sm:w-52 items-center rounded-2xl xs:w-60 ">
+          <div className="mx-2 relative  dark:bg-white dark:text-black text-sm  flex   w-96 sm:w-52 items-center rounded-2xl xs:w-60 ">
             <input
               type="text"
               placeholder="search"
               name="search"
-              className="w-full p-1  rounded-2xl outline-none"
+              className="w-full p-1 shadow-sm shadow-gray-500 border-slate-900  rounded-2xl outline-none"
               value={queryData.search}
               onChange={(e) => onChangeFilter(e)}
             ></input>
@@ -65,12 +66,12 @@ const SearchResult = ({ search }) => {
             <i className="fa-solid fa-magnifying-glass absolute right-0 p-2"></i>
           </div>
         </div>
-        <div className="bg-white flex  flex-row w-82 p-2 bg-red-100 ">
-          <div id="recomendation " className=" w-1/4 mx-4">
-            <h1 className="text-red-600 text-xl">Recomendation</h1>
+        <div className="  flex  flex-row w-full h-auto  p-2  ">
+          <div id="recomendation " className=" w-[30%] mx-4">
+            <h1 className="text-red-600 text-xl">Apply Filter :</h1>
 
-            <div className="p-1  h-16 w-72 rounded-sm m-2 ">
-              <div className="  w-[45%] p-2 xs:w-full">
+            <div className="p-1  h-auto w-full rounded-sm m-2 ">
+              <div className="  w-[95%] p-2 xs:w-full">
                 <label className="w-full p-2 text-base xs:text-base" htmlFor="slots">Sort by :</label>
                 <select
                   placeholder="select option"
@@ -87,8 +88,8 @@ const SearchResult = ({ search }) => {
                 </select>
                 {/* <label className="text-xs ml-2 p-1">Select what is type of your post</label> */}
               </div>
-              <div className="w-[45%] p-2 xs:w-full">
-                <label className="w-full p-2 text-base xs:text-base" htmlFor="slots">Search by</label>
+              <div className="w-[85%] flex flex-col p-2 xs:w-full">
+                <label className="w-full p-2 text-base xs:text-base" htmlFor="slots">Search by :</label>
 
                 <Radio.Group
                   buttonStyle="solid"
@@ -120,7 +121,7 @@ const SearchResult = ({ search }) => {
                 {/* <label className="text-xs ml-2 p-1">Select what is type of your post</label> */}
               </div>
 
-              <div className="w-[45%] p-2 xs:w-full">
+              <div className="w-[85%] flex flex-col p-2 xs:w-full">
                 <label className="w-full p-2 text-base xs:text-base" htmlFor="slots">Post type:</label>
                 <Radio.Group
                   buttonStyle="solid"
@@ -166,6 +167,7 @@ const SearchResult = ({ search }) => {
 
                 posts.length > 0 ?
                   posts.map((item, i) => (
+                    <Link to={"/postcontent/" + item._id} >
                     <div className="p-2 bg-blue-100 h-42 w-auto rounded-lg m-2 flex " key={i}>
                       <div className="flex  flex-row w-82">
                         <div className="bg-[#F8AF6A] w-52 h-34 rounded-lg"></div>
@@ -190,7 +192,7 @@ const SearchResult = ({ search }) => {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div></Link>
                   ))
                   :
                   <p>There is no result for {queryData.search}</p>
