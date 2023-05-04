@@ -58,7 +58,7 @@ function AddOther({ show, setShow, }) {
                         <label className="text-xs ml-2 p-1">Write something</label>
                     </div>
                     <div className="flex flex-col   w-[45%] p-2 xs:w-full">
-                        <label className="w-full p-2 text-base xs:text-base">Certification</label>
+                        <label className="w-full p-2 text-base xs:text-base">Certification00000</label>
                         <input className="rounded-xl w-full shadow-sm shadow-black p-2" type="text"
                             name="orginization"
                             onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
