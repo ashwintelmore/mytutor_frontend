@@ -20,8 +20,8 @@ const Backrop = () => {
           alt=""
         />
         <div className="flex flex-col text-sm font-semibold">
-          <label>User Name</label>
-          <label>ashwintelmore@gmail.com</label>
+          <label>{auth.user.name}</label>
+          <label>{auth.user.email}</label>
         </div>
       </div></Link>
 
