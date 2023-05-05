@@ -61,7 +61,6 @@ const MultipleDatePicker = (props) => {
         ({ value, onClose }) => {
             return (
                 <Tag onClose={onClose} closable>
-                    {console.log('fsda', value)}
                     {moment(value).format('DD/MM')}
                 </Tag>
             );

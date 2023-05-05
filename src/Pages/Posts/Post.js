@@ -51,7 +51,6 @@ const Post = () => {
       } else if (res.payload) {
         setpost(res.payload)
         setLoading({ ...loading, post: false })
-        console.log('res.payload', res.payload)
       }
 
     };
@@ -116,7 +115,6 @@ const Post = () => {
             setLoading({ ...loading, request: false })
 
           } else {
-            console.log("user not requested to this post")
             setErr("user not requested to this post")
             setLoading({ ...loading, resqust: false })
           }
@@ -137,7 +135,6 @@ const Post = () => {
     }
   };
 
-  console.log('loading', loading)
   if (auth.loading || loading.post || loading.userData || loading.slot)
     return <Loader />
   if (!post._id || !auth.user._id)

@@ -13,7 +13,7 @@ export default function LoginForm() {
 
    const auth = useAuth()
    async function fetchData() {
-      // auth.setLoading(true)
+      auth.setLoading(true)
       const res = await login({
          email, password
       });
@@ -29,8 +29,6 @@ export default function LoginForm() {
       }
    }
 
-   if (auth.loading)
-      return <Loader />
    return (
       <div className="w-[100%] overflow-auto scrollbar-hide md:scrollbar-default">
          <div className="w=full h-screen flex items-start xs:flex-col" >
@@ -48,7 +46,7 @@ export default function LoginForm() {
                <div className="w-full flex flex-col  ">
                   <div className="w-full flex flex-col mb-2">
                      <h3 className="text-3xl font-semibold mb-2 text-[#075985]">Login</h3>
-                     <p className="text-sm mb-2">{error}</p>
+                     <p className="text-sm mb-2 text-red-600">{error}</p>
                   </div>
                   <div className="w-full flex flex-col">
                      <input className="w-full text-black px-2 py-2 my-2 bg-transparent border-b border-[#075985] outline-none focus:outline-none"

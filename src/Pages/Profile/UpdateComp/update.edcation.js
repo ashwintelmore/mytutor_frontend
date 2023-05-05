@@ -73,9 +73,6 @@ function UpdateEducation({ show, setShow, data, setData }) {
         if (data != null && auth.user.education.length > 0) {
             setUserData(auth.user.education[data])
         }
-        return () => {
-            console.log("updated exit")
-        };
     }, [data])
 
 

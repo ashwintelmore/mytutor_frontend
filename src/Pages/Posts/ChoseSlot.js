@@ -149,7 +149,7 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                             !userData.slots.isEveryTime && userData.slots.timeRange?.map((item, i) => (
 
                                 <Tag
-                                    onClose={(e) => console.log(e)}
+                                    onClose={(e) => { }}
                                     className=" text-sm border shadow-lg shadow-gray-400 rounded-xl p-2"
                                     title={"bbjn"}
                                     key={i}

@@ -12,7 +12,6 @@ const Profile = () => {
   const auth = useAuth()
   const [api, contextHolder] = notification.useNotification();
 
-  console.log('auth', auth)
   const showNotification = (e) => {
     api.info({
       message: ` ${e}`,
@@ -37,8 +36,7 @@ const Profile = () => {
   };
   if (auth.loading)
     return <Loader />
-  if (!auth.user._id)
-    return null
+
   return (
     <div className="flex w-full ml-16 h-screen rounded-t-3xl bg-white dark:bg-slate-800 dark:text-white  sm:p-2   sm:ml-0 sm:flex-col sm:h-full sm:w-full" >
       {contextHolder}
@@ -82,7 +80,7 @@ const Profile = () => {
           <label className="text-[#1A0970]">Bio</label>
           <p className="w-full ">
             <textarea
-          
+
               type="text"
               placeholder="Write something"
               className="rounded-lg w-full text-sm px-2 py-1 border-zinc-700 shadow-sm shadow-slate-500 outline-none "

@@ -152,7 +152,7 @@ function Meeting({ show, setShow, data, setData }) {
         }
 
         const res = await createMeeting(_data)
-        console.log('res', res)
+
         if (res.payload) {
             setMeeting(res.payload)
             showNotification("Meeting is created")

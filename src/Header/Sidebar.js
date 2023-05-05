@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AddPost from "../Pages/Posts/AddPost";
+import { useAuth } from "../providers/auth";
 
 
 const Sidebar = ({ isOpen, toggle }) => {
@@ -53,14 +54,15 @@ const Sidebar = ({ isOpen, toggle }) => {
           <label>Setting</label>
         </div> */}
         </div>
-        <Link to={"/profile"} >  <div className="flex bottom-2 absolute items-center gap-20 xs:gap-10">
+        <Link to={"/profile"} >  <div className="flex bottom-2 absolute items-center gap-5">
           <img
             className="rounded-full h-14 w-14"
             src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
             alt=""
           />
-          <label>TutorName</label>
-        </div></Link>
+          <label>{useAuth().user.name}</label>
+        </div>
+        </Link>
 
       </div>
 

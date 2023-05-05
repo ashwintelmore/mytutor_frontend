@@ -13,7 +13,6 @@ export const AuthProvider = (props) => {
     async function fetchData() {
       // setLoading(true)
       const res = await getUser(userStorage);
-      console.log('res', res)
       if (res.error) {
         setUser({})
         setLoading(false)

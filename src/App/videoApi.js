@@ -13,7 +13,7 @@ export const generateMeetingId = async (data) => {
         body: JSON.stringify({}),
     });
     //Destructuring the roomId from the response
-    console.log('res :>> ', res);
+
 
     try {
         const { roomId } = await res.json();

@@ -139,7 +139,6 @@ function SlotBooking({ isEditable }) {
                                         showSecond={false}
                                         value={moment(fromTime, 'hh:mm A')}
                                         onChange={(value) => {
-                                            console.log('onchange', value);
                                         }}
                                         onSelect={(e) => onChange(e, 'from')}
                                     />

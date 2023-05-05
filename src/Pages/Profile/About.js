@@ -26,7 +26,6 @@ export default function About({ isEditable = true }) {
 
   const auth = useAuth()
   const userData = useUserData()
-  console.log(tags)
 
   const onUpdate = (item, i) => {
     if (item == 'edu')

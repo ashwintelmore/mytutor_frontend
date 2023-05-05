@@ -15,24 +15,24 @@ export default function Register() {
 
    const auth = useAuth()
 
+
+
    async function fetchData() {
-      auth.setLoading(true)
-      console.log('password', password)
-      console.log('confiPass', confiPass)
-      if (password != confiPass) {
+      if (password !== confiPass) {
          setError("Password does not match")
          return
       }
+      auth.setLoading(true)
       const res = await register({
          name, email, password
       });
-      if (res.data.error) {
+      if (res.error) {
          //error
-         setError(res.data.error.errMessage)
+         setError(res.error.errMessage)
          auth.setLoading(false)
-      } else if (res.data.payload) {
-         auth.setUser(res.data.payload)
-         localStorage.setItem('_id', res.data.payload._id)
+      } else if (res.payload) {
+         auth.setUser(res.payload)
+         localStorage.setItem('_id', res.payload._id)
          auth.setLoading(false)
       }
    }
@@ -43,7 +43,7 @@ export default function Register() {
          <div className="relative w-1/2 h-full flex flex-col xs:hidden sm:hidden ">
             <div className="absolute top-[25%] left-[10%] flex flex-col">
                <h1 className="text-6xl text-white font-bold my-4 drop-shadow-xl">Welcome To My Tutor</h1>
-               <p className="text-2xl text-white font-semibold drop-shadow-xl">Start for free and get attractive offers from the community</p>
+               <p className="text-2xl text-white font-semibold drop-shadow-xl">Start for free</p>
             </div>
             <img className="w-full ml-16  h-full object-cover" src={loginImage} />
          </div>
@@ -54,7 +54,7 @@ export default function Register() {
             <div className="w-full xs:w-full flex flex-col max-w-[500px] ">
                <div className="w-full flex flex-col mb-2">
                   <h3 className="text-2xl font-semibold mb-2 text-stone-700">Register</h3>
-                  <p className="text-sm mb-2">{error}</p>
+                  <p className="text-sm mb-2 text-red-600">{error}</p>
                </div>
                <div className="w-full flex flex-col">
                   <input className="w-full text-black py-2 px-1 my-2 bg-transparent border-b border-stone-700 outline-none focus:outline-none"

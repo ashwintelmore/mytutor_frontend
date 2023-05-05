@@ -30,7 +30,6 @@ const Home = () => {
     return () => {
     };
   }, [])
-  console.log('auth.loader', auth.loading)
   if (auth.loading)
     return <Loader />
 
@@ -41,7 +40,12 @@ const Home = () => {
       <div className="flex mt-3  overflow-y-hidden dark:text-slate-100">
 
         <div className="relative w-max flex m-4 justify-center sm:m-1 ">
-          <div className="w-44 h-44 rounded-full dark:bg-purple-200 border-2 border-[#40B59F] bg-[#00FF46] xs:w-32 xs:h-32 sm:w-36 sm:h-36 "></div>
+          <div className="w-44 h-44 rounded-full dark:bg-purple-200 border-2 border-[#40B59F] bg-[#00FF46] xs:w-32 xs:h-32
+          
+          
+          3 ">
+            <img className="w-full h-full rounded-full" src="https://source.unsplash.com/random/?student" alt="student" />
+          </div>
           <div className="absolute text-center p-2 bottom-0 dark:bg-amber-500 h-10  w-28  bg-white shadow-sm shadow-black rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
             Student
           </div>

@@ -72,9 +72,6 @@ function UpdateOther({ show, setShow, data, setData }) {
         if (data != null && auth.user.achievements.length > 0) {
             setUserData(auth.user.achievements[data])
         }
-        return () => {
-            console.log("updated exit")
-        };
     }, [data])
 
 

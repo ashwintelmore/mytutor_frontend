@@ -14,7 +14,6 @@ export default function RecievedReq({ requests }) {
   const handleCopyClick = async () => {
     try {
       await navigator.clipboard.writeText(meetingLink);
-      console.log("Meeting link copied to clipboard");
     } catch (err) {
       console.error("Failed to copy meeting link: ", err);
     }
@@ -55,7 +54,7 @@ export default function RecievedReq({ requests }) {
                     {/* <p className="text-sm">Request for {item.reqTime} hour</p> */}
                     <div className="flex justify-between">
                       <div className="flex items-center gap-2 text-lg">
-                        <i class="fa-solid fa-circle-check text-green-600"></i>
+                        <i className="fa-solid fa-circle-check text-green-600"></i>
                         <p className="text-sm">
                           {item.reqAccept ? "Accepeted" : "Not Accepted"}
                         </p>

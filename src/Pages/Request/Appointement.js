@@ -13,21 +13,26 @@ const Appointement = () => {
     const auth = useAuth()
     const [profileToggler, setProfileToggler] = useState('1')
     const [requests, setRequests] = useState([])
-
+    const [loader, setLoader] = useState({
+        post: false
+    })
 
     useEffect(() => {
         const getListAppointements = async () => {
             let res;
+
             if (profileToggler == '1')
-                res = await getAllRequester(auth.user._id);
+                setLoader({ ...loader, post: true })
+            res = await getAllRequester(auth.user._id);
             if (profileToggler == '2')
-                res = await getAllRequested(auth.user._id);
+                setLoader({ ...loader, post: true })
+
+            res = await getAllRequested(auth.user._id);
 
             if (res.error) {
-                //handle error
-                // setErr(res.error.errMessage)
+                setLoader({ ...loader, post: false })
             } else if (res.payload) {
-                //handle sussece responce
+                setLoader({ ...loader, post: false })
                 setRequests(res.payload)
             }
         };
@@ -40,16 +45,16 @@ const Appointement = () => {
     return (
         <>
             <div className="flex w-full ml-16 h-screen rounded-t-3xl bg-white dark:bg-slate-800 dark:text-white xs:flex-col xs:ml-0  xs:h-full " >
-                <div className="w-1/3 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl xs:w-full  xs:hidden sm:hidden sm:ml-0 xs:ml-0  ">
-                    <h3 className="text-lg font-semibold text-[#FF0000]">Your Appointements</h3>
-
+                {/* <div className="w-1/3 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl xs:w-full  xs:hidden sm:hidden sm:ml-0 xs:ml-0  ">
                     <MultipleDatePicker
 
                     />
 
-                </div>
+                </div> */}
 
                 <div className="w-3/5 flex-col flex overflow-y-auto xs:w-full xs:relative   ">
+                    <h3 className="text-lg font-semibold text-[#FF0000]">Your Appointements</h3>
+
                     <div className="flex top-0 sticky bg-white p-2 gap-4 mt-1  ">
 
                         <button

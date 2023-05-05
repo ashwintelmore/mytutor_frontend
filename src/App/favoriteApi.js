@@ -5,7 +5,7 @@ const END_POINT = process.env.REACT_APP_END_POINT
 
 export const create = async (data) => {
     const payload = { payload: data }
-    console.log(data)
+
     // return
     return await axios.post(`${END_POINT}/createrequest`, payload)
         .then(function (response) {

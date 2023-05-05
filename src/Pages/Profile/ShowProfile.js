@@ -24,8 +24,6 @@ const ShowProfile = () => {
         });
     };
 
-    console.log('userData', userData)
-
     useEffect(() => {
         async function fetchData(id) {
             const res = await getUser(id);

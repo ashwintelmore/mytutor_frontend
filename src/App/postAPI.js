@@ -42,7 +42,6 @@ export const getPost = async (id) => {
 
 export const createPost = async (data) => {
     const payload = { payload: { ...data } }
-    console.log(data)
     // return
     return await axios.post(`${END_POINT}/createpost`, payload)
         .then(function (response) {

@@ -57,9 +57,9 @@ const Header = () => {
             ></i>
             <Sidebar isOpen={isOpen} toggle={toggleSidebar} />
           </div>
-          <NavLink to={'/'}>
+          <Link to={'/'}>
             <span className="mytutor">MyTutor</span>
-          </NavLink>
+          </Link>
 
         </div>
 

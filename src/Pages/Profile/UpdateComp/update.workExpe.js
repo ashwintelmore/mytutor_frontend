@@ -68,9 +68,6 @@ function UpdateWorkExpe({ show, setShow, data, setData }) {
         if (data != null && auth.user.workExperience.length > 0) {
             setUserData(auth.user.workExperience[data])
         }
-        return () => {
-            console.log("updated exit")
-        };
     }, [data])
 
 

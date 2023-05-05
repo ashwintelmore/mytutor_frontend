@@ -4,7 +4,6 @@ import moment from 'moment'
 import { Calendar, Tag } from "antd";
 
 function toValidArray(value) {
-    console.log('value', value)
     const arr = Array.isArray(value) ? value : [value];
 
     return arr.filter(e => e != null && e != undefined); // must be ==
@@ -48,7 +47,6 @@ const ReqDatePicker = (props) => {
         ({ value, onClose }) => {
             return (
                 <Tag onClose={onClose} closable>
-                    {console.log('fsda', value)}
                     {moment(value).format('DD/MM')}
                 </Tag>
             );

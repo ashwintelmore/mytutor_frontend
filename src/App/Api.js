@@ -32,10 +32,10 @@ export const getUser = async (id) => {
 export const register = async (data) => {
     return await axios.post(`${END_POINT}/register`, data)
         .then(function (response) {
-            return response;
+            return response.data;
         })
         .catch(function (error) {
-            return error.response
+            return error.response.data
         });
 };
 
@@ -50,7 +50,7 @@ export const login = async (data) => {
 };
 
 export const updateUser = async (data) => {
-    console.log('data', data)
+
     let updatedData = {
         id: data._id,
         payload: data
