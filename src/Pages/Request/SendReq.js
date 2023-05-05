@@ -49,12 +49,22 @@ export default function SendReq({ requests }) {
                     {/* <p className="text-sm">message : {item.reqMassege}</p> */}
                     {/* <p className="text-sm">Request for {item.reqTime} hour</p> */}
                     <div className="flex justify-between">
-                      <div className="flex items-center gap-2 text-lg">
-                        <i className="fa-solid fa-circle-check text-green-600"></i>
-                        <p className="text-sm">
-                          {item.reqAccept ? "Accepeted" : "Not Accepted"}
-                        </p>
-                      </div>
+                      {
+                        item.reqAccept ?
+                          <div className="flex items-center gap-2 text-lg">
+                            <i className="fa-solid fa-circle-check text-green-600"></i>
+                            <p className="text-sm">
+                              Accepeted
+                            </p>
+                          </div>
+                          :
+                          <div className="flex items-center gap-2 text-lg">
+                            <i className="fa-solid fa-circle-xmark text-red-600"></i>
+                            <p className="text-sm">
+                              Not Accepted
+                            </p>
+                          </div>
+                      }
                       <p className="text-sm">on Dated : {item.reqDates[0]}</p>{" "}
                       <p className="text-sm">At time : {item.reqTime}</p>
                     </div>

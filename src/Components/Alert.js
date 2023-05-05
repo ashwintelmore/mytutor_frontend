@@ -1,12 +1,20 @@
-const [api, contextHolder] = notification.useNotification();
-notification.config({
-    duration: 0,
-})
+import { notification } from "antd";
 
-const showNotification = (e) => {
-    api.info({
-        message: ` ${e}`,
-        description: "test",
-        e,
-    });
-};
+
+
+export const useAlert = () => {
+    const [api, contextHolder] = notification.useNotification();
+    notification.config({
+        duration: 0,
+    })
+
+    const showNotification = (e) => {
+        api.info({
+            message: ` ${e}`,
+            // description: "test",
+            e,
+        });
+    };
+
+    return [showNotification, contextHolder];
+}

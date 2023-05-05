@@ -4,20 +4,25 @@ import { getAllPosts, getUserAllPosts } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
 import { ConfigProvider, FloatButton } from "antd";
 import { useUserData } from "../../providers/userData";
+import Loader from "../../Components/Helper/Loader";
 
 function AllPost({ resPost = false, isEditable = true }) {
   const [posts, setPosts] = useState([])
+  const [loader, setLoader] = useState({
+    post: false
+  })
   const [err, setErr] = useState('')
   const auth = useAuth()
   const userData = useUserData()
   useEffect(() => {
     const getallpost = async (id) => {
+      setLoader({ ...loader, post: true })
       const res = await getUserAllPosts(id);
       if (res.error) {
-        //handle error
+        setLoader({ ...loader, post: false })
         setErr(res.error.errMessage)
       } else if (res.payload) {
-        //handle sussece responce
+        setLoader({ ...loader, post: false })
         setPosts(res.payload)
       }
     };
@@ -32,9 +37,11 @@ function AllPost({ resPost = false, isEditable = true }) {
     };
   }, [])
 
+  if (loader.post) {
+    return <Loader />
+  }
   return (
     <div className=" w-full p-4 flex flex-col gap-4 overflow-scroll xs:w-full xs:p-1 xs:ml-1">
-
       {
         posts.length > 0 ?
           posts.map((item, i) => (

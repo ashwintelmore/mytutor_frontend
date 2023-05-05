@@ -6,35 +6,29 @@ import { useAuth } from "../../providers/auth";
 import { updateUser } from "../../App/Api";
 import Loader from "../../Components/Helper/Loader";
 import { ConfigProvider, FloatButton, notification } from "antd";
+import { useAlert } from "../../Components/Alert";
 
 const Profile = () => {
   const [profileToggler, setProfileToggler] = useState('1')
+  const [loader, setLoader] = useState({
+    user: false
+  })
   const auth = useAuth()
-  const [api, contextHolder] = notification.useNotification();
-
-  const showNotification = (e) => {
-    api.info({
-      message: ` ${e}`,
-      description: "test",
-      e,
-    });
-  };
+  const [showNotification, contextHolder] = useAlert();
 
   const updateUserData = async (data) => {
-
+    setLoader({ ...loader, user: true })
     const res = await updateUser(data);
     if (res.error) {
-      //handle error
-      console.log('res.error', res.error)
+      setLoader({ ...loader, user: false })
       showNotification("res.error.errMessage")
-
       // setErr(res.error.errMessage)
     } else if (res.payload) {
-      //handle sussece responce
+      setLoader({ ...loader, user: false })
       showNotification("Profile Updated successfully")
     }
   };
-  if (auth.loading)
+  if (auth.loading || loader.user)
     return <Loader />
 
   return (

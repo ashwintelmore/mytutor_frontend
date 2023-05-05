@@ -8,6 +8,7 @@ import Meeting from "./Meeting";
 import { Radio } from "antd";
 import RecievedReq from "./RecievedReq";
 import SendReq from "./SendReq";
+import Loader from "../../Components/Helper/Loader";
 
 const Appointement = () => {
     const auth = useAuth()
@@ -21,14 +22,15 @@ const Appointement = () => {
         const getListAppointements = async () => {
             let res;
 
-            if (profileToggler == '1')
-                setLoader({ ...loader, post: true })
-            res = await getAllRequester(auth.user._id);
-            if (profileToggler == '2')
-                setLoader({ ...loader, post: true })
+            if (profileToggler == '1') {
 
-            res = await getAllRequested(auth.user._id);
-
+                setLoader({ ...loader, post: true })
+                res = await getAllRequester(auth.user._id);
+            }
+            if (profileToggler == '2') {
+                setLoader({ ...loader, post: true })
+                res = await getAllRequested(auth.user._id);
+            }
             if (res.error) {
                 setLoader({ ...loader, post: false })
             } else if (res.payload) {
@@ -71,20 +73,33 @@ const Appointement = () => {
                         >
                             Received Requests
                         </button>
+                        <button
+                            className={profileToggler == 2 ? "rounded-2xl text-sm w-fit px-3 h-8 shadow-md shadow-slate-500 bg-orange-500" : "rounded-2xl bg-[#EAF0FF] text-sm w-fit px-3 h-8 shadow-md shadow-slate-50"}
+
+                            onClick={() => setProfileToggler('2')}
+                        >
+                            Completed Meeting
+                        </button>
                     </div>
                     {/* ccalender and about */}
-                    <div className=" xs:overflow-y-auto " >
-                        {
-                            profileToggler === '1' ?
-                                <SendReq
-                                    requests={requests}
-                                />
-                                :
-                                <RecievedReq
-                                    requests={requests}
-                                />
-                        }
-                    </div>
+                    {
+                        loader.post ?
+                            <Loader />
+                            :
+                            <div className=" xs:overflow-y-auto " >
+                                {
+                                    profileToggler === '1' ?
+                                        <SendReq
+                                            requests={requests}
+                                        />
+                                        :
+                                        <RecievedReq
+                                            requests={requests}
+                                        />
+                                }
+                            </div>
+                    }
+
                 </div>
             </div >
         </>

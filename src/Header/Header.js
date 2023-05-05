@@ -66,9 +66,9 @@ const Header = () => {
         <div className="flex justify-between  items-center gap-10 p-3 text-xl   ">
 
 
-          <Link to={'/search'}>
-            <i className="fa-solid fa-magnifying-glass  "></i>
-          </Link>
+          <NavLink to={'/search'}>
+            <i className="cursor-pointer p-2 rounded-full fa-solid fa-magnifying-glass  "></i>
+          </NavLink>
 
 
           <i
@@ -79,7 +79,7 @@ const Header = () => {
             onClick={() => setShow(true)}
           >
           </i>
-          <i className="fa-solid fa-bell xs:hidden sm:hidden"></i>
+          {/* <i className="fa-solid fa-bell xs:hidden sm:hidden"></i> */}
           <div
             className=" flex justify-between items-center gap-2 cursor-pointer "
             ref={menuRef}

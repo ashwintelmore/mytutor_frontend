@@ -80,6 +80,8 @@ const App = () => {
             <Route path="/comment" element={<Comment />} />
             <Route path="/appointement" element={<Appointement />} />
             <Route path="/search" element={<SearchResult />} />
+
+            <Route path="/notfound" element={<Dummy />} />
           </Routes>
         </div>
       </BrowserRouter>

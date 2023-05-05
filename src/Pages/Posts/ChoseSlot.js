@@ -126,7 +126,7 @@ export default function ChoseSlot({ post, userData, _reqData }) {
         }
     };
 
-
+    console.log('reqData', reqData)
     useEffect(() => {
         setReqData(_reqData)
     }, [_reqData])
@@ -134,7 +134,12 @@ export default function ChoseSlot({ post, userData, _reqData }) {
         <>
             <div className=" flex  flex-col w-2/5 p-2 xs:w-full xs:p-1 sm:w-full  ">
                 {contextHolder}
-                <h4 className="text-lg font-semibold mt-2">Select available dates</h4>
+                {
+                    reqData._id ?
+                        <h4 className="text-lg font-semibold mt-2">Your Previous Request </h4>
+                        :
+                        <h4 className="text-lg font-semibold mt-2">Select available dates</h4>
+                }
                 {/* calender */}
                 <MultipleDatePicker
                     value={userData.slots.customDates}
