@@ -24,7 +24,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Header />
-        <div className="flex w-full dark:bg-zinc-900 bg-[#edf0f6] relative">
+        <div className="flex w-full mt-16  dark:bg-zinc-900 bg-[#edf0f6] relative">
           <VerticalNav />
           <Routes>
 
