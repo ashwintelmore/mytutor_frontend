@@ -32,7 +32,7 @@ const Home = () => {
   }, [])
   if (auth.loading)
     return <Loader />
-
+  //optimse
   return (
     <div className="home w-[95%] sm:relative ml-16 sm:w-full sm:m-1 xs:p-1  h-auto bg-white light dark:text-white dark:bg-neutral-800  p-2 rounded-t-3xl  ">
 
