@@ -177,8 +177,8 @@ const SearchResult = ({ search }) => {
                             <h1 className="text-lg font-bold text-blue-900">
                               {item.postTitle}
                             </h1>
-                            <span>{item.createdTutorName}</span>
-                            <div className="flex flex-row">
+                            <span className="text-base">{item.createdTutorName}</span>
+                            <div className="flex flex-row items-center gap-2 text-base">
                               <span className="bg-[#05FF00] w-2 h-2 rounded-lg"></span>
                               <span className="">online </span>
                             </div>

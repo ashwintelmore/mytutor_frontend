@@ -74,7 +74,7 @@ const Header = () => {
             className="fa-regular fa-moon cursor-pointer xs:hidden sm:hidden "
             onClick={handleThemeSwitch}
           ></i>
-          <i className="fa-solid fa-circle-plus xs:hidden sm:hidden"
+          <i className="fa-solid fa-circle-plus"
             onClick={() => setShow(true)}
           >
           </i>
@@ -97,7 +97,7 @@ const Header = () => {
                 </div>
                 :
                 <Link to={'/login'}>
-                  <button className="bg-pink-200 rounded-xl p-1 dark:bg-zinc-900 dark:border-white dark:border-solid">
+                  <button className="bg-[#F8AF6A] text-white rounded-lg px-3 py-1 text-base dark:bg-zinc-900 dark:border-white dark:border-solid">
                     Register/Login
                   </button>
                 </Link>
