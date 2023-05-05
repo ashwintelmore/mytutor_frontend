@@ -34,7 +34,7 @@ const Home = () => {
     return <Loader />
 
   return (
-    <div className="home  sm:relative ml-16 sm:w-full sm:m-1 xs:p-1  h-auto bg-white light dark:text-white dark:bg-neutral-800  p-2 rounded-t-3xl  ">
+    <div className="home w-[95%] sm:relative ml-16 sm:w-full sm:m-1 xs:p-1  h-auto bg-white light dark:text-white dark:bg-neutral-800  p-2 rounded-t-3xl  ">
 
       {/* category card  box*/}
       <div className="flex mt-3  overflow-y-hidden dark:text-slate-100">
@@ -89,14 +89,12 @@ const Home = () => {
         </div>
 
       </div>
-
-
       <div className="flex flex-wrap  mt-3 sm:w-full sm:h-auto sm:mt-1 font-semibold overflow-y-auto  sm:overflow-y-auto w-full xs:w-full xs:mt-2   ">
         {/* one post card */}
         {
           posts.length > 0 ?
             posts.map((item, i) => (
-              <div className="w-[24%] h-80  p-1 sm:w-[49%]  sm:text-sm xs:w-1/2 sm:h-auto xs:text-xs"
+              <div className="w-[24.8%] h-auto  p-1 sm:w-[49%]  sm:text-sm xs:w-1/2 sm:h-auto xs:text-xs"
                 key={i}
               >
                 <Link to={"/postcontent/" + item._id} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#FEE4CB] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">

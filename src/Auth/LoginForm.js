@@ -31,15 +31,16 @@ export default function LoginForm() {
 
    return (
       <div className="w-[100%] overflow-auto scrollbar-hide md:scrollbar-default">
-         <div className="w=full h-screen flex items-start xs:flex-col" >
+         <div className="w-full ml-16 h-screen flex items-start xs:flex-col" >
+            {/* left field of login */}
             <div className="relative w-1/2 h-full flex flex-col xs:hidden sm:hidden">
                <div className="absolute top-[25%] left-[10%] flex flex-col">
                   <h1 className="text-6xl text-white font-bold my-4 drop-shadow-xl">Welcome To My Tutor</h1>
                   <p className="text-2xl text-white font-semibold drop-shadow-xl">Start for free and get attractive offers from the community</p>
                </div>
-               <img className="w-full ml-16 h-full object-cover" src={loginImage} />
+               <img className="w-full  h-full object-cover" src={loginImage} />
             </div>
-
+            {/* right fiked of login page */}
             <div className="w-1/2 xs:w-full sm:w-full xs:bg-[#ffff] sm:p-8 xs:mx-1 xs:p-7 xs:justify-evenly sm:justify-evenly sm:mx-1 mx-auto h-full bg-[#f5f5f5] flex flex-col p-20  justify-between items-center">
                <h1 className="text-4xl text-[#075985] font-semibold">My Tutor</h1>
 
