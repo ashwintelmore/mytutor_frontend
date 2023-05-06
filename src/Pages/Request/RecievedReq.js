@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import Meeting from "./Meeting";
+import Payment from "./Payment";
+import { useAuth } from "../../providers/auth";
 
 export default function RecievedReq({ requests }) {
   const [show, setShow] = useState(false);
+  const [showPayment, setShowPayment] = useState(false);
   const [reqData, setReqData] = useState({});
+  const auth = useAuth()
   const onManageClick = (item, i) => {
     setShow(!show);
     setReqData(item);
@@ -21,6 +25,10 @@ export default function RecievedReq({ requests }) {
 
   const handleLinkChange = (event) => {
     setMeetingLink(event.target.value);
+  };
+  const onPaymentClick = (data, i) => {
+    setShowPayment(!showPayment)
+    setReqData(data);
   };
 
   return (
@@ -78,8 +86,12 @@ export default function RecievedReq({ requests }) {
                       <>
                         <div className="">
 
-                          <button className="p-1 shadow-sm shadow-slate-500 rounded-xl bg-[#f5c782] t" value={meetingLink}
-                            onChange={handleLinkChange} onClick={handleCopyClick}> Meeting Code : {item.meetingCode}</button>
+                          <button
+                            className="p-1 shadow-sm shadow-slate-500 rounded-xl bg-[#f5c782] t"
+                            value={meetingLink}
+                            onChange={handleLinkChange}
+                            onClick={handleCopyClick}> Meeting Code : {item.meetingCode}
+                          </button>
                         </div>
 
                         {/* <p className="text-sm"> Meeting Name : {item.meetingName}</p> */}
@@ -90,11 +102,22 @@ export default function RecievedReq({ requests }) {
                     )}
 
                     <div className="gap-2 flex justify-end">
+
+
                       <button
                         className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-400"
                         onClick={() => onManageClick(item, i)}>
                         Manage Meeting
                       </button>
+
+                      {item.reqAccept && (
+                        <button
+                          className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-400"
+                          onClick={() => onPaymentClick(item, i)}
+                        >
+                          {item.paymentId && item.paymentId != '' ? 'update Payment' : 'Initiat Payment'}
+                        </button>
+                      )}
                       {item.reqAccept && (
                         <a href="http://github.com/" target="_blank">
                           <button className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-400">
@@ -112,7 +135,17 @@ export default function RecievedReq({ requests }) {
           <p> No Requests recieved </p>
         )}
       </div>
-      <Meeting show={show} setShow={() => setShow(!show)} data={reqData} />
+      <Meeting
+        show={show}
+        setShow={() => setShow(!show)}
+        data={reqData}
+      />
+      <Payment
+        showPayment={showPayment}
+        setShowPayment={() => setShowPayment(!showPayment)}
+        data={reqData}
+
+      />
     </>
   );
 }

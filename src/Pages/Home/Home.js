@@ -18,6 +18,7 @@ const Home = () => {
     const getallpost = async () => {
       setLoader({ ...loader, posts: true })
       const res = await getAllPosts();
+      console.log('res', res)
       if (res.error) {
         //handle error
         showAlert(res.error.errMessage)
@@ -28,13 +29,14 @@ const Home = () => {
         setLoader({ ...loader, posts: false })
       }
     };
-    getallpost()
-    return () => {
-    };
-  }, [])
-  if (auth.loading)
-    return <Loader />
+    if (!posts.length)
+      getallpost()
+  }, [posts])
+
+  // if (auth.loading)
+  //   return <Loader />
   console.log('posts', posts)
+  console.log('loader', loader)
   return (
     <div className="home w-[95%] sm:relative ml-16 sm:w-full sm:m-1 xs:p-1  h-auto bg-white light dark:text-white dark:bg-neutral-800  p-2 rounded-t-3xl  ">
       {renderAlert}

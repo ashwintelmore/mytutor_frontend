@@ -11,7 +11,7 @@ export const useAlert = () => {
     const showNotification = (e) => {
         api.info({
             message: ` ${e}`,
-            // description: "test",
+            description: "Refresh page to see updated changes",
             e,
         });
     };

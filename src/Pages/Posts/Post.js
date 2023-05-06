@@ -29,9 +29,6 @@ const Post = () => {
 
   const [isFavourite, setisFavourite] = useState(false)
 
-  console.log('userData', userData)
-
-
   const [reqData, setReqData] = useState({
     reqID: '',
     reqDates: [],
@@ -45,7 +42,6 @@ const Post = () => {
     const fetchgetPost = async () => {
       setLoading({ ...loading, post: true })
       const res = await getPost(param.id);
-      console.log('res', res)
       if (res.error) {
         setErr(res.error.errMessage)
         navigate('/notfound')
@@ -67,9 +63,10 @@ const Post = () => {
   useEffect(() => {
 
     const fetchgetUserData = async () => {
-      setLoading({ ...loading, userData: true })
 
+      setLoading({ ...loading, userData: true })
       const res = await getUser(post.createdTutor);
+
       if (res.error) {
         setErr(res.error.errMessage)
         setLoading({ ...loading, userData: false })
@@ -92,8 +89,8 @@ const Post = () => {
   useEffect(() => {
     const fetchUserAllRequest = async () => {
       let res
+      // setLoading({ ...loading, request: true })
       if (post.createdTutor == auth.user._id) {
-        setLoading({ ...loading, request: true })
         res = await getAllPostRequested(post._id, auth.user._id);
         if (res.error) {
           //handle error
@@ -106,21 +103,21 @@ const Post = () => {
 
         }
       } else {
-        setLoading({ ...loading, post: true })
+        // setLoading({ ...loading, request: true })
         res = await getAllPostRequester(post._id, auth.user._id);
+        console.log('res', res)
         if (res.error) {
-          //handle error
           setErr(res.error.errMessage)
         } else if (res.payload) {
+          setLoading({ ...loading, request: false })
           if (res.payload.length > 0) {
             setReqData(res.payload[0])
-            setLoading({ ...loading, request: false })
 
           } else {
             setErr("user not requested to this post")
-            setLoading({ ...loading, resqust: false })
           }
         }
+
       }
     };
     if (post._id && auth.user._id)
@@ -141,6 +138,9 @@ const Post = () => {
     return <Loader />
   if (!post._id || !auth.user._id)
     return null
+  console.log('loading', loading)
+  console.log('posts', post)
+  console.log('request', requests)
   return (
     <>
       {

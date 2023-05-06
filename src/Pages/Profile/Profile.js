@@ -21,7 +21,7 @@ const Profile = () => {
     const res = await updateUser(data);
     if (res.error) {
       setLoader({ ...loader, user: false })
-      showNotification("res.error.errMessage")
+      showNotification(res.error.errMessage)
       // setErr(res.error.errMessage)
     } else if (res.payload) {
       setLoader({ ...loader, user: false })

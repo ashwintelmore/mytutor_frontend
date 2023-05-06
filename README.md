@@ -38,16 +38,17 @@ filter =>
 
 tags =>
 - [x]
-## Pranay task
+### Pranay task
 - [ ] custom class for each btn in tailwind
 - [ ] not found pages build and dummy name change [ line number 84 on app.js page]
 - [ ] dark mode check in all pages 
 - [ ] check responsiveness
 - [ ] add post component make this as seperate componte for edting purpose or adding data
-- [ ] 
+- [ ] in mobile add card not showing properly
+- [ ] input number arrows remove
 
-### created
-- [ ] 
+### errors
+- [ ] loader not workin at seperate post page
 
 ### working
 - [ ] 

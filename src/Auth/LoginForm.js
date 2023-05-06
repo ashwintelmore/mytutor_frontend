@@ -29,6 +29,8 @@ export default function LoginForm() {
       }
    }
 
+   console.log('auth', auth)
+
    return (
       <div className="w-[100%] overflow-auto scrollbar-hide md:scrollbar-default">
          <div className="w-full ml-16 h-screen flex items-start xs:flex-col" >

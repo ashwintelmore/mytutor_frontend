@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Meeting from "./Meeting";
+import Payment from "./Payment";
 
 export default function SendReq({ requests }) {
 
   const [meetingLink, setMeetingLink] = useState("");
+  const [showPayment, setShowPayment] = useState(false);
+  const [reqData, setReqData] = useState({});
+
+
 
   const handleCopyClick = async () => {
     try {
@@ -17,7 +22,11 @@ export default function SendReq({ requests }) {
   const handleLinkChange = (event) => {
     setMeetingLink(event.target.value);
   };
-
+  console.log('requests', requests)
+  const onPaymentClick = (data, i) => {
+    setShowPayment(!showPayment)
+    setReqData(data);
+  };
 
   return (
     <>
@@ -85,6 +94,17 @@ export default function SendReq({ requests }) {
                     )}
 
                     <div className="gap-2 flex justify-end">
+                      {console.log(item.paymentId)}
+                      {
+                        item.paymentId
+                        &&
+                        <button
+                          className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-400"
+                          onClick={() => onPaymentClick(item, i)}
+                        >
+                          Make Payment
+                        </button>
+                      }
                       {item.reqAccept && (
                         <a href="http://github.com/" target="_blank">
                           <button className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-400">
@@ -102,6 +122,12 @@ export default function SendReq({ requests }) {
           <p> No Requests Sended </p>
         )}
       </div>
+      <Payment
+        showPayment={showPayment}
+        setShowPayment={() => setShowPayment(!showPayment)}
+        data={reqData}
+        readOnly={true}
+      />
     </>
   );
 }
