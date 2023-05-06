@@ -3,11 +3,11 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import Backrop from "./Backrop";
 
-import { Link} from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../providers/auth";
 import AddPost from "../Pages/Posts/AddPost";
 
-const Header = ({click}) => {
+const Header = ({ click }) => {
   const [show, setShow] = useState(false)
   const [openProfile, setOpenProfile] = useState(false);
   const auth = useAuth()
@@ -88,11 +88,12 @@ const Header = ({click}) => {
             {
               auth.user._id ?
                 <div className="flex gap-2">
-                  <img
-                    className="rounded-full h-11 w-11"
-                    src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                    alt=""
-                  />
+
+                  <span
+                    className="rounded-full h-11 w-11 bg-[#fb923c]"
+                  >
+                    {auth.user.name[0]}
+                  </span>
                   {openProfile && <Backrop />}
                   <span> {auth.user.name} </span>
                 </div>

@@ -10,10 +10,7 @@ module.exports = {
       'sm': { 'max': '720px' },
       'md': { 'max': '720px' },
 
-    },
-    extend: {
-
-    },
+    }
   },
   plugins: [],
 }

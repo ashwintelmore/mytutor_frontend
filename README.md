@@ -48,6 +48,10 @@ tags =>
 - [ ] input number arrows remove
 - [ ] change all input filed style 
 - [ ] tags in profile page
+- [ ] change profile > allpost  three lines
+- [ ] all profile photos show show first char of name
+- [ ]
+- [ ]
 
 ### errors
 - [ ] loader not workin at seperate post page

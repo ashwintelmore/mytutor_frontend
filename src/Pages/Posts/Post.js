@@ -138,9 +138,6 @@ const Post = () => {
     return <Loader />
   if (!post._id || !auth.user._id)
     return null
-  console.log('loading', loading)
-  console.log('posts', post)
-  console.log('request', requests)
   return (
     <>
       {

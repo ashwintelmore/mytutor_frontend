@@ -37,13 +37,13 @@ const Profile = ({ toggler = '1' }) => {
       {contextHolder}
       <div className="w-1/4 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl  sm:w-full  ">
         <h3 className="text-lg font-semibold text-[#FF0000]">Profile Details</h3>
-        <div className="h-28 w-28 rounded-full bg-[#FF0000]  relative ">
-          <img
+        <div className="h-28 w-28 rounded-full bg-[#fb923c]  relative ">
+          <span
             className="rounded-full h-28 w-28 p-1"
-            src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-            alt=""
-          />
-          <i className="fa-solid fa-user-pen absolute bottom-2 h-8 w-8 bg-slate-50 rounded-full p-2 right-0 "></i>
+          >
+            {auth.user.name[0]}
+          </span>
+          {/* <i className="fa-solid fa-user-pen absolute bottom-2 h-8 w-8 bg-slate-50 rounded-full p-2 right-0 "></i> */}
         </div>
         <div className="flex flex-col  items-center text-lg  ">
           {/* <label className="text-[#1A0970]">UserName</label> */}

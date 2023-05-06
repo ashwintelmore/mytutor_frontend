@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import { createPost } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
 import TagsInput from "../Profile/TagsInput";
+import { getAlllCatgories } from "../../App/category.Api";
+import { useAlert } from "../../Components/Alert";
 
 
 function AddPost({ show, setShow, }) {
     const auth = useAuth()
+    const [showNotification, contextHolder] = useAlert()
     const [userData, setUserData] = useState({
         postTitle: '',
         thumbnailUrl: '',
@@ -17,6 +20,27 @@ function AddPost({ show, setShow, }) {
         category: '',
         tags: []
     })
+
+    const [cats, setCats] = useState([])
+
+
+    //fetch all categoreis
+
+    useEffect(() => {
+        console.log('sff')
+        const fetchAllCats = async () => {
+            const res = await getAlllCatgories();
+            console.log('res', res)
+            if (res.error) {
+                showNotification(res.error.errMassege)
+            } else if (res.payload) {
+                setCats(res.payload)
+            }
+        };
+        fetchAllCats()
+    }, [])
+    console.log('cats', cats)
+
     const onAddDetails = async () => {
         if (!auth.user._id)
             return
@@ -48,6 +72,7 @@ function AddPost({ show, setShow, }) {
     return (
         // <form action="/" enctype="multipart/form-data">
         <div className="flex w-full  items-center justify-center xs:flex-col absolute   z-10">
+            {contextHolder}
             <div className=" bg-[#fff] relative w-4/6 h-auto px-6 py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12   ">
                 <h2 className="text-[#f48c2b] top-0 left-2 text-3xl p-2 absolute ">Add Post</h2>
 
@@ -77,8 +102,13 @@ function AddPost({ show, setShow, }) {
                             value={userData.category}
                         >
                             <option value={''}>Select</option>
-                            <option value={'student'}>Student</option>
-                            <option value={'sports'}>Sports</option>
+                            {
+                                cats.map((item, i) =>
+                                    <option
+                                        value={item.catName}
+                                        key={i}
+                                    >{item.catName}</option>)
+                            }
                         </select>
                         <label className="text-xs ml-2 p-1">Select what is type of your post</label>
                     </div>
