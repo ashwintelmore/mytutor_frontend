@@ -46,6 +46,8 @@ tags =>
 - [ ] add post component make this as seperate componte for edting purpose or adding data
 - [ ] in mobile add card not showing properly
 - [ ] input number arrows remove
+- [ ] change all input filed style 
+- [ ] tags in profile page
 
 ### errors
 - [ ] loader not workin at seperate post page

@@ -4,7 +4,7 @@ import { getAllPosts, getUserAllPosts } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
 import { ConfigProvider, FloatButton } from "antd";
 import { useUserData } from "../../providers/userData";
-import Loader from "../../Components/Helper/Loader";
+import Loader, { LoaderSmall } from "../../Components/Helper/Loader";
 
 function AllPost({ resPost = false, isEditable = true }) {
   const [posts, setPosts] = useState([])
@@ -38,7 +38,7 @@ function AllPost({ resPost = false, isEditable = true }) {
   }, [])
 
   if (loader.post) {
-    return <Loader />
+    return <LoaderSmall />
   }
   return (
     <div className=" w-full p-4 flex flex-col gap-4 overflow-scroll xs:w-full xs:p-1 xs:ml-1">

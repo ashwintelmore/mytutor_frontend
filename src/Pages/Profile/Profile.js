@@ -4,14 +4,15 @@ import About from "./About";
 import AllPost from "./AllPost";
 import { useAuth } from "../../providers/auth";
 import { updateUser } from "../../App/Api";
-import Loader from "../../Components/Helper/Loader";
+import Loader, { LoaderSmall } from "../../Components/Helper/Loader";
 import { ConfigProvider, FloatButton, notification } from "antd";
 import { useAlert } from "../../Components/Alert";
 
-const Profile = () => {
-  const [profileToggler, setProfileToggler] = useState('1')
+const Profile = ({ toggler = '1' }) => {
+  const [profileToggler, setProfileToggler] = useState(toggler)
   const [loader, setLoader] = useState({
-    user: false
+    user: false,
+    post: false
   })
   const auth = useAuth()
   const [showNotification, contextHolder] = useAlert();
@@ -117,18 +118,22 @@ const Profile = () => {
       <div className="w-3/4 flex-col flex overflow-y-auto xs:w-full xs:relative sm:w-full ">
         <div className="flex top-0 sticky bg-white p-2 gap-4 mt-1  ">
 
-          <button className="rounded-2xl bg-[#EAF0FF] text-sm w-24 h-8 shadow-md shadow-slate-500 "
+          <button
+            className={profileToggler == 1 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 py-1  shadow-md shadow-slate-400 " : " bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
             onClick={() => setProfileToggler('1')}
           >
             About
           </button>
-          <button className="rounded-2xl bg-[#EAF0FF] text-sm w-24 h-8 shadow-md shadow-slate-500"
+          <button
+            className={profileToggler == 2 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 py-1  shadow-md shadow-slate-400 " : " bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
+
             onClick={() => setProfileToggler('2')}
           >
             All Post
           </button>
         </div>
         {/* ccalender and about */}
+
         <div className=" xs:overflow-y-auto sm:flex sm:flex-col  " >
           {
             profileToggler === '1' ?
@@ -141,7 +146,7 @@ const Profile = () => {
       <ConfigProvider
         theme={{
           token: {
-            colorPrimary: '#rgb(251 146 60 )',
+            colorPrimary: '#rgb(251 146 60)',
             fontSize: '25',
             lineHeight: '0'
           },

@@ -60,22 +60,21 @@ const Appointement = () => {
                     <div className="flex top-0 sticky bg-white p-2 gap-4 mt-1  ">
 
                         <button
-                            className={profileToggler == 1 ? "rounded-2xl text-sm w-fit px-3 h-8 shadow-md shadow-slate-500 bg-orange-500" : "rounded-2xl bg-[#EAF0FF] text-sm w-fit px-3 h-8 shadow-md shadow-slate-50"}
+                            className={profileToggler == 1 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 py-1  shadow-md shadow-slate-400 " : " bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
 
                             onClick={() => setProfileToggler('1')}
                         >
                             Send Requests
                         </button>
                         <button
-                            className={profileToggler == 2 ? "rounded-2xl text-sm w-fit px-3 h-8 shadow-md shadow-slate-500 bg-orange-500" : "rounded-2xl bg-[#EAF0FF] text-sm w-fit px-3 h-8 shadow-md shadow-slate-50"}
+                            className={profileToggler == 2 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 " : " bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
 
                             onClick={() => setProfileToggler('2')}
                         >
                             Received Requests
                         </button>
                         <button
-                            className={profileToggler == 2 ? "rounded-2xl text-sm w-fit px-3 h-8 shadow-md shadow-slate-500 bg-orange-500" : "rounded-2xl bg-[#EAF0FF] text-sm w-fit px-3 h-8 shadow-md shadow-slate-50"}
-
+                            className={profileToggler == 2 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 " : " bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
                             onClick={() => setProfileToggler('2')}
                         >
                             Completed Meeting
