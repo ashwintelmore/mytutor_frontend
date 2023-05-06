@@ -5,7 +5,7 @@ import AddPost from "../Pages/Posts/AddPost";
 import { useAuth } from "../providers/auth";
 
 
-const Sidebar = ({ isOpen, toggle }) => {
+const Sidebar = ({open }) => {
   const [show, setShow] = useState(false)
   const [theme, setTheme] = useState("light");
   useEffect(() => {
@@ -24,12 +24,12 @@ const Sidebar = ({ isOpen, toggle }) => {
 
   return (
     <>
-      <div className={isOpen ? "sidebar open" : "sidebar"}>
+      <div className={open?"sidebar collapse":"sidebar"}>
         <div className="flex justify-between items-center p-1">
           <h2 className="text-2xl ">My Tutor</h2>
           <i
             className="fa-solid fa-xmark cursor-pointer  text-2xl rounded-full"
-            onClick={toggle}
+            
           ></i>
         </div>
         <div className="flex flex-col gap-3 list-none p-2">

@@ -1,13 +1,13 @@
 import React from "react";
-import Sidebar from "./Sidebar";
+// import Sidebar from "./Sidebar";
 import { useState, useEffect, useRef } from "react";
 import Backrop from "./Backrop";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useAuth } from "../providers/auth";
 import AddPost from "../Pages/Posts/AddPost";
 
-const Header = () => {
+const Header = ({click}) => {
   const [show, setShow] = useState(false)
   const [openProfile, setOpenProfile] = useState(false);
   const auth = useAuth()
@@ -38,24 +38,24 @@ const Header = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
+  // const toggleSidebar = () => {
+  //   setIsOpen(!isOpen);
+  // };
 
 
 
   return (
     <>
-      <div className="flex  sm:w-full bg-[#EAF0FF] fixed w-full top-0 z-20 dark:bg-zinc-900 dark:text-white  justify-between p-2 h-16 xs:z-10">
+      <div className="flex  sm:w-full bg-[#EAF0FF] fixed w-full top-0 z-[3] dark:bg-zinc-900 dark:text-white  justify-between p-2 h-16 xs:z-10">
         <div className="flex items-center gap-9 p-2 text-lg xs:gap-4   ">
           <div>
             <i
               className="fa-solid fa-bars cursor-pointer"
-              onClick={toggleSidebar}
+              onClick={click}
             ></i>
-            <Sidebar isOpen={isOpen} toggle={toggleSidebar} />
+            {/* <Sidebar isOpen={isOpen} toggle={toggleSidebar} /> */}
           </div>
           <Link to={'/'}>
             <span className="mytutor">MyTutor</span>
