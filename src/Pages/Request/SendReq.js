@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Meeting from "./Meeting";
 import Payment from "./Payment";
+// import Backrop from "../../Header/Backrop";
+import EditReq from "./EditReq";
 
 export default function SendReq({ requests }) {
 
@@ -28,9 +30,25 @@ export default function SendReq({ requests }) {
     setReqData(data);
   };
 
+
+  const [openProfile, setOpenProfile] = useState(false);
+  // const auth = useAuth()
+  let menuRef = useRef();
+  useEffect(() => {
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setOpenProfile(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+
   return (
     <>
-      <div className=" w-full p-4 flex flex-col gap-4  overflow-scroll xs:w-full xs:p-1 xs:ml-1">
+      <div className=" w-full p-4 flex flex-col gap-4 relative overflow-scroll xs:w-full xs:p-1 xs:ml-1">
         {requests.length > 0 ? (
           requests.map((item, i) => (
             <div
@@ -49,8 +67,10 @@ export default function SendReq({ requests }) {
                       <p className="text-sm">{item.postName}</p>
                     </div>
                   </div>
-                  <div className="text-lg font-extrabold">
+                  <div ref={menuRef}
+                    onClick={() => setOpenProfile((prev) => !prev)} className="text-lg font-extrabold">
                     <i className="fa-solid fa-ellipsis-vertical"></i>
+                    {openProfile && <EditReq />}
                   </div>
                 </div>
                 <div className="flex justify-between w-full">
