@@ -43,7 +43,6 @@ function AddPost({ show, setShow, }) {
         }
         setShow(!show)
     };
-    console.log(userData)
 
     if (!show)
         return null;
