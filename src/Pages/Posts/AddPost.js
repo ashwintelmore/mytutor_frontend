@@ -39,7 +39,6 @@ function AddPost({ show, setShow, }) {
         };
         fetchAllCats()
     }, [])
-    console.log('cats', cats)
 
     const onAddDetails = async () => {
         if (!auth.user._id)
@@ -145,10 +144,11 @@ function AddPost({ show, setShow, }) {
                         <label className="text-xs ml-2 p-1">Per hour</label>
                     </div>
                     <div className="flex flex-col   w-[45%]  p-2  xs:w-full  ">
-                        <label className="w-full text-base p-2 ">Offering Charges</label>
+                        <label className="w-full text-base p-2 ">Tags</label>
                         <TagsInput
                             setResTags={(e) => setUserData({ ...userData, tags: e })}
                             resTags={userData.tags}
+                            isEditable={true}
                         />
                         <label className="text-xs ml-2 p-1">Per hour</label>
                     </div>

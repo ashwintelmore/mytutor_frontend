@@ -25,17 +25,19 @@ const App = () => {
 
   const auth = useAuth()
 
-  const[open,setOpen]=useState(false);
-  const handleClick =()=>{
+  const [open, setOpen] = useState(false);
+  const handleClick = () => {
+    console.log("ese")
     setOpen(!open);
   }
-
+  console.log('open', open)
   return (
     <>
       <BrowserRouter>
         <Header click={handleClick} />
-        <SidebarClose click={handleClick} open={open}/>
-    <Sidebar open={open}/>
+        {/* <SidebarClose click={handleClick} open={open} /> */}
+        <Sidebar open={open} />
+
         <div className="flex w-full mt-16  dark:bg-zinc-900 bg-[#edf0f6] relative">
           <VerticalNav />
           <Routes>
@@ -93,7 +95,7 @@ const App = () => {
             <Route path="/appointement" element={<Appointement />} />
             <Route path="/search" element={<SearchResult />} />
 
-            <Route path="/notfound" element={<Dummy />} />
+            <Route path="/" element={<Dummy />} />
           </Routes>
         </div>
       </BrowserRouter>
