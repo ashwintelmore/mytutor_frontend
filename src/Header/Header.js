@@ -1,5 +1,5 @@
 import React from "react";
-// import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar";
 import { useState, useEffect, useRef } from "react";
 import Backrop from "./Backrop";
 
@@ -38,13 +38,13 @@ const Header = ({ click }) => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  // const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  // const toggleSidebar = () => {
-  //   setIsOpen(!isOpen);
-  // };
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
 
-
+  console.log('isOpen', isOpen)
 
   return (
     <>
@@ -53,9 +53,9 @@ const Header = ({ click }) => {
           <div>
             <i
               className="fa-solid fa-bars cursor-pointer"
-              onClick={click}
+              onClick={toggleSidebar}
             ></i>
-            {/* <Sidebar isOpen={isOpen} toggle={toggleSidebar} /> */}
+            <Sidebar isOpen={isOpen} toggle={toggleSidebar} />
           </div>
           <Link to={'/'}>
             <span className="mytutor">MyTutor</span>

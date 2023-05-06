@@ -30,13 +30,12 @@ const App = () => {
     console.log("ese")
     setOpen(!open);
   }
-  console.log('open', open)
   return (
     <>
       <BrowserRouter>
         <Header click={handleClick} />
         {/* <SidebarClose click={handleClick} open={open} /> */}
-        <Sidebar open={open} />
+        {/* <Sidebar open={open} /> */}
 
         <div className="flex w-full mt-16  dark:bg-zinc-900 bg-[#edf0f6] relative">
           <VerticalNav />

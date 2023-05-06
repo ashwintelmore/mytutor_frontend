@@ -5,7 +5,7 @@ import AddPost from "../Pages/Posts/AddPost";
 import { useAuth } from "../providers/auth";
 
 
-const Sidebar = ({ open }) => {
+const Sidebar = ({ isOpen, toggle, }) => {
   const [show, setShow] = useState(false)
   const [theme, setTheme] = useState("light");
   useEffect(() => {
@@ -19,33 +19,29 @@ const Sidebar = ({ open }) => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  console.log('open', open)
 
-
+  console.log(isOpen)
   return (
     <>
 
-      {
-        open
-        &&
-        <div className={open ? "sidebar collapse" : "sidebar"}>
-          <div className="flex justify-between items-center p-1">
-            <h2 className="text-2xl ">My Tutor</h2>
-            <i
-              className="fa-solid fa-xmark cursor-pointer  text-2xl rounded-full"
-
-            ></i>
+      <div className={isOpen ? "sidebar open" : "sidebar"}>
+        <div className="flex justify-between items-center p-1">
+          <h2 className="text-2xl ">My Tutor</h2>
+          <i
+            className="fa-solid fa-xmark cursor-pointer  text-2xl rounded-full"
+            onClick={toggle}
+          ></i>
+        </div>
+        <div className="flex flex-col gap-3 list-none p-2">
+          <div className="flex gap-2 items-center  " onClick={handleThemeSwitch}>
+            <i className="fa-solid fa-moon cursor-pointer"> </i>
+            <label>Dark Mode</label>
           </div>
-          <div className="flex flex-col gap-3 list-none p-2">
-            <div className="flex gap-2 items-center  " onClick={handleThemeSwitch}>
-              <i className="fa-solid fa-moon cursor-pointer"> </i>
-              <label>Dark Mode</label>
-            </div>
-            {/* <div className="flex gap-2 items-center">
+          {/* <div className="flex gap-2 items-center">
           <i className="fa-solid fa-bell"> </i>
           <label>Notifications</label>
         </div> */}
-            {/* <div className="flex gap-2 items-center "
+          {/* <div className="flex gap-2 items-center "
 
           >
             <i className="fa-solid fa-circle-plus"
@@ -53,23 +49,23 @@ const Sidebar = ({ open }) => {
             <label>Upload</label>
           </div> */}
 
-            {/* <div className="flex gap-2 items-center">
+          {/* <div className="flex gap-2 items-center">
           <i className="fa-solid fa-gear gap-2"> </i>
           <label>Setting</label>
         </div> */}
-          </div>
-          <Link to={"/profile"} >  <div className="flex bottom-2 absolute items-center gap-5">
-            <img
-              className="rounded-full h-14 w-14"
-              src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-              alt=""
-            />
-            {/* <label>{useAuth().user.name}</label> */}
-          </div>
-          </Link>
-
         </div>
-      }
+        <Link to={"/profile"} >  <div className="flex bottom-2 absolute items-center gap-5">
+          <img
+            className="rounded-full h-14 w-14"
+            src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
+            alt=""
+          />
+          {/* <label>{useAuth().user.name}</label> */}
+        </div>
+        </Link>
+
+      </div>
+
 
     </>
   );
