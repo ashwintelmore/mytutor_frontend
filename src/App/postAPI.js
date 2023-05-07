@@ -5,10 +5,8 @@ const END_POINT = process.env.REACT_APP_END_POINT
 
 
 export const getAllPosts = async () => {
-    console.log('EN_POINT', END_POINT)
     return await axios.get(`${END_POINT}/getallposts`)
         .then(function (response) {
-            console.log('response', response)
 
             return response.data
         })

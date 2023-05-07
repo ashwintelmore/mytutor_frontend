@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-
+import { Buffer } from 'buffer';
 import { Link } from "react-router-dom";
 import { getAllPosts } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
 import Loader from "../../Components/Helper/Loader";
 import { useAlert } from "../../Components/Alert";
+import { getCatgory } from "../../App/category.Api";
 
 const Home = () => {
   const auth = useAuth()
@@ -18,7 +19,6 @@ const Home = () => {
     const getallpost = async () => {
       setLoader({ ...loader, posts: true })
       const res = await getAllPosts();
-      console.log('res', res)
       if (res.error) {
         //handle error
         showAlert(res.error.errMessage)
@@ -33,10 +33,25 @@ const Home = () => {
       getallpost()
   }, [posts])
 
+
+  const [img, setImg] = useState('')
+  useEffect(() => {
+    const getallpost = async () => {
+      // setLoader({ ...loader, posts: true })
+      const res = await getCatgory('6457703d68265cf2131f0445');
+      console.log('res', res)
+      if (res.error) {
+      } else if (res.payload) {
+        setImg(`data:${res.payload[0].image.contentType};base64, ${Buffer.from(res.payload[0].image.data.data).toString('base64')}`)
+        // setImg({ data: res.payload.image.contentType ;base64, ${ Buffer.from(user.userPhoto.data).toString('base64') }
+      }
+
+    }
+
+    getallpost();
+  }, [])
   // if (auth.loading)
   //   return <Loader />
-  console.log('posts', posts)
-  console.log('loader', loader)
   return (
     <div className="home w-[95%] sm:relative ml-16 sm:w-full sm:m-1 xs:p-1  h-auto bg-white light dark:text-white dark:bg-neutral-800  p-2 rounded-t-3xl  ">
       {renderAlert}
@@ -48,7 +63,10 @@ const Home = () => {
           
           
           3 ">
-            <img className="w-full h-full rounded-full" src="https://source.unsplash.com/random/?student" alt="student" />
+            <img
+              className="w-full h-full rounded-full"
+              src={img}
+              alt="student" />
           </div>
           <div className="absolute text-center p-2 bottom-0 dark:bg-amber-500 h-10  w-28  bg-white shadow-sm shadow-black rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
             Student

@@ -33,7 +33,7 @@ export const updateCatgory = async (id, data) => {
 };
 export const getCatgory = async (id) => {
 
-    return await axios.get(`${END_POINT}/getCatgory/${id}`)
+    return await axios.get(`${END_POINT}/getCategory/${id}`)
         .then(function (response) {
             return response.data
         })
