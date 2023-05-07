@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllUser, register } from "../App/Api";
 import loginImage from '../assets/bacground4.jpg'
-import Google from '../assets/Google-logo.png'
+// import Google from '../assets/Google-logo.png'
 import { useAuth } from "../providers/auth";
 import Loader from "../Components/Helper/Loader";
 

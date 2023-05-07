@@ -145,12 +145,12 @@ const Post = () => {
         post && userData._id ?
           <div className="Post ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-zinc-800 bg-white xs:w-full xs:flex-col xs:m-0 sm:m-0 sm:flex-col sm:w-full">
             <div className="flex flex-col w-3/5 xs:w-full sm:w-full">
-              <div className=" h-auto p-1 xs:p-1 ">
-                <div className="flex justify-between  p-2 m-1 items-center">
+              <div className=" h-auto p-1 xs:p-1 mx-2 ">
+                <div className="flex justify-between mx-3 py-2  items-center">
                   <h4 className="xs:text-xs text-[#6F6F6F]"> {post.createdAt} </h4>
-                  <i className="fa-sharp fa-solid fa-ellipsis-vertical xs:text-xs"></i>
+                  <i className="fa-sharp fa-solid fa-ellipsis-vertical text-xl xs:text-xs"></i>
                 </div>
-                <div className="bg-[#F8AF6A] dark:bg-slate-600 h-80 p-2 rounded-xl  m-4 xs:w-[97%]  xs:m-1 sm:h-40"></div>
+                <div className="bg-[#F8AF6A] dark:bg-slate-600 h-80  rounded-xl  mx-3 xs:w-[97%]  xs:m-1 sm:h-40"></div>
                 <div className="flex justify-between p-1 mx-1 items-center text-xl sm:text-xs xs:p-0">
                   <h1 className="  font-semibold  sm:text-xs">
                     {post.postTitle}
@@ -185,7 +185,7 @@ const Post = () => {
                   {post.discrip || post.descrp}
                 </p>
               </div>
-              <div className="flex justify-between  p-3 xs:p-2">
+              <div className="flex justify-between mx-1  p-3 xs:p-2">
                 <Link to={'/showProfile/' + post.createdTutor}>
                   <div className="flex items-center gap-2 xs:gap-1 cursor-pointer ">
 
@@ -209,7 +209,7 @@ const Post = () => {
                   {!isFavourite ? "Favourite" : "unfavourite"}
                 </button>
               </div>
-              <div className="flex items-center p-2 gap-3 xs:text-sm ">
+              <div className="flex items-center mx-2 p-2 gap-3 xs:text-sm ">
                 <div className="flex p-1 gap-1 ">
                   <h3>286</h3>
                   <label>Comments</label>
@@ -219,7 +219,7 @@ const Post = () => {
                   <label>Sort by</label>
                 </div>
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col mx-2">
                 <div className=" relative flex items-center p-2 gap-4">
                   <img
                     className="rounded-full h-16 w-16 xs:h-12 xs:w-12 border-2 border-red-500"
@@ -229,7 +229,7 @@ const Post = () => {
                   <input
                     type="text"
                     placeholder="Add a public comment"
-                    className="w-11/12 border-b-2 outline-none border-[#303030]">
+                    className="w-11/12 border-b-2 outline-none dark:bg-zinc-800 dark:border-white border-[#303030]">
 
                   </input>
                   <button className="absolute bg-orange-400 right-2 rounded-xl p-2 top-2 text-white xs:p-2 xs:text-xs ">Comment</button>

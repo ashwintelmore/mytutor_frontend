@@ -48,7 +48,7 @@ const Header = ({click}) => {
 
   return (
     <>
-      <div className="flex  sm:w-full bg-[#EAF0FF] fixed w-full top-0 z-[3] dark:bg-zinc-900 dark:text-white  justify-between p-2 h-16 xs:z-10">
+      <div className="flex  sm:w-full bg-[#EAF0FF] fixed w-full top-0 z-[7] dark:bg-zinc-900 dark:text-white  justify-between p-2 h-16 xs:z-10">
         <div className="flex items-center gap-9 p-2 text-lg xs:gap-4   ">
           <div>
             <i
