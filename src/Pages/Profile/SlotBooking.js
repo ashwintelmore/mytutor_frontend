@@ -78,7 +78,7 @@ function SlotBooking({ isEditable }) {
                             <select
                                 placeholder="select option"
                                 name="slots"
-                                className="rounded-xl w-10/12 shadow-sm shadow-black p-2"
+                                className="rounded-xl w-10/12 shadow-sm dark:bg-zinc-800  dark:border shadow-black p-2"
                                 value={auth.user.slots.available}
                                 onChange={(e) => auth.setUser({ ...auth.user, slots: { ...auth.user.slots, available: e.target.value } })}
                             >
@@ -92,7 +92,7 @@ function SlotBooking({ isEditable }) {
                     </div>
                 }
 
-                <div className=" border border-blue-100 w-full dark:bg-orange-300 dark:text-black bg-gray-200 p-2text-lg font-semibold mt-2 rounded-2xl xs:gap-1 xs:p-2 xs:ml-2 xs:font-normal ">
+                <div className=" border border-blue-100 w-full  dark:bg-zinc-800  dark:text-black bg-gray-200 p-2text-lg font-semibold mt-2 rounded-2xl xs:gap-1 xs:p-2 xs:ml-2 xs:font-normal ">
 
                     {
                         isEditable
@@ -129,10 +129,10 @@ function SlotBooking({ isEditable }) {
                                 <label htmlFor="everytime">Every Time</label>
                             </div>
                             <div className="flex gap-4">
-                                <div className="flex gap-4">
+                                <div className="flex gap-4 ">
 
                                     From
-                                    <TimePicker
+                                    <TimePicker className="dark:bg-white dark:border "
                                         disabled={auth.user.slots.isEveryTime}
                                         showTime={{ format: 'hh:mm A', use12Hours: true }}
 
@@ -143,7 +143,7 @@ function SlotBooking({ isEditable }) {
                                         onSelect={(e) => onChange(e, 'from')}
                                     />
                                     to
-                                    <TimePicker
+                                    <TimePicker  className="dark:bg-white dark:border "
                                         disabled={auth.user.slots.isEveryTime}
                                         showTime={{ format: 'hh:mm A', use12Hours: true }}
                                         showSecond={false}
@@ -155,7 +155,7 @@ function SlotBooking({ isEditable }) {
                                     />
                                 </div>
 
-                                <button className="rounded-xl  w-20 h-7 bg-orange-300"
+                                <button className="rounded-xl  w-20 h-7 dark:bg-zinc-800  dark:border bg-orange-300"
                                     onClick={() => handleAddClick()}
                                     disabled={auth.user.slots.isEveryTime}
                                 >add</button>{" "}
@@ -163,7 +163,7 @@ function SlotBooking({ isEditable }) {
                         </>
                     }
                     <p>{error}</p>
-                    <div className="w-full h-auto p-1 gap-4 flex flex-wrap xs:w-full" >
+                    <div className="w-full h-auto p-1 gap-4 flex flex-wrap xs:w-full dark:text-white" >
                         {/* <button className="w-2/5 text-sm border shadow-lg shadow-gray-400 rounded-xl   p-2">
                             {moment(fromTime).format('hh:mm A')} - {moment(toTime).format('hh:mm A')}
                         </button> */}
@@ -176,7 +176,7 @@ function SlotBooking({ isEditable }) {
                                     <Tag
                                         onClose={(e) => console.log(e)}
                                         closable={isEditable}
-                                        className=" text-sm border shadow-lg shadow-gray-400 rounded-xl p-2 pr-3"
+                                        className=" text-sm border shadow-lg dark:text-white dark:shadow-none shadow-gray-400 rounded-xl p-2 pr-3"
                                         title={"bbjn"}
                                         key={i}
                                     >
@@ -190,7 +190,7 @@ function SlotBooking({ isEditable }) {
                                     <Tag
                                         onClose={(e) => console.log(e)}
                                         closable={isEditable}
-                                        className=" text-sm border shadow-lg shadow-gray-400 rounded-xl p-2 pr-3"
+                                        className=" text-sm border shadow-lg dark:shadow-none shadow-gray-400 rounded-xl p-2 pr-3"
                                         title={"bbjn"}
                                         key={i}
                                     >
@@ -203,45 +203,7 @@ function SlotBooking({ isEditable }) {
                 </div>
 
 
-                {/* <div className="p-2 flex  flex-col gap-2">
-                    <h2 className="text-red-600"
-
-
-                    >Recomendation</h2>
-                    <div className="flex items-center p-1 gap-3">
-                        <img
-                            className="rounded-full h-16 w-16  border-4 border-red-500"
-                            src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                            alt=""
-                        />
-                        <div>
-                            <h3 className="text-violet-800">User Name</h3>
-                            <p>Something bio details</p>
-                        </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <img
-                            className="rounded-full h-16 w-16 border-4 border-red-500"
-                            src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                            alt=""
-                        />
-                        <div>
-                            <h3 className="text-violet-800">User Name</h3>
-                            <p>Something bio details</p>
-                        </div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <img
-                            className="rounded-full h-16 w-16 border-4 border-red-500"
-                            src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                            alt=""
-                        />
-                        <div>
-                            <h3 className="text-violet-800">User Name</h3>
-                            <p>Something bio details</p>
-                        </div>
-                    </div>
-                </div> */}
+                 
             </div>
 
         </>
