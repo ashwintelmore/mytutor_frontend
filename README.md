@@ -1,28 +1,37 @@
 # TODO list
 ## Tasks
+##### Reamining Features
+- [ ] request delet
+- [ ] request card click redirect
+- [ ] request card delete edid 
+- [ ] post delete update
+- [ ] 
+- [ ] 
+
 ##### global
-- [ ] loader for login page
+- [x] loader for login page
 - [x] envirenment variable
-- [ ] create custom alreart box to show some massages
-  - [ ] success/logout/....
+- [x] create custom alreart box to show some massages
+  - [x] success/logout/....
 - [ ] inpost page should show hint for user to identyfy what meaning of green and red dates
 - [ ] after non loged user not correcty see the details of user or teacher
+- [ ]
 - [ ]
 ##### post
 - [ ] all post api chages only for user
 - [x] on every post should be fetch userdata of creator
 - [ ] selected date should show bcoz if month changes user get deficulty to find previos selected dates
 - ###### Errors
-  - [ ] no data is not showing
+  - [x] no data is not showing
 ##### Request/Appoitments
-- [ ] UI design for card
-- [ ] meeting link should show
+- [x] UI design for card
+- [x] meeting link should show
 - [ ] cancel meeting for future
 - [ ] ###### Errors
 
 ##### Profile
 - [ ] ###### Errors
-- [ ] if user come of the profile page and he didtn update then still data is sending ot backend
+- [x] if user come of the profile page and he didtn update then still data is sending ot backend
 - [ ] 
 ##### Search
 select input filed 
