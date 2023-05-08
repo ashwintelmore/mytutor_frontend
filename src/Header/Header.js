@@ -7,7 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../providers/auth";
 import AddPost from "../Pages/Posts/AddPost";
 
-const Header = ({ click }) => {
+const Header = ({ setOpen, open }) => {
   const [show, setShow] = useState(false)
   const [openProfile, setOpenProfile] = useState(false);
   const auth = useAuth()
@@ -38,13 +38,9 @@ const Header = ({ click }) => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
 
-  console.log('isOpen', isOpen)
+  // console.log('isOpen', isOpen)
 
   return (
     <>
@@ -53,9 +49,9 @@ const Header = ({ click }) => {
           <div>
             <i
               className="fa-solid fa-bars cursor-pointer"
-              onClick={toggleSidebar}
+              onClick={() => { setOpen(!open) }}
             ></i>
-            <Sidebar isOpen={isOpen} toggle={toggleSidebar} />
+            {/* <Sidebar isOpen={isOpen} toggle={toggleSidebar} /> */}
           </div>
           <Link to={'/'}>
             <span className="mytutor">MyTutor</span>

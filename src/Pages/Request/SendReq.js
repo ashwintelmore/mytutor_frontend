@@ -104,7 +104,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
                       <>
                         <div className="">
 
-                          <button className="p-1 shadow-sm shadow-slate-500 rounded-xl bg-[#f5c782] t" value={meetingLink}
+                          <button className="p-1 shadow-sm shadow-slate-500 rounded-xl dark:bg-zinc-800 dark:border bg-[#f5c782] t" value={meetingLink}
                             onChange={handleLinkChange} onClick={handleCopyClick}> Meeting Code : {item.meetingCode}</button>
                         </div>
 

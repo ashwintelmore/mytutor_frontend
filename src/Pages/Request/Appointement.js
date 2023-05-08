@@ -58,17 +58,17 @@ const Appointement = () => {
                 <div className="w-3/5 flex-col flex overflow-y-auto xs:w-full xs:relative   ">
                     <h3 className="text-xl font-semibold p-2 text-[#FF0000]">Your Appointements</h3>
 
-                    <div className="flex top-0 sticky bg-white p-2 gap-4 mt-1  ">
+                    <div className="flex top-0 sticky bg-white dark:bg-zinc-800 p-2 gap-4 mt-1  ">
 
                         <button
-                            className={profileToggler == 1 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 py-1  shadow-md shadow-slate-400 " : " bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
+                            className={profileToggler == 1 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 py-1  shadow-md shadow-slate-400 dark:shadow-sm " : " dark:bg-zinc-800 dark:shadow-none dark:border bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
 
                             onClick={() => setProfileToggler('1')}
                         >
                             Send Requests
                         </button>
                         <button
-                            className={profileToggler == 2 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 " : " bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
+                            className={profileToggler == 2 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400  dark:shadow-sm" : " dark:bg-zinc-800 dark:shadow-none dark:border bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
 
                             onClick={() => setProfileToggler('2')}
                         >

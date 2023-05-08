@@ -3,7 +3,7 @@ import { Link, NavLink, useParams, useNavigate } from "react-router-dom";
 import { getPost, updatePost } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
 import MultipleDatePicker from "../../Components/Helper/multiDate";
-import { getUser } from "../../App/Api";
+import { getUser, updateUser } from "../../App/Api";
 import { Radio, Tag } from "antd";
 import Loader from "../../Components/Helper/Loader";
 import { createRequest, getAllPostRequested, getAllPostRequester } from "../../App/RequestApi";
@@ -136,15 +136,15 @@ const Post = () => {
 
 
 
-  const updateUserData = async (userData) => {
-    const res = await updateUser(data);
-    if (res.error) {
-      showNotification(res.error.errMessage)
-      // setErr(res.error.errMessage)
-    } else if (res.payload) {
-      // showNotification("Profile Updated successfully")
-    }
-  };
+  // const updateUserData = async (userData) => {
+  //   const res = await updateUser(data);
+  //   if (res.error) {
+  //     showNotification(res.error.errMessage)
+  //     // setErr(res.error.errMessage)
+  //   } else if (res.payload) {
+  //     // showNotification("Profile Updated successfully")
+  //   }
+  // };
 
   if (auth.loading)
     return <Loader />
@@ -157,7 +157,7 @@ const Post = () => {
           <Loader />
           :
           post && userData._id ?
-            <div className="Post ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-zinc-800 bg-white xs:w-full xs:flex-col xs:m-0 sm:m-0 sm:flex-col sm:w-full">
+            <div className="w-[96%] ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-zinc-800 bg-white xs:w-full xs:flex-col xs:m-0 sm:m-0 sm:flex-col sm:w-full">
               <div className="flex flex-col w-3/5 xs:w-full sm:w-full">
                 <div className=" h-auto p-1 xs:p-1 mx-2 ">
                   <div className="flex justify-between mx-3 py-2  items-center">

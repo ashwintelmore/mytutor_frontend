@@ -42,7 +42,7 @@ const ShowProfile = () => {
     if (!userData.userDetails._id)
         return null
     return (
-        <div className="flex w-full ml-16 h-screen rounded-t-3xl bg-white dark:bg-slate-800 dark:text-white xs:flex-col xs:ml-0  xs:h-full " >
+        <div className="flex w-full ml-16 h-screen rounded-t-3xl bg-white dark:bg-zinc-800 dark:text-white xs:flex-col xs:ml-0  xs:h-full " >
             {contextHolder}
             <div className="w-1/4 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl xs:w-full   ">
                 <h3 className="text-lg font-semibold text-[#FF0000]">Profile Photo</h3>
@@ -59,7 +59,7 @@ const ShowProfile = () => {
                     <input
                         type="text"
                         placeholder="Write something"
-                        className="rounded-lg w-full outline-none text-center"
+                        className="rounded-lg w-full outline-none text-center dark:bg-zinc-800 dark:border"
                         value={userData.userDetails.name}
                         disabled
                     />
@@ -68,38 +68,38 @@ const ShowProfile = () => {
 
                 <div className="flex gap-12 text-lg">
                     <div className="flex-col flex items-center ">
-                        <label className="text-[#1A0970]">{userData.userDetails.analytics.lectures}</label>
+                        <label className="text-[#1A0970] dark:text-white dark:bg-zinc-800">{userData.userDetails.analytics.lectures}</label>
                         <label className="text-sm">Lectures</label>
                     </div>
                     <div className="flex-col flex items-center ">
-                        <label className="text-[#1A0970]">{userData.userDetails.analytics.hours}</label>
+                        <label className="text-[#1A0970] dark:text-white dark:bg-zinc-800">{userData.userDetails.analytics.hours}</label>
                         <label className="text-sm">Hours</label>
                     </div>
                     <div className="flex-col flex items-center ">
-                        <label className="text-[#1A0970]">{userData.userDetails.analytics.learners}</label>
+                        <label className="text-[#1A0970] dark:text-white dark:bg-zinc-800">{userData.userDetails.analytics.learners}</label>
                         <label className="text-sm">Learners </label>
                     </div>
                 </div>
-                <div className="flex flex-col items-center gap-1 text-lg p-1">
-                    <label className="text-[#1A0970]">Bio</label>
-                    <p className="text-sm p-1 ">
-                        <input
+                <div className="flex w-full flex-col  items-center gap-1 text-lg p-1">
+                    <label className="text-[#1A0970] dark:text-white">Bio</label>
+                    <p className="text-sm p-1 w-full h-auto ">
+                        <textarea
                             type="text"
                             placeholder="Write something"
-                            className="rounded-lg w-full outline-none "
+                            className="rounded-lg w-full shadow-sm shadow-slate-500 p-2 h-auto outline-none "
                             value={userData.userDetails.bio}
                             disabled
                         />
                     </p>
                 </div>
                 <div className="text-lg w-11/12 gap-3 flex flex-col">
-                    <h3 className="text-[#1A0970]">Something Heading</h3>
+                    <h3 className="text-[#1A0970] dark:text-white">Something Heading</h3>
                     <div className="flex flex-col gap-8">
-                        <div className="flex items-center  relative border border-gray-500 shadow-slate-400 shadow-md text-sm   rounded-xl p-1  ">
+                        <div className="flex items-center  relative border dark:shadow-none border-gray-500 shadow-slate-400 shadow-md text-sm   rounded-xl p-1  ">
                             <input
                                 type="number"
                                 placeholder="Write something"
-                                className="rounded-lg px-2 py-1  w-full  outline-none "
+                                className="rounded-lg px-2 py-1  w-full dark:bg-zinc-800  outline-none "
                                 value={userData.userDetails.phoneNumber}
                                 disabled
                             ></input>
@@ -113,21 +113,21 @@ const ShowProfile = () => {
             </div>
 
             <div className="w-3/4 flex-col flex overflow-y-auto xs:w-full xs:relative   ">
-                <div className="flex top-0 sticky bg-white p-2 gap-4 mt-1  ">
+                <div className="flex top-0 sticky bg-white p-2 gap-4 mt-1 dark:bg-zinc-800  ">
 
-                    <button className="rounded-2xl bg-[#EAF0FF] text-sm w-24 h-8 shadow-md shadow-slate-500 "
+                    <button className="rounded-2xl dark:border dark:bg-zinc-800 bg-[#EAF0FF] text-sm w-24 h-8 shadow-md shadow-slate-500 "
                         onClick={() => setProfileToggler('1')}
                     >
                         About
                     </button>
-                    <button className="rounded-2xl bg-[#EAF0FF] text-sm w-24 h-8 shadow-md shadow-slate-500"
+                    <button className="rounded-2xl dark:bg-zinc-800 dark:border bg-[#EAF0FF] text-sm w-24 h-8 shadow-md shadow-slate-500"
                         onClick={() => setProfileToggler('2')}
                     >
                         All Post
                     </button>
                 </div>
                 {/* ccalender and about */}
-                <div className=" xs:overflow-y-auto " >
+                <div className=" xs:overflow-y-auto  dark:bg-zinc-800" >
                     {
                         profileToggler === '1' ?
                             <About

@@ -78,14 +78,14 @@ tags =>
 ### Pranay task
 - [ ] custom class for each btn in tailwind
 - [ ] not found pages build and dummy name change [ line number 84 on app.js page]
-- [ ] dark mode check in all pages 
-- [ ] check responsiveness
+- [x] dark mode check in all pages 
+- [x] check responsiveness
 - [ ] add post component make this as seperate componte for edting purpose or adding data
 - [ ] in mobile add card not showing properly
-- [ ] input number arrows remove
-- [ ] change all input filed style 
-- [ ] tags in profile page
-- [ ] change profile > allpost  three lines
+- [x] input number arrows remove
+- [x] change all input filed style 
+- [x] tags in profile page
+- [x] change profile > allpost  three lines
 - [ ] all profile photos show show first char of name
 - [ ] post left slot booking alingment left and right
 - [ ] hovor animation
