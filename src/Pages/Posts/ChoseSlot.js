@@ -132,11 +132,12 @@ export default function ChoseSlot({ post, userData, _reqData }) {
     }, [_reqData])
     return (
         <>
-            <div className=" flex  flex-col w-2/5 p-2 xs:w-full xs:p-1 sm:w-full  ">
+            <div className=" flex  flex-col w-2/5 p-2 xs:w-full dark:bg-zinc-800 xs:p-1 sm:w-full  ">
                 {contextHolder}
                 <h4 className="text-lg font-semibold mt-2">Select available dates</h4>
                 {/* calender */}
                 <MultipleDatePicker
+                
                     value={userData.slots.customDates}
                     available={userData.slots.available}
                     reqValue={reqData.reqDates}
@@ -190,7 +191,7 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                 <div className="p-3 w-4/5 flex flex-col gap-1">
                     <h3 className="font-semibold">Message</h3>
                     <input
-                        className="w-full p-2 rounded-2xl outline-none shadow-sm shadow-slate-500"
+                        className="w-full p-2 rounded-2xl outline-none shadow-sm  dark:border  dark:bg-zinc-800 shadow-slate-500"
                         placeholder="Write something..."
                         type='text'
                         value={reqData.reqMassege}

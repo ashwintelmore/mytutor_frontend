@@ -19,27 +19,23 @@ import Sidebar from "./Header/Sidebar";
 import SidebarClose from "./Header/SidebarClose";
 import React, { useState, useEffect } from "react";
 
-
-
 const App = () => {
+  const auth = useAuth();
 
-  const auth = useAuth()
-
-  const[open,setOpen]=useState(false);
-  const handleClick =()=>{
+  const [open, setOpen] = useState(false);
+  const handleClick = () => {
     setOpen(!open);
-  }
+  };
 
   return (
     <>
       <BrowserRouter>
-        <Header click={handleClick} />
-        <SidebarClose click={handleClick} open={open}/>
-    <Sidebar open={open}/>
+        <Header setOpen={setOpen} open={open} />
+        <SidebarClose setOpen={setOpen} open={open} />
+        <Sidebar open={open} />
         <div className="flex w-full mt-16  dark:bg-zinc-900 bg-[#edf0f6] relative">
           <VerticalNav />
           <Routes>
-
             <Route path="/" element={<Home />} />
 
             <Route
@@ -68,11 +64,7 @@ const App = () => {
             <Route
               path="profile"
               element={
-                auth.user._id ? (
-                  <Profile />
-                ) : (
-                  <Navigate replace to="/login" />
-                )
+                auth.user._id ? <Profile /> : <Navigate replace to="/login" />
               }
             />
             <Route

@@ -143,7 +143,7 @@ const Post = () => {
     <>
       {
         post && userData._id ?
-          <div className="Post ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-zinc-800 bg-white xs:w-full xs:flex-col xs:m-0 sm:m-0 sm:flex-col sm:w-full">
+          <div className="w-[96%] ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-zinc-800 bg-white xs:w-full xs:flex-col xs:m-0 sm:m-0 sm:flex-col sm:w-full">
             <div className="flex flex-col w-3/5 xs:w-full sm:w-full">
               <div className=" h-auto p-1 xs:p-1 mx-2 ">
                 <div className="flex justify-between mx-3 py-2  items-center">
