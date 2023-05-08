@@ -3,7 +3,7 @@ import Meeting from "./Meeting";
 import Payment from "./Payment";
 import { useAuth } from "../../providers/auth";
 
-export default function RecievedReq({ requests }) {
+export default function RecievedReq({ requests, setRefreshReqData }) {
   const [show, setShow] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
   const [reqData, setReqData] = useState({});
@@ -12,7 +12,7 @@ export default function RecievedReq({ requests }) {
     setShow(!show);
     setReqData(item);
   };
-
+  console.log('reqData', reqData)
   const [meetingLink, setMeetingLink] = useState("");
 
   const handleCopyClick = async () => {
@@ -30,7 +30,10 @@ export default function RecievedReq({ requests }) {
     setShowPayment(!showPayment)
     setReqData(data);
   };
-
+  const handleShowPayment = () => {
+    setShowPayment(!showPayment)
+    setRefreshReqData(true)
+  };
   return (
     <>
       <div className=" w-full p-4 flex flex-col gap-4  overflow-scroll xs:w-full xs:p-1 xs:ml-1">
@@ -115,7 +118,7 @@ export default function RecievedReq({ requests }) {
                           className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-400"
                           onClick={() => onPaymentClick(item, i)}
                         >
-                          {item.paymentId && item.paymentId != '' ? 'update Payment' : 'Initiat Payment'}
+                          {item.paymentId && item.paymentId != '' ? 'View Payment' : 'Initiat Payment'}
                         </button>
                       )}
                       {item.reqAccept && (
@@ -142,9 +145,9 @@ export default function RecievedReq({ requests }) {
       />
       <Payment
         showPayment={showPayment}
-        setShowPayment={() => setShowPayment(!showPayment)}
-        data={reqData}
-
+        setShowPayment={handleShowPayment}
+        reqData={reqData}
+        setReqData={(res) => setReqData(res)}
       />
     </>
   );

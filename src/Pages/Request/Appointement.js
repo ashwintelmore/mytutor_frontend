@@ -14,12 +14,14 @@ const Appointement = () => {
     const auth = useAuth()
     const [profileToggler, setProfileToggler] = useState('1')
     const [requests, setRequests] = useState([])
+    const [refreshReqData, setRefreshReqData] = useState(false)
     const [loader, setLoader] = useState({
         post: false
     })
 
     useEffect(() => {
         const getListAppointements = async () => {
+            console.log('refreshReqData', refreshReqData)
             let res;
 
             if (profileToggler == '1') {
@@ -42,8 +44,7 @@ const Appointement = () => {
         return () => {
 
         };
-    }, [profileToggler])
-
+    }, [profileToggler, refreshReqData])
     return (
         <>
             <div className="flex w-full ml-16 h-screen rounded-t-3xl bg-white  dark:bg-zinc-800 p-3 mx-2 dark:text-white xs:flex-col xs:ml-0  xs:h-full " >
@@ -90,10 +91,12 @@ const Appointement = () => {
                                     profileToggler === '1' ?
                                         <SendReq
                                             requests={requests}
+                                            setRefreshReqData={() => setRefreshReqData(!refreshReqData)}
                                         />
                                         :
                                         <RecievedReq
                                             requests={requests}
+                                            setRefreshReqData={() => setRefreshReqData(!refreshReqData)}
                                         />
                                 }
                             </div>

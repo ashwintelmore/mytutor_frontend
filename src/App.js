@@ -18,6 +18,7 @@ import Appointement from "./Pages/Request/Appointement";
 import Sidebar from "./Header/Sidebar";
 import SidebarClose from "./Header/SidebarClose";
 import React, { useState, useEffect } from "react";
+import Favourite from "./Pages/Favourite/Favourite";
 
 
 
@@ -93,7 +94,7 @@ const App = () => {
             <Route path="/comment" element={<Comment />} />
             <Route path="/appointement" element={<Appointement />} />
             <Route path="/search" element={<SearchResult />} />
-
+            <Route path="/favourite" element={<Favourite />} />
             <Route path="/" element={<Dummy />} />
           </Routes>
         </div>

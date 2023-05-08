@@ -134,7 +134,7 @@ function Meeting({ show, setShow, data, setData }) {
         if (res.payload) {
             setMeeting(res.payload)
             showNotification("Request sended Successfull")
-            setShow(!show)
+            // setShow(!show)
         } else if (res.error) {
             showNotification(res.error.errMessage)
         }
@@ -182,6 +182,21 @@ function Meeting({ show, setShow, data, setData }) {
                 ...temp[0]
             })
         }
+    };
+    const onCancelHandle = (e) => {
+        setShow(!show)
+        setReqData({
+            reqDates: '',
+            reqTime: '',//hour
+            reqMassege: '',
+            reqAccept: null,//true or false
+        })
+        setMeeting({
+            tutorId: '',
+            meetingName: '',
+            meetingCode: '',
+            participants: []
+        })
     };
 
     if (!show)
@@ -366,7 +381,7 @@ function Meeting({ show, setShow, data, setData }) {
                     >Send
                     </button>
                     <button className=" xs:w-2/5 bg-[#30f65e] text-white rounded-xl p-2 w-[15%]"
-                        onClick={() => setShow(!show)}
+                        onClick={() => onCancelHandle()}
                     >Cancel
                     </button>
                 </div>

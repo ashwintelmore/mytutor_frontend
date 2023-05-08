@@ -134,6 +134,18 @@ const Post = () => {
     }
   };
 
+
+
+  const updateUserData = async (userData) => {
+    const res = await updateUser(data);
+    if (res.error) {
+      showNotification(res.error.errMessage)
+      // setErr(res.error.errMessage)
+    } else if (res.payload) {
+      // showNotification("Profile Updated successfully")
+    }
+  };
+
   if (auth.loading)
     return <Loader />
   if (!post._id || !auth.user._id)

@@ -5,7 +5,7 @@ import Payment from "./Payment";
 // import Backrop from "../../Header/Backrop";
 import EditReq from "./EditReq";
 
-export default function SendReq({ requests }) {
+export default function SendReq({ requests, setRefreshReqData }) {
 
   const [meetingLink, setMeetingLink] = useState("");
   const [showPayment, setShowPayment] = useState(false);
@@ -24,7 +24,6 @@ export default function SendReq({ requests }) {
   const handleLinkChange = (event) => {
     setMeetingLink(event.target.value);
   };
-  console.log('requests', requests)
   const onPaymentClick = (data, i) => {
     setShowPayment(!showPayment)
     setReqData(data);
@@ -45,7 +44,10 @@ export default function SendReq({ requests }) {
       document.removeEventListener("mousedown", handler);
     };
   });
-
+  const handleShowPayment = () => {
+    setShowPayment(!showPayment)
+    setRefreshReqData(true)
+  };
   return (
     <>
       <div className=" w-full p-4 flex flex-col gap-4 relative overflow-scroll xs:w-full xs:p-1 xs:ml-1">
@@ -114,7 +116,6 @@ export default function SendReq({ requests }) {
                     )}
 
                     <div className="gap-2 flex justify-end">
-                      {console.log(item.paymentId)}
                       {
                         item.paymentId
                         &&
@@ -144,8 +145,9 @@ export default function SendReq({ requests }) {
       </div>
       <Payment
         showPayment={showPayment}
-        setShowPayment={() => setShowPayment(!showPayment)}
-        data={reqData}
+        setShowPayment={handleShowPayment}
+        reqData={reqData}
+        setReqData={(res) => setReqData(res)}
         readOnly={true}
       />
     </>

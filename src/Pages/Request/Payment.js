@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../providers/auth";
-import { Button, Radio, TimePicker, notification } from "antd";
+import { Button, Radio, Steps, TimePicker, notification } from "antd";
 import moment from 'moment'
 import { createMeeting, generateMeetingId, getUserallMeets } from "../../App/videoApi";
 import { updateRequest } from "../../App/RequestApi";
@@ -12,7 +12,8 @@ import { createPayment, getPayment, updatePayment } from "../../App/paymentApi";
 
 
 
-function Payment({ showPayment, setShowPayment, data, setData, readOnly = false }) {
+function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = false }) {
+
     const auth = useAuth()
     const [showNotification, contextHolder] = useAlert();
     const [isUipCorrect, setIsUipCorrect] = useState(true)
@@ -30,11 +31,13 @@ function Payment({ showPayment, setShowPayment, data, setData, readOnly = false 
         learnerId: '',
         requestId: '',
     })
+    const [payStatus, setPayStatus] = useState(-1)
+    const [isDoneStateChanges, setIsDoneStateChanges] = useState(false)
     //get post for charges price
     useEffect(() => {
         const fetchgetPost = async () => {
             setLoadings({ ...loadings, post: true })
-            const res = await getPost(data.postId);
+            const res = await getPost(reqData.postId);
             if (res.error) {
                 setLoadings({ ...loadings, post: false })
             } else if (res.payload) {
@@ -46,48 +49,46 @@ function Payment({ showPayment, setShowPayment, data, setData, readOnly = false 
             }
 
         };
-        if (payment.charges == '' && data._id)
+        if (payment.charges == '' && reqData._id)
             fetchgetPost()
-    }, [data])
-
-    console.log('data', data)
+    }, [reqData])
 
     //get payment details
     useEffect(() => {
         const fetchPayment = async () => {
+            console.log("fethc payment")
             // setLoadings({ ...loadings, post: true })
-            const res = await getPayment(data.paymentId);
-            console.log('res', res)
+            const res = await getPayment(reqData.paymentId);
             if (res.error) {
                 // setLoadings({ ...loadings, post: false })
             } else if (res.payload) {
                 setPayment({
                     ...res.payload,
                 })
+                setPayStatus(paymentStatusUpdate(res.payload))
                 // setLoadings({ ...loadings, post: false })
             }
 
         };
-        console.log('data', data)
-        if (data.paymentId && data.paymentId != '')
+        if (reqData.paymentId && reqData.paymentId != '')
             fetchPayment()
-    }, [data])
+    }, [reqData])
 
-    //update payment ids from data
+    //update payment ids from reqData
     useEffect(() => {
-        if (data._id) {
+        if (reqData._id) {
             setPayment({
                 ...payment,
-                tutorId: data.requestedId,
-                tutorName: data.requestedName,
-                postId: data.postId,
-                postName: data.postName,
-                learnerId: data.requesterId,
-                learnerName: data.requesterName,
-                requestId: data._id,
+                tutorId: reqData.requestedId,
+                tutorName: reqData.requestedName,
+                postId: reqData.postId,
+                postName: reqData.postName,
+                learnerId: reqData.requesterId,
+                learnerName: reqData.requesterName,
+                requestId: reqData._id,
             })
         }
-    }, [data])
+    }, [reqData])
 
     const onUpdateUser = async () => {
         setLoadings({ ...loadings, user: true })
@@ -103,7 +104,7 @@ function Payment({ showPayment, setShowPayment, data, setData, readOnly = false 
     };
 
     const onCreatePayment = async () => {
-        //updatate payement , request
+        //upreqDatate payment , request
 
         if (payment._id) {
             updatePaymentDetails()
@@ -117,12 +118,12 @@ function Payment({ showPayment, setShowPayment, data, setData, readOnly = false 
             setPayment(resp.payload)
             showNotification("Payment Request Initiated")
 
-            const _data = {
-                ...data,
+            const _reqData = {
+                ...reqData,
                 paymentId: resp.payload._id,
             }
 
-            const res = await updateRequest(_data)
+            const res = await updateRequest(_reqData)
             console.log('res', res)
             if (res.payload) {
                 // showNotification("Request updated Successfull")
@@ -136,7 +137,8 @@ function Payment({ showPayment, setShowPayment, data, setData, readOnly = false 
     };
 
     const updatePaymentDetails = async () => {
-
+        console.log('payment', payment)
+        // return
         const resp = await updatePayment(payment._id, payment)
 
         if (resp.payload) {
@@ -147,10 +149,125 @@ function Payment({ showPayment, setShowPayment, data, setData, readOnly = false 
         }
     };
 
-    const onMeetingChange = (e) => {
 
+    const paymentStatusUpdate = (_payment) => {
+        console.log('payStatus', payStatus)
+
+        if (_payment.paymentStatus.isCompletd) {
+            // setPayStatus(5)
+            return 5;
+        } else if (_payment.paymentStatus.isReceivedByTutor) {
+            // setPayStatus(3)
+            return 3;
+        } else if (_payment.paymentStatus.isDoneByLearner) {
+            // setPayStatus(2)
+            return 2;
+        } else if (_payment._id) {
+            // setPayStatus(1)
+            return 1;
+        } else {
+            // setPayStatus(-1)
+            return -1;
+        }
     };
 
+    useEffect(() => {
+        if (payment._id) {
+            setPayStatus(paymentStatusUpdate(payment))
+        }
+
+    }, [payment.paymentStatus])
+
+
+    useEffect(() => {
+        if (isDoneStateChanges) {
+            updatePaymentDetails()
+            setIsDoneStateChanges(false)
+        }
+
+    }, [isDoneStateChanges])
+
+
+    const onPaymentStatusChange = (value) => {
+        setPayment((prev, tet) => ({
+            ...prev,
+            paymentStatus: {
+                ...prev.paymentStatus,
+                isDoneByLearner: value
+            }
+        }))
+
+        setIsDoneStateChanges(true)
+    }
+
+    const renderPaymentStatusBtn = (payment) => {
+        console.log('payment', payment)
+        if (!payment._id || payment.paymentStatus.isCompletd || !payment.paymentStatus.isDoneByLearner) {
+            return null
+        } else if (payment._id && payment.paymentStatus.isDoneByLearner && payment.paymentStatus.isReceivedByTutor) {
+
+            return (
+                <button className="xs:w-2/5 bg-[#9a9a9a] text-white rounded-xl p-2 w-[15%]"
+                    onClick={() =>
+                        setPayment({
+                            ...payment,
+                            paymentStatus: {
+                                ...payment.paymentStatus,
+                                isReceivedByTutor: false,
+                                isCompletd: false
+                            }
+                        })
+                    }
+                >Not Recieved
+                </button>
+            )
+        } else if (payment._id && payment.paymentStatus.isDoneByLearner) {
+            return (
+                <button className="xs:w-2/5 bg-[#30f65e] text-white rounded-xl p-2 w-[15%]"
+                    onClick={() => {
+                        if (window.confirm("Alert!! Once you clicked on ok you will not allow to undo that status")) {
+                            setPayment({
+                                ...payment,
+                                paymentStatus: {
+                                    ...payment.paymentStatus,
+                                    isReceivedByTutor: true,
+                                    isCompletd: true,
+                                }
+                            })
+                            setIsDoneStateChanges(!isDoneStateChanges)
+                        }
+                    }}
+                >Recieved
+                </button>
+            )
+        }
+    };
+    const onCancelHandle = (e) => {
+        setShowPayment(!showPayment)
+    };
+
+    const renderInitialUpdateBtn = (payment) => {
+        if (!payment._id) {
+            return (
+                <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
+                    onClick={() => onCreatePayment()}
+                > Initiate
+                </button>
+            )
+        } else if (payment._id && payment.paymentStatus.isCompletd) {
+            return null
+        } else if (payment._id) {
+            return (
+                <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
+
+                    onClick={() => onCreatePayment()}
+                > Update
+                </button>
+            )
+        }
+    };
+
+    console.log('payment', payment)
     if (!showPayment)
         return null;
     return (
@@ -248,26 +365,84 @@ function Payment({ showPayment, setShowPayment, data, setData, readOnly = false 
                         <label className="text-xs ml-2 p-1">some notes</label>
                     </div>
                 </div>
+                <div className=" p-1 my-2 w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
+                    <div className="flex flex-col  w-full   p-2 justify-around  ">
+                        <label className="w-full p-2 py-4 text-base xs:text-base">Payment Status</label>
+                        <Steps
+                            size="small"
+                            current={payStatus}
+                            items={[
+                                {
+                                    title: 'Tutor Initiated',
+                                },
+                                {
+                                    title: 'Waiting Learner',
+                                },
+                                {
+                                    title: 'Recieved by Tutor',
+                                },
+                                {
+                                    title: 'Payment Completed',
+                                },
+                            ]}
+                        />
+                        {/* <label className="text-xs ml-2 p-1"></label> */}
+                    </div>
 
-
-                <div className="flex p-2 xs:w-full xs:justify-evenly gap-2 w-full justify-end">
-                    <button className="xs:w-2/5 bg-[#f63030] text-white rounded-xl p-2 w-[15%]"
-
-                    >Delete
-                    </button>
-                    <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
-
-                        onClick={() => onCreatePayment()}
-                    > {readOnly ? "Payment" : "Send"}
-                    </button>
-                    <button className=" xs:w-2/5 bg-[#30f65e] text-white rounded-xl p-2 w-[15%]"
-                        onClick={() => setShowPayment(!showPayment)}
-                    >Cancel
-                    </button>
                 </div>
+
+                {
+                    readOnly ? //learner
+                        <div className="flex p-2 xs:w-full xs:justify-evenly gap-2 w-full justify-end">
+
+                            {
+
+                                (payment._id && !payment.paymentStatus.isCompletd)
+                                &&
+                                <>
+                                    payment._id && payment.paymentStatus.isDoneByLearner ?
+                                    <button className="xs:w-2/5 bg-[#9a9a9a] text-white rounded-xl p-2 w-[15%]"
+                                        onClick={() => onPaymentStatusChange(false)}
+                                    >Not Done
+                                    </button>
+                                    :
+                                    <button className="xs:w-2/5 bg-[#30f65e] text-white rounded-xl p-2 w-[15%]"
+                                        onClick={() => onPaymentStatusChange(true)}
+                                    >Done
+                                    </button>
+                                </>
+                            }
+
+                            {
+                                (payment._id && !payment.paymentStatus.isDoneByLearner)
+                                &&
+                                <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
+
+                                    onClick={() => window.alert("Make payment on that uip and after payment done please update status as done for confiremation")}
+                                > Go to Payment
+                                </button>
+                            }
+                            <button className=" xs:w-2/5 bg-[#f63730] text-white rounded-xl p-2 w-[15%]"
+                                onClick={() => onCancelHandle()}
+                            >Cancel
+                            </button>
+                        </div>
+                        ://teacher
+
+                        <div className="flex p-2 xs:w-full xs:justify-evenly gap-2 w-full justify-end">
+
+                            {payment._id && renderPaymentStatusBtn(payment)}
+
+                            {renderInitialUpdateBtn(payment)}
+                            <button className=" xs:w-2/5 bg-[#f63730] text-white rounded-xl p-2 w-[15%]"
+                                onClick={() => onCancelHandle()}
+                            >Cancel
+                            </button>
+                        </div>
+                }
             </div>
         </div >
     );
-}
+};
 
 export default Payment;

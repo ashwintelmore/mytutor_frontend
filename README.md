@@ -1,11 +1,39 @@
-# TODO list
-## Tasks
-##### Reamining Features
+# TODO list / Tasks
+### 
+### Reamining Features
+#### request/appointement
 - [ ] request delet
 - [ ] request card click redirect
 - [ ] request card delete edid 
-- [ ] post delete update
 - [ ] 
+- [ ] 
+#### post
+- [ ] post delete update by loged user
+- [ ] comment section remaining
+- [ ] like dislike
+- [ ] fovorite adding removing showing on sidebar
+- [ ] loader not working propery
+- [ ] remove hr and inseted add expected charge name
+- [ ] 
+#### prifile
+- [ ] learner hours/ fovrit/lectures
+- [ ] upi id add fild and remove phone
+- [ ] 
+#### payments
+- [ ] 
+- [ ] 
+- [ ] 
+#### home
+- [ ] category images in figma
+- [ ] category searching and sortng
+- [ ] when add post category 
+- [ ]
+#### Search
+- [ ] category searching and sortng
+- [ ] at frontend input fiel for category and corrospoinding  api
+#### ui/ux
+- [ ] category images in figma
+- [ ] card images minimum 5
 - [ ] 
 
 ##### global
@@ -15,7 +43,7 @@
   - [x] success/logout/....
 - [ ] inpost page should show hint for user to identyfy what meaning of green and red dates
 - [ ] after non loged user not correcty see the details of user or teacher
-- [ ]
+- [ ] what after meeting over
 - [ ]
 ##### post
 - [ ] all post api chages only for user
@@ -59,11 +87,14 @@ tags =>
 - [ ] tags in profile page
 - [ ] change profile > allpost  three lines
 - [ ] all profile photos show show first char of name
-- [ ]
+- [ ] post left slot booking alingment left and right
+- [ ] hovor animation
 - [ ]
 
 ### errors
 - [ ] loader not workin at seperate post page
+- [ ] loader not working propery
+- [ ] multiple meeting previow data comming 
 
 ### working
 - [ ] 
