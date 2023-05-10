@@ -106,9 +106,9 @@ function AddPost({ show, setShow, post }) {
   if (!show) return null;
   return (
     // <form action="/" enctype="multipart/form-data">
-    <div className="flex w-full h-screen items-center justify-center xs:flex-col fixed left-0 , top-0 overflow-scroll  z-20">
+    <div className="flex w-full h-screen items-center justify-center xs:flex-col  fixed left-0 ,  top-0 overflow-scroll  z-20">
       {contextHolder}
-      <div className=" bg-[#fff] dark:bg-zinc-800 z-[9] dark:text-white dark:border relative my-[20%] top-24 w-4/6 h-auto px-6 py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12   ">
+      <div className=" bg-[#fff] dark:bg-zinc-800 z-[9] dark:text-white dark:border absolute my-[10%] top-0 w-4/6 px-6 py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12   ">
         <h2 className="text-[#f48c2b] top-0 left-2 text-3xl px-4 py-3 font-medium absolute ">
           Add Post
         </h2>
@@ -260,38 +260,30 @@ function AddPost({ show, setShow, post }) {
             <div className="h-44 w-44 bg-black"></div>
           </div>
         </div>
-        <div className="flex p-2  xs:justify-evenly gap-3 sm:w-full sm:gap-1  w-full justify-end">
-          <button className="btn w-[15%] sm:w-[45%] shadow-sm shadow-black group relative inline-flex items-center justify-start overflow-hidden transition-all bg-white rounded hover:bg-white group">
-            <span className="w-0 h-0 rounded bg-[#f68f30]  absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
-            <button
-              className=" w-full p-2 text-black transition-colors duration-[90] ease-in-out group-hover:text-white z-10"
-              onClick={() => onAddDetails()}>
-              Add
-            </button>
-          </button>
+        <div className="flex p-2 xs:w-full xs:justify-evenly gap-2 w-full justify-end">
 
-          <button className="btn w-[15%] sm:w-[45%] shadow-sm shadow-black relative inline-flex items-center justify-start overflow-hidden transition-all bg-white rounded hover:bg-white group">
+          {
+            post ?
+              <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
 
-            {
-              post ?
-                <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
+                onClick={() => onUpdateDetails()}
+              >Update
+              </button>
+              :
+              <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
 
-                  onClick={() => onUpdateDetails()}
-                >Update
-                </button>
-                :
-                    <span className="w-0 h-0 rounded bg-[#f68f30]  absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
-            <button
-                      className=" w-full p-2 text-black transition-colors duration-[90] ease-in-out group-hover:text-white z-10"
-              onClick={() => setShow(!show)}>
-                      Cancel
-                    </button>
-            }
+                onClick={() => onAddDetails()}
+              >Add
+              </button>
+          }
 
+          <button className=" xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
+            onClick={() => setShow(!show)}
+          >Cancel
           </button>
         </div>
       </div>
-    </div>
+    </div >
     // </form>
   );
 }
