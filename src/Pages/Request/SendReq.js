@@ -13,6 +13,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
 
 
 
+
   const handleCopyClick = async () => {
     try {
       await navigator.clipboard.writeText(meetingLink);
@@ -29,8 +30,8 @@ export default function SendReq({ requests, setRefreshReqData }) {
     setReqData(data);
   };
 
-
-  const [openProfile, setOpenProfile] = useState(false);
+  const [cardActioveInd, setcardActioveInd] = useState(-1)
+  const [openProfile, setOpenProfile] = useState([]);
   // const auth = useAuth()
   let menuRef = useRef();
   useEffect(() => {
@@ -44,18 +45,29 @@ export default function SendReq({ requests, setRefreshReqData }) {
       document.removeEventListener("mousedown", handler);
     };
   });
+  const onClickThreePoint = (item, i) => {
+    setcardActioveInd(i)
+    setOpenProfile((prev) => !prev)
+  }
+
+
   const handleShowPayment = () => {
     setShowPayment(!showPayment)
     setRefreshReqData(true)
   };
+
   return (
     <>
-      <div className=" w-full p-4 flex flex-col gap-4 relative overflow-scroll xs:w-full xs:p-1 xs:ml-1">
+      <div
+        ref={menuRef}
+        className=" w-full p-4 flex flex-col gap-4 relative overflow-scroll xs:w-full xs:p-1 xs:ml-1">
         {requests.length > 0 ? (
           requests.map((item, i) => (
             <div
               className="flex flex-col border-2  shadow-sm shadow-slate-500 rounded-2xl  "
-              key={i}>
+              key={i}
+            // ref={menuRef}
+            >
               <div className="flex flex-col p-2   gap-2  ">
                 <div className="flex justify-between">
                   <div className="flex gap-2 ">
@@ -69,11 +81,21 @@ export default function SendReq({ requests, setRefreshReqData }) {
                       <p className="text-sm">{item.postName}</p>
                     </div>
                   </div>
-                  <div ref={menuRef}
-                    onClick={() => setOpenProfile((prev) => !prev)} className="text-lg font-extrabold">
-                    <i className="fa-solid fa-ellipsis-vertical"></i>
-                    {openProfile && <EditReq />}
+
+                  <div
+                    className="text-lg font-extrabold relative">
+                    <i className="fa-solid fa-ellipsis-vertical"
+                      onClick={() => onClickThreePoint(item, i)}
+                    ></i>
+                    {
+                      (openProfile && i == cardActioveInd)
+                      &&
+                      <EditReq
+                        type={'requestSend'}
+                        item={item}
+                      />}
                   </div>
+
                 </div>
                 <div className="flex justify-between w-full">
                   <div className="flex flex-col gap-2 text-xs w-full">

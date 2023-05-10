@@ -104,11 +104,11 @@ const Header = ({ setOpen, open }) => {
           </div>
         </div>
 
+        <AddPost
+          show={show}
+          setShow={() => setShow(!show)}
+        />
       </div>
-      <AddPost
-        show={show}
-        setShow={() => setShow(!show)}
-      />
     </>
   );
 };

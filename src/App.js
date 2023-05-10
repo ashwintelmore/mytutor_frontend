@@ -77,13 +77,23 @@ const App = () => {
                 )
               }
             />
+            <Route
+              path="favourite"
+              element={
+                auth.user._id ? (
+                  <Favourite />
+                ) : (
+                  <Navigate replace to="/login" />
+                )
+              }
+            />
             <Route path="/profile" element={<Profile />} />
             <Route path="/showProfile/:id?" element={<ShowProfile />} />
             <Route path="/postcontent/:id?" element={<Post />} />
             <Route path="/dummy" element={<Dummy />} />
             <Route path="/comment" element={<Comment />} />
             <Route path="/appointement" element={<Appointement />} />
-            <Route path="/search" element={<SearchResult />} />
+            <Route path="/search/:catName?" element={<SearchResult />} />
             <Route path="/favourite" element={<Favourite />} />
             <Route path="/" element={<Dummy />} />
           </Routes>

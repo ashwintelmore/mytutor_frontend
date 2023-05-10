@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Meeting from "./Meeting";
 import Payment from "./Payment";
 import { useAuth } from "../../providers/auth";
+import EditReq from "./EditReq";
 
 export default function RecievedReq({ requests, setRefreshReqData }) {
   const [show, setShow] = useState(false);
@@ -34,9 +35,29 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
     setShowPayment(!showPayment)
     setRefreshReqData(true)
   };
+
+  const [cardActioveInd, setcardActioveInd] = useState(-1)
+  const [openProfile, setOpenProfile] = useState([]);
+  // const auth = useAuth()
+  let menuRef = useRef();
+  useEffect(() => {
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setOpenProfile(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+  const onClickThreePoint = (item, i) => {
+    setcardActioveInd(i)
+    setOpenProfile((prev) => !prev)
+  }
   return (
     <>
-      <div className=" w-full p-4 flex flex-col gap-4  overflow-scroll xs:w-full xs:p-1 xs:ml-1">
+      <div className=" w-full p-4 flex flex-col gap-4  overflow-scroll xs:w-full xs:p-1 xs:ml-1" ref={menuRef}>
         {requests.length > 0 ? (
           requests.map((item, i) => (
             <div
@@ -55,8 +76,19 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                       <p className="text-sm">{item.postName}</p>
                     </div>
                   </div>
-                  <div className="text-lg font-extrabold">
-                    <i className="fa-solid fa-ellipsis-vertical"></i>
+                  <div
+                    // onClick={() => setOpenProfile((prev) => !prev)}
+                    className="text-lg font-extrabold relative">
+                    <i className="fa-solid fa-ellipsis-vertical"
+                      onClick={() => onClickThreePoint(item, i)}
+                    ></i>
+                    {
+                      (openProfile && i == cardActioveInd)
+                      &&
+                      <EditReq
+                        type={'requestRecieved'}
+                        item={item}
+                      />}
                   </div>
                 </div>
                 <div className="flex justify-between w-full">

@@ -10,6 +10,7 @@ import { createRequest, getAllPostRequested, getAllPostRequester } from "../../A
 import RecievedReq from "../Request/RecievedReq";
 import SendReq from "../Request/SendReq";
 import ChoseSlot from "./ChoseSlot";
+import { createFavourite, getFavourites, updateFavourite } from "../../App/favoriteApi";
 
 const Post = () => {
   const auth = useAuth()
@@ -24,9 +25,14 @@ const Post = () => {
   })
   const [err, setErr] = useState('')
   const [userData, setUserData] = useState({})
-
+  const [comment, setComment] = useState({
+    comment: ''
+  })
+  const [comments, setComments] = useState([])
   const [requests, setRequests] = useState([])
-
+  const [favourite, setFavourite] = useState({
+    isFavourite: false,
+  })
   const [isFavourite, setisFavourite] = useState(false)
 
   const [reqData, setReqData] = useState({
@@ -105,7 +111,7 @@ const Post = () => {
       } else {
         // setLoading({ ...loading, request: true })
         res = await getAllPostRequester(post._id, auth.user._id);
-        console.log('res', res)
+
         if (res.error) {
           setErr(res.error.errMessage)
         } else if (res.payload) {
@@ -124,31 +130,91 @@ const Post = () => {
       fetchUserAllRequest()
   }, [post._id, auth.user._id])
 
-  const onClickFavourit = (e) => {
+
+  //get fovourit
+  useEffect(() => {
+    const fetchFav = async (id) => {
+      const res = await getFavourites(auth.user._id, userData._id)
+
+      if (res.error) {
+
+      } else if (res.payload) {
+        if (res.payload.length <= 0)
+          return
+        setFavourite(res.payload[0])
+        setisFavourite(res.payload[0].isFavourite)
+      }
+    };
+    if (!favourite._id && userData._id && auth.user._id) {//minus one favourite
+      fetchFav()
+    }
+  }, [userData, auth.user])
+
+
+  const onClickFavourit = async (status, learner, tutor) => {
     setisFavourite(!isFavourite)
-    if (isFavourite)//plus one in favourit
-    {
+    if (favourite._id) {//update
+      let data = {
+        ...favourite,
+        isFavourite: status
+      }
+      const res = await updateFavourite(favourite._id, data)
 
-    } else {//minus one favourite
+      if (res.error) {
 
+      } else if (res.payload) {
+
+      }
+
+    } else {
+      //create
+      let data = {
+        ...favourite,
+        tutorId: tutor._id,
+        tutorName: tutor.name,
+
+        learnerId: learner._id,
+        learnerName: learner.name,
+        isFavourite: status
+      }
+      const res = await createFavourite(data)
+
+      if (res.error) {
+
+      } else if (res.payload) {
+
+      }
     }
   };
 
 
+  const onCommentClicked = (e) => {
+    let _comment = {
+      ...comment,
+      learnerName: auth.user.name,
+      learnerId: auth.user._id
+    }
 
-  // const updateUserData = async (userData) => {
-  //   const res = await updateUser(data);
-  //   if (res.error) {
-  //     showNotification(res.error.errMessage)
-  //     // setErr(res.error.errMessage)
-  //   } else if (res.payload) {
-  //     // showNotification("Profile Updated successfully")
-  //   }
-  // };
+    setComments([...comments, _comment]);
+    setComment({
+      comment: ''
+    })
+  };
+
+  const onCommentDelete = (item, i) => {
+
+    let t = comments.filter(e => e.comment != item.comment)
+    setComments(t);
+  };
+
+  console.log('comment', comment)
+  console.log('comments', comments)
+  console.log('requests', requests)
+  console.log('reqData', reqData)
 
   if (auth.loading)
     return <Loader />
-  if (!post._id || !auth.user._id)
+  if (!post._id)
     return null
   return (
     <>
@@ -174,17 +240,17 @@ const Post = () => {
                         <i className="fa-solid fa-indian-rupee-sign text-[#FFB300] sm:text-xs">
                           {post.pricePerHour || post.charges}
                         </i>
-                        <h6 className="text-[#FFB300] ">
-                          (/hr)
+                        <h6 className="text-[#FFB300] text-sm ">
+                          /lecture
                         </h6>
                       </div>
-                      <div className="flex gap-1  items-center xs:gap-0 xs:text-[12px] ">
+                      {/* <div className="flex gap-1  items-center xs:gap-0 xs:text-[12px] ">
                         <h4>4</h4>
                         <label className="text-sm sm:text-[7px] text-[#6F6F6F]">(sits left)</label>
-                      </div>
+                      </div> */}
 
 
-                      <div className="flex gap-1 items-center xs:gap-1 xs:text-xs">
+                      {/* <div className="flex gap-1 items-center xs:gap-1 xs:text-xs">
                         <h4>60</h4>
                         <i className="fa-solid fa-thumbs-up text-[#FFB300]"></i>
                       </div>
@@ -192,7 +258,7 @@ const Post = () => {
                       <div className="flex gap-1  items-center xs:gap-1 xs:text-xs">
                         <h4>60</h4>
                         <i className="fa-solid fa-thumbs-down text-[#FFB300]"></i>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                   <p className="xs:text-xs xs:p-2 p-2 sm:p-4 text-[#6F6F6F]">
@@ -216,12 +282,22 @@ const Post = () => {
                       }
                     </div>
                   </Link>
-                  <button
-                    className={!isFavourite ? "bg-[#F8AF6A] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9" : "bg-[#837e7a] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9"}
-                    onClick={(e) => onClickFavourit(e)}
-                  >
-                    {!isFavourite ? "Favourite" : "unfavourite"}
-                  </button>
+                  {
+                    isFavourite ?
+                      <button
+                        className={"bg-[#837e7a] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9"}
+                        onClick={(e) => onClickFavourit(false, auth.user, userData)}
+                      >
+                        {"unfavourite"}
+                      </button>
+                      :
+                      <button
+                        className={"bg-[#F8AF6A] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9"}
+                        onClick={(e) => onClickFavourit(true, auth.user, userData)}
+                      >
+                        {"Favourite"}
+                      </button>
+                  }
                 </div>
                 <div className="flex items-center mx-2 p-2 gap-3 xs:text-sm ">
                   <div className="flex p-1 gap-1 ">
@@ -234,88 +310,86 @@ const Post = () => {
                   </div>
                 </div>
                 <div className="flex flex-col mx-2">
-                  <div className=" relative flex items-center p-2 gap-4">
-                    <img
-                      className="rounded-full h-16 w-16 xs:h-12 xs:w-12 border-2 border-red-500"
-                      src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                      alt=""
-                    />
-                    <input
-                      type="text"
-                      placeholder="Add a public comment"
-                      className="w-11/12 border-b-2 outline-none dark:bg-zinc-800 dark:border-white border-[#303030]">
 
-                    </input>
-                    <button className="absolute bg-orange-400 right-2 rounded-xl p-2 top-2 text-white xs:p-2 xs:text-xs ">Comment</button>
-                  </div>
+                  {
+                    reqData.isPaymentComplete
+                      ?
+                      <div className=" relative flex items-center p-2 gap-4">
+                        <img
+                          className="rounded-full h-16 w-16 xs:h-12 xs:w-12 border-2 border-red-500"
+                          src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
+                          alt=""
+                        />
+                        <input
+                          type="text"
+                          placeholder="Add a public comment"
+                          className="w-11/12 border-b-2 outline-none dark:bg-zinc-800 dark:border-white border-[#303030]"
+                          value={comment.comment}
+                          onChange={(e) => setComment({ ...comment, comment: e.target.value })}
+                        >
+
+                        </input>
+                        <button
+                          className="absolute bg-orange-400 right-2 rounded-xl p-2 top-2 text-white xs:p-2 xs:text-xs "
+                          onClick={onCommentClicked}
+                        >Comment</button>
+                      </div>
+                      :
+                      <div className=" relative flex items-center p-2 gap-4">
+                        <img
+                          className="rounded-full h-16 w-16 xs:h-12 xs:w-12 border-2 border-red-500"
+                          src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
+                          alt=""
+                        />
+                        <input
+                          type="text"
+                          placeholder="You allow to comment on this after meeting"
+                          className="w-11/12 border-b-2 outline-none dark:bg-zinc-800 dark:border-white border-[#303030]"
+                          // value={comment.comment}
+                          // onChange={(e) => setComment({ ...comment, comment: e.target.value })}
+                          disabled
+                          title="You allow to comment on this after meeting"
+
+                        >
+
+                        </input>
+                        <button
+                          className="absolute bg-orange-400 right-2 rounded-xl p-2 top-2 text-white xs:p-2 xs:text-xs "
+                          // onClick={onCommentClicked}
+                          title="You allow to comment on this after meeting"
+
+                        >Comment</button>
+                      </div>
+                  }
+
                   <div className="flex flex-col p-4 gap-4 xs:p-4 xs:gap-2 xs:overflow-y-auto">
                     {/* Comment card */}
-                    <div className="flex flex-col  gap-1 ">
-                      <div className="flex  gap-2  ">
-                        <img
-                          className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
-                          src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                          alt=""
-                        />
-                        <div className="flex justify-between w-full">
-                          <div className="flex flex-col text-xs">
-                            <h3 className="text-violet-800 ">Ashwin Telmore</h3>
-                            <p className="text-sm">Something bio details</p></div>
-                          <div className="text-lg font-extrabold"><i className="fa-solid fa-ellipsis-vertical"></i></div>
+
+                    {
+                      comments.length > 0 &&
+                      comments.map((item, i) =>
+                        <div className="flex flex-col  gap-1 ">
+                          <div className="flex  gap-2  ">
+                            <img
+                              className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
+                              src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
+                              alt=""
+                            />
+                            <div className="flex justify-between w-full">
+                              <div className="flex flex-col text-xs">
+                                <h3 className="text-violet-800 ">{item.learnerName}</h3>
+                                <p className="text-sm"> {item.comment} </p></div>
+                              <div className="text-lg font-extrabold cursor-pointer">
+                                <i className="fa-solid fa-trash"
+                                  onClick={() => onCommentDelete(item, i)}
+                                >
+                                </i>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
-                        <h4>60</h4>
-                        <i className="fa-solid fa-thumbs-up"></i>
-                        <h4>60</h4>
-                        <i className="fa-solid fa-thumbs-down"></i>
-                        <label>reply</label>
-                      </div>
-                    </div>
-                    <div className="flex flex-col  gap-1 ">
-                      <div className="flex  gap-2  ">
-                        <img
-                          className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
-                          src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                          alt=""
-                        />
-                        <div className="flex justify-between w-full">
-                          <div className="flex flex-col text-xs">
-                            <h3 className="text-violet-800 ">Ashwin Telmore</h3>
-                            <p className="text-sm">Something bio details</p></div>
-                          <div className="text-lg font-extrabold"><i className="fa-solid fa-ellipsis-vertical"></i></div>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
-                        <h4>60</h4>
-                        <i className="fa-solid fa-thumbs-up"></i>
-                        <h4>60</h4>
-                        <i className="fa-solid fa-thumbs-down"></i>
-                        <label>reply</label>
-                      </div>
-                    </div>
-                    <div className="flex flex-col  gap-1 ">
-                      <div className="flex  gap-2  ">
-                        <img
-                          className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
-                          src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                          alt=""
-                        />
-                        <div className="flex justify-between w-full">
-                          <div className="flex flex-col text-xs">
-                            <h3 className="text-violet-800 ">Ashwin Telmore</h3>
-                            <p className="text-sm">Something bio details</p></div>
-                          <div className="text-lg font-extrabold"><i className="fa-solid fa-ellipsis-vertical"></i></div>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3 ml-16 text-sm xs:gap-2 xs:text-xs">
-                        <h4>60</h4>
-                        <i className="fa-solid fa-thumbs-up"></i>
-                        <h4>60</h4>
-                        <i className="fa-solid fa-thumbs-down"></i>
-                        <label>reply</label>
-                      </div>
-                    </div>
+                      )
+                    }
                   </div>
                 </div>
               </div>

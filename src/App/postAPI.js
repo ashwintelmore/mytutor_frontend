@@ -54,10 +54,14 @@ export const createPost = async (data) => {
         });
 };
 
-export const updatePost = async (payload) => {
+export const updatePost = async (id, data) => {
 
+    const payload = {
+        payload: data
+    }
     // return
-    return await axios.put(`${END_POINT}/updatePosts`, payload)
+    console.log('payload', payload)
+    return await axios.put(`${END_POINT}/updatePosts/${id}`, payload)
         .then(function (response) {
             return response.data;
         })
@@ -68,9 +72,9 @@ export const updatePost = async (payload) => {
 };
 
 
-export const searchPost = async ({ search, sort, postType, type, page, limit }) => {
+export const searchPost = async ({ search, sort, postType, type, page, limit, category }) => {
     // console.log('search, sort, postType, type=> ', search, sort, postType, type)
-    const url = `search=${search}&sort=${sort}&type=${type}&limit=${limit}&postType=${postType}&page=${page}`
+    const url = `search=${search}&sort=${sort}&type=${type}&limit=${limit}&postType=${postType}&page=${page}&category=${category}`
 
     return await axios.get(`${END_POINT}/search?${url}`)
         .then(function (response) {

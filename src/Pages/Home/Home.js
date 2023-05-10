@@ -14,12 +14,13 @@ import { getAllPosts } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
 import Loader from "../../Components/Helper/Loader";
 import { useAlert } from "../../Components/Alert";
-import { getCatgory } from "../../App/category.Api";
+import { getAlllCatgories, getCatgory } from "../../App/category.Api";
 
 const Home = () => {
   const auth = useAuth()
   const [showAlert, renderAlert] = useAlert()
   const [posts, setPosts] = useState([])
+  const [categories, setCategories] = useState([])
   const [loader, setLoader] = useState({
     posts: false,
   })
@@ -43,22 +44,27 @@ const Home = () => {
   }, [posts])
 
 
+  const bufferToImage = (bufferData) => {
+    return `data:${bufferData.image.contentType};base64, ${Buffer.from(bufferData.image.data.data).toString('base64')}`
+  };
+
   const [img, setImg] = useState('')
   useEffect(() => {
     const getallpost = async () => {
       // setLoader({ ...loader, posts: true })
-      const res = await getCatgory('6457703d68265cf2131f0445');
+      const res = await getAlllCatgories();
       console.log('res', res)
       if (res.error) {
       } else if (res.payload) {
         setImg(`data:${res.payload[0].image.contentType};base64, ${Buffer.from(res.payload[0].image.data.data).toString('base64')}`)
         // setImg({ data: res.payload.image.contentType ;base64, ${ Buffer.from(user.userPhoto.data).toString('base64') }
+        setCategories(res.payload)
       }
-
     }
 
     getallpost();
   }, [])
+  console.log(categories)
   // if (auth.loading)
   //   return <Loader />
   return (
@@ -67,67 +73,20 @@ const Home = () => {
       {/* category card  box*/}
       <div className="flex mt-3  overflow-y-hidden dark:text-slate-100">
 
-        <div className="relative w-max flex m-4 justify-center sm:m-1 ">
-          <div className="w-44 h-44 rounded-full dark:bg-purple-200 border-2 border-[#40B59F] bg-[#00FF46] xs:w-32 xs:h-32
-          
-          
-          3 ">
-            <img className="w-full h-full rounded-full" src={cat_image0} alt="student" />
-          </div>
-          <div className="absolute text-center p-2 bottom-0 dark:bg-amber-500 h-10  w-28  bg-white shadow-sm shadow-black rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
-            Student
-          </div>
-        </div>
-
-        <div className="relative w-max flex m-4 justify-center sm:m-1  ">
-          <div className="w-44 h-44 rounded-full sm:w-36 sm:h-36  dark:bg-purple-200 border-2 border-[#40B59F] bg-[#DBFF00] xs:w-32 xs:h-32 ">
-            <img className="w-full h-full rounded-full" src={cat_image1} />
-          </div>
-          <div className="absolute text-center p-2 bottom-0 h-10  w-28  bg-white shadow-sm shadow-black dark:bg-amber-500  rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
-            Singing
-          </div>
-        </div>
-        <div className="relative w-max flex m-4 justify-center sm:m-1 ">
-          <div className="w-44 h-44 sm:w-36 sm:h-36 rounded-full border-2 border-[#40B59F]  dark:bg-purple-200 bg-[#FF942E] xs:w-32 xs:h-32 ">
-            <img className="w-full h-full rounded-full" src={cat_image3} />
-          </div>
-          <div className="absolute text-center p-2 bottom-0 h-10  w-28  bg-white shadow-sm shadow-black dark:bg-amber-500  rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
-            Psychologist
-          </div>
-        </div>
-        <div className="relative w-max flex m-4 justify-center  sm:m-1 ">
-          <div className="w-44 h-44 sm:w-36 sm:h-36 rounded-full border-2 border-[#40B59F]  dark:bg-purple-200 bg-[#00B2FF] xs:w-32 xs:h-32 ">
-            <img className="w-full h-full rounded-full" src={cat_image4} />
-          </div>
-          <div className="absolute text-center p-2 bottom-0 h-10  w-28  bg-white shadow-sm shadow-black  dark:bg-amber-500  rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
-            Music
-          </div>
-        </div>
-        <div className="relative w-max flex m-4 justify-center sm:m-1  ">
-          <div className="w-44 h-44 sm:w-36 sm:h-36 border-2 border-[#40B59F] rounded-full dark:bg-purple-200  bg-[#FF00D6] xs:w-32 xs:h-32 ">
-            <img className="w-full h-full rounded-full" src={cat_image5} />
-          </div>
-          <div className="absolute text-center p-2 bottom-0 h-10  w-28  bg-white shadow-sm shadow-black dark:bg-amber-500  rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
-            Sports
-          </div>
-        </div>
-        <div className="relative w-max flex m-4 justify-center sm:m-1 ">
-          <div className="w-44 sm:w-36 sm:h-36 h-44 border-2 border-[#40B59F] rounded-full  dark:bg-purple-200 bg-[#EBFF00] xs:w-32 xs:h-32 ">
-            <img className="w-full h-full rounded-full" src={cat_image7} />
-          </div>
-          <div className="absolute text-center p-2 bottom-0 h-10  w-28  bg-white shadow-sm shadow-black  dark:bg-amber-500  rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
-            Personality
-          </div>
-        </div>
-        <div className="relative w-max flex m-4 justify-center sm:m-1  ">
-          <div className="w-44 h-44 sm:w-36 sm:h-36 rounded-full border-2 border-[#40B59F]  dark:bg-purple-200 bg-[#A06AF8] xs:w-32 xs:h-32 ">
-            <img className="w-full h-full rounded-full" src={cat_image8} />
-          </div>
-          <div className="absolute text-center p-2 bottom-0 h-10  w-28  bg-white shadow-sm shadow-black  dark:bg-amber-500  rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
-            Food
-          </div>
-        </div>
-
+        {
+          categories.map((item, i) =>
+            <Link to={'/search/' + item.catName}>
+              <div className="relative w-max flex m-4 justify-center sm:m-1 ">
+                <div className="w-44 h-44 rounded-full dark:bg-purple-200 border-2 border-[#ffb300] bg-[#ffb300] xs:w-32 xs:h-323 ">
+                  <img className="w-full h-full rounded-full" src={bufferToImage(item)} alt="student" />
+                </div>
+                <div className="absolute text-center p-2 bottom-0 dark:bg-amber-500 h-10  w-28  bg-white shadow-sm sha shadow-[#c0eef4] rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
+                  {item.catName}
+                </div>
+              </div>
+            </Link>
+          )
+        }
       </div>
       {
         loader.posts ?
@@ -159,7 +118,8 @@ const Home = () => {
                       </div>
                       <div className="flex justify-between p-1  item-center xs:text-[10px] ">
                         <label className="font-thin">Online</label>
-                        <button className="bg-white font-thin text-sm shadow-sm px-2 py-1 shadow-black text-[#F8AF6A] rounded-xl  dark:bg-zinc-900 dark:border-white dark:border-solid sm:text-[10px] sm:w-auto sm:p-px xs:text-xs">
+                        <button className="bg-white text-orange-400 w-36 xs:w-28 rounded-xl p-1 dark:bg-zinc-900">
+
                           Rs.{item.pricePerHour || item.charges}(per hour)
                         </button>
                       </div>

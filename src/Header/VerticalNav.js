@@ -20,9 +20,9 @@ const VerticalNav = () => {
         <NavLink to={'/appointement'}>
           <i className="cursor-pointer p-2 rounded-full fa-solid fa-paper-plane"></i>
         </NavLink>
-        <NavLink to={'/appointement'}>
+        {/* <NavLink to={'/appointement'}>
           <i className="cursor-pointer p-2 rounded-full fa-solid fa-wallet"></i>
-        </NavLink>
+        </NavLink> */}
         <NavLink to={'/favourite'}>
           <i className="cursor-pointer p-2 rounded-full fa-solid fa-heart"></i>
         </NavLink>

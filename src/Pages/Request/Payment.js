@@ -26,10 +26,10 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         upiId: '',
         charges: '',
 
-        postId: '',
-        tutorId: '',
-        learnerId: '',
-        requestId: '',
+        // postId: '',
+        // tutorId: '',
+        // learnerId: '',
+        // requestId: '',
     })
     const [payStatus, setPayStatus] = useState(-1)
     const [isDoneStateChanges, setIsDoneStateChanges] = useState(false)
@@ -90,6 +90,23 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         }
     }, [reqData])
 
+
+    useEffect(() => {
+        if (payment._id) {
+            setPayStatus(paymentStatusUpdate(payment))
+        }
+    }, [payment.paymentStatus])
+
+
+    useEffect(() => {
+        if (isDoneStateChanges) {
+            updatePaymentDetails(payment)
+            setIsDoneStateChanges(false)
+        }
+
+    }, [isDoneStateChanges])
+
+
     const onUpdateUser = async () => {
         setLoadings({ ...loadings, user: true })
         const res = await updateUser(auth.user);
@@ -106,14 +123,21 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
     const onCreatePayment = async () => {
         //upreqDatate payment , request
 
+        const paymentData = {
+            ...payment,
+            upiId: auth.user.payment.upiId,
+            postId: reqData.postId,
+            tutorId: reqData.requestedId,
+            learnerId: reqData.requesterId,
+            requestId: reqData._id,
+        }
+
         if (payment._id) {
-            updatePaymentDetails()
+            updatePaymentDetails(paymentData)
             return
         }
 
-
-        const resp = await createPayment(payment)
-
+        const resp = await createPayment(paymentData)
         if (resp.payload) {
             setPayment(resp.payload)
             showNotification("Payment Request Initiated")
@@ -121,6 +145,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
             const _reqData = {
                 ...reqData,
                 paymentId: resp.payload._id,
+
             }
 
             const res = await updateRequest(_reqData)
@@ -136,10 +161,9 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         }
     };
 
-    const updatePaymentDetails = async () => {
-        console.log('payment', payment)
+    const updatePaymentDetails = async (data) => {
         // return
-        const resp = await updatePayment(payment._id, payment)
+        const resp = await updatePayment(payment._id, data)
 
         if (resp.payload) {
             setPayment(resp.payload)
@@ -151,7 +175,6 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
 
 
     const paymentStatusUpdate = (_payment) => {
-        console.log('payStatus', payStatus)
 
         if (_payment.paymentStatus.isCompletd) {
             // setPayStatus(5)
@@ -171,23 +194,6 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         }
     };
 
-    useEffect(() => {
-        if (payment._id) {
-            setPayStatus(paymentStatusUpdate(payment))
-        }
-
-    }, [payment.paymentStatus])
-
-
-    useEffect(() => {
-        if (isDoneStateChanges) {
-            updatePaymentDetails()
-            setIsDoneStateChanges(false)
-        }
-
-    }, [isDoneStateChanges])
-
-
     const onPaymentStatusChange = (value) => {
         setPayment((prev, tet) => ({
             ...prev,
@@ -201,7 +207,6 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
     }
 
     const renderPaymentStatusBtn = (payment) => {
-        console.log('payment', payment)
         if (!payment._id || payment.paymentStatus.isCompletd || !payment.paymentStatus.isDoneByLearner) {
             return null
         } else if (payment._id && payment.paymentStatus.isDoneByLearner && payment.paymentStatus.isReceivedByTutor) {
@@ -254,7 +259,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                 > Initiate
                 </button>
             )
-        } else if (payment._id && payment.paymentStatus.isCompletd) {
+        } else if (payment._id && (payment.paymentStatus.isCompletd || payment.paymentStatus.isDoneByLearner)) {
             return null
         } else if (payment._id) {
             return (
@@ -267,7 +272,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         }
     };
 
-    console.log('payment', payment)
+
     if (!showPayment)
         return null;
     return (
@@ -400,16 +405,19 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                                 (payment._id && !payment.paymentStatus.isCompletd)
                                 &&
                                 <>
-                                    payment._id && payment.paymentStatus.isDoneByLearner ?
-                                    <button className="xs:w-2/5 bg-[#9a9a9a] text-white rounded-xl p-2 w-[15%]"
-                                        onClick={() => onPaymentStatusChange(false)}
-                                    >Not Done
-                                    </button>
-                                    :
-                                    <button className="xs:w-2/5 bg-[#30f65e] text-white rounded-xl p-2 w-[15%]"
-                                        onClick={() => onPaymentStatusChange(true)}
-                                    >Done
-                                    </button>
+                                    {
+
+                                        payment._id && payment.paymentStatus.isDoneByLearner ?
+                                            <button className="xs:w-2/5 bg-[#9a9a9a] text-white rounded-xl p-2 w-[15%]"
+                                                onClick={() => onPaymentStatusChange(false)}
+                                            >Not Done
+                                            </button>
+                                            :
+                                            <button className="xs:w-2/5 bg-[#30f65e] text-white rounded-xl p-2 w-[15%]"
+                                                onClick={() => onPaymentStatusChange(true)}
+                                            >Done
+                                            </button>
+                                    }
                                 </>
                             }
 

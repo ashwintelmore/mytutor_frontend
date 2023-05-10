@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { createPost } from "../../App/postAPI";
+import { createPost, getPost, updatePost } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
 import TagsInput from "../Profile/TagsInput";
 import { getAlllCatgories } from "../../App/category.Api";
 import { useAlert } from "../../Components/Alert";
 
 
-function AddPost({ show, setShow, }) {
+function AddPost({ show, setShow, post }) {
     const auth = useAuth()
     const [showNotification, contextHolder] = useAlert()
+    //! i very sorry for i didnt change userData to post data
+    //! please userData === postData
     const [userData, setUserData] = useState({
         postTitle: '',
         thumbnailUrl: '',
@@ -27,10 +29,8 @@ function AddPost({ show, setShow, }) {
     //fetch all categoreis
 
     useEffect(() => {
-        console.log('sff')
         const fetchAllCats = async () => {
             const res = await getAlllCatgories();
-            console.log('res', res)
             if (res.error) {
                 showNotification(res.error.errMassege)
             } else if (res.payload) {
@@ -39,6 +39,21 @@ function AddPost({ show, setShow, }) {
         };
         fetchAllCats()
     }, [])
+
+    //fetch all user data
+    useEffect(() => {
+        const fetchPost = async () => {
+            const res = await getPost(post._id);
+            if (res.error) {
+                showNotification(res.error.errMassege)
+            } else if (res.payload) {
+                setUserData(res.payload)
+            }
+        };
+        if (post)
+            fetchPost()
+    }, [post])
+
 
     const onAddDetails = async () => {
         if (!auth.user._id)
@@ -53,26 +68,49 @@ function AddPost({ show, setShow, }) {
             //handle error
         } else if (res.payload) {
             //handle sussece responce
-            setUserData({
-                postTitle: '',
-                thumbnailUrl: '',
-                charges: '',
-                descrp: '',
-                postType: '',
-                category: '',
-                tags: []
-            })
+            showNotification("Created successfully")
+            // setUserData({
+            //     postTitle: '',
+            //     thumbnailUrl: '',
+            //     charges: '',
+            //     descrp: '',
+            //     postType: '',
+            //     category: '',
+            //     tags: []
+            // })
         }
-        setShow(!show)
+        // setShow(!show)
+    };
+    const onUpdateDetails = async () => {
+
+        console.log('userData', userData)
+        const res = await updatePost(userData._id, userData)
+        console.log('res', res)
+        if (res.error) {
+            //handle error
+        } else if (res.payload) {
+            //handle sussece responce
+            showNotification("updated successfully")
+            // setUserData({
+            //     postTitle: '',
+            //     thumbnailUrl: '',
+            //     charges: '',
+            //     descrp: '',
+            //     postType: '',
+            //     category: '',
+            //     tags: []
+            // })
+        }
+        // setShow(!show)
     };
 
     if (!show)
         return null;
     return (
         // <form action="/" enctype="multipart/form-data">
-        <div className="flex w-full  items-center justify-center xs:flex-col absolute   z-10">
+        <div className="flex w-full h-screen items-center justify-center xs:flex-col fixed left-0 , top-0 overflow-scroll  z-20">
             {contextHolder}
-            <div className=" bg-[#fff] dark:bg-zinc-800  dark:text-white dark:border relative w-4/6 h-auto px-6 py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12   ">
+            <div className=" bg-[#fff] dark:bg-zinc-800 z-[9] dark:text-white dark:border relative my-[20%] top-24 w-4/6 h-auto px-6 py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12   ">
                 <h2 className="text-[#f48c2b] top-0 left-2 text-3xl p-2 absolute ">Add Post</h2>
 
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
@@ -175,11 +213,22 @@ function AddPost({ show, setShow, }) {
                 </div>
 
                 <div className="flex p-2 xs:w-full xs:justify-evenly gap-2 w-full justify-end">
-                    <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
 
-                        onClick={() => onAddDetails()}
-                    >Add
-                    </button>
+                    {
+                        post ?
+                            <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
+
+                                onClick={() => onUpdateDetails()}
+                            >Update
+                            </button>
+                            :
+                            <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
+
+                                onClick={() => onAddDetails()}
+                            >Add
+                            </button>
+                    }
+
                     <button className=" xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
                         onClick={() => setShow(!show)}
                     >Cancel

@@ -74,12 +74,12 @@ const Appointement = () => {
                         >
                             Received Requests
                         </button>
-                        <button
+                        {/* <button
                             className={profileToggler == 2 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 " : " bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
                             onClick={() => setProfileToggler('2')}
                         >
                             Completed Meeting
-                        </button>
+                        </button> */}
                     </div>
                     {/* ccalender and about */}
                     {

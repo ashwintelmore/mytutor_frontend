@@ -63,7 +63,7 @@ const ShowProfile = () => {
                         value={userData.userDetails.name}
                         disabled
                     />
-                    <label className="text-sm">{userData.userDetails.analytics.favorite}</label>
+                    {/* <label className="text-sm">{userData.userDetails.analytics.favorite} favorites</label> */}
                 </div>
 
                 <div className="flex gap-12 text-lg">
@@ -72,12 +72,8 @@ const ShowProfile = () => {
                         <label className="text-sm">Lectures</label>
                     </div>
                     <div className="flex-col flex items-center ">
-                        <label className="text-[#1A0970] dark:text-white dark:bg-zinc-800">{userData.userDetails.analytics.hours}</label>
-                        <label className="text-sm">Hours</label>
-                    </div>
-                    <div className="flex-col flex items-center ">
-                        <label className="text-[#1A0970] dark:text-white dark:bg-zinc-800">{userData.userDetails.analytics.learners}</label>
-                        <label className="text-sm">Learners </label>
+                        <label className="text-[#1A0970] dark:text-white dark:bg-zinc-800">{userData.userDetails.analytics.favorite}</label>
+                        <label className="text-sm">Favorites</label>
                     </div>
                 </div>
                 <div className="flex w-full flex-col  items-center gap-1 text-lg p-1">
@@ -92,7 +88,8 @@ const ShowProfile = () => {
                         />
                     </p>
                 </div>
-                <div className="text-lg w-11/12 gap-3 flex flex-col">
+
+                {/* <div className="text-lg w-11/12 gap-3 flex flex-col">
                     <h3 className="text-[#1A0970] dark:text-white">Something Heading</h3>
                     <div className="flex flex-col gap-8">
                         <div className="flex items-center  relative border dark:shadow-none border-gray-500 shadow-slate-400 shadow-md text-sm   rounded-xl p-1  ">
@@ -105,11 +102,12 @@ const ShowProfile = () => {
                             ></input>
 
 
-                            {/* <button className="absolute rounded-xl text-sm  h-7 w-20  text-white right-1   bg-orange-500">Save</button> */}
+                            <button className="absolute rounded-xl text-sm  h-7 w-20  text-white right-1   bg-orange-500">Save</button>
                             <h6 className="text-xs left-2 absolute -bottom-5 ">Something content</h6>
                         </div>
                     </div>
-                </div>
+                </div> */}
+
             </div>
 
             <div className="w-3/4 flex-col flex overflow-y-auto xs:w-full xs:relative   ">

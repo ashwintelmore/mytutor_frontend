@@ -3,10 +3,12 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { searchPost } from "../../App/postAPI";
 import moment from "moment";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loader from "../../Components/Helper/Loader";
-const SearchResult = ({ search }) => {
+import { getAlllCatgories } from "../../App/category.Api";
+const SearchResult = ({ search, category = '' }) => {
 
+  const params = useParams()
   const [queryData, setQueryData] = useState({
     search: '',
     sort: '',
@@ -14,9 +16,10 @@ const SearchResult = ({ search }) => {
     tags: '',
     limit: '',
     postType: '',
-    page: 1
+    page: 1,
+    category: params.catName ? params.catName : ''
   })
-
+  console.log('queryData', queryData)
   const [loader, setLoader] = useState({
     posts: false,
     user: false
@@ -49,11 +52,27 @@ const SearchResult = ({ search }) => {
   }, [queryData])
 
   const onLoadMore = () => {
+
     setQueryData({
       ...queryData,
       page: queryData.page + 1
     })
   };
+  const [cats, setCats] = useState([])
+
+
+  //fetch all categoreis
+  useEffect(() => {
+    const fetchAllCats = async () => {
+      const res = await getAlllCatgories();
+      if (res.error) {
+        // showNotification(res.error.errMassege)
+      } else if (res.payload) {
+        setCats(res.payload)
+      }
+    };
+    fetchAllCats()
+  }, [])
 
   return (
     <>
@@ -96,6 +115,28 @@ const SearchResult = ({ search }) => {
                   </select>
                   {/* <label className="text-xs ml-2 p-1">Select what is type of your post</label> */}
                 </div>
+
+                <div className="  w-[95%] p-2  sm:w-[50%]">
+                  <label className="w-full p-2 text-base xs:text-base" htmlFor="slots">Select Category :</label>
+                  <select
+                    placeholder="select option"
+                    name="category"
+                    className="rounded-xl dark:bg-zinc-800 dark:border  w-full shadow-sm shadow-black p-2"
+                    onChange={(e) => onChangeFilter(e)}
+                    value={queryData.category}
+                  >
+                    <option value={''}>All</option>
+                    {
+                      cats.map((item, i) =>
+                        <option
+                          value={item.catName}
+                          key={i}
+                        >{item.catName}</option>)
+                    }
+                  </select>
+                  {/* <label className="text-xs ml-2 p-1">Select what is type of your post</label> */}
+                </div>
+
                 <div className="w-[85%] flex flex-col  p-2 xs:w-1/2">
                   <label className="w-full p-2 text-base xs:text-base" htmlFor="slots">Search by :</label>
 
@@ -233,7 +274,7 @@ const SearchResult = ({ search }) => {
                         :
                         <p>There is no result for {queryData.search}</p>
                   }
-                  {/* <p onClick={() => onLoadMore()} >load more...</p> */}
+                  <p onClick={() => onLoadMore()} >load more...</p>
 
                 </div>
 

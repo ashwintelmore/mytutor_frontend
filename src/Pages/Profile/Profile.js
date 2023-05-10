@@ -31,7 +31,7 @@ const Profile = ({ toggler = '1' }) => {
   };
   if (auth.loading || loader.user)
     return <Loader />
-
+  console.log('auth', auth)
   return (
     <div className="flex flex-col w-full ml-16 h-screen rounded-t-3xl bg-white dark:bg-zinc-900  dark:text-white  sm:p-2   sm:ml-0 sm:flex-col sm:h-full sm:w-full" >
       <div className="flex dark:bg-zinc-800 dark:text-white w-full rounded-t-3xl">
@@ -55,7 +55,7 @@ const Profile = ({ toggler = '1' }) => {
               value={auth.user.name}
               onChange={(e) => auth.setUser({ ...auth.user, name: e.target.value })}
             />
-            <label className="text-sm">{auth.user.analytics.favorite} favorite</label>
+            {/* <label className="text-sm">{auth.user.analytics.favorite} favorite</label> */}
           </div>
 
           <div className="flex justify-center gap-10 w-full   text-lg">
@@ -64,12 +64,8 @@ const Profile = ({ toggler = '1' }) => {
               <label className="text-sm">Lectures</label>
             </div>
             <div className="flex-col flex items-center ">
-              <label className="text-[#1A0970] dark:text-white">{auth.user.analytics.hours}</label>
-              <label className="text-sm">Hours</label>
-            </div>
-            <div className="flex-col flex items-center ">
-              <label className="text-[#1A0970] dark:text-white">{auth.user.analytics.learners}</label>
-              <label className="text-sm">Learners </label>
+              <label className="text-[#1A0970] dark:text-white">{auth.user.analytics.favorite}</label>
+              <label className="text-sm">Favorites</label>
             </div>
           </div>
           <div className="flex flex-col w-[95%]  mx-2 items-center gap-1 text-base p-1">
@@ -86,20 +82,22 @@ const Profile = ({ toggler = '1' }) => {
             </p>
           </div>
           <div className="text-lg w-11/12 gap-3 flex flex-col">
-            <h3 className="text-[#1A0970] dark:text-[#FF0000]">Phone Number</h3>
+            <h3 className="text-[#1A0970] dark:text-[#FF0000]">Your UPI id</h3>
             <div className="flex flex-col gap-8">
               <div className="flex items-center  relative border border-gray-500 dark:border-white shadow-sm shadow-black text-sm   rounded-xl p-1  ">
                 <input
                   type="number"
                   placeholder="91850*******"
                   className="rounded-lg px-2 py-1 text-[10px]  dark:bg-zinc-800 dark:text-white  w-full  outline-none "
-                  value={auth.user.phoneNumber}
-                  onChange={(e) => auth.setUser({ ...auth.user, phoneNumber: e.target.value })}
+                  value={auth.user.payment.upiId}
+                  onChange={(e) => auth.setUser({ ...auth.user, payment: { ...auth.user.payment, upiId: e.target.value } })}
                 ></input>
 
 
                 {/* <button className="absolute rounded-xl text-sm  h-7 w-20  text-white right-1   bg-orange-500">Save</button> */}
-                <h6 className="text-xs left-2 absolute -bottom-5 ">Without contry code i.e +91,+0, etc</h6>
+                <h6 className="text-xs left-2 absolute -bottom-5 ">
+                  <label className="text-xs ml-2 p-1">e.g. 9824xxxxx@ybl, 9824xxxxx@okayhdfs, etc </label>
+                </h6>
               </div>
 
               {/* <div className="flex items-center relative border border-gray-500 shadow-slate-400 shadow-md text-sm rounded-xl p-1  ">
