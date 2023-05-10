@@ -89,7 +89,7 @@ export default function About({ isEditable = true }) {
                           {
                             isEditable
                             &&
-                            <i className="fa-solid fa-pencil bg-slate-50 dark:text-black rounded-full shadow-sm shadow-slate-500 p-1"
+                            <i className="fa-solid fa-pencil bg-slate-100 dark:text-black rounded-full shadow-sm shadow-slate-500 p-2"
                               onClick={() => onUpdate("edu", i)}
                             >
                             </i>
@@ -138,7 +138,7 @@ export default function About({ isEditable = true }) {
                           {
                             isEditable
                             &&
-                            <i className="fa-solid fa-pencil bg-slate-50 dark:text-black  rounded-full shadow-sm shadow-slate-500 p-1"
+                            <i className="fa-solid fa-pencil  dark:text-black bg-slate-100  rounded-full shadow-sm shadow-slate-500 p-2"
                               onClick={() => onUpdate("work", i)}
                             >
                             </i>
@@ -186,7 +186,7 @@ export default function About({ isEditable = true }) {
                           {
                             isEditable
                             &&
-                            <i className="fa-solid fa-pencil bg-slate-50 dark:text-black  rounded-full shadow-sm shadow-slate-500 p-1"
+                            <i className="fa-solid fa-pencil bg-slate-100 dark:text-black  rounded-full shadow-sm shadow-slate-500 p-2"
                               onClick={() => onUpdate("other", i)}
                             >
                             </i>

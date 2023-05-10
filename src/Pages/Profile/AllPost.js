@@ -5,6 +5,8 @@ import { useAuth } from "../../providers/auth";
 import { ConfigProvider, FloatButton } from "antd";
 import { useUserData } from "../../providers/userData";
 import Loader, { LoaderSmall } from "../../Components/Helper/Loader";
+import cat_image0 from "../Posts/../../assets/cat_image0.jpeg";
+
 
 function AllPost({ resPost = false, isEditable = true }) {
   const [posts, setPosts] = useState([])
@@ -46,16 +48,17 @@ function AllPost({ resPost = false, isEditable = true }) {
         posts.length > 0 ?
           posts.map((item, i) => (
             <Link to={'/postcontent/' + item._id}>
-              <div className="flex flex-col  gap-3 bg-indigo-100 w-4/6 p-2 rounded-2xl shadow-md shadow-slate-400 xs:w-full xs:text-xs" key={i}>
+              <div className="flex flex-col  gap-3 bg-indigo-100 dark:bg-zinc-700 dark:shadow-sm w-4/6 p-2 rounded-2xl shadow-md shadow-slate-400 xs:w-full xs:text-xs" key={i}>
                 <div className="flex justify-between px-2 py-1">
                   <span className="text-xs">{item.createdAt}</span>
                   <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
                 <div className="flex w-full gap-2">
-                  <div className="h-32 w-2/5   dark:bg-violet-200 bg-orange-400 xs:h-24 xs:w-1/2 rounded-xl">
+                  <div className="h-32 w-2/5  sm:h-auto  dark:bg-violet-200 bg-orange-400   rounded-xl">
                     {/* thanmbail image */}
+                    <img src={cat_image0} className="h-32 w-full rounded-xl sm:h-32 "></img>
                   </div>
-                  <div className="flex flex-col w-[60%] p-1 gap-1 ">
+                  <div className="flex flex-col w-[60%] p-1 sm:gap-2 gap-1 ">
 
                     <span className="font-semibold xs:text-xs text-lg">
                       {item.postTitle}
