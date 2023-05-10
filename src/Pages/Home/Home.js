@@ -105,11 +105,15 @@ const Home = () => {
                         <span className="sm:text-xs text-[#6F6F6F]">{item.postType == "learner" ? "I want to learn" : "I can teach"}</span>
                         <i className="fa-solid fa-ellipsis-vertical"></i>
                       </div>
-                      <div className="h-32  sm:h-24 w-full mx-auto my-3 dark:bg-violet-200 bg-[#F8AF6A] rounded-2xl"></div>
+                      <div className="h-56 sm:h-auto relative  sm:h-24 w-full mx-auto my-3 dark:bg-violet-200 bg-[#F8AF6A] rounded-2xl">
+                        <img src={cat_image0} className=" h-full  sm:h-40 rounded-2xl w-full" ></img>
+                        <span className=" absolute sm:text-xs bottom-24 left-7 font-thin  text-base ">{item.postTitle}</span>
+
+                      </div>
                       <div className="flex justify-between text-sm ">
                         <div className="flex flex-col  ">
-                          <span className=" sm:text-xs font-thin text-base ">{item.postTitle}</span>
-                          <span className="text-[#6F6F6F] sm:text-[10px]">{item.createdTutorName}</span>
+                          {/* <span className=" sm:text-xs font-thin text-base ">{item.postTitle}</span> */}
+                          <span className="text-[#6F6F6F] text-lg sm:text-[10px]">{item.createdTutorName}</span>
                         </div>
                         <div className="flex items-center font-thin gap-2 p-2 text-lg className  xs:text-xs">
                           <span >69</span>

@@ -149,20 +149,33 @@ function UpdateOther({ show, setShow, data, setData }) {
                 </div>
 
                 <div className="flex p-2 xs:w-full xs:justify-evenly gap-2 w-full justify-end sm:w-full">
-                    <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%] sm:w-[25%]"
-
-                        onClick={() => onDeleteDetails()}
-                    >Delete
-                    </button>
-                    <button className="xs:w-2/5 sm:w-[25%] bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
-
-                        onClick={() => onUpdateDetails()}
-                    >Update
-                    </button>
-                    <button className=" sm:w-[25%] xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
-                        onClick={() => onCancelBtn()}
-                    >Cancel
-                    </button>
+                <button className="btn w-[15%] sm:w-[33%] shadow-sm shadow-black group relative inline-flex items-center justify-start overflow-hidden transition-all bg-white rounded hover:bg-white group">
+            <span className="w-0 h-0 rounded bg-[#f68f30]  absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
+            <button
+              className=" w-full p-2 text-black transition-colors duration-[90] ease-in-out group-hover:text-white z-10"
+              onClick={() => onDeleteDetails()}>
+              Delete
+            </button>
+          </button>
+                    
+          <button className="btn w-[15%] sm:w-[33%] shadow-sm shadow-black group relative inline-flex items-center justify-start overflow-hidden transition-all bg-white rounded hover:bg-white group">
+            <span className="w-0 h-0 rounded bg-[#f68f30]  absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
+            <button
+              className=" w-full p-2 text-black transition-colors duration-[90] ease-in-out group-hover:text-white z-10"
+              onClick={() => onUpdateDetails()}>
+              Update
+            </button>
+          </button>
+                    
+          <button className="btn w-[15%] sm:w-[33%] shadow-sm shadow-black group relative inline-flex items-center justify-start overflow-hidden transition-all bg-white rounded hover:bg-white group">
+            <span className="w-0 h-0 rounded bg-[#f68f30]  absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1"></span>
+            <button
+              className=" w-full p-2 text-black transition-colors duration-[90] ease-in-out group-hover:text-white z-10"
+              onClick={() => onCancelBtn()}>
+              Cancel
+            </button>
+          </button>
+                    
                 </div>
             </div>
         </div>

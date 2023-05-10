@@ -41,7 +41,7 @@ function TagsInput({ resTags, setResTags, isEditable }) {
     <div className="flex flex-col-reverse gap-2 dark:bg-zinc-800">
       <div className="flex gap-2 dark:bg-zinc-800  flex-wrap h-auto ">
         {tags.map((tag) => (
-          <span key={tag} className="rounded-2xl dark:bg-zinc-800 dark:text-white dark:border bg-[#f5e6c5]
+          <span key={tag} className="rounded-2xl dark:bg-zinc-700 dark:text-white dark:border bg-[#f5e6c5]
            text-base text-[#131517] px-2 py-1 flex items-center gap-2" >
             {tag}
             {

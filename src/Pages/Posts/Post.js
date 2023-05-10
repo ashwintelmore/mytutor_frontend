@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from "react";
 import { Link, NavLink, useParams, useNavigate } from "react-router-dom";
 import { getPost, updatePost } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
-import MultipleDatePicker from "../../Components/Helper/multiDate";
 import { getUser, updateUser } from "../../App/Api";
 import { Radio, Tag } from "antd";
 import Loader from "../../Components/Helper/Loader";
@@ -11,6 +10,8 @@ import RecievedReq from "../Request/RecievedReq";
 import SendReq from "../Request/SendReq";
 import ChoseSlot from "./ChoseSlot";
 import { createFavourite, getFavourites, updateFavourite } from "../../App/favoriteApi";
+import cat_image0 from "../Posts/../../assets/cat_image0.jpeg";
+
 
 const Post = () => {
   const auth = useAuth()
@@ -230,7 +231,9 @@ const Post = () => {
                     <h4 className="xs:text-xs text-[#6F6F6F]"> {post.postType == "learner" ? "I want to learn" : "I can teach"}</h4>
                     <i className="fa-sharp fa-solid fa-ellipsis-vertical text-xl xs:text-xs"></i>
                   </div>
-                  <div className="bg-[#F8AF6A] dark:bg-slate-600 h-80  rounded-xl  mx-3 xs:w-[97%]  xs:m-1 sm:h-40"></div>
+                  <div className="bg-[#F8AF6A] dark:bg-slate-600 h-80  rounded-xl  mx-3 xs:w-[97%]  xs:m-1 sm:h-40">
+                    <img src={cat_image0} className="w-full h-80 sm:h-40 rounded-xl"></img>
+                  </div>
                   <div className="flex justify-between p-1 mx-1 items-center text-xl sm:text-xs xs:p-0">
                     <h1 className="  font-semibold  sm:text-xs">
                       {post.postTitle}
@@ -269,7 +272,9 @@ const Post = () => {
                   <Link to={'/showProfile/' + post.createdTutor}>
                     <div className="flex items-center gap-2 xs:gap-1 cursor-pointer ">
 
-                      <div className="bg-[#D9D9D9] rounded-full h-14 w-14 xs:h-10 xs:w-10 "></div>
+                      <div className="bg-[#5a4a4a] relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
+                        <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-2 font-semibold text-xl text-white p-1">K</h1>
+                      </div>
 
                       {
                         loading.userData ?

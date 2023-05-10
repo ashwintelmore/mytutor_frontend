@@ -136,18 +136,18 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                       </>
                     )}
 
-                    <div className="gap-2 flex justify-end">
+                    <div className="gap-2 sm:gap-2 flex justify-end">
 
 
                       <button
-                        className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-400"
+                        className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px] text-white bg-orange-400"
                         onClick={() => onManageClick(item, i)}>
                         Manage Meeting
                       </button>
 
                       {item.reqAccept && (
                         <button
-                          className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-400"
+                          className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px] text-white bg-orange-400"
                           onClick={() => onPaymentClick(item, i)}
                         >
                           {item.paymentId && item.paymentId != '' ? 'View Payment' : 'Initiat Payment'}
@@ -155,7 +155,7 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                       )}
                       {item.reqAccept && (
                         <a href="http://github.com/" target="_blank">
-                          <button className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-400">
+                          <button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-orange-400">
                             Go to Meeting
                           </button>
                         </a>
