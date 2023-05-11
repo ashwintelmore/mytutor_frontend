@@ -12,7 +12,7 @@ const Backrop = () => {
 
   return (
 
-    <div className="flex flex-col absolute  top-[4.5rem] z-[1] right-4 w-[300px] h-auto p-4 rounded-3xl border-slate-400 border-2  bg-slate-100 dark:bg-zinc-900 dark:border-white">
+    <div className="flex flex-col absolute  top-[4.5rem] z-[1] right-4 w-[300px] h-auto p-4 rounded-2xl border-slate-400 border-2  bg-slate-100 dark:bg-zinc-900 dark:border-white">
       <Link to={"/profile"}>
         <div className="flex w-full justify-around items-center">
           <div className="w-[30%] p-1">

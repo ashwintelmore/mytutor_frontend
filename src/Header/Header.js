@@ -64,7 +64,7 @@ const Header = ({ setOpen, open }) => {
         <div className="flex justify-between  items-center gap-10 sm:gap-2 p-3 text-xl   ">
           <NavLink to={"/search"}>
             <div className=" relative group w-full">
-              <i className="cursor-pointer p-2 rounded-full fa-solid fa-magnifying-glass relative hover:bg-white "></i>
+              <i className="cursor-pointer p-2  rounded-full fa-solid fa-magnifying-glass relative hover:bg-gray-600 hover:text-white"></i>
               <span class="absolute -bottom-7 -right-[15px] px-4 py-1 w-auto text-xs rounded-xl h-auto hidden  group-hover:block  bg-indigo-200  text-black">
                 Search
               </span>
@@ -72,7 +72,7 @@ const Header = ({ setOpen, open }) => {
           </NavLink>
           <div className=" relative group  w-full">
             <i
-              className="fa-regular fa-moon cursor-pointer hover:bg-white rounded-full p-2 xs:hidden sm:hidden   "
+              className="fa-regular fa-moon cursor-pointer hover:bg-gray-600 hover:text-white rounded-full p-2 xs:hidden sm:hidden   "
               onClick={handleThemeSwitch}></i>
             <span class="absolute  -left-[20px] w-fit  rounded-xl h-auto  hidden px-4 py-px  group-hover:block bg-indigo-200 text-xs  text-black">
               Dark/Light Mode
@@ -80,7 +80,7 @@ const Header = ({ setOpen, open }) => {
           </div>
           <div className=" relative group  w-full">
             <i
-              className="fa-solid fa-circle-plus cursor-pointer hover:bg-white p-2 rounded-full"
+              className="fa-solid fa-circle-plus cursor-pointer hover:bg-gray-600 hover:text-white p-2 rounded-full"
               onClick={() => setShow(true)}></i>
             <span class="absolute  left-[-10px] w-auto rounded-xl h-auto hidden px-2 py-1 group-hover:block bg-indigo-200 text-xs  text-black">
               Upload
@@ -96,7 +96,7 @@ const Header = ({ setOpen, open }) => {
             {auth.user._id ? (
 
               <div className=" relative group  w-full">
-                <div className="flex  gap-2">
+                <div className="flex items-center gap-2">
                   <span className="rounded-full h-11 w-11 p-1 relative bg-[#d0782f]">
                     <div className="absolute right-4  text-white text-transform: uppercase"> {auth.user.name[0]}</div>
                   </span>
@@ -109,7 +109,7 @@ const Header = ({ setOpen, open }) => {
               </div>
             ) : (
               <Link to={"/login"}>
-                <button className="bg-[#F8AF6A] text-white rounded-lg px-3 py-1 text-base dark:bg-zinc-900 dark:border-white dark:border-solid">
+                <button className="bg-[#F8AF6A] text-white rounded-lg px-3 py-1 sm:text-sm sm:px-2 text-base dark:border dark:bg-zinc-900 dark:border-white dark:border-solid">
                   Register/Login
                 </button>
               </Link>

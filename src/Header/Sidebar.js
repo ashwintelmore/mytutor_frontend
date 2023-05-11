@@ -23,7 +23,7 @@ const Sidebar = ({ open, toggle, }) => {
   // console.log(isOpen)
   return (
     <>
-      <div className={`sidebar sm:z-[11] sm:mt-2 z-[11] dark:bg-zinc-700 dark:text-white dark:border w-[330px] h-screen bg-white  rounded-r-3xl left-0 top-0 fixed transition-all ease-in-out delay-100 ${open ? "sidebar-open translate-x-[0%]" : "sidebar-close -translate-x-full"}`}>
+      <div className={`sidebar sm:z-[11] sm:mt-1 z-[11] dark:bg-zinc-700 dark:text-white dark:border sm:w-[270px] w-[330px] h-screen bg-white  rounded-r-3xl left-0 top-0 fixed transition-all ease-in-out delay-100 ${open ? "sidebar-open translate-x-[0%]" : "sidebar-close -translate-x-full"}`}>
         <div className="flex w-full flex-col p-2">
           <Link to={"/profile"} >  <div className="flex p-2 w-full items-center gap-5">
             <img

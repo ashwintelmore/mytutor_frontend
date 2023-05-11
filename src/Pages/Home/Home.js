@@ -102,7 +102,7 @@ const Home = () => {
                   >
                     <Link to={"/postcontent/" + item._id} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-md dark:shadow-sm dark:bg-zinc-700 bg-[#FEE4CB] relative rounded-2xl flex flex-col shadow-slate-500 xs:p-1 ">
                       <div className="flex justify-between sm:text-xs xs:text-xs">
-                        <span className="sm:text-xs text-[#6F6F6F]">{item.postType == "learner" ? "I want to learn" : "I can teach"}</span>
+                        <span className="sm:text-xs text-[#6F6F6F] dark:text-white">{item.postType == "learner" ? "I want to learn" : "I can teach"}</span>
                         <i className="fa-solid fa-ellipsis-vertical"></i>
                       </div>
                       <div className="h-56 sm:h-auto relative  sm:h-24 w-full mx-auto my-3 dark:bg-violet-200 bg-[#F8AF6A] rounded-2xl">
@@ -113,7 +113,7 @@ const Home = () => {
                       <div className="flex justify-between text-sm ">
                         <div className="flex flex-col  ">
                           {/* <span className=" sm:text-xs font-thin text-base ">{item.postTitle}</span> */}
-                          <span className="text-[#6F6F6F] text-lg sm:text-[10px]">{item.createdTutorName}</span>
+                          <span className="text-[#6F6F6F] text-lg dark:text-white sm:text-[10px]">{item.createdTutorName}</span>
                         </div>
                         <div className="flex items-center font-thin gap-2 p-2 text-lg className  xs:text-xs">
                           <span >69</span>
@@ -121,8 +121,8 @@ const Home = () => {
                         </div>
                       </div>
                       <div className="flex justify-between p-1  item-center xs:text-[10px] ">
-                        <label className="font-thin">Online</label>
-                        <button className="bg-white text-orange-400 w-36 xs:w-28 rounded-xl p-1 dark:bg-zinc-900">
+                        <label className="font-normal dark:text-[#27f520]">Online</label>
+                        <button className="bg-white text-orange-400 w-36 xs:w-24 rounded-xl p-1 dark:bg-zinc-900">
 
                           Rs.{item.pricePerHour || item.charges}(per hour)
                         </button>

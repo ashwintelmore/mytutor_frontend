@@ -86,8 +86,8 @@ const Profile = ({ toggler = '1' }) => {
                     type="number"
                     placeholder="91850*******"
                     className="rounded-lg px-2 py-1 text-[10px]  sm:px-4 dark:bg-zinc-800 dark:text-white  w-full  outline-none "
-                    value={auth.user.payment.upiId}
-                    onChange={(e) => auth.setUser({ ...auth.user, payment: { ...auth.user.payment, upiId: e.target.value } })}
+                    // value={auth.user.payment.upiId}
+                    // onChange={(e) => auth.setUser({ ...auth.user, payment: { ...auth.user.payment, upiId: e.target.value } })}
                   ></input>
 
 

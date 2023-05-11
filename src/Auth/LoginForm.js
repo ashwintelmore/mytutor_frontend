@@ -33,7 +33,7 @@ export default function LoginForm() {
 
    return (
       <div className="w-[100%] overflow-auto scrollbar-hide md:scrollbar-default">
-         <div className="w-full ml-16 h-screen flex items-start xs:flex-col" >
+         <div className="w-full ml-16 dark:bg-zinc-700 h-screen sm:ml-0 flex items-start xs:flex-col" >
             {/* left field of login */}
             <div className="relative w-1/2 h-full flex flex-col xs:hidden sm:hidden">
                <div className="absolute top-[25%] left-[10%] flex flex-col">
@@ -43,22 +43,22 @@ export default function LoginForm() {
                <img className="w-full  h-full object-cover" src={loginImage} />
             </div>
             {/* right fiked of login page */}
-            <div className="w-1/2 xs:w-full sm:w-full xs:bg-[#ffff] sm:p-8 xs:mx-1 xs:p-7 xs:justify-evenly sm:justify-evenly sm:mx-1 mx-auto h-full bg-[#f5f5f5] flex flex-col p-20  justify-between items-center">
-               <h1 className="text-4xl text-[#075985] font-semibold">My Tutor</h1>
+            <div className="w-1/2 xs:w-full sm:w-full xs:bg-[#ffff] dark:bg-zinc-700 dark:text-white sm:p-8 xs:mx-1 xs:p-7 xs:justify-evenly sm:justify-evenly sm:mx-1 mx-auto h-full bg-[#f5f5f5] flex flex-col p-20  justify-between items-center">
+               <h1 className="text-4xl text-[#075985] dark:text-white font-semibold">My Tutor</h1>
 
                <div className="w-full flex flex-col  ">
                   <div className="w-full flex flex-col mb-2">
-                     <h3 className="text-3xl font-semibold mb-2 text-[#075985]">Login</h3>
+                     <h3 className="text-3xl font-semibold mb-2 dark:text-white text-[#075985]">Login</h3>
                      <p className="text-sm mb-2 text-red-600">{error}</p>
                   </div>
                   <div className="w-full flex flex-col">
-                     <input className="w-full text-black px-2 py-2 my-2 bg-transparent border-b border-[#075985] outline-none focus:outline-none"
+                     <input className="w-full text-black px-2 py-2 my-2 bg-transparent border-b dark:text-white dark:border-b dark:border-white border-[#075985] outline-none focus:outline-none"
                         type="email"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                      />
-                     <input className="w-full px-2 text-black py-2 my-2 bg-transparent border-b border-[#075985] outline-none focus:outline-none"
+                     <input className="w-full px-2 text-black py-2 my-2 bg-transparent border-b dark:text-white dark:border-b dark:border-white  dark:border-b   border-[#075985] outline-none focus:outline-none"
                         type="password"
                         placeholder="Password"
                         value={password}
