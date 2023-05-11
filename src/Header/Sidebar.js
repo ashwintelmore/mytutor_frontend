@@ -58,7 +58,7 @@ const Sidebar = ({ open, toggle, }) => {
               <label className="px-2 hover:underline hover:text-blue-700 ">Policy & Safety</label>
               <label className="px-2 hover:underline hover:text-blue-700 ">How to use MyTutor</label>
               <label className="px-2 hover:underline hover:text-blue-700">New features</label></div>
-            <div className="px-4 py-2"><i class="fa-regular fa-copyright"></i> <label>2023 MyTutor LLC</label></div>
+            <div className="px-4 py-2"><i className="fa-regular fa-copyright"></i> <label>2023 MyTutor LLC</label></div>
           </div>
         </div>
       </div>

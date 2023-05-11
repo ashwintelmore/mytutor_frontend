@@ -56,7 +56,7 @@ const Home = () => {
       console.log('res', res)
       if (res.error) {
       } else if (res.payload) {
-        setImg(`data:${res.payload[0].image.contentType};base64, ${Buffer.from(res.payload[0].image.data.data).toString('base64')}`)
+        // setImg(`data:${res.payload[0].image.contentType};base64, ${Buffer.from(res.payload[0].image.data.data).toString('base64')}`)
         // setImg({ data: res.payload.image.contentType ;base64, ${ Buffer.from(user.userPhoto.data).toString('base64') }
         setCategories(res.payload)
       }
@@ -75,7 +75,7 @@ const Home = () => {
 
         {
           categories.map((item, i) =>
-            <Link to={'/search/' + item.catName}>
+            <Link to={'/search/' + item.catName} key={i}>
               <div className="relative w-max flex m-4 justify-center sm:m-1 ">
                 <div className="w-44 h-44 rounded-full dark:bg-purple-200 border-2 border-[#ffb300] bg-[#ffb300] xs:w-32 xs:h-323 ">
                   <img className="w-full h-full rounded-full" src={bufferToImage(item)} alt="student" />

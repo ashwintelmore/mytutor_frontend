@@ -49,7 +49,7 @@ const Header = ({ setOpen, open }) => {
               onClick={() => {
                 setOpen(!open);
               }}></i>
-            <span class="absolute  -left-[14px] w-auto rounded-xl h-auto hidden px-4 py-1 group-hover:block bg-indigo-200 text-xs  text-black">
+            <span className="absolute  -left-[14px] w-auto rounded-xl h-auto hidden px-4 py-1 group-hover:block bg-indigo-200 text-xs  text-black">
               Menu
             </span>
           </div>
@@ -65,7 +65,7 @@ const Header = ({ setOpen, open }) => {
           <NavLink to={"/search"}>
             <div className=" relative group w-full">
               <i className="cursor-pointer p-2 rounded-full fa-solid fa-magnifying-glass relative hover:bg-white "></i>
-              <span class="absolute -bottom-7 -right-[15px] px-4 py-1 w-auto text-xs rounded-xl h-auto hidden  group-hover:block  bg-indigo-200  text-black">
+              <span className="absolute -bottom-7 -right-[15px] px-4 py-1 w-auto text-xs rounded-xl h-auto hidden  group-hover:block  bg-indigo-200  text-black">
                 Search
               </span>
             </div>
@@ -74,7 +74,7 @@ const Header = ({ setOpen, open }) => {
             <i
               className="fa-regular fa-moon cursor-pointer hover:bg-white rounded-full p-2 xs:hidden sm:hidden   "
               onClick={handleThemeSwitch}></i>
-            <span class="absolute  -left-[20px] w-fit  rounded-xl h-auto  hidden px-4 py-px  group-hover:block bg-indigo-200 text-xs  text-black">
+            <span className="absolute  -left-[20px] w-fit  rounded-xl h-auto  hidden px-4 py-px  group-hover:block bg-indigo-200 text-xs  text-black">
               Dark/Light Mode
             </span>
           </div>
@@ -82,7 +82,7 @@ const Header = ({ setOpen, open }) => {
             <i
               className="fa-solid fa-circle-plus cursor-pointer hover:bg-white p-2 rounded-full"
               onClick={() => setShow(true)}></i>
-            <span class="absolute  left-[-10px] w-auto rounded-xl h-auto hidden px-2 py-1 group-hover:block bg-indigo-200 text-xs  text-black">
+            <span className="absolute  left-[-10px] w-auto rounded-xl h-auto hidden px-2 py-1 group-hover:block bg-indigo-200 text-xs  text-black">
               Upload
             </span>
           </div>
@@ -103,7 +103,7 @@ const Header = ({ setOpen, open }) => {
                   {openProfile && <Backrop />}
                   <span> {auth.user.name} </span>
                 </div>
-                <span class="absolute -top-2 left-[-50px] text-base w-auto rounded-2xl h-auto hidden p-2 group-hover:block bg-indigo-200 text-xs  text-black">
+                <span className="absolute -top-2 left-[-50px] text-base w-auto rounded-2xl h-auto hidden p-2 group-hover:block bg-indigo-200 text-xs  text-black">
                   Profile
                 </span>
               </div>

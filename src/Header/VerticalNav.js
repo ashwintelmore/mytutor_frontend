@@ -17,7 +17,7 @@ const VerticalNav = () => {
         <NavLink to={"/"}>
           <div className=" relative group  w-full">
             <i className="cursor-pointer p-2 rounded-full hover:bg-gray-600 hover:text-white fa-solid fa-home"></i>
-            <span class="absolute -top-8 left-[-7px] w-auto rounded-2xl h-auto hidden p-2 group-hover:block bg-indigo-200 text-xs  text-black">
+            <span className="absolute -top-8 left-[-7px] w-auto rounded-2xl h-auto hidden p-2 group-hover:block bg-indigo-200 text-xs  text-black">
               Home
             </span>
           </div>
