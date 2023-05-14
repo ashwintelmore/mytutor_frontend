@@ -96,7 +96,7 @@ const Header = ({ setOpen, open }) => {
             {auth.user._id ? (
 
               <div className=" relative group  w-full">
-                <div className="flex  gap-2">
+                <div className="flex  items-center gap-2">
                   <span className="rounded-full h-11 w-11 p-1 relative bg-[#d0782f]">
                     <div className="absolute right-4  text-white text-transform: uppercase"> {auth.user.name[0]}</div>
                   </span>
@@ -109,7 +109,7 @@ const Header = ({ setOpen, open }) => {
               </div>
             ) : (
               <Link to={"/login"}>
-                <button className="bg-[#F8AF6A] text-white rounded-lg px-3 py-1 text-base dark:bg-zinc-900 dark:border-white dark:border-solid">
+                <button className="bg-[#e58832] text-white dark:border dark:bg-gray-500 rounded-lg sm:px-2 sm:text-sm px-3 py-1 text-base dark:bg-zinc-900 dark:border-white dark:border-solid">
                   Register/Login
                 </button>
               </Link>

@@ -121,8 +121,8 @@ const Home = () => {
                         </div>
                       </div>
                       <div className="flex justify-between p-1  item-center xs:text-[10px] ">
-                        <label className="font-thin">Online</label>
-                        <button className="bg-white text-orange-400 w-36 xs:w-28 rounded-xl p-1 dark:bg-zinc-900">
+                        <label className="sm:font-medium sm:text-[#30f830]">Online</label>
+                        <button className="bg-white text-orange-400  w-36 sm:w-24 px-2    rounded-xl p-1 dark:bg-zinc-900">
 
                           Rs.{item.pricePerHour || item.charges}(per hour)
                         </button>

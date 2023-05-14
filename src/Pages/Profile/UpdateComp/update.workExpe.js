@@ -74,10 +74,10 @@ function UpdateWorkExpe({ show, setShow, data, setData }) {
     if (!show)
         return null;
     return (
-        <div className="flex w-full  items-center justify-center xs:flex-col absolute top-4 z-[3] left-0">
-            <div className=" bg-[#fff] dark:bg-zinc-800 dark:border relative w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
+        <div className="flex w-full  items-center justify-center xs:flex-col fixed overflow-scroll h-screen top-0 left-0 z-[12]">
+          <div className=" bg-[#fff] dark:bg-zinc-800 dark:border dark:text-white z-[9] absolute my-[10%] top-0 px-6  w-4/6 h-auto py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
                 <div className="flex w-full text-xl font-bold px-3">
-                    <h2 className="text-[#f48c2b] ">Update Work Experience</h2>
+                    <h2 className="text-[#f48c2b] font-medium text-3xl px-4 py-3 ">Update Work Experience</h2>
                 </div>
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">

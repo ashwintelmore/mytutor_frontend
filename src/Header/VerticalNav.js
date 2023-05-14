@@ -17,20 +17,33 @@ const VerticalNav = () => {
         <NavLink to={"/"}>
           <div className=" relative group  w-full">
             <i className="cursor-pointer p-2 rounded-full hover:bg-gray-600 hover:text-white fa-solid fa-home"></i>
-            <span className="absolute -top-8 left-[-7px] w-auto rounded-2xl h-auto hidden p-2 group-hover:block bg-indigo-200 text-xs  text-black">
+            <span className="absolute -top-8 left-[-7px] w-auto rounded-xl h-auto hidden px-3 py-1 group-hover:block bg-indigo-200 text-xs  text-black">
               Home
             </span>
           </div>
 
         </NavLink>
         <NavLink to={'/appointement'}>
+        <div className=" relative  group  w-full">
           <i className="cursor-pointer p-2 hover:bg-gray-600 hover:text-white rounded-full fa-solid fa-paper-plane"></i>
+          <span className="absolute  px-3 hidden  -top-12 left-[-10px] max-w-fit rounded-xl h-fit    group-hover:block bg-indigo-200 text-[12px]  text-black">
+              Your Appointement
+            </span>
+            </div>
         </NavLink>
+
+
         {/* <NavLink to={'/appointement'}>
           <i className="cursor-pointer p-2 hover:bg-gray-600 hover:text-white rounded-full fa-solid fa-wallet"></i>
         </NavLink> */}
         <NavLink to={'/favourite'}>
+        <div className=" relative  group  w-full">
           <i className="cursor-pointer p-2 hover:bg-gray-600 hover:text-white rounded-full fa-solid fa-heart"></i>
+          <span className="absolute  -top-8 left-[-7px] w-auto rounded-xl h-auto hidden px-3 py-1  group-hover:block bg-indigo-200 text-xs  text-black">
+              Likes
+            </span>
+            </div>
+        
         </NavLink>
       </div>
     </div>

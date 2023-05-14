@@ -42,8 +42,8 @@ function AddOther({ show, setShow, }) {
     if (!show)
         return null;
     return (
-        <div className="flex w-full   items-center justify-center xs:flex-col absolute z-[3] top-4 left-0">
-            <div className=" bg-[#fff] dark:bg-zinc-800 dark:border relative  w-[70%] h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
+        <div className="flex w-full  items-center justify-center xs:flex-col fixed overflow-scroll h-screen top-0 left-0 z-[12]">
+          <div className=" bg-[#fff] dark:bg-zinc-800 dark:border dark:text-white z-[9] absolute my-[10%] top-0 px-6  w-4/6 h-auto py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
                 <div className="flex w-full px-3 font-bold text-xl">
                     <h2 className="text-[#f48c2b] text-3xl sm:text-xl  font-medium px-4 py-3  ">Add Achievements/Project/Other</h2>
                 </div>

@@ -44,10 +44,10 @@ function AddWorkExpe({ show, setShow, }) {
     if (!show)
         return null;
     return (
-        <div className="flex w-full  items-center justify-center xs:flex-col absolute top-4 z-[3] left-0">
-            <div className=" bg-[#fff] dark:bg-zinc-800 dark:border relative w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
+        <div className="flex w-full  items-center justify-center xs:flex-col fixed h-screen  top-0  overflow-scroll z-[12] left-0">
+      <div className=" bg-[#fff] dark:bg-zinc-800 z-[9] dark:text-white dark:border absolute my-[10%] top-0 w-4/6 px-6 py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12   ">
                 <div className="flex w-full px-3 font-bold text-xl">
-                    <h2 className="text-[#f48c2b] text-3xl sm:text-xl font-medium px-4 py-3 ">Add Work Experience</h2>
+                    <h2 className="text-[#f48c2b]  sm:text-xl font-medium text-3xl px-4 py-3 ">Add Work Experience</h2>
                 </div>
                 <div className="flex p-1   w-full justify-between items-center text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
