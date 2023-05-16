@@ -113,7 +113,7 @@ const Home = () => {
                       <div className="flex justify-between text-sm ">
                         <div className="flex flex-col  ">
                           {/* <span className=" sm:text-xs font-thin text-base ">{item.postTitle}</span> */}
-                          <span className="text-[#6F6F6F] text-lg sm:text-[10px] font-font-primary">{item.createdTutor.name}</span>
+                          <span className="text-[#6F6F6F] text-lg sm:text-[11.29px] font-font-primary">{item.createdTutor.name}</span>
                         </div>
                         {/* <div className="flex items-center font-thin gap-2 p-2 text-lg className  xs:text-xs">
                           <span >69</span>

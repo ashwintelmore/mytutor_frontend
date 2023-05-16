@@ -33,7 +33,7 @@ const App = () => {
         <Header setOpen={setOpen} open={open} />
         <SidebarClose setOpen={setOpen} open={open} />
         <Sidebar open={open} />
-        <div className="flex w-full mt-16  dark:bg-zinc-900 bg-[#edf0f6] relative">
+        <div className="flex w-full mt-16  dark:bg-zinc-900 bg-color-3 relative">
           <VerticalNav />
           <Routes>
             <Route path="/" element={<Home />} />
