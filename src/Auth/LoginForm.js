@@ -21,14 +21,14 @@ export default function LoginForm() {
       password,
     });
 
-    if (res.data.error) {
+    if (res.error) {
       //error
-      setError(res.data.error.errMessage);
+      setError(res.error.errMessage);
       auth.setLoading(false);
-    } else if (res.data.payload) {
-      auth.setUser(res.data.payload);
+    } else if (res.payload) {
+      auth.setUser(res.payload);
       auth.setLoading(false);
-      localStorage.setItem("_id", res.data.payload._id);
+      localStorage.setItem("_id", res.payload._id);
     }
   }
 
@@ -70,25 +70,25 @@ export default function LoginForm() {
               <p className="text-sm mb-2 text-red-600">{error}</p>
             </div>
             <div className="w-full flex flex-col">
-               <div className="w-full relative ">
-              <input
-                className="w-full text-black px-2 py-2 my-2 bg-transparent border-b dark:border-white dark:border-b dark:text-white border-[#075985] outline-none focus:outline-none"
-                type="email"
-                placeholder="Email/Username"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <i class="fa-solid fa-user absolute right-4 text-xl top-4"></i>
+              <div className="w-full relative ">
+                <input
+                  className="w-full text-black px-2 py-2 my-2 bg-transparent border-b dark:border-white dark:border-b dark:text-white border-[#075985] outline-none focus:outline-none"
+                  type="email"
+                  placeholder="Email/Username"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <i class="fa-solid fa-user absolute right-4 text-xl top-4"></i>
               </div>
               <div className="w-full relative">
-              <input
-                className="w-full px-2 text-black py-2 my-2 bg-transparent border-b dark:border-white dark:border-b dark:text-white border-[#075985] outline-none focus:outline-none"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <i class="fa-solid fa-lock absolute right-4 text-xl top-4"></i>
+                <input
+                  className="w-full px-2 text-black py-2 my-2 bg-transparent border-b dark:border-white dark:border-b dark:text-white border-[#075985] outline-none focus:outline-none"
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <i class="fa-solid fa-lock absolute right-4 text-xl top-4"></i>
               </div>
             </div>
             <div className="w-full flex items-center justify-betwwen">

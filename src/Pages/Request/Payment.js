@@ -59,6 +59,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
             console.log("fethc payment")
             // setLoadings({ ...loadings, post: true })
             const res = await getPayment(reqData.paymentId);
+            console.log(res)
             if (res.error) {
                 // setLoadings({ ...loadings, post: false })
             } else if (res.payload) {

@@ -12,7 +12,28 @@ export const getAllPosts = async () => {
         })
         .catch(function (error) {
             console.log('error', error)
-            return error
+            console.log('Api error', error)
+            if (error.response) {
+                if (error.response.data.error)//this writtern by backend dev
+                    return error.response.data
+                else {//this erro somethin defferent
+                    const resp = {
+                        error: {
+                            errCode: error.code,
+                            errMessage: error.message
+                        }
+                    }
+                    return resp
+                }
+            } else {
+                const resp = {
+                    error: {
+                        errCode: error.code,
+                        errMessage: error.message
+                    }
+                }
+                return resp
+            }
         })
 
 };
@@ -23,7 +44,28 @@ export const getUserAllPosts = async (id) => {
             return response.data
         })
         .catch(function (error) {
-            return error.response.data
+            console.log('Api error', error)
+            if (error.response) {
+                if (error.response.data.error)//this writtern by backend dev
+                    return error.response.data
+                else {//this erro somethin defferent
+                    const resp = {
+                        error: {
+                            errCode: error.code,
+                            errMessage: error.message
+                        }
+                    }
+                    return resp
+                }
+            } else {
+                const resp = {
+                    error: {
+                        errCode: error.code,
+                        errMessage: error.message
+                    }
+                }
+                return resp
+            }
         })
 
 };
@@ -35,7 +77,28 @@ export const getPost = async (id) => {
             return response.data
         })
         .catch(function (error) {
-            return error.response.data
+            console.log('Api error', error)
+            if (error.response) {
+                if (error.response.data.error)//this writtern by backend dev
+                    return error.response.data
+                else {//this erro somethin defferent
+                    const resp = {
+                        error: {
+                            errCode: error.code,
+                            errMessage: error.message
+                        }
+                    }
+                    return resp
+                }
+            } else {
+                const resp = {
+                    error: {
+                        errCode: error.code,
+                        errMessage: error.message
+                    }
+                }
+                return resp
+            }
         })
 
 };
@@ -50,7 +113,28 @@ export const createPost = async (data) => {
         })
         .catch(function (error) {
             console.log('error :>> ', error);
-            return error.response.data
+            console.log('Api error', error)
+            if (error.response) {
+                if (error.response.data.error)//this writtern by backend dev
+                    return error.response.data
+                else {//this erro somethin defferent
+                    const resp = {
+                        error: {
+                            errCode: error.code,
+                            errMessage: error.message
+                        }
+                    }
+                    return resp
+                }
+            } else {
+                const resp = {
+                    error: {
+                        errCode: error.code,
+                        errMessage: error.message
+                    }
+                }
+                return resp
+            }
         });
 };
 
@@ -67,7 +151,28 @@ export const updatePost = async (id, data) => {
         })
         .catch(function (error) {
             console.log('error :>> ', error);
-            return error.response.data
+            console.log('Api error', error)
+            if (error.response) {
+                if (error.response.data.error)//this writtern by backend dev
+                    return error.response.data
+                else {//this erro somethin defferent
+                    const resp = {
+                        error: {
+                            errCode: error.code,
+                            errMessage: error.message
+                        }
+                    }
+                    return resp
+                }
+            } else {
+                const resp = {
+                    error: {
+                        errCode: error.code,
+                        errMessage: error.message
+                    }
+                }
+                return resp
+            }
         });
 };
 
@@ -81,7 +186,28 @@ export const searchPost = async ({ search, sort, postType, type, page, limit, ca
             return response.data
         })
         .catch(function (error) {
-            return error.response.data
+            console.log('Api error', error)
+            if (error.response) {
+                if (error.response.data.error)//this writtern by backend dev
+                    return error.response.data
+                else {//this erro somethin defferent
+                    const resp = {
+                        error: {
+                            errCode: error.code,
+                            errMessage: error.message
+                        }
+                    }
+                    return resp
+                }
+            } else {
+                const resp = {
+                    error: {
+                        errCode: error.code,
+                        errMessage: error.message
+                    }
+                }
+                return resp
+            }
         })
 
 };

@@ -178,25 +178,6 @@ function AddPost({ show, setShow, post }) {
             />
             <label className="text-xs ml-2 p-1">Write something</label>
           </div>
-          <div className="flex flex-col   w-[45%] p-2 xs:w-full">
-            <label className="w-full p-2 text-base xs:text-base">
-              {" "}
-              Thumbnail{" "}
-            </label>
-            <input
-              className="rounded-xl dark:bg-zinc-800 dark:border  w-full shadow-sm shadow-black p-2"
-              type="file"
-              name="thumbnailUrl"
-              onChange={(e) =>
-                setUserData({ ...userData, [e.target.name]: e.target.value })
-              }
-              value={userData.thumbnailUrl}
-            />
-            <label className="text-xs ml-2 p-1">Write something</label>
-          </div>
-        </div>
-
-        <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
           <div className="flex flex-col   w-[45%]  p-2  xs:w-full  ">
             <label className="w-full text-base p-2 ">Offering Charges</label>
             <input
@@ -210,6 +191,11 @@ function AddPost({ show, setShow, post }) {
             />
             <label className="text-xs ml-2 p-1">Per hour</label>
           </div>
+
+        </div>
+
+        <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
+
           <div className="flex flex-col   w-[45%]  p-2  xs:w-full  ">
             <label className="w-full text-base p-2 ">Tags</label>
             <TagsInput
@@ -219,9 +205,6 @@ function AddPost({ show, setShow, post }) {
             />
             <label className="text-xs ml-2 p-1">Per hour</label>
           </div>
-        </div>
-
-        <div className="flex p-1    w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
           <div className="flex flex-col  xs:w-full  w-[45%] p-2 justify-around  ">
             <Link to={"/profile"}>
               <label
@@ -251,13 +234,13 @@ function AddPost({ show, setShow, post }) {
         <div className="p-1">
           <h2>Choose :</h2>
           <div className="flex gap-1 flex-wrap ">
-            <div className="h-44 w-44 bg-black"></div>
-            <div className="h-44 w-44 bg-black"></div>
-            <div className="h-44 w-44 bg-black"></div>
-            <div className="h-44 w-44 bg-black"></div>
-            <div className="h-44 w-44 bg-black"></div>
-            <div className="h-44 w-44 bg-black"></div>
-            <div className="h-44 w-44 bg-black"></div>
+            {
+              new Array(10).fill("").map((item, i) =>
+                <div className="h-44 w-44 bg-black cursor-pointer">
+                  
+                </div>
+              )
+            }
           </div>
         </div>
         <div className="flex p-2 xs:w-full xs:justify-evenly gap-2 w-full justify-end">

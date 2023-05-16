@@ -13,7 +13,28 @@ export const createRequest = async (data) => {
         })
         .catch(function (error) {
             console.log('error :>> ', error);
-            return error.response.data
+            console.log('Api error', error)
+            if (error.response) {
+                if (error.response.data.error)//this writtern by backend dev
+                    return error.response.data
+                else {//this erro somethin defferent
+                    const resp = {
+                        error: {
+                            errCode: error.code,
+                            errMessage: error.message
+                        }
+                    }
+                    return resp
+                }
+            } else {
+                const resp = {
+                    error: {
+                        errCode: error.code,
+                        errMessage: error.message
+                    }
+                }
+                return resp
+            }
         });
 };
 export const updateRequest = async (data) => {
@@ -28,7 +49,28 @@ export const updateRequest = async (data) => {
         })
         .catch(function (error) {
             console.log('error :>> ', error);
-            return error.response.data
+            console.log('Api error', error)
+            if (error.response) {
+                if (error.response.data.error)//this writtern by backend dev
+                    return error.response.data
+                else {//this erro somethin defferent
+                    const resp = {
+                        error: {
+                            errCode: error.code,
+                            errMessage: error.message
+                        }
+                    }
+                    return resp
+                }
+            } else {
+                const resp = {
+                    error: {
+                        errCode: error.code,
+                        errMessage: error.message
+                    }
+                }
+                return resp
+            }
         });
 };
 export const getAllRequester = async (id) => {
@@ -38,7 +80,28 @@ export const getAllRequester = async (id) => {
             return response.data
         })
         .catch(function (error) {
-            return error.response.data
+            console.log('Api error', error)
+            if (error.response) {
+                if (error.response.data.error)//this writtern by backend dev
+                    return error.response.data
+                else {//this erro somethin defferent
+                    const resp = {
+                        error: {
+                            errCode: error.code,
+                            errMessage: error.message
+                        }
+                    }
+                    return resp
+                }
+            } else {
+                const resp = {
+                    error: {
+                        errCode: error.code,
+                        errMessage: error.message
+                    }
+                }
+                return resp
+            }
         })
 
 };
@@ -49,7 +112,28 @@ export const getAllRequested = async (id) => {
             return response.data
         })
         .catch(function (error) {
-            return error.response.data
+            console.log('Api error', error)
+            if (error.response) {
+                if (error.response.data.error)//this writtern by backend dev
+                    return error.response.data
+                else {//this erro somethin defferent
+                    const resp = {
+                        error: {
+                            errCode: error.code,
+                            errMessage: error.message
+                        }
+                    }
+                    return resp
+                }
+            } else {
+                const resp = {
+                    error: {
+                        errCode: error.code,
+                        errMessage: error.message
+                    }
+                }
+                return resp
+            }
         })
 
 };
@@ -60,7 +144,28 @@ export const getAllPostRequested = async (postId, requestedId) => {
             return response.data
         })
         .catch(function (error) {
-            return error.response.data
+            console.log('Api error', error)
+            if (error.response) {
+                if (error.response.data.error)//this writtern by backend dev
+                    return error.response.data
+                else {//this erro somethin defferent
+                    const resp = {
+                        error: {
+                            errCode: error.code,
+                            errMessage: error.message
+                        }
+                    }
+                    return resp
+                }
+            } else {
+                const resp = {
+                    error: {
+                        errCode: error.code,
+                        errMessage: error.message
+                    }
+                }
+                return resp
+            }
         })
 
 };
@@ -72,7 +177,28 @@ export const getAllPostRequester = async (postId, requesterId) => {
             return response.data
         })
         .catch(function (error) {
-            return error.response.data
+            console.log('Api error', error)
+            if (error.response) {
+                if (error.response.data.error)//this writtern by backend dev
+                    return error.response.data
+                else {//this erro somethin defferent
+                    const resp = {
+                        error: {
+                            errCode: error.code,
+                            errMessage: error.message
+                        }
+                    }
+                    return resp
+                }
+            } else {
+                const resp = {
+                    error: {
+                        errCode: error.code,
+                        errMessage: error.message
+                    }
+                }
+                return resp
+            }
         })
 
 };
