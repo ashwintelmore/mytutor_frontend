@@ -52,17 +52,18 @@ function Favourite() {
     console.log('favourite', favourite)
 
     return (
-        <div className='ml-20'>
-            <div id="result " className="w-[70%] sm:w-full">
-                <h1 className="text-red-600 text-xl ">Your Favourite Tutors</h1>
+        <div className="bg-white w-full sm:ml-0 sm:w-[90%] ml-16 py-4 px-2">
+            <div id="result " className="w-1/2 relative sm:w-full">
+                <div className="w-full fixed  bg-white top-16 ">
+                <h1 className="text-red-600    font-semibold  px-4 py-4  w-fit text-2xl ">Your Favourite Tutors</h1></div>
                 {favourite.length > 0
                     &&
                     favourite.map((item, i) =>
                         <Link to={'/showProfile/' + item.tutorId} key={i}>
-                            <div className="p-2 bg-blue-100 h-42 w-auto rounded-lg m-2 flex  " key={i}>
-                                <div className="flex  flex-row w-82">
+                            <div className="my-10 mx-4 py-4 shadow-md shadow-slate-400 h-auto w-full rounded-lg  flex  " key={i}>
+                                <div className="flex  flex-row w-full">
                                     <img
-                                        className="rounded-full h-32 w -32 mx-10 border-red-600 border-2"
+                                        className="rounded-full h-28 w -28 mx-10 border-red-600 border-2"
                                         src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
                                         alt=""
                                     />

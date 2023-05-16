@@ -106,7 +106,7 @@ function AddPost({ show, setShow, post }) {
   if (!show) return null;
   return (
     // <form action="/" enctype="multipart/form-data">
-    <div className="flex w-full h-screen items-center justify-center xs:flex-col  fixed left-0 ,  top-0 overflow-scroll  z-20">
+    <div className="flex w-full h-screen items-center transition-all ease-in-out delay-1000 justify-center xs:flex-col  fixed left-0 ,  top-0 overflow-scroll  z-20">
       {contextHolder}
       <div className=" bg-[#fff] dark:bg-zinc-800 z-[9] dark:text-white dark:border absolute my-[10%] top-0 w-4/6 px-6 py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12   ">
         <h2 className="text-[#f48c2b] top-0 left-2 text-3xl px-4 py-3 font-medium absolute ">
