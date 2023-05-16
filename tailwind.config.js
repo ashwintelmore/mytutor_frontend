@@ -22,6 +22,8 @@ module.exports = {
       'color-4': '#F8AF6A',
       'color-5': '#F2F2F2',
       'color-6': '#c0eef4',
+      'color-7': '#c0eef4',//green
+      'color-8': '#c0eef4',//red
       'white': '#FFFFFF',
       'black': '#000000'
     },

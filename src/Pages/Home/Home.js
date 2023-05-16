@@ -4,7 +4,7 @@ import cat_image3 from "../Posts/../../assets/cat_image3.jpg";
 import cat_image4 from "../Posts/../../assets/cat_image4.jpg";
 import cat_image5 from "../Posts/../../assets/cat_image5.jpg";
 // import cat_image0 from "../Posts/../../assets/cat_image0.jpeg";
-import cat_image0 from "../Posts/../../assets/Thumbnail.png";
+import cat_image0 from "../Posts/../../assets/Thumbnail1.png";
 import cat_image7 from "../Posts/../../assets/cat_image7.jpg";
 import cat_image8 from "../Posts/../../assets/cat_image8.jpg";
 
