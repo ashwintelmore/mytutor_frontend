@@ -3,7 +3,8 @@ import { Buffer } from 'buffer'; import cat_image1 from "../Posts/../../assets/c
 import cat_image3 from "../Posts/../../assets/cat_image3.jpg";
 import cat_image4 from "../Posts/../../assets/cat_image4.jpg";
 import cat_image5 from "../Posts/../../assets/cat_image5.jpg";
-import cat_image0 from "../Posts/../../assets/cat_image0.jpeg";
+// import cat_image0 from "../Posts/../../assets/cat_image0.jpeg";
+import cat_image0 from "../Posts/../../assets/Thumbnail.png";
 import cat_image7 from "../Posts/../../assets/cat_image7.jpg";
 import cat_image8 from "../Posts/../../assets/cat_image8.jpg";
 
@@ -63,6 +64,7 @@ const Home = () => {
 
     getallpost();
   }, [])
+  console.log('posts', posts)
   // if (auth.loading)
   //   return <Loader />
   return (
@@ -75,10 +77,10 @@ const Home = () => {
           categories.map((item, i) =>
             <Link to={'/search/' + item.catName} key={i}>
               <div className="relative w-max flex m-4 justify-center sm:m-1 ">
-                <div className="w-44 h-44 rounded-full dark:bg-purple-200 border-2 border-[#ffb300] bg-[#ffb300] xs:w-32 xs:h-323 ">
+                <div className="w-44 h-44 rounded-full dark:bg-purple-200 border-2 border-color-4 bg-[#ffb300] xs:w-32 xs:h-323 ">
                   <img className="w-full h-full rounded-full" src={bufferToImage(item)} alt="student" />
                 </div>
-                <div className="absolute text-center p-2 bottom-0 dark:bg-amber-500 h-10  w-28  bg-white shadow-sm sha shadow-[#c0eef4] rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
+                <div className="absolute text-center p-2 bottom-0 dark:bg-amber-500 h-10  w-28  bg-white shadow-sm sha shadow-color-6 rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
                   {item.catName}
                 </div>
               </div>
@@ -98,12 +100,12 @@ const Home = () => {
                   <div className="w-[24.8%] h-auto  p-1 sm:w-[49%]  sm:text-sm xs:w-1/2 sm:h-auto xs:text-xs"
                     key={i}
                   >
-                    <Link to={"/postcontent/" + item._id} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-lg hover:shadow-[#c0eef4] dark:shadow-md dark:bg-zinc-700 bg-[#FEE4CB] relative rounded-2xl flex flex-col  xs:p-1 ">
+                    <Link to={"/postcontent/" + item._id} ><div className="h-auto p-3 w-full sm:p-2 xs:m-1 m-2 shadow-lg hover:shadow-[#c0eef4] dark:shadow-md dark:bg-zinc-700 bg-color-1 bg-opacity-70 relative rounded-2xl flex flex-col  xs:p-1 ">
                       <div className="flex justify-between sm:text-xs xs:text-xs">
                         <span className="sm:text-xs text-[#6F6F6F]">{item.postType == "learner" ? "I want to learn" : "I can teach"}</span>
                         <i className="fa-solid fa-ellipsis-vertical"></i>
                       </div>
-                      <div className="h-56 sm:h-auto relative  sm:h-24 w-full mx-auto my-3 dark:bg-violet-200 bg-[#F8AF6A] rounded-2xl">
+                      <div className=" relative  sm:h-24 w-full mx-auto my-3 dark:bg-violet-200 bg-color-4 rounded-2xl">
                         <img src={cat_image0} className=" h-full  sm:h-40 rounded-2xl w-full" ></img>
                         <span className=" absolute sm:text-xs bottom-24 left-7 font-thin  text-base ">{item.postTitle}</span>
 
@@ -111,7 +113,7 @@ const Home = () => {
                       <div className="flex justify-between text-sm ">
                         <div className="flex flex-col  ">
                           {/* <span className=" sm:text-xs font-thin text-base ">{item.postTitle}</span> */}
-                          <span className="text-[#6F6F6F] text-lg sm:text-[10px]">{item.createdTutor.name}</span>
+                          <span className="text-[#6F6F6F] text-lg sm:text-[10px] font-font-primary">{item.createdTutor.name}</span>
                         </div>
                         {/* <div className="flex items-center font-thin gap-2 p-2 text-lg className  xs:text-xs">
                           <span >69</span>

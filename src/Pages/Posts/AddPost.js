@@ -5,6 +5,7 @@ import { useAuth } from "../../providers/auth";
 import TagsInput from "../Profile/TagsInput";
 import { getAlllCatgories } from "../../App/category.Api";
 import { useAlert } from "../../Components/Alert";
+import { postImgCollection } from "../../assets/postImages/postImg";
 
 
 function AddPost({ show, setShow, post }) {
@@ -14,7 +15,9 @@ function AddPost({ show, setShow, post }) {
   //! please userData === postData
   const [userData, setUserData] = useState({
     postTitle: '',
-    thumbnailUrl: '',
+    thumbnailUrl: {
+      image: 0
+    },
     charges: '',
     descrp: '',
 
@@ -103,6 +106,12 @@ function AddPost({ show, setShow, post }) {
     // setShow(!show)
   };
 
+
+  const onChoseImg = (value) => {
+    setUserData({ ...userData, thumbnailUrl: { ...userData.thumbnailUrl, image: value } })
+  };
+
+  console.log('userData', userData)
   if (!show) return null;
   return (
     // <form action="/" enctype="multipart/form-data">
@@ -235,10 +244,19 @@ function AddPost({ show, setShow, post }) {
           <h2>Choose :</h2>
           <div className="flex gap-1 flex-wrap ">
             {
-              new Array(10).fill("").map((item, i) =>
-                <div className="h-44 w-44 bg-black cursor-pointer">
-                  
-                </div>
+              new Array(4).fill("").map((item, i) =>
+                userData.thumbnailUrl.image == i ?
+                  <div className="h-44 w-44  bg-black cursor-pointer rounded-lg border-color-6 border-4 "
+
+                  >
+                    <img src={postImgCollection[i]} alt="" srcset="" />
+                  </div>
+                  :
+                  <div className="h-40 transition-all w-40 bg-black cursor-pointer "
+                    onClick={() => onChoseImg(i)}
+                  >
+                    <img src={postImgCollection[i]} alt="" srcset="" />
+                  </div>
               )
             }
           </div>
