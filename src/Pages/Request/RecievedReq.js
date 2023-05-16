@@ -14,6 +14,7 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
     setReqData(item);
   };
   console.log('reqData', reqData)
+  console.log('requests', requests)
   const [meetingLink, setMeetingLink] = useState("");
 
   const handleCopyClick = async () => {
@@ -72,8 +73,8 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                       alt=""
                     />
                     <div className="flex flex-col gap-1">
-                      <h3 className="text-violet-800 ">{item.requesterName}</h3>
-                      <p className="text-sm">{item.postName}</p>
+                      <h3 className="text-violet-800 ">{item.requesterId.name}</h3>
+                      <p className="text-sm">{item.postId.postTitle}</p>
                     </div>
                   </div>
                   <div
@@ -125,7 +126,7 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                             className="p-1 shadow-sm shadow-slate-500 rounded-xl dark:bg-zinc-800 dark:border bg-[#f5c782] t"
                             value={meetingLink}
                             onChange={handleLinkChange}
-                            onClick={handleCopyClick}> Meeting Code : {item.meetingCode}
+                            onClick={handleCopyClick}> Meeting Code : {item.meetingId.meetingCode}
                           </button>
                         </div>
 
@@ -154,7 +155,7 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                         </button>
                       )}
                       {item.reqAccept && (
-                        <a href="http://github.com/" target="_blank">
+                        <a href="https://myturt.onrender.com/" target="_blank">
                           <button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-orange-400">
                             Go to Meeting
                           </button>

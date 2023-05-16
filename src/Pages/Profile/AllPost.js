@@ -72,6 +72,7 @@ function AllPost({ resPost = false, isEditable = true }) {
   if (loader.post) {
     return <LoaderSmall />
   }
+  console.log('posts', posts)
   return (
     <>
 
@@ -101,19 +102,18 @@ function AllPost({ resPost = false, isEditable = true }) {
                 <div className="flex w-full gap-2">
                   <div className="h-32 w-2/5  sm:h-auto  dark:bg-violet-200 bg-orange-400   rounded-xl">
                     <Link to={'/postcontent/' + item._id}>
-                      {/* thanmbail image */}
+                      <img src={cat_image0} className="h-32 w-full rounded-xl sm:h-32 "></img>
                     </Link>
-                    <img src={cat_image0} className="h-32 w-full rounded-xl sm:h-32 "></img>
                   </div>
                   <div className="flex flex-col w-[60%] p-1 sm:gap-2 gap-1 ">
 
                     <span className="font-semibold xs:text-xs text-lg">
                       {item.postTitle}
                     </span>
-                    <span className="text-sm">{item.createdTutorName}</span>
+                    <span className="text-sm">{item.createdTutor.name}</span>
                     <div className="flex items-center gap-1">
                       <div className="rounded-full bg-green-500  h-2 w-2"></div>
-                      <label>Online</label>
+                      <label>{item.createdTutor.analytics.favorite} favorite</label>
                     </div>
                     <button className="bg-white text-orange-400 w-36 xs:w-28 rounded-xl p-1 dark:bg-zinc-900">
                       Rs.{item.pricePerHour || item.charges}(per hour)

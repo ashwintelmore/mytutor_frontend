@@ -35,24 +35,18 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
     const [isDoneStateChanges, setIsDoneStateChanges] = useState(false)
     //get post for charges price
     useEffect(() => {
-        const fetchgetPost = async () => {
-            setLoadings({ ...loadings, post: true })
-            const res = await getPost(reqData.postId);
-            if (res.error) {
-                setLoadings({ ...loadings, post: false })
-            } else if (res.payload) {
-                setPayment({
-                    ...payment,
-                    charges: res.payload.charges,
-                })
-                setLoadings({ ...loadings, post: false })
-            }
 
-        };
-        if (payment.charges == '' && reqData._id)
-            fetchgetPost()
+        if (payment.charges == '' && reqData._id) {
+            setPayment({
+                ...payment,
+                charges: reqData.postId.charges,
+            })
+        }
+        // fetchgetPost()
     }, [reqData])
 
+    console.log('reqData', reqData)
+    console.log('payment', payment)
     //get payment details
     useEffect(() => {
         const fetchPayment = async () => {
@@ -71,24 +65,30 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
             }
 
         };
-        if (reqData.paymentId && reqData.paymentId != '')
-            fetchPayment()
+        if (reqData.paymentId) {
+            //     fetchPayment()
+            setPayment({
+                ...reqData.paymentId
+            })
+
+            setPayStatus(paymentStatusUpdate(reqData.paymentId))
+        }
     }, [reqData])
 
     //update payment ids from reqData
     useEffect(() => {
-        if (reqData._id) {
-            setPayment({
-                ...payment,
-                tutorId: reqData.requestedId,
-                tutorName: reqData.requestedName,
-                postId: reqData.postId,
-                postName: reqData.postName,
-                learnerId: reqData.requesterId,
-                learnerName: reqData.requesterName,
-                requestId: reqData._id,
-            })
-        }
+        // if (reqData._id) {
+        //     setPayment({
+        //         ...payment,
+        //         tutorId: reqData.requestedId,
+        //         tutorName: reqData.requestedName,
+        //         postId: reqData.postId,
+        //         postName: reqData.postName,
+        //         learnerId: reqData.requesterId,
+        //         learnerName: reqData.requesterName,
+        //         requestId: reqData._id,
+        //     })
+        // }
     }, [reqData])
 
 
@@ -96,7 +96,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         if (payment._id) {
             setPayStatus(paymentStatusUpdate(payment))
         }
-    }, [payment.paymentStatus])
+    }, [payment])
 
 
     useEffect(() => {
@@ -127,9 +127,9 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         const paymentData = {
             ...payment,
             upiId: auth.user.payment.upiId,
-            postId: reqData.postId,
-            tutorId: reqData.requestedId,
-            learnerId: reqData.requesterId,
+            postId: reqData.postId._id,
+            tutorId: reqData.requestedId._id,
+            learnerId: reqData.requesterId._id,
             requestId: reqData._id,
         }
 

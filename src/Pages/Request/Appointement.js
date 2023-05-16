@@ -24,12 +24,12 @@ const Appointement = () => {
             console.log('refreshReqData', refreshReqData)
             let res;
 
-            if (profileToggler == '1') {
+            if (profileToggler == '1') {//send
 
                 setLoader({ ...loader, post: true })
                 res = await getAllRequester(auth.user._id);
             }
-            if (profileToggler == '2') {
+            if (profileToggler == '2') {//received
                 setLoader({ ...loader, post: true })
                 res = await getAllRequested(auth.user._id);
             }

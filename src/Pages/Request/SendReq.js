@@ -56,6 +56,9 @@ export default function SendReq({ requests, setRefreshReqData }) {
     setRefreshReqData(true)
   };
 
+  // console.log('reqData', reqData)
+  // console.log('requests', requests)
+
   return (
     <>
       <div
@@ -77,8 +80,8 @@ export default function SendReq({ requests, setRefreshReqData }) {
                       alt=""
                     />
                     <div className="flex flex-col gap-1">
-                      <h3 className="text-violet-800 ">{item.requesterName}</h3>
-                      <p className="text-sm">{item.postName}</p>
+                      <h3 className="text-violet-800 ">{item.requesterId.name}</h3>
+                      <p className="text-sm">{item.postId.postTitle}</p>
                     </div>
                   </div>
 
@@ -127,7 +130,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
                         <div className="">
 
                           <button className="p-1 shadow-sm shadow-slate-500 rounded-xl dark:bg-zinc-800 dark:border bg-[#f5c782] t" value={meetingLink}
-                            onChange={handleLinkChange} onClick={handleCopyClick}> Meeting Code : {item.meetingCode}</button>
+                            onChange={handleLinkChange} onClick={handleCopyClick}> Meeting Code : {item.meetingId.meetingCode}</button>
                         </div>
 
                         {/* <p className="text-sm"> Meeting Name : {item.meetingName}</p> */}
@@ -145,11 +148,11 @@ export default function SendReq({ requests, setRefreshReqData }) {
                           className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-400"
                           onClick={() => onPaymentClick(item, i)}
                         >
-                          Make Payment
+                          {item.paymentId.paymentStatus.isCompletd ? 'View Payment' : 'Make Payment'}
                         </button>
                       }
                       {item.reqAccept && (
-                        <a href="http://github.com/" target="_blank">
+                        <a href="https://myturt.onrender.com/" target="_blank">
                           <button className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-400">
                             Go to Meeting
                           </button>

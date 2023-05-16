@@ -59,37 +59,34 @@ const Post = () => {
       }
 
     };
-    if (!post._id)
+    if (param.id)
       fetchgetPost()
-    return () => {
-
-    };
-  }, [post._id, auth.user._id])
+  }, [])
 
   //get user data mainly for slot details
-  useEffect(() => {
+  // useEffect(() => {
 
-    const fetchgetUserData = async () => {
+  //   const fetchgetUserData = async () => {
 
-      setLoading({ ...loading, userData: true })
-      const res = await getUser(post.createdTutor);
+  //     setLoading({ ...loading, userData: true })
+  //     const res = await getUser(post.createdTutor);
 
-      if (res.error) {
-        setErr(res.error.errMessage)
-        setLoading({ ...loading, userData: false })
-      } else if (res.payload) {
-        setUserData(res.payload)
-        setLoading({ ...loading, userData: false })
-      }
-    };
+  //     if (res.error) {
+  //       setErr(res.error.errMessage)
+  //       setLoading({ ...loading, userData: false })
+  //     } else if (res.payload) {
+  //       setUserData(res.payload)
+  //       setLoading({ ...loading, userData: false })
+  //     }
+  //   };
 
-    if (!userData._id && post.createdTutor)
-      fetchgetUserData()
+  //   if (!userData._id && post.createdTutor)
+  //     fetchgetUserData()
 
-    return () => {
+  //   return () => {
 
-    };
-  }, [post])
+  //   };
+  // }, [post])
 
 
   //get all requsets with postid and requsted id
@@ -97,7 +94,7 @@ const Post = () => {
     const fetchUserAllRequest = async () => {
       let res
       // setLoading({ ...loading, request: true })
-      if (post.createdTutor == auth.user._id) {
+      if (post.createdTutor._id == auth.user._id) {
         res = await getAllPostRequested(post._id, auth.user._id);
         if (res.error) {
           //handle error
@@ -135,7 +132,7 @@ const Post = () => {
   //get fovourit
   useEffect(() => {
     const fetchFav = async (id) => {
-      const res = await getFavourites(auth.user._id, userData._id)
+      const res = await getFavourites(auth.user._id, post.createdTutor._id)
 
       if (res.error) {
 
@@ -146,10 +143,10 @@ const Post = () => {
         setisFavourite(res.payload[0].isFavourite)
       }
     };
-    if (!favourite._id && userData._id && auth.user._id) {//minus one favourite
+    if (!favourite._id && post._id && auth.user._id) {
       fetchFav()
     }
-  }, [userData, auth.user])
+  }, [post, auth.user])
 
 
   const onClickFavourit = async (status, learner, tutor) => {
@@ -208,10 +205,11 @@ const Post = () => {
     setComments(t);
   };
 
-  console.log('comment', comment)
-  console.log('comments', comments)
   console.log('requests', requests)
   console.log('reqData', reqData)
+  console.log('favourite', favourite)
+  console.log('post', post)
+  console.log('userData', userData)
 
   if (auth.loading)
     return <Loader />
@@ -220,10 +218,10 @@ const Post = () => {
   return (
     <>
       {
-        (loading.post || loading.userData) ?
+        (loading.post) ?
           <Loader />
           :
-          post && userData._id ?
+          post._id ?
             <div className="w-[96%] ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-zinc-800 bg-white xs:w-full xs:flex-col xs:m-0 sm:m-0 sm:flex-col sm:w-full">
               <div className="flex flex-col w-3/5 xs:w-full sm:w-full">
                 <div className=" h-auto p-1 xs:p-1 mx-2 ">
@@ -269,36 +267,31 @@ const Post = () => {
                   </p>
                 </div>
                 <div className="flex justify-between mx-1  p-3 xs:p-2">
-                  <Link to={'/showProfile/' + post.createdTutor}>
+                  <Link to={'/showProfile/' + post.createdTutor._id}>
                     <div className="flex items-center gap-2 xs:gap-1 cursor-pointer ">
 
                       <div className="bg-[#5a4a4a] relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
                         <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-2 font-semibold text-xl text-white p-1">K</h1>
                       </div>
 
-                      {
-                        loading.userData ?
-                          <Loader />
-                          :
-                          <div className="flex flex-col xs:text-xs cursor-pointer">
-                            <label>{userData.name}</label>
-                            <label className="text-[#828282]">{userData.analytics.favorite} Favourite</label>
-                          </div>
-                      }
+                      <div className="flex flex-col xs:text-xs cursor-pointer">
+                        <label>{post.createdTutor.name}</label>
+                        <label className="text-[#828282]">{post.createdTutor.analytics.favorite} Favourite</label>
+                      </div>
                     </div>
                   </Link>
                   {
                     isFavourite ?
                       <button
                         className={"bg-[#837e7a] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9"}
-                        onClick={(e) => onClickFavourit(false, auth.user, userData)}
+                        onClick={(e) => onClickFavourit(false, auth.user, post.createdTutor)}
                       >
                         {"unfavourite"}
                       </button>
                       :
                       <button
                         className={"bg-[#F8AF6A] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9"}
-                        onClick={(e) => onClickFavourit(true, auth.user, userData)}
+                        onClick={(e) => onClickFavourit(true, auth.user, post.createdTutor)}
                       >
                         {"Favourite"}
                       </button>
@@ -400,10 +393,10 @@ const Post = () => {
               </div>
 
               {
-                loading.request || loading.userData ?
+                loading.request ?
                   <Loader />
                   :
-                  post.createdTutor == auth.user._id ? //user to see all request recieved from other learner of that post
+                  post.createdTutor._id == auth.user._id ? //user to see all request recieved from other learner of that post
                     <div className=" flex  flex-col w-2/5 p-2 xs:w-full xs:p-1 sm:w-full  ">
                       <h4 className="text-lg font-semibold mt-2">All your requests  </h4>
                       <div className="flex flex-col p-4 gap-4 xs:p-2 xs:gap-2 xs:overflow-y-auto">
@@ -424,7 +417,7 @@ const Post = () => {
                       <ChoseSlot
                         post={post}
                         _reqData={reqData}
-                        userData={userData}
+                        userData={post.createdTutor}
                       />
 
               }
