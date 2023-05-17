@@ -16,13 +16,13 @@ const VerticalNav = () => {
       <div className="flex flex-col items-center p-8 gap-10 sm:flex  xs:flex sm:p-2 xs:p-2 sm:gap2 xs:gap-2 sm:flex-row xs:flex-row  sm:items-center xs:items-center  sm:justify-evenly xs:justify-evenly  ">
         <NavLink to={"/"}>
           
-            <i title="Home" className="cursor-pointer p-2 rounded-full hover:bg-gray-600 hover:text-white fa-solid fa-home"></i>
+            <i title="Home" className="cursor-pointer p-2 rounded-full hover:bg-color-6 hover:text-white fa-solid fa-home"></i>
             
 
         </NavLink>
         <NavLink to={'/appointement'}>
          
-          <i className="cursor-pointer p-2 hover:bg-gray-600 hover:text-white rounded-full fa-solid fa-paper-plane" title="Your Appointments"></i>
+          <i className="cursor-pointer p-2 hover:bg-color-6 hover:text-white rounded-full fa-solid fa-paper-plane" title="Your Appointments"></i>
           
         </NavLink>
 
@@ -32,7 +32,7 @@ const VerticalNav = () => {
         </NavLink> */}
         <NavLink to={'/favourite'}>
         
-          <i className="cursor-pointer p-2 hover:bg-gray-600 hover:text-white rounded-full fa-solid fa-heart" title="Likes"></i>
+          <i className="cursor-pointer p-2 hover:bg-color-6 hover:text-white rounded-full fa-solid fa-heart" title="Likes"></i>
           
         
         </NavLink>
