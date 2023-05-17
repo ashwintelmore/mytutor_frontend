@@ -16,7 +16,7 @@ function AddPost({ show, setShow, post }) {
   const [userData, setUserData] = useState({
     postTitle: '',
     thumbnailUrl: {
-      image: 0
+      image: Math.ceil(Math.random() * 10)
     },
     charges: '',
     descrp: '',
@@ -27,7 +27,7 @@ function AddPost({ show, setShow, post }) {
   });
 
   const [cats, setCats] = useState([]);
-
+  console.log('post', post)
   //fetch all categoreis
 
   useEffect(() => {
@@ -42,14 +42,14 @@ function AddPost({ show, setShow, post }) {
     fetchAllCats()
   }, [])
 
-  //fetch all user data
+  //fetch all post data
   useEffect(() => {
     const fetchPost = async () => {
       const res = await getPost(post._id);
       if (res.error) {
         showNotification(res.error.errMassege)
       } else if (res.payload) {
-        setUserData(res.payload)
+        setUserData({ ...res.payload })
       }
     };
     if (post)
@@ -241,21 +241,21 @@ function AddPost({ show, setShow, post }) {
             value={userData.descrp}></textarea>
         </div>
         <div className="p-1">
-          <h2>Choose :</h2>
+          <h2>Choose Thumbnail BG :</h2>
           <div className="flex gap-1 flex-wrap ">
             {
-              new Array(4).fill("").map((item, i) =>
-                userData.thumbnailUrl.image == i ?
-                  <div className="h-44 w-44  bg-black cursor-pointer rounded-lg border-color-6 border-4 "
+              postImgCollection.map((item, i) =>
+                userData.thumbnailUrl?.image == i ?
+                  <div className=" bg-black transition-all cursor-pointer rounded-lg border-color-4 border-4 min-w-[30%] max-w-[20%] flex justify-center h-auto items-center"
 
                   >
-                    <img src={postImgCollection[i]} alt="" srcset="" />
+                    <img src={item} alt="" srcset="" className="max-w-full h-auto " />
                   </div>
                   :
-                  <div className="h-40 transition-all w-40 bg-black cursor-pointer "
+                  <div className="transition-all bg-black opacity-80 cursor-pointer min-w-[30%] max-w-[20%] flex justify-center h-auto items-center"
                     onClick={() => onChoseImg(i)}
                   >
-                    <img src={postImgCollection[i]} alt="" srcset="" />
+                    <img src={item} alt="" srcset="" className="max-w-full h-auto " />
                   </div>
               )
             }

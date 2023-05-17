@@ -16,6 +16,7 @@ import { useAuth } from "../../providers/auth";
 import Loader from "../../Components/Helper/Loader";
 import { useAlert } from "../../Components/Alert";
 import { getAlllCatgories, getCatgory } from "../../App/category.Api";
+import { postImgCollection } from "../../assets/postImages/postImg";
 
 const Home = () => {
   const auth = useAuth()
@@ -106,8 +107,8 @@ const Home = () => {
                         <i className="fa-solid fa-ellipsis-vertical"></i>
                       </div>
                       <div className=" relative  sm:h-24 w-full mx-auto my-3 dark:bg-violet-200 bg-color-4 rounded-2xl">
-                        <img src={cat_image0} className=" h-full  sm:h-40 rounded-2xl w-full" ></img>
-                        <span className=" absolute sm:text-xs bottom-24 left-7 font-thin  text-base ">{item.postTitle}</span>
+                        <img src={postImgCollection[item.thumbnailUrl.image]} className=" h-full  sm:h-40 rounded-2xl w-full" ></img>
+                        <span className=" absolute sm:text-xs bottom-24 left-7 font-thin text-white text-base ">{item.postTitle}</span>
 
                       </div>
                       <div className="flex justify-between text-sm ">

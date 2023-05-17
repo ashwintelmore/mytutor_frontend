@@ -11,6 +11,7 @@ import SendReq from "../Request/SendReq";
 import ChoseSlot from "./ChoseSlot";
 import { createFavourite, getFavourites, updateFavourite } from "../../App/favoriteApi";
 import cat_image0 from "../Posts/../../assets/cat_image0.jpeg";
+import { postImgCollection } from "../../assets/postImages/postImg";
 
 
 const Post = () => {
@@ -230,7 +231,7 @@ const Post = () => {
                     <i className="fa-sharp fa-solid fa-ellipsis-vertical text-xl xs:text-xs"></i>
                   </div>
                   <div className="bg-[#F8AF6A] dark:bg-slate-600 h-80  rounded-xl  mx-3 xs:w-[97%]  xs:m-1 sm:h-40">
-                    <img src={cat_image0} className="w-full h-80 sm:h-40 rounded-xl"></img>
+                    <img src={postImgCollection[post.thumbnailUrl.image]} className="w-full h-80 sm:h-40 rounded-xl"></img>
                   </div>
                   <div className="flex justify-between p-1 mx-1 items-center text-xl sm:text-xs xs:p-0">
                     <h1 className="  font-semibold  sm:text-xs">
