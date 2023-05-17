@@ -22,7 +22,7 @@ const VerticalNav = () => {
         </NavLink>
         <NavLink to={'/appointement'}>
          
-          <i className="cursor-pointer p-2 hover:bg-gray-600 hover:text-white rounded-full fa-solid fa-paper-plane" title="Your Appointments"></i>
+          <i className="cursor-pointer p-2 hover:bg-color-6 hover:text-white rounded-full fa-solid fa-paper-plane" title="Your Appointments"></i>
           
         </NavLink>
 
@@ -32,7 +32,7 @@ const VerticalNav = () => {
         </NavLink> */}
         <NavLink to={'/favourite'}>
         
-          <i className="cursor-pointer p-2 hover:bg-gray-600 hover:text-white rounded-full fa-solid fa-heart" title="Likes"></i>
+          <i className="cursor-pointer p-2 hover:bg-color-6 hover:text-white rounded-full fa-solid fa-heart" title="Likes"></i>
           
         
         </NavLink>
