@@ -129,7 +129,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
                       <>
                         <div className="">
 
-                          <button className="p-1 shadow-sm shadow-slate-500 rounded-xl dark:bg-zinc-800 dark:border bg-[#f5c782] t" value={meetingLink}
+                          <button className="p-1 shadow-sm shadow-slate-500 rounded-xl dark:bg-color-10 dark:border bg-color-4" value={meetingLink}
                             onChange={handleLinkChange} onClick={handleCopyClick}> Meeting Code : {item.meetingId.meetingCode}</button>
                         </div>
 
@@ -145,15 +145,15 @@ export default function SendReq({ requests, setRefreshReqData }) {
                         item.paymentId
                         &&
                         <button
-                          className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-400"
+                          className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-color-4"
                           onClick={() => onPaymentClick(item, i)}
                         >
-                          {item.paymentId.paymentStatus.isCompletd ? 'View Payment' : 'Make Payment'}
+                          {item.paymentId.paymentStatus?.isCompletd ? 'View Payment' : 'Make Payment'}
                         </button>
                       }
                       {item.reqAccept && (
                         <a href="https://myturt.onrender.com/" target="_blank">
-                          <button className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-orange-400">
+                          <button className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-color-4">
                             Go to Meeting
                           </button>
                         </a>

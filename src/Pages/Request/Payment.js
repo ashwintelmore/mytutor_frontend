@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, cloneElement } from "react";
+import { Buffer } from 'buffer';
 import { useAuth } from "../../providers/auth";
 import { Button, Radio, Steps, TimePicker, notification } from "antd";
 import moment from 'moment'
@@ -8,6 +9,7 @@ import { useAlert } from "../../Components/Alert";
 import { updateUser } from "../../App/Api";
 import { getPost } from "../../App/postAPI";
 import { createPayment, getPayment, updatePayment } from "../../App/paymentApi";
+import { postImgCollection } from "../../assets/postImages/postImg";
 
 
 
@@ -25,12 +27,31 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         remark: '',
         upiId: '',
         charges: '',
-
+        image: {
+            data: [],
+            contentType: ''
+        }
         // postId: '',
         // tutorId: '',
         // learnerId: '',
         // requestId: '',
     })
+    const [qrCode, setQrCode] = useState()
+    const [prevQrCode, setPrevQrCode] = useState()
+    const bufferToImage = (bufferData) => {
+        return `data:${bufferData.image.contentType};base64, ${Buffer.from(bufferData.image.data.data).toString('base64')}`
+    };
+    useEffect(() => {
+        if (!qrCode) {
+            setPrevQrCode(undefined)
+            return
+        }
+        const objectUrl = URL.createObjectURL(qrCode)
+        setPrevQrCode(objectUrl)
+
+        // free memory when ever this component is unmounted
+        return () => URL.revokeObjectURL(objectUrl)
+    }, [qrCode])
     const [payStatus, setPayStatus] = useState(-1)
     const [isDoneStateChanges, setIsDoneStateChanges] = useState(false)
     //get post for charges price
@@ -138,7 +159,13 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
             return
         }
 
-        const resp = await createPayment(paymentData)
+        console.log('paymentData', paymentData)
+        let formData = new FormData()
+        formData.append('payload', JSON.stringify(paymentData))
+        formData.append('qrCode', qrCode)
+
+        const resp = await createPayment(formData)
+        console.log('resp', resp)
         if (resp.payload) {
             setPayment(resp.payload)
             showNotification("Payment Request Initiated")
@@ -164,8 +191,14 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
 
     const updatePaymentDetails = async (data) => {
         // return
-        const resp = await updatePayment(payment._id, data)
 
+        let formData = new FormData()
+        formData.append('payload', JSON.stringify(data))
+        formData.append('qrCode', qrCode)
+
+
+        const resp = await updatePayment(payment._id, formData)
+        console.log('resp', resp)
         if (resp.payload) {
             setPayment(resp.payload)
             showNotification("Payment Request updated")
@@ -177,13 +210,13 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
 
     const paymentStatusUpdate = (_payment) => {
 
-        if (_payment.paymentStatus.isCompletd) {
+        if (_payment.paymentStatus?.isCompletd) {
             // setPayStatus(5)
             return 5;
-        } else if (_payment.paymentStatus.isReceivedByTutor) {
+        } else if (_payment.paymentStatus?.isReceivedByTutor) {
             // setPayStatus(3)
             return 3;
-        } else if (_payment.paymentStatus.isDoneByLearner) {
+        } else if (_payment.paymentStatus?.isDoneByLearner) {
             // setPayStatus(2)
             return 2;
         } else if (_payment._id) {
@@ -369,6 +402,33 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                             onChange={(e) => setPayment({ ...payment, remark: e.target.value })}
                         />
                         <label className="text-xs ml-2 p-1">some notes</label>
+                    </div>
+                </div>
+                <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
+                    {
+                        !readOnly &&
+                        <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
+                            <label className="w-full p-2 text-base xs:text-base">Upload QR Code</label>
+                            <input
+                                className="rounded-xl w-full shadow-sm shadow-black p-2"
+                                type="file"
+                                name="qrCode"
+                                disabled={readOnly ? true : false}
+                                // value={payment.qrCode}
+                                onChange={(e) => setQrCode(e.target.files[0])}
+                            />
+                            <label className="text-xs ml-2 p-1">Upload image</label>
+                        </div>
+                    }
+
+                    <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
+                        <label className="w-full p-2 text-base xs:text-base">Your QR code</label>
+                        {
+                            prevQrCode ?
+                                <img src={prevQrCode} alt="" />
+                                :
+                                <img src={payment._id && bufferToImage(payment)} alt="" />
+                        }
                     </div>
                 </div>
                 <div className=" p-1 my-2 w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">

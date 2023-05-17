@@ -7,7 +7,11 @@ export const createPayment = async (data) => {
     const payload = { payload: data }
 
     // return
-    return await axios.post(`${END_POINT}/createPayment`, payload)
+    return await axios.post(`${END_POINT}/createPayment`,
+        data
+        ,
+        { headers: { 'Content-Type': 'multipart/form-data' } }
+    )
         .then(function (response) {
             return response.data;
         })
@@ -42,7 +46,11 @@ export const updatePayment = async (id, data) => {
         payload: data
     }
     // return
-    return await axios.put(`${END_POINT}/updatePayment/${id}`, payload)
+    return await axios.put(`${END_POINT}/updatePayment/${id}`,
+        data
+        ,
+        { headers: { 'Content-Type': 'multipart/form-data' } }
+    )
         .then(function (response) {
             return response.data;
         })
