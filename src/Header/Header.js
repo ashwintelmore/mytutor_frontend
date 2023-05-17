@@ -45,7 +45,7 @@ const Header = ({ setOpen, open }) => {
 
        
             <i
-              title="Menu" className="fa-solid fa-bars hover:bg-gray-600 hover:text-white rounded-full p-2 cursor-pointer"
+              title="Menu" className="fa-solid fa-bars hover:bg-color-6 hover:text-white rounded-full p-2 cursor-pointer"
               onClick={() => {
                 setOpen(!open);
               }}></i>
@@ -61,7 +61,7 @@ const Header = ({ setOpen, open }) => {
         <div className="flex justify-between  items-center gap-10 sm:gap-3 sm:p-[2px] sm:text-base p-3 text-xl   ">
           <NavLink to={"/search"}>
             
-              <i className="cursor-pointer p-2 rounded-full fa-solid fa-magnifying-glass relative  hover:bg-gray-600 hover:text-white " title="Search"></i>
+              <i className="cursor-pointer p-2 rounded-full fa-solid fa-magnifying-glass relative  hover:bg-color-6 hover:text-white " title="Search"></i>
                
           
           </NavLink>
@@ -72,7 +72,7 @@ const Header = ({ setOpen, open }) => {
             
          
             <i
-              className="fa-solid fa-circle-plus cursor-pointer hover:bg-gray-600 hover:text-white p-2 rounded-full  " title="upload"
+              className="fa-solid fa-circle-plus cursor-pointer hover:bg-color-6 hover:text-white p-2 rounded-full  " title="upload"
               onClick={() => setShow(true)}></i>
        
 
