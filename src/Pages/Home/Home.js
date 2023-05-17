@@ -122,15 +122,15 @@ const Home = () => {
                       </div>
                     </div>
                     <div className="flex justify-between text-sm ">
-                      <div className="flex flex-col   "> 
-                      <span className=" font-[550] px-1 text-white sm:text-sm sm:font-normal text-[18px] ">
-                        {item.postTitle}
-                      </span>
+                      <div className="flex flex-col   ">
+                        <span className=" font-[550] px-1 text-white sm:text-sm sm:font-normal text-[18px] ">
+                          {item.postTitle}
+                        </span>
                         <span className="text-white px-2 text-lg text-[14px] sm:text-xs  font-normal">
                           {item.createdTutor.name}
                         </span>
                       </div>
-                      
+
                     </div>
                     <div className="flex justify-between p-1  item-center xs:text-[10px] ">
                       {/* <label className="sm:font-medium  sm:text-[#30f830]">
@@ -138,7 +138,7 @@ const Home = () => {
                       </label> */}
                       <div className="flex gap-1 items-center">
                         <di className="h-4 w-4 bg-color-10 rounded-full sm:h-2 sm:w-2"></di>
-                        <label className="text-sm sm:text-xs text-white font-light">Online</label>
+                        <label className="text-sm sm:text-xs text-white font-light">{item.createdTutor.analytics.favorite} favorite</label>
                       </div>
                       <button className="bg-white text-color-4 sm:w-auto px-7  sm:px-3  rounded-xl p-1 dark:bg-color-2 dark:border">
                         Rs.{item.pricePerHour || item.charges}/-
