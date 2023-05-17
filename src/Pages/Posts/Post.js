@@ -12,6 +12,7 @@ import ChoseSlot from "./ChoseSlot";
 import { createFavourite, getFavourites, updateFavourite } from "../../App/favoriteApi";
 import cat_image0 from "../Posts/../../assets/Thumbnail.png";
 import cat_image1 from "../Posts/../../assets/user.png";
+import { postImgCollection } from "../../assets/postImages/postImg";
 
 const Post = () => {
   const auth = useAuth()
@@ -230,15 +231,15 @@ const Post = () => {
                     <i className="fa-sharp fa-solid fa-ellipsis-vertical text-xl xs:text-xs"></i>
                   </div>
                   <div className="bg-color-4    rounded-xl  mx-3 xs:w-[97%]  xs:m-1 ">
-                    <img src={cat_image0} className="w-full relative h-80 sm:h-[40%] rounded-xl"></img>
+                    <img src={postImgCollection[post.thumbnailUrl.image]} className="w-full relative h-80 sm:h-[40%] rounded-xl"></img>
                     <span className=" absolute sm:text-lg top-32 sm:top-20 text-4xl sm:left-5 left-32 font-font-logo text-white w-[35%]    ">
-                    {post.postTitle}
-                      </span>
+                      {post.postTitle}
+                    </span>
 
-                      <div className="flex gap-2 sm:gap-[2px] items-center absolute  top-72 sm:top-44 text-2xl   sm:left-5  left-32">
-                        <img src={cat_image1} className="h-5 sm:h-3 sm:w-3 w-5"></img>
-                        <label className="font-font-logo sm:text-xs text-white">Username</label>
-                      </div>
+                    <div className="flex gap-2 sm:gap-[2px] items-center absolute  top-72 sm:top-44 text-2xl   sm:left-5  left-32">
+                      <img src={cat_image1} className="h-5 sm:h-3 sm:w-3 w-5"></img>
+                      <label className="font-font-logo sm:text-xs text-white">Username</label>
+                    </div>
                   </div>
                   <div className="flex justify-between p-1 mx-1 items-center text-xl sm:text-xs xs:p-0">
                     <h1 className="  font-font-primary px-2 sm:text-xs">
@@ -310,7 +311,7 @@ const Post = () => {
                     <h3>286</h3>
                     <label>Comments</label>
                   </div>
-                  
+
                 </div>
                 <div className="flex flex-col sm:w-full mx-2">
 

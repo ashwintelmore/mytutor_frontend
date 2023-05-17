@@ -8,6 +8,7 @@ import Loader, { LoaderSmall } from "../../Components/Helper/Loader";
 import EditReq from "../Request/EditReq";
 import AddPost from "../Posts/AddPost";
 import cat_image0 from "../Posts/../../assets/cat_image0.jpeg";
+import { postImgCollection } from "../../assets/postImages/postImg";
 
 
 function AllPost({ resPost = false, isEditable = true }) {
@@ -102,7 +103,7 @@ function AllPost({ resPost = false, isEditable = true }) {
                 <div className="flex w-full gap-2">
                   <div className="h-32 w-2/5  sm:h-auto  dark:bg-violet-200 bg-orange-400   rounded-xl">
                     <Link to={'/postcontent/' + item._id}>
-                      <img src={cat_image0} className="h-32 w-full rounded-xl sm:h-32 "></img>
+                      <img src={postImgCollection[item.thumbnailUrl.image]} className="h-32 w-full rounded-xl sm:h-32 "></img>
                     </Link>
                   </div>
                   <div className="flex flex-col w-[60%] p-1 sm:gap-2 gap-1 ">

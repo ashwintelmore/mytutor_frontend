@@ -15,6 +15,7 @@ import { useAuth } from "../../providers/auth";
 import Loader from "../../Components/Helper/Loader";
 import { useAlert } from "../../Components/Alert";
 import { getAlllCatgories, getCatgory } from "../../App/category.Api";
+import { postImgCollection } from "../../assets/postImages/postImg";
 
 const Home = () => {
   const auth = useAuth();
@@ -110,7 +111,7 @@ const Home = () => {
                     </div>
                     <div className=" relative  sm:h-24 w-full mx-auto my-3 dark:bg-violet-200  rounded-2xl">
                       <img
-                        src={cat_image0}
+                        src={postImgCollection[item.thumbnailUrl.image]}
                         className=" h-full   rounded-2xl w-full"></img>
                       <span className=" absolute sm:text-xs top-10 sm:top-4 sm:left-2  left-3 font-font-logo text-white w-[40%]   text-lg ">
                         {item.postTitle}
