@@ -10,8 +10,8 @@ import RecievedReq from "../Request/RecievedReq";
 import SendReq from "../Request/SendReq";
 import ChoseSlot from "./ChoseSlot";
 import { createFavourite, getFavourites, updateFavourite } from "../../App/favoriteApi";
-import cat_image0 from "../Posts/../../assets/cat_image0.jpeg";
-
+import cat_image0 from "../Posts/../../assets/Thumbnail.png";
+import cat_image1 from "../Posts/../../assets/user.png";
 
 const Post = () => {
   const auth = useAuth()
@@ -222,18 +222,26 @@ const Post = () => {
           <Loader />
           :
           post._id ?
-            <div className="w-[96%] ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-zinc-800 bg-white xs:w-full xs:flex-col xs:m-0 sm:m-0 sm:flex-col sm:w-full">
-              <div className="flex flex-col w-3/5 xs:w-full sm:w-full">
-                <div className=" h-auto p-1 xs:p-1 mx-2 ">
-                  <div className="flex justify-between mx-3 py-2  items-center">
+            <div className="w-[96%] ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-color-11 bg-white xs:w-full xs:flex-col sm:ml-0 sm:flex-col sm:w-full">
+              <div className="flex flex-col w-3/5  sm:w-full">
+                <div className=" h-auto p-1 xs:p-1 mx-2 sm:mx-0 ">
+                  <div className="flex justify-between mx-3 py-2 px-2 sm:px-1  sm:mx-1  items-center">
                     <h4 className="xs:text-xs text-[#6F6F6F]"> {post.postType == "learner" ? "I want to learn" : "I can teach"}</h4>
                     <i className="fa-sharp fa-solid fa-ellipsis-vertical text-xl xs:text-xs"></i>
                   </div>
-                  <div className="bg-[#F8AF6A] dark:bg-slate-600 h-80  rounded-xl  mx-3 xs:w-[97%]  xs:m-1 sm:h-40">
-                    <img src={cat_image0} className="w-full h-80 sm:h-40 rounded-xl"></img>
+                  <div className="bg-color-4    rounded-xl  mx-3 xs:w-[97%]  xs:m-1 ">
+                    <img src={cat_image0} className="w-full relative h-80 sm:h-[40%] rounded-xl"></img>
+                    <span className=" absolute sm:text-lg top-32 sm:top-20 text-4xl sm:left-5 left-32 font-font-logo text-white w-[35%]    ">
+                    {post.postTitle}
+                      </span>
+
+                      <div className="flex gap-2 sm:gap-[2px] items-center absolute  top-72 sm:top-44 text-2xl   sm:left-5  left-32">
+                        <img src={cat_image1} className="h-5 sm:h-3 sm:w-3 w-5"></img>
+                        <label className="font-font-logo sm:text-xs text-white">Username</label>
+                      </div>
                   </div>
                   <div className="flex justify-between p-1 mx-1 items-center text-xl sm:text-xs xs:p-0">
-                    <h1 className="  font-semibold  sm:text-xs">
+                    <h1 className="  font-font-primary px-2 sm:text-xs">
                       {post.postTitle}
                     </h1>
                     <div className="flex   items-center gap-5 p-2 xs:gap-0  xs:p-1 sm:text-xs  sm:gap-1 px-4 ">
@@ -262,15 +270,15 @@ const Post = () => {
                       </div> */}
                     </div>
                   </div>
-                  <p className="xs:text-xs xs:p-2 p-2 sm:p-4 text-[#6F6F6F]">
+                  <p className="xs:text-xs text-base xs:p-2 px-4 sm:p-4 text-[#6F6F6F]">
                     {post.discrip || post.descrp}
                   </p>
                 </div>
                 <div className="flex justify-between mx-1  p-3 xs:p-2">
                   <Link to={'/showProfile/' + post.createdTutor._id}>
-                    <div className="flex items-center gap-2 xs:gap-1 cursor-pointer ">
+                    <div className="flex items-center gap-2 px-3 xs:gap-1 cursor-pointer ">
 
-                      <div className="bg-[#5a4a4a] relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
+                      <div className="bg-color-6 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
                         <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-2 font-semibold text-xl text-white p-1">K</h1>
                       </div>
 
@@ -283,36 +291,33 @@ const Post = () => {
                   {
                     isFavourite ?
                       <button
-                        className={"bg-[#837e7a] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9"}
+                        className={"bg-color-8 text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9"}
                         onClick={(e) => onClickFavourit(false, auth.user, post.createdTutor)}
                       >
                         {"unfavourite"}
                       </button>
                       :
                       <button
-                        className={"bg-[#F8AF6A] text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9"}
+                        className={"bg-color-4 text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9"}
                         onClick={(e) => onClickFavourit(true, auth.user, post.createdTutor)}
                       >
                         {"Favourite"}
                       </button>
                   }
                 </div>
-                <div className="flex items-center mx-2 p-2 gap-3 xs:text-sm ">
+                <div className="flex items-center mx-2 px-2 gap-3 xs:text-sm ">
                   <div className="flex p-1 gap-1 ">
                     <h3>286</h3>
                     <label>Comments</label>
                   </div>
-                  <div className="flex gap-1 items-center">
-                    <i className="fa-solid fa-bars-staggered"></i>{" "}
-                    <label>Sort by</label>
-                  </div>
+                  
                 </div>
-                <div className="flex flex-col mx-2">
+                <div className="flex flex-col sm:w-full mx-2">
 
                   {
                     reqData.isPaymentComplete
                       ?
-                      <div className=" relative flex items-center p-2 gap-4">
+                      <div className=" relative flex items-center px-2 sm:w-[90%]  py-2 gap-4">
                         <img
                           className="rounded-full h-16 w-16 xs:h-12 xs:w-12 border-2 border-red-500"
                           src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
@@ -321,7 +326,7 @@ const Post = () => {
                         <input
                           type="text"
                           placeholder="Add a public comment"
-                          className="w-11/12 border-b-2 outline-none dark:bg-zinc-800 dark:border-white border-[#303030]"
+                          className="w-11/12 sm:w-[80%] border-b-2 outline-none dark:bg-zinc-800 dark:border-white border-[#303030]"
                           value={comment.comment}
                           onChange={(e) => setComment({ ...comment, comment: e.target.value })}
                         >
@@ -333,7 +338,7 @@ const Post = () => {
                         >Comment</button>
                       </div>
                       :
-                      <div className=" relative flex items-center p-2 gap-4">
+                      <div className=" sm:w-full relative flex items-center sm:gap-1 sm:p-0 p-2 gap-4">
                         <img
                           className="rounded-full h-16 w-16 xs:h-12 xs:w-12 border-2 border-red-500"
                           src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
@@ -342,7 +347,7 @@ const Post = () => {
                         <input
                           type="text"
                           placeholder="You allow to comment on this after meeting"
-                          className="w-11/12 border-b-2 outline-none dark:bg-zinc-800 dark:border-white border-[#303030]"
+                          className="w-11/12 sm:w-[80%] border-b-2 outline-none sm:text-xs dark:bg-zinc-800 dark:border-white border-[#303030]"
                           // value={comment.comment}
                           // onChange={(e) => setComment({ ...comment, comment: e.target.value })}
                           disabled
@@ -397,8 +402,8 @@ const Post = () => {
                   <Loader />
                   :
                   post.createdTutor._id == auth.user._id ? //user to see all request recieved from other learner of that post
-                    <div className=" flex  flex-col w-2/5 p-2 xs:w-full xs:p-1 sm:w-full  ">
-                      <h4 className="text-lg font-semibold mt-2">All your requests  </h4>
+                    <div className=" flex  flex-col w-2/5 px-2 py-1 xs:w-full xs:p-1 sm:w-full  ">
+                      <h4 className="text-lg font-font-primary font-semibold mt-2 sm:px-2">All your requests  </h4>
                       <div className="flex flex-col p-4 gap-4 xs:p-2 xs:gap-2 xs:overflow-y-auto">
                         <RecievedReq
                           requests={requests}

@@ -17,13 +17,16 @@ module.exports = {
     },
     colors: {
       'color-1': '#FEE4CB',
-      'color-2': '#0D0543',
+      'color-2': '#111114',
       'color-3': '#EAF0FF',
       'color-4': '#F8AF6A',
       'color-5': '#F2F2F2',
-      'color-6': '#c0eef4',
+      'color-6': '#2a2929',
       'color-7': '#c0eef4',//green
-      'color-8': '#c0eef4',//red
+      'color-8': '#808080',//red
+      'color-9': '#4F39BE',
+      'color-10': '#05FF00',
+      'color-11' : '#1a1a2e',
       'white': '#FFFFFF',
       'black': '#000000'
     },
