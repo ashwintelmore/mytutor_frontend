@@ -62,18 +62,18 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
         {requests.length > 0 ? (
           requests.map((item, i) => (
             <div
-              className="flex flex-col border-2  shadow-sm shadow-slate-500 rounded-2xl  "
+              className="flex flex-col   shadow-sm shadow-color-8 rounded-2xl  "
               key={i}>
               <div className="flex flex-col p-2   gap-2  ">
                 <div className="flex justify-between">
                   <div className="flex gap-2 ">
                     <img
-                      className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
+                      className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-[1px]  border-red-500"
                       src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
                       alt=""
                     />
                     <div className="flex flex-col gap-1">
-                      <h3 className="text-violet-800 ">{item.requesterId.name}</h3>
+                      <h3 className="text-color-9 ">{item.requesterId.name}</h3>
                       <p className="text-sm">{item.postId.postTitle}</p>
                     </div>
                   </div>
@@ -93,29 +93,29 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                   </div>
                 </div>
                 <div className="flex justify-between w-full">
-                  <div className="flex flex-col gap-2 text-xs w-full">
+                  <div className="flex flex-col gap-2 text-xs sm:text-xs w-full">
                     {/* <p className="text-sm">message : {item.reqMassege}</p> */}
                     {/* <p className="text-sm">Request for {item.reqTime} hour</p> */}
-                    <div className="flex justify-between">
+                    <div className="flex sm:text-xs justify-between">
                       {
                         item.reqAccept ?
-                          <div className="flex items-center gap-2 text-lg">
-                            <i className="fa-solid fa-circle-check text-green-600"></i>
-                            <p className="text-sm">
+                          <div className="flex items-center gap-2 sm:gap-1 sm:text-xs text-lg">
+                            <i className="fa-solid fa-circle-check text-color-10"></i>
+                            <p className="text-sm sm:text-[10px]">
                               Accepeted
                             </p>
                           </div>
                           :
                           <div className="flex items-center gap-2 text-lg">
-                            <i className="fa-solid fa-circle-xmark text-red-600"></i>
-                            <p className="text-sm">
+                            <i className="fa-solid fa-circle-xmark text-[red]"></i>
+                            <p className="text-sm sm:text-[10px]">
                               Not Accepted
                             </p>
                           </div>
                       }
 
-                      <p className="text-sm">on Dated : {item.reqDates[0]}</p>{" "}
-                      <p className="text-sm">At time : {item.reqTime}</p>
+                      <p className="text-sm sm:text-[10px]">On Dated : {item.reqDates[0]}</p>{" "}
+                      <p className="text-sm sm:text-[10px]">At time : {item.reqTime}</p>
                     </div>
 
                     {item.reqAccept && (
@@ -123,7 +123,7 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                         <div className="">
 
                           <button
-                            className="p-1 shadow-sm shadow-slate-500 rounded-xl dark:bg-zinc-800 dark:border bg-[#f5c782] t"
+                            className="p-1 shadow-sm shadow-color-8 rounded-xl dark:bg-zinc-800 dark:border bg-color-4  sm:text-[12px] sm:px-2"
                             value={meetingLink}
                             onChange={handleLinkChange}
                             onClick={handleCopyClick}> Meeting Code : {item.meetingId.meetingCode}
@@ -141,14 +141,14 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
 
 
                       <button
-                        className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px] text-white bg-orange-400"
+                        className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px] text-white bg-color-4"
                         onClick={() => onManageClick(item, i)}>
                         Manage Meeting
                       </button>
 
                       {item.reqAccept && (
                         <button
-                          className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px] text-white bg-orange-400"
+                          className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px] text-white bg-color-4"
                           onClick={() => onPaymentClick(item, i)}
                         >
                           {item.paymentId && item.paymentId != '' ? 'View Payment' : 'Initiat Payment'}
@@ -156,7 +156,7 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                       )}
                       {item.reqAccept && (
                         <a href="https://myturt.onrender.com/" target="_blank">
-                          <button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-orange-400">
+                          <button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-color-4">
                             Go to Meeting
                           </button>
                         </a>

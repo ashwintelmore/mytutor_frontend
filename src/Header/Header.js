@@ -40,7 +40,7 @@ const Header = ({ setOpen, open }) => {
 
   return (
     <>
-      <div className="flex  sm:w-full bg-[#EAF0FF] fixed w-full top-0 z-[11] dark:bg-zinc-900 dark:text-white  justify-between p-2 h-16 xs:z-11">
+      <div className="flex  sm:w-full bg-color-3 fixed w-full top-0 z-[11] dark:bg-color-2 dark:text-white  justify-between p-2 h-16 xs:z-11">
         <div className="flex items-center gap-9 p-2 text-lg xs:gap-4   ">
 
        
@@ -67,7 +67,7 @@ const Header = ({ setOpen, open }) => {
           </NavLink>
           
             <i
-              className="fa-regular fa-moon cursor-pointer hover:bg-gray-600 hover:text-white rounded-full p-2 xs:hidden sm:hidden   "
+              className="fa-regular fa-moon cursor-pointer hover:bg-color-6 hover:text-white rounded-full p-2 xs:hidden sm:hidden   "
               onClick={handleThemeSwitch} title="Dark/Light mode"></i>
             
          
@@ -86,7 +86,7 @@ const Header = ({ setOpen, open }) => {
 
               
                 <div title="Profile" className="flex  items-center gap-2">
-                  <span className="rounded-full h-11 w-11 p-1 relative bg-[#d0782f]">
+                  <span className="rounded-full h-11 w-11 sm:h-10 sm:w-10 p-1 relative bg-[#d0782f]">
                     <div className="absolute right-4  text-white text-transform: uppercase"> {auth.user.name[0]}</div>
                   </span>
                   {openProfile && <Backrop />}
