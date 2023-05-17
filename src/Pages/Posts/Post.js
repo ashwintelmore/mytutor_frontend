@@ -230,19 +230,19 @@ const Post = () => {
                     <h4 className="xs:text-xs text-[#6F6F6F]"> {post.postType == "learner" ? "I want to learn" : "I can teach"}</h4>
                     <i className="fa-sharp fa-solid fa-ellipsis-vertical text-xl xs:text-xs"></i>
                   </div>
-                  <div className="bg-color-4    rounded-xl  mx-3 xs:w-[97%]  xs:m-1 ">
-                    <img src={postImgCollection[post.thumbnailUrl.image]} className="w-full relative h-80 sm:h-[40%] rounded-xl"></img>
-                    <span className=" absolute sm:text-lg top-32 sm:top-20 text-4xl sm:left-5 left-32 font-font-logo text-white w-[35%]    ">
+                  <div className="bg-color-4    rounded-xl h-auto mx-3 xs:w-[97%]  xs:m-1 ">
+                    <img src={postImgCollection[post.thumbnailUrl.image]} className="w-full relative h-auto sm:h-[40%] rounded-xl"></img>
+                    <span className=" absolute sm:text-lg top-32 sm:top-20 text-4xl sm:left-5 left-32 font-font-logo  text-white w-[20%]    ">
                       {post.postTitle}
                     </span>
 
-                    <div className="flex gap-2 sm:gap-[2px] items-center absolute  top-72 sm:top-44 text-2xl   sm:left-5  left-32">
+                    <div className="flex gap-2 sm:gap-[2px] items-center absolute  top-[450px] sm:top-44 text-2xl   sm:left-5  left-32">
                       <img src={cat_image1} className="h-5 sm:h-3 sm:w-3 w-5"></img>
                       <label className="font-font-logo sm:text-xs text-white">Username</label>
                     </div>
                   </div>
                   <div className="flex justify-between p-1 mx-1 items-center text-xl sm:text-xs xs:p-0">
-                    <h1 className="  font-font-primary px-2 sm:text-xs">
+                    <h1 className=" line-clamp-5 font-font-primary px-2 sm:text-xs">
                       {post.postTitle}
                     </h1>
                     <div className="flex   items-center gap-5 p-2 xs:gap-0  xs:p-1 sm:text-xs  sm:gap-1 px-4 ">
@@ -271,7 +271,7 @@ const Post = () => {
                       </div> */}
                     </div>
                   </div>
-                  <p className="xs:text-xs text-base xs:p-2 px-4 sm:p-4 text-[#6F6F6F]">
+                  <p className="xs:text-xs text-base xs:p-2 px-4 sm:p-4 line-clamp-5 text-[#6F6F6F]">
                     {post.discrip || post.descrp}
                   </p>
                 </div>

@@ -35,5 +35,7 @@ module.exports = {
       'font-primary': ['Quicksand', 'sans-serif'],
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }
