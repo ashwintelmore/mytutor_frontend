@@ -67,7 +67,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
         {requests.length > 0 ? (
           requests.map((item, i) => (
             <div
-              className="flex flex-col border-2  shadow-sm shadow-slate-500 rounded-2xl  "
+              className="flex flex-col  transition-all ease-in-out duration-300    bg-color-3 hover:shadow-md hover:shadow-[#5d899795] rounded-2xl  "
               key={i}
             // ref={menuRef}
             >
@@ -130,7 +130,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
                         <div className="">
 
                           <button className="p-1 shadow-sm shadow-slate-500 rounded-xl dark:bg-zinc-800 dark:border bg-[#f5c782] t" value={meetingLink}
-                            onChange={handleLinkChange} onClick={handleCopyClick}> Meeting Code : {item.meetingId.meetingCode}</button>
+                            onChange={handleLinkChange} onClick={handleCopyClick}> Meeting Code : {item.meetingId?.meetingCode}</button>
                         </div>
 
                         {/* <p className="text-sm"> Meeting Name : {item.meetingName}</p> */}

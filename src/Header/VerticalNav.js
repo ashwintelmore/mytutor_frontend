@@ -16,7 +16,7 @@ const VerticalNav = () => {
       <div className="flex flex-col items-center p-8 gap-10 sm:flex  xs:flex sm:p-2 xs:p-2 sm:gap2 xs:gap-2 sm:flex-row xs:flex-row  sm:items-center xs:items-center  sm:justify-evenly xs:justify-evenly  ">
         <NavLink to={"/"}>
           
-            <i title="Home" className="cursor-pointer p-2 rounded-full hover:bg-gray-600 hover:text-white fa-solid fa-home"></i>
+            <i title="Home" className="cursor-pointer p-2 rounded-full hover:bg-gray-600 transition-all duration-300 ease-in-out hover:text-white fa-solid fa-home"></i>
             
 
         </NavLink>

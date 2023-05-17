@@ -126,7 +126,7 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                             className="p-1 shadow-sm shadow-color-8 rounded-xl dark:bg-zinc-800 dark:border bg-color-4  sm:text-[12px] sm:px-2"
                             value={meetingLink}
                             onChange={handleLinkChange}
-                            onClick={handleCopyClick}> Meeting Code : {item.meetingId.meetingCode}
+                            onClick={handleCopyClick}> Meeting Code : {item.meetingId?.meetingCode}
                           </button>
                         </div>
 

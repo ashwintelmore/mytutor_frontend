@@ -109,11 +109,11 @@ const Home = () => {
                       </span>
                       <i className="fa-solid fa-ellipsis-vertical px-2 sm:text-xs text-white text-lg"></i>
                     </div>
-                    <div className=" relative  sm:h-24 w-full mx-auto my-3 dark:bg-violet-200  rounded-2xl">
+                    <div className=" relative h-auto w-full sm:max-w-[100%] mx-auto my-3 dark:bg-violet-200  rounded-2xl">
                       <img
-                        src={postImgCollection[item.thumbnailUrl.image]}
-                        className=" h-full   rounded-2xl w-full"></img>
-                      <span className=" absolute sm:text-xs top-10 sm:top-4 sm:left-2  left-3 font-font-logo text-white w-[40%]   text-lg ">
+                        src={postImgCollection[item.thumbnailUrl?.image]}
+                        className=" h-auto   rounded-2xl w-full"></img>
+                      <span className="   absolute sm:text-xs top-10 sm:top-4 sm:left-2  left-3 font-font-logo text-white w-[40%] line-clamp-3 text-lg ">
                         {item.postTitle}
                       </span>
 
@@ -124,7 +124,7 @@ const Home = () => {
                     </div>
                     <div className="flex justify-between text-sm ">
                       <div className="flex flex-col   ">
-                        <span className=" font-[550] px-1 text-white sm:text-sm sm:font-normal text-[18px] ">
+                        <span className=" font-[550] px-1 text-white sm:text-sm sm:font-normal line-clamp-2 text-[18px] ">
                           {item.postTitle}
                         </span>
                         <span className="text-white px-2 text-lg text-[14px] sm:text-xs  font-normal">
