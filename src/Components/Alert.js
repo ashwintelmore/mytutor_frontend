@@ -8,10 +8,10 @@ export const useAlert = () => {
         duration: 0,
     })
 
-    const showNotification = (e) => {
+    const showNotification = (e, descp = "Refresh page to see updated changes") => {
         api.info({
             message: ` ${e}`,
-            description: "Refresh page to see updated changes",
+            description: descp,
             e,
         });
     };

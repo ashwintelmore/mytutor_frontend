@@ -6,9 +6,10 @@ import TagsInput from "../Profile/TagsInput";
 import { getAlllCatgories } from "../../App/category.Api";
 import { useAlert } from "../../Components/Alert";
 import { postImgCollection } from "../../assets/postImages/postImg";
+import { isEmptyObj, isEmptyObjects } from "../../Components/Helper/helper";
 
 
-function AddPost({ show, setShow, post }) {
+function AddPost({ show, setShow, post, reFresh }) {
   const auth = useAuth()
   const [showNotification, contextHolder] = useAlert()
   //! i very sorry for i didnt change userData to post data
@@ -58,8 +59,18 @@ function AddPost({ show, setShow, post }) {
 
 
   const onAddDetails = async () => {
+
     if (!auth.user._id)
       return
+
+    const emptyFields = isEmptyObjects(userData, 'descrp')
+    console.log('emptyFields', emptyFields)
+    if (emptyFields) {
+      const message = emptyFields.join(', ') + " should not empty"
+      console.log('message', message)
+      showNotification(message, '')
+      return
+    }
     const res = await createPost({
       ...userData,
       createdTutor: auth.user._id,
@@ -93,6 +104,7 @@ function AddPost({ show, setShow, post }) {
     } else if (res.payload) {
       //handle sussece responce
       showNotification("updated successfully")
+      reFresh(true)
       // setUserData({
       //     postTitle: '',
       //     thumbnailUrl: '',

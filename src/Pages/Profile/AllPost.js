@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { getAllPosts, getUserAllPosts } from "../../App/postAPI";
+import { deletePost, getAllPosts, getUserAllPosts } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
 import { ConfigProvider, FloatButton } from "antd";
 import { useUserData } from "../../providers/userData";
@@ -9,11 +9,14 @@ import EditReq from "../Request/EditReq";
 import AddPost from "../Posts/AddPost";
 import cat_image1 from "../Posts/../../assets/user.png";
 import { postImgCollection } from "../../assets/postImages/postImg";
+import { useAlert } from "../../Components/Alert";
 
 
 function AllPost({ resPost = false, isEditable = true }) {
   const [posts, setPosts] = useState([])
   const [show, setShow] = useState(false)
+  const [reFresh, setReFresh] = useState(false)
+  const [showNotification, contextHolder] = useAlert()
 
   const [loader, setLoader] = useState({
     post: false
@@ -21,6 +24,7 @@ function AllPost({ resPost = false, isEditable = true }) {
   const [err, setErr] = useState('')
   const auth = useAuth()
   const userData = useUserData()
+  //get all post of user
   useEffect(() => {
     const getallpost = async (id) => {
       setLoader({ ...loader, post: true })
@@ -42,7 +46,7 @@ function AllPost({ resPost = false, isEditable = true }) {
     return () => {
 
     };
-  }, [])
+  }, [reFresh])
   const [cardActioveInd, setcardActioveInd] = useState(-1)
   const [openProfile, setOpenProfile] = useState([]);
   // const auth = useAuth()
@@ -68,6 +72,16 @@ function AllPost({ resPost = false, isEditable = true }) {
     console.log('e', e)
     setShow(!show)
   };
+  const onHandleClickForDeletePost = async (item) => {
+    const res = await deletePost(item._id)
+    if (res.error) {
+      showNotification(res.error.errMessage)
+
+    } else if (res.payload) {
+      showNotification(res.message)
+      setReFresh(!reFresh)
+    }
+  };
 
 
   if (loader.post) {
@@ -77,7 +91,7 @@ function AllPost({ resPost = false, isEditable = true }) {
   return (
     <>
 
-
+      {contextHolder}
       <div className="  w-full px-2 py-1 flex flex-col gap-4 overflow-scroll xs:w-full xs:p-1 xs:ml-1" ref={menuRef}>
         {
           posts.length > 0 ?
@@ -97,19 +111,20 @@ function AllPost({ resPost = false, isEditable = true }) {
                         type={'post'}
                         item={item}
                         onClickEdit={(e) => onHandleClickForEdit(e)}
+                        onDeletePost={(e) => onHandleClickForDeletePost(e)}
                       />}
                   </div>
                 </div>
                 <div className="flex w-full gap-2">
                   <div className="h-auto w-2/5  sm:h-auto  dark:bg-color-9 bg-color-4   rounded-xl">
                     <Link to={'/postcontent/' + item._id}
-                    className="relative" >
-        
+                      className="relative" >
+
                       <img src={item.thumbnailUrl && postImgCollection[item.thumbnailUrl.image]} className="h-auto   w-full rounded-xl sm:h-auto sm:w-full "></img>
                       <span className="font-semibold  absolute  text-white font-font-logo top-7 w-[35%] left-3 line-clamp-3 text-sm xs:text-xs ">
-                      {item.postTitle}
-                    </span>
-                    <div className="flex gap-2 sm:gap-[2px] items-center absolute  bottom-3 sm:bottom-2 sm:left-2  left-3">
+                        {item.postTitle}
+                      </span>
+                      <div className="flex gap-2 sm:gap-[2px] items-center absolute  bottom-3 sm:bottom-2 sm:left-2  left-3">
                         <img src={cat_image1} className="h-5 sm:h-3 sm:w-3 w-5"></img>
                         <label className="font-font-logo sm:text-xs text-white">Username</label>
                       </div>
@@ -137,6 +152,7 @@ function AllPost({ resPost = false, isEditable = true }) {
                     show={show}
                     setShow={() => setShow(!show)}
                     post={item}
+                    reFresh={(e) => setReFresh(!reFresh)}
                   />
                 }
               </div>

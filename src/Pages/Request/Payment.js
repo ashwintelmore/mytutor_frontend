@@ -313,7 +313,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         <div className="flex w-full  items-center justify-center xs:flex-col absolute z-20 top-4 left-0">
             {contextHolder}
             <div className=" bg-white border-[1px] border-color-8 shadow-md shadow-color-8 dark:bg-color-11 transition-all duration-500 ease-in-out dark:border  w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center   xs:flex-col xs:w-11/12">
-            <div className="flex  w-full justify-start"> <h2 className="text-color-4 py-2 px-4 text-2xl p-2   ">Payment details</h2></div>
+                <div className="flex  w-full justify-start"> <h2 className="text-color-4 py-2 px-4 text-2xl p-2   ">Payment details</h2></div>
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                         <label className="w-full p-2 text-base xs:text-base"> {readOnly ? "Reciever's UPI id" : 'Your UPI id'}</label>
@@ -422,7 +422,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                     }
 
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
-                        <label className="w-full p-2 text-base xs:text-base">Your QR code</label>
+                        <label className="w-full p-2 text-base xs:text-base">QR code</label>
                         {
                             prevQrCode ?
                                 <img src={prevQrCode} alt="" />
@@ -435,15 +435,15 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                     <div className="flex flex-col  w-full   p-2 justify-around  ">
                         <label className="w-full p-2 py-4 text-base xs:text-base">Payment Status</label>
                         <Steps
-                        className="dark:text-white"
+                            className="dark:text-white"
                             size="small"
                             current={payStatus}
                             items={[
-                                { 
+                                {
                                     title: 'Tutor Initiated',
                                 },
                                 {
-                                    title: 'Waiting Learner',
+                                    title: 'Done by Learner',
                                 },
                                 {
                                     title: 'Recieved by Tutor',

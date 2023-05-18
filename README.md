@@ -1,6 +1,32 @@
 # TODO list / Tasks
 ### 
-### Reamining Features
+### Frontend Features
+- [ ] loader not working propery
+- [ ] category images in figma
+- [x] when add post category 
+- [ ] calender color and naming 
+- [ ] font 
+- [x] all active classs
+- [ ] about left sidebar pages
+- [ ] remove that girl from every page
+- [ ] added all tag in postcontent page
+- [ ] once meeting completed manage meeting should not appear
+- [ ] in dark mode site not working proper
+- [ ] date function in where it appearn the date
+- [ ] dark mode is not working at non loged user profile
+- [ ] dark mode is not working in request page
+- [ ] small edit btn and style of it
+- [x] Change name of 'Your QR code' to 'QR code'
+- [x] Change name of 'Waiting learn' to 'Done by learner'
+- [ ] home page responsive category 
+### Backend 
+- [ ] check all input should not empty
+- [ ] each category added priority
+- [ ] Completed request should show on another tab
+- [ ] user able to delete post
+- [ ] Add notification in all pages
+- [ ] pagination
+
 #### request/appointement
 - [x] request delet
 - [x] request card click redirect
@@ -9,14 +35,14 @@
 - [ ] 
 #### post
 - [x] post delete update by loged user
-- [ ] comment section remaining
+- [x] comment section remaining
 - [x] like dislike
 - [x] fovorite adding removing showing on sidebar
-- [ ] loader not working propery
+
 - [x] remove hr and inseted add expected charge name
 - [ ] 
 #### prifile
-- [ ] learner hours/ fovrit/lectures
+- [x] learner hours/ fovrit/lectures
 - [ ] upi id add fild and remove phone
 - [ ] 
 #### payments
@@ -24,16 +50,16 @@
 - [ ] 
 - [ ] 
 #### home
-- [ ] category images in figma
+
 - [x] category searching and sortng
-- [ ] when add post category 
+
 - [ ]
 #### Search
-- [ ] category searching and sortng
-- [ ] at frontend input fiel for category and corrospoinding  api
+- [x] category searching and sortng
+- [x] at frontend input fiel for category and corrospoinding  api
 #### ui/ux
 - [ ] category images in figma
-- [ ] card images minimum 5
+- [x] card images minimum 5
 - [ ] 
 
 ##### global

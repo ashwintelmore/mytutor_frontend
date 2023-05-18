@@ -75,6 +75,8 @@ const SearchResult = ({ search, category = "" }) => {
     fetchAllCats();
   }, []);
 
+  console.log('posts', posts)
+
   return (
     <>
       <div className="bg-white ml-16 sm:ml-0 flex justify-center py-5 sm:px-2 dark:bg-color-11 transition-all duration-500 ease-in-out  rounded-3xl dark:text-white  w-full h-full ">
@@ -213,7 +215,7 @@ const SearchResult = ({ search, category = "" }) => {
                 </div>
               </div>
             </div>
-{/* right hand side of search */}
+            {/* right hand side of search */}
             {loader.posts ? (
               <Loader />
             ) : (
@@ -227,7 +229,7 @@ const SearchResult = ({ search, category = "" }) => {
                           className="p-2 w-[70%]  bg-color-3 transition-all ease-in-out duration-300 hover:shadow-md hover:shadow-[#5d899795] h-auto dark:bg-color-11 dark:border dark:text-white rounded-lg m-2 flex sm:w-full "
                           key={i}>
                           <div className="flex  flex-row w-full">
-                            <div className="bg-[#F8AF6A] relative  w-[40%] h-34 rounded-lg">
+                            <div className=" relative  w-[40%] h-auto rounded-lg">
                               <img
                                 src={
                                   item.thumbnailUrl &&
@@ -242,7 +244,7 @@ const SearchResult = ({ search, category = "" }) => {
                                   src={cat_image1}
                                   className="h-5 sm:h-3 sm:w-3 w-5"></img>
                                 <label className="font-font-logo sm:text-xs text-white">
-                                  Username
+                                  {item.createdTutor.name}
                                 </label>
                               </div>
                             </div>
@@ -255,16 +257,12 @@ const SearchResult = ({ search, category = "" }) => {
                                   {item.postTitle}
                                 </h1>
                                 <span className="text-base">
-                                  {item.createdTutorName}
+                                  {item.createdTutor.name}
                                 </span>
-                                <div className="flex flex-row items-center gap-2 text-base">
-                                  <span className="bg-[#05FF00] w-2 h-2 rounded-lg"></span>
-                                  <span className="">online </span>
-                                </div>
                                 <div className="flex  gap-1 items-center xs:gap-1 xs:text-xs  px-3 bg-white dark:bg-color-11 text-color-4 rounded-xl   dark:border dark:border-white  w-fit font-bold ">
                                   {" "}
-                                  <i className="fa-solid fa-indian-rupee-sign   dark:text-white"></i>
-                                  <label className="text-lg    ">
+                                  <label className="text-lg  px-5">
+                                    <i className="fa-solid fa-indian-rupee-sign   dark:text-white"> </i>
                                     {item.charges}
                                     <span className="text-xs font-thin  dark:text-white">
                                       -/
@@ -295,8 +293,7 @@ const SearchResult = ({ search, category = "" }) => {
                               <h1 classNamecmd="text-lg font-bold text-blue-900">
                                 {item.name}
                               </h1>
-                              <span>{item.analytics.favorite}</span>
-                              <span className="">online</span>
+                              <span>{item.analytics.favorite} favorite</span>
                             </div>
                           </div>
                         </div>

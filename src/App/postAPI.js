@@ -103,6 +103,39 @@ export const getPost = async (id) => {
 
 };
 
+export const deletePost = async (id) => {
+
+    return await axios.delete(`${END_POINT}/deletePost/${id}`)
+        .then(function (response) {
+            return response.data
+        })
+        .catch(function (error) {
+            console.log('Api error', error)
+            if (error.response) {
+                if (error.response.data.error)//this writtern by backend dev
+                    return error.response.data
+                else {//this erro somethin defferent
+                    const resp = {
+                        error: {
+                            errCode: error.code,
+                            errMessage: error.message
+                        }
+                    }
+                    return resp
+                }
+            } else {
+                const resp = {
+                    error: {
+                        errCode: error.code,
+                        errMessage: error.message
+                    }
+                }
+                return resp
+            }
+        })
+
+};
+
 
 export const createPost = async (data) => {
     const payload = { payload: { ...data } }
