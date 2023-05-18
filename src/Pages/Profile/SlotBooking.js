@@ -67,18 +67,18 @@ function SlotBooking({ isEditable }) {
     return (
         <>
 
-            <div className="w-1/2  xs:flex-col xs:w-full ">
+            <div className="w-1/2   xs:flex-col xs:w-full ">
                 {
                     isEditable
                     &&
                     <div className="p-2 gap-2 flex flex-col">
-                        <h2 className="text-lg text-[#FF0000]">Set Slot</h2>
-                        <div className="flex">
-                            <label className="w-1/5 p-2 text-base xs:text-base" htmlFor="slots">Available :</label>
+                        <h2 className="text-lg text-color-13">Set Slot</h2>
+                        <div className="flex gap-5">
+                            <label className="w-[20%] px-2 py-1 text-base xs:text-xs" htmlFor="slots">Available: </label>
                             <select
                                 placeholder="select option"
                                 name="slots"
-                                className="rounded-xl w-10/12 shadow-sm dark:bg-zinc-800  dark:border shadow-black p-2"
+                                className="rounded-xl w-[80%] shadow-sm dark:bg-color-11  dark:border shadow-black px-1"
                                 value={auth.user.slots.available}
                                 onChange={(e) => auth.setUser({ ...auth.user, slots: { ...auth.user.slots, available: e.target.value } })}
                             >
@@ -92,7 +92,7 @@ function SlotBooking({ isEditable }) {
                     </div>
                 }
 
-                <div className=" border border-blue-100 w-full  dark:bg-zinc-800  dark:text-black bg-gray-200 p-2text-lg font-semibold mt-2 rounded-2xl xs:gap-1 xs:p-2 xs:ml-2 xs:font-normal ">
+                <div className=" border border-blue-100 w-full  dark:bg-zinc-800  dark:text-black  p-2 text-lg font-semibold mt-2 rounded-2xl xs:gap-1 xs:p-2 xs:ml-2 xs:font-normal ">
 
                     {
                         isEditable
@@ -118,18 +118,18 @@ function SlotBooking({ isEditable }) {
                         &&
                         <>
                             <h2 className="font-semibold">Select Time Range</h2>
-                            <div className="every">
+                            <div className="every sm:text-xs">
                                 <input
                                     type="checkbox"
                                     id='everytime'
-                                    className='w-4 h-4 mr-2'
+                                    className='w-4  h-4 mr-2'
                                     checked={auth.user.slots.isEveryTime}
                                     onChange={(e) => auth.setUser({ ...auth.user, slots: { ...auth.user.slots, isEveryTime: !auth.user.slots.isEveryTime } })}
                                 />
                                 <label htmlFor="everytime">Every Time</label>
                             </div>
-                            <div className="flex gap-4">
-                                <div className="flex gap-4 ">
+                            <div className="flex sm:gap-1 gap-4">
+                                <div className="flex sm:gap-1 sm:text-xs sm:items-center gap-4 ">
 
                                     From
                                     <TimePicker className="dark:bg-white dark:border "
@@ -155,7 +155,7 @@ function SlotBooking({ isEditable }) {
                                     />
                                 </div>
 
-                                <button className="rounded-xl  w-20 h-7 dark:bg-zinc-800  dark:border bg-orange-300"
+                                <button className="rounded-xl  w-20 h-7 dark:bg-color-11 dark:text-white  dark:border bg-color-4"
                                     onClick={() => handleAddClick()}
                                     disabled={auth.user.slots.isEveryTime}
                                 >add</button>{" "}
@@ -163,7 +163,7 @@ function SlotBooking({ isEditable }) {
                         </>
                     }
                     <p>{error}</p>
-                    <div className="w-full h-auto p-1 gap-4 flex flex-wrap xs:w-full dark:text-white" >
+                    <div className="w-full mb-16 h-auto p-1 gap-4 flex flex-wrap xs:w-full dark:text-white" >
                         {/* <button className="w-2/5 text-sm border shadow-lg shadow-gray-400 rounded-xl   p-2">
                             {moment(fromTime).format('hh:mm A')} - {moment(toTime).format('hh:mm A')}
                         </button> */}
@@ -176,7 +176,7 @@ function SlotBooking({ isEditable }) {
                                     <Tag
                                         onClose={(e) => console.log(e)}
                                         closable={isEditable}
-                                        className=" text-sm border shadow-lg dark:text-white dark:shadow-none shadow-gray-400 rounded-xl p-2 pr-3"
+                                        className=" text-sm border shadow-lg dark:text-white dark:shadow-none shadow-color-8 rounded-xl p-2 pr-3"
                                         title={"bbjn"}
                                         key={i}
                                     >
@@ -190,7 +190,7 @@ function SlotBooking({ isEditable }) {
                                     <Tag
                                         onClose={(e) => console.log(e)}
                                         closable={isEditable}
-                                        className=" text-sm border shadow-lg dark:shadow-none shadow-gray-400 rounded-xl p-2 pr-3"
+                                        className=" text-sm border dark:text-white shadow-lg dark:shadow-none shadow-color-8 rounded-xl p-2 pr-3"
                                         title={"bbjn"}
                                         key={i}
                                     >

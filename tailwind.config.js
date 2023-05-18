@@ -19,7 +19,7 @@ module.exports = {
       'color-1': '#FEE4CB',
       'color-2': '#111114',
       'color-3': '#EAF0FF',
-      'color-4': '#F8AF6A',
+      'color-4': '#fb923c',
       'color-5': '#F2F2F2',
       'color-6': '#2a2929',
       'color-7': '#c0eef4',//green
@@ -27,6 +27,9 @@ module.exports = {
       'color-9': '#4F39BE',
       'color-10': '#05FF00',
       'color-11' : '#1a1a2e',
+      'color-12' : '#f187fb',
+      'color-13' : '#ff0000',
+      'color-14': '#1a0970',      
       'white': '#FFFFFF',
       'black': '#000000'
     },

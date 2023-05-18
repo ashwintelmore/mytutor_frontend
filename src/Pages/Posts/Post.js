@@ -223,20 +223,20 @@ const Post = () => {
           <Loader />
           :
           post._id ?
-            <div className="w-[96%] ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-color-11 bg-white xs:w-full xs:flex-col sm:ml-0 sm:flex-col sm:w-full">
+            <div className="w-[96%] ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-color-11 transition-all duration-500 ease-in-out bg-white xs:w-full xs:flex-col sm:ml-0 sm:flex-col sm:w-full">
               <div className="flex flex-col w-3/5  sm:w-full">
                 <div className=" h-auto p-1 xs:p-1 mx-2 sm:mx-0 ">
-                  <div className="flex justify-between mx-3 py-2 px-2 sm:px-1  sm:mx-1  items-center">
-                    <h4 className="xs:text-xs text-[#6F6F6F]"> {post.postType == "learner" ? "I want to learn" : "I can teach"}</h4>
+                  <div className="flex justify-between mx-3 py-2 px-2  sm:px-4  sm:mx-1  items-center">
+                    <h4 className="xs:text-xs text-color-8"> {post.postType == "learner" ? "I want to learn" : "I can teach"}</h4>
                     <i className="fa-sharp fa-solid fa-ellipsis-vertical text-xl xs:text-xs"></i>
                   </div>
                   <div className="bg-color-4    rounded-xl h-auto mx-3 xs:w-[97%]  xs:m-1 ">
                     <img src={postImgCollection[post.thumbnailUrl.image]} className="w-full relative h-auto sm:h-[40%] rounded-xl"></img>
-                    <span className=" absolute sm:text-lg top-32 sm:top-20 text-4xl sm:left-5 left-32 font-font-logo  text-white w-[20%]    ">
+                    <span className=" absolute sm:text-lg top-32 sm:top-28 text-4xl sm:left-14 left-32 font-font-logo  text-white w-[20%] line-clamp-4 sm:line-clamp-2   ">
                       {post.postTitle}
                     </span>
 
-                    <div className="flex gap-2 sm:gap-[2px] items-center absolute  top-[450px] sm:top-44 text-2xl   sm:left-5  left-32">
+                    <div className="flex gap-2 sm:gap-[2px] items-center absolute  top-[450px] sm:top-44 text-2xl   sm:left-14  left-32">
                       <img src={cat_image1} className="h-5 sm:h-3 sm:w-3 w-5"></img>
                       <label className="font-font-logo sm:text-xs text-white">Username</label>
                     </div>
@@ -246,7 +246,7 @@ const Post = () => {
                       {post.postTitle}
                     </h1>
                     <div className="flex   items-center gap-5 p-2 xs:gap-0  xs:p-1 sm:text-xs  sm:gap-1 px-4 ">
-                      <div className="flex  gap-1 items-center xs:gap-0 sm:text-xs">
+                      <div className="flex  gap-1 items-center xs:gap-0 sm:px-4 sm:text-xs">
                         <i className="fa-solid fa-indian-rupee-sign text-[#FFB300] sm:text-xs">
                           {post.pricePerHour || post.charges}
                         </i>
@@ -271,7 +271,7 @@ const Post = () => {
                       </div> */}
                     </div>
                   </div>
-                  <p className="xs:text-xs text-base xs:p-2 px-4 sm:p-4 line-clamp-5 text-[#6F6F6F]">
+                  <p className="xs:text-xs text-base  px-4 sm:px-4 line-clamp-5 text-[#6F6F6F]">
                     {post.discrip || post.descrp}
                   </p>
                 </div>
@@ -280,7 +280,7 @@ const Post = () => {
                     <div className="flex items-center gap-2 px-3 xs:gap-1 cursor-pointer ">
 
                       <div className="bg-color-6 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
-                        <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-2 font-semibold text-xl text-white p-1">K</h1>
+                        <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">K</h1>
                       </div>
 
                       <div className="flex flex-col xs:text-xs cursor-pointer">
@@ -292,21 +292,21 @@ const Post = () => {
                   {
                     isFavourite ?
                       <button
-                        className={"bg-color-8 text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9"}
+                        className={"bg-color-8 text-white px-3 py-1 sm:px-2 rounded-md xs:w-auto sm:text-sm"}
                         onClick={(e) => onClickFavourit(false, auth.user, post.createdTutor)}
                       >
                         {"unfavourite"}
                       </button>
                       :
                       <button
-                        className={"bg-color-4 text-white w-24 h-11 rounded-md xs:w-20 xs:p-1 xs:h-9"}
+                        className={"bg-color-4 text-white px-3  sm:px-2 rounded-md xs:w-auto sm:text-sm"}
                         onClick={(e) => onClickFavourit(true, auth.user, post.createdTutor)}
                       >
                         {"Favourite"}
                       </button>
                   }
                 </div>
-                <div className="flex items-center mx-2 px-2 gap-3 xs:text-sm ">
+                <div className="flex items-center mx-2 sm:my-2 px-2 gap-3 xs:text-sm ">
                   <div className="flex p-1 gap-1 ">
                     <h3>286</h3>
                     <label>Comments</label>
@@ -327,14 +327,14 @@ const Post = () => {
                         <input
                           type="text"
                           placeholder="Add a public comment"
-                          className="w-11/12 sm:w-[80%] border-b-2 outline-none dark:bg-zinc-800 dark:border-white border-[#303030]"
+                          className="w-11/12 sm:w-[90%] border-b-2 outline-none dark:bg-color-11 dark:border-white "
                           value={comment.comment}
                           onChange={(e) => setComment({ ...comment, comment: e.target.value })}
                         >
 
                         </input>
                         <button
-                          className="absolute bg-orange-400 right-2 rounded-xl p-2 top-2 text-white xs:p-2 xs:text-xs "
+                          className="absolute bg-color-4 right-2 rounded-xl p-2 top-2 text-white xs:p-2 xs:text-xs "
                           onClick={onCommentClicked}
                         >Comment</button>
                       </div>
@@ -348,7 +348,7 @@ const Post = () => {
                         <input
                           type="text"
                           placeholder="You allow to comment on this after meeting"
-                          className="w-11/12 sm:w-[80%] border-b-2 outline-none sm:text-xs dark:bg-zinc-800 dark:border-white border-[#303030]"
+                          className="w-11/12 sm:w-[80%] border-b-2 outline-none sm:text-xs dark:bg-color-11 dark:border-white border-[#303030]"
                           // value={comment.comment}
                           // onChange={(e) => setComment({ ...comment, comment: e.target.value })}
                           disabled
@@ -358,7 +358,7 @@ const Post = () => {
 
                         </input>
                         <button
-                          className="absolute bg-orange-400 right-2 rounded-xl p-2 top-2 text-white xs:p-2 xs:text-xs "
+                          className="absolute bg-color-4 right-2 rounded-xl p-2 top-2 sm:top-0 sm:right-7 text-white xs:p-2 xs:text-xs "
                           // onClick={onCommentClicked}
                           title="You allow to comment on this after meeting"
 

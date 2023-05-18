@@ -68,7 +68,7 @@ const Home = () => {
   // if (auth.loading)
   //   return <Loader />
   return (
-    <div className="home w-[95%] sm:relative ml-16 sm:w-full sm:m-1 xs:p-1  h-auto bg-white light dark:text-white dark:bg-color-11  p-2 rounded-t-3xl  ">
+    <div className="home w-[95%] sm:relative ml-16 sm:w-full sm:m-1 xs:p-1  h-auto bg-white light dark:text-white dark:bg-color-11 transition-all duration-500 ease-in-out  p-2 rounded-t-3xl  ">
       {renderAlert}
       {/* category card  box*/}
       <div className="flex mt-3  overflow-y-hidden dark:text-slate-100">

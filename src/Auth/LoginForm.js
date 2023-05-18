@@ -40,12 +40,12 @@ export default function LoginForm() {
         {/* left field of login */}
         <div className="relative bg-white  w-[57%] h-full flex flex-col items-center xs:hidden sm:hidden">
           <div class="text-5xl w-[90%] font-extrabold flex my-4 justify-center">
-            <span class="bg-clip-text text-transparent py-2 bg-gradient-to-r from-[#439cfb] to-[#f187fb]">
+            <span class="bg-clip-text text-transparent py-2 bg-gradient-to-r from-color-9 to-color-12">
               Welcome to My tutor
             </span>
           </div>
           <div class="text-3xl font-bold flex justify-center items-center">
-            <span class="bg-clip-text py-1 text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+            <span class="bg-clip-text py-1 text-transparent bg-gradient-to-r from-color-12 to-color-9">
               Start your new way of learning
             </span>
           </div>
@@ -57,7 +57,7 @@ export default function LoginForm() {
           />
         </div>
         {/* right fiked of login page */}
-        <div className="w-[43%] bg-white xs:w-full sm:w-full xs:bg-[#ffff] dark:bg-zinc-700 dark:text-white sm:p-8 xs:mx-1 xs:p-7 xs:justify-evenly sm:justify-evenly sm:mx-1 mx-auto h-full flex flex-col py-16 px-7  justify-between items-center">
+        <div className="w-[43%] bg-white xs:w-full sm:w-full  dark:bg-color-11 dark:text-white sm:p-8 xs:mx-1 xs:p-7 xs:justify-evenly sm:justify-evenly sm:mx-1 mx-auto h-full flex flex-col py-16 px-7  justify-between items-center">
           <h1 className="text-5xl text-[#075985] dark:text-white py-5 font-semibold">
             My Tutor
           </h1>
@@ -99,19 +99,19 @@ export default function LoginForm() {
             <div className="w-full flex flex-col my-2 font-semibold text-lg">
               {auth.loading ? (
                 <button
-                  className="w-full text-white my-2 bg-[#78653b] rounded-md p-4 sm:p-3 text-center flext items-center justify-center shadow-sm shadow-slate-500 cursor-pointer"
+                  className="w-full text-white my-2 bg-color-6 rounded-md p-4 sm:p-3 text-center flext items-center justify-center shadow-sm shadow-slate-500 cursor-pointer"
                   disabled={true}>
                   loading...
                 </button>
               ) : (
                 <button
-                  className="w-full text-white my-2 bg-[#fbb110] rounded-md p-4 sm:p-3 text-center border-black/40 hover:bg-orange-300 border-px flext items-center justify-center shadow-sm shadow-slate-500 cursor-pointer"
+                  className="w-full text-white my-2 bg-color-4 rounded-md p-4 sm:p-3 text-center border-black/40 hover:bg-[#f6d18d] transition-all duration-500 ease-in-out shadow-sm hover:text-black border-px flext items-center justify-center  shadow-black cursor-pointer"
                   onClick={() => fetchData()}>
                   Login
                 </button>
               )}
               <Link to={"/register"}>
-                <button className="w-full text-[#060606] font-semibold my-2 bg-white border-px border-black/40 rounded-md p-4 sm:p-3 text-center flex justify-center items-center  cursor-pointer shadow-sm shadow-black hover:bg-gray-300">
+                <button className="w-full text-black font-semibold my-2 bg-white border-px border-black/40 rounded-md p-4 sm:p-3 text-center flex justify-center items-center  cursor-pointer shadow-sm transition-all duration-500 ease-in-out hover:text-white shadow-black hover:bg-color-8">
                   Register
                 </button>
               </Link>

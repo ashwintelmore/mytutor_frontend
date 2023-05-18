@@ -82,7 +82,7 @@ function AllPost({ resPost = false, isEditable = true }) {
         {
           posts.length > 0 ?
             posts.map((item, i) => (
-              <div className="flex flex-col  gap-[2px] bg-color-3 shadow-lg shadow-[#5d899795] dark:bg-zinc-700 dark:shadow-sm w-4/6 p-2 rounded-2xl  shadow-slate-400 xs:w-full xs:text-xs" key={i}>
+              <div className="flex flex-col  gap-[2px] bg-color-3 shadow-lg shadow-color-8 dark:bg-color-11 transition-all duration-500 ease-in-out dark:shadow-sm w-4/6 p-2 rounded-2xl  dark:border-white border xs:w-full xs:text-xs" key={i}>
                 <div className="flex justify-between px-2 ">
                   <span className="text-xs">{item.createdAt}</span>
                   <div
@@ -101,11 +101,11 @@ function AllPost({ resPost = false, isEditable = true }) {
                   </div>
                 </div>
                 <div className="flex w-full gap-2">
-                  <div className="h-auto w-2/5  sm:h-auto  dark:bg-violet-200 bg-orange-400   rounded-xl">
+                  <div className="h-auto w-2/5  sm:h-auto  dark:bg-color-9 bg-color-4   rounded-xl">
                     <Link to={'/postcontent/' + item._id}
                     className="relative" >
         
-                      <img src={item.thumbnailUrl && postImgCollection[item.thumbnailUrl.image]} className="h-auto   w-full rounded-xl sm:h-auto "></img>
+                      <img src={item.thumbnailUrl && postImgCollection[item.thumbnailUrl.image]} className="h-auto   w-full rounded-xl sm:h-auto sm:w-full "></img>
                       <span className="font-semibold  absolute  text-white font-font-logo top-7 w-[35%] left-3 line-clamp-3 text-sm xs:text-xs ">
                       {item.postTitle}
                     </span>
@@ -125,7 +125,7 @@ function AllPost({ resPost = false, isEditable = true }) {
                       <div className="rounded-full bg-green-500  h-2 w-2"></div>
                       <label>{item.createdTutor.analytics.favorite} favorite</label>
                     </div>
-                    <button className="bg-white text-orange-400 w-36 xs:w-28 rounded-xl p-1 dark:bg-zinc-900">
+                    <button className="bg-white text-color-4 w-36 xs:w-28 rounded-xl p-1 dark:bg-color-11 dark:border">
                       Rs.{item.pricePerHour || item.charges}(per hour)
                     </button>
                   </div>
