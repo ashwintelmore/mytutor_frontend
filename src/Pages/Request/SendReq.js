@@ -67,7 +67,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
         {requests.length > 0 ? (
           requests.map((item, i) => (
             <div
-              className="flex flex-col  transition-all ease-in-out duration-300    bg-color-3 hover:shadow-md hover:shadow-[#5d899795] rounded-2xl  "
+              className="flex flex-col dark:bg-color-11 dark:border  transition-all ease-in-out duration-300    bg-color-3 hover:shadow-md hover:shadow-[#5d899795] rounded-2xl  "
               key={i}
             // ref={menuRef}
             >
@@ -87,7 +87,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
 
                   <div
                     className="text-lg font-extrabold relative">
-                    <i className="fa-solid fa-ellipsis-vertical"
+                    <i className="fa-solid fa-ellipsis-vertical cursor-pointer px-2 "
                       onClick={() => onClickThreePoint(item, i)}
                     ></i>
                     {
@@ -108,14 +108,14 @@ export default function SendReq({ requests, setRefreshReqData }) {
                       {
                         item.reqAccept ?
                           <div className="flex items-center gap-2 text-lg">
-                            <i className="fa-solid fa-circle-check text-green-600"></i>
+                            <i className="fa-solid fa-circle-check text-color-10"></i>
                             <p className="text-sm">
                               Accepeted
                             </p>
                           </div>
                           :
                           <div className="flex items-center gap-2 text-lg">
-                            <i className="fa-solid fa-circle-xmark text-red-600"></i>
+                            <i className="fa-solid fa-circle-xmark text-color-13"></i>
                             <p className="text-sm">
                               Not Accepted
                             </p>
@@ -129,7 +129,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
                       <>
                         <div className="">
 
-                          <button className="p-1 shadow-sm shadow-slate-500 rounded-xl dark:bg-color-10 dark:border bg-color-4" value={meetingLink}
+                          <button className="p-1 shadow-sm shadow-slate-500 rounded-xl dark:bg-color-11 dark:border bg-[#f5c782] " value={meetingLink}
                             onChange={handleLinkChange} onClick={handleCopyClick}> Meeting Code : {item.meetingId?.meetingCode}</button>
                         </div>
 
@@ -153,7 +153,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
                       }
                       {item.reqAccept && (
                         <a href="https://myturt.onrender.com/" target="_blank">
-                          <button className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-color-4">
+                          <button className=" rounded-xl text-sm  h-7 w-fit px-4  text-white bg-color-10">
                             Go to Meeting
                           </button>
                         </a>

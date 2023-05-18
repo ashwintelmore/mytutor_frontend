@@ -115,9 +115,9 @@ function AddPost({ show, setShow, post }) {
   if (!show) return null;
   return (
     // <form action="/" enctype="multipart/form-data">
-    <div className="flex w-full h-screen items-center transition-all ease-in-out delay-1000 justify-center xs:flex-col  fixed left-0 ,  top-0 overflow-scroll  z-20">
+    <div className="flex w-full h-screen items-center transition-all ease-in-out delay-1000 duration-500 justify-center xs:flex-col  fixed left-0 ,  top-0 overflow-scroll  z-20">
       {contextHolder}
-      <div className=" bg-[#fff] dark:bg-zinc-800 z-[9] dark:text-white dark:border absolute my-[10%] top-0 w-4/6 px-6 py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12   ">
+      <div className=" bg-white dark:bg-color-11 z-[9] dark:text-white dark:border absolute my-[10%] top-0 w-4/6 px-6 py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-color-8 xs:flex-col xs:w-11/12   ">
         <h2 className="text-[#f48c2b] top-0 left-2 text-3xl px-4 py-3 font-medium absolute ">
           Add Post
         </h2>
@@ -127,12 +127,12 @@ function AddPost({ show, setShow, post }) {
             <label
               className="w-full p-2 text-base xs:text-base"
               htmlFor="slots">
-              Post Typle :
+              Post Type :
             </label>
             <select
               placeholder="select option"
               name="postType"
-              className="rounded-xl w-full dark:bg-zinc-800 dark:border shadow-sm shadow-black p-2"
+              className="rounded-xl w-full dark:bg-color-11 dark:border shadow-sm shadow-black p-2"
               onChange={(e) =>
                 setUserData({ ...userData, [e.target.name]: e.target.value })
               }
@@ -154,7 +154,7 @@ function AddPost({ show, setShow, post }) {
             <select
               placeholder="select option"
               name="category"
-              className="rounded-xl dark:bg-zinc-800 dark:border  w-full shadow-sm shadow-black p-2"
+              className="rounded-xl dark:bg-color-11 dark:border  w-full shadow-sm shadow-black p-2"
               onChange={(e) =>
                 setUserData({ ...userData, [e.target.name]: e.target.value })
               }
@@ -177,7 +177,7 @@ function AddPost({ show, setShow, post }) {
               Title Of Post
             </label>
             <input
-              className="rounded-xl dark:bg-zinc-800 dark:border  w-full shadow-sm shadow-black p-2"
+              className="rounded-xl dark:bg-color-11 dark:border  w-full shadow-sm shadow-black p-2"
               type="text"
               name="postTitle"
               onChange={(e) =>
@@ -190,7 +190,7 @@ function AddPost({ show, setShow, post }) {
           <div className="flex flex-col   w-[45%]  p-2  xs:w-full  ">
             <label className="w-full text-base p-2 ">Offering Charges</label>
             <input
-              className=" dark:bg-zinc-800 dark:border  rounded-xl w-full  p-2 shadow-sm shadow-black"
+              className=" dark:bg-color-11 dark:border  rounded-xl w-full  p-2 shadow-sm shadow-black"
               type="number"
               name="charges"
               onChange={(e) =>
@@ -212,12 +212,12 @@ function AddPost({ show, setShow, post }) {
               resTags={userData.tags}
               isEditable={true}
             />
-            <label className="text-xs ml-2 p-1">Per hour</label>
+            <label className="text-xs ml-2 p-1">Your strength</label>
           </div>
           <div className="flex flex-col  xs:w-full  w-[45%] p-2 justify-around  ">
             <Link to={"/profile"}>
               <label
-                className="w-full text-base p-2 text-blue-700 cursor-pointer"
+                className="w-full text-base p-2 text-color-9 cursor-pointer"
                 onClick={() => setShow(!show)}>
                 Click here to Update Slots time and date
               </label>
@@ -229,11 +229,11 @@ function AddPost({ show, setShow, post }) {
         </div>
 
         <div className="p-1">
-          <h2>Description :</h2>
+          <h2 className="py-2">Description :</h2>
           <textarea
             rows={5}
-            cols={100}
-            className="rounded-2xl dark:bg-zinc-800 dark:border  pl-2 xs:h-24  xs:w-11/12 shadow-sm shadow-black"
+            cols={112}
+            className="rounded-2xl w-full dark:bg-color-11 dark:border  pl-2 xs:h-24  xs:w-11/12 shadow-sm shadow-black"
             name="descrp"
             onChange={(e) =>
               setUserData({ ...userData, [e.target.name]: e.target.value })
@@ -265,20 +265,20 @@ function AddPost({ show, setShow, post }) {
 
           {
             post ?
-              <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
+              <button className="xs:w-2/5 bg-color-4 text-white rounded-xl p-2 w-[15%]"
 
                 onClick={() => onUpdateDetails()}
               >Update
               </button>
               :
-              <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
+              <button className="xs:w-2/5 bg-color-4 text-white rounded-xl p-2 w-[15%]"
 
                 onClick={() => onAddDetails()}
               >Add
               </button>
           }
 
-          <button className=" xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
+          <button className=" xs:w-2/5 bg-color-4 text-white rounded-xl p-2 w-[15%]"
             onClick={() => setShow(!show)}
           >Cancel
           </button>

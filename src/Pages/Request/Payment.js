@@ -312,8 +312,8 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
     return (
         <div className="flex w-full  items-center justify-center xs:flex-col absolute z-20 top-4 left-0">
             {contextHolder}
-            <div className=" bg-[#fff] relative w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
-                <h2 className="text-[#f48c2b] top-0 left-2 text-lg p-2 absolute  ">Payment Details</h2>
+            <div className=" bg-white border-[1px] border-color-8 shadow-md shadow-color-8 dark:bg-color-11 transition-all duration-500 ease-in-out dark:border  w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center   xs:flex-col xs:w-11/12">
+            <div className="flex  w-full justify-start"> <h2 className="text-color-4 py-2 px-4 text-2xl p-2   ">Payment details</h2></div>
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                         <label className="w-full p-2 text-base xs:text-base"> {readOnly ? "Reciever's UPI id" : 'Your UPI id'}</label>
@@ -321,7 +321,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                             <input
                                 type="text"
                                 placeholder="Write something"
-                                className="rounded-lg px-2 py-1  w-full  outline-none "
+                                className="rounded-lg px-2 py-1 dark:bg-color-11  w-full  outline-none "
                                 value={readOnly ? payment.upiId : auth.user.payment.upiId}
                                 onChange={(e) => { auth.setUser({ ...auth.user, payment: { ...auth.user.payment, upiId: e.target.value } }); setPayment({ ...payment, upiId: e.target.value }) }}
                                 disabled={readOnly ? true : isUipCorrect}
@@ -382,7 +382,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                         <label className="w-full p-2 text-base xs:text-base">Final Charges</label>
                         <input
-                            className="rounded-xl w-full shadow-sm shadow-black p-2"
+                            className="rounded-xl w-full dark:bg-color-11 dark:border shadow-sm shadow-black p-2"
                             type="number"
                             name="charges"
                             disabled={readOnly ? true : false}
@@ -394,7 +394,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                         <label className="w-full p-2 text-base xs:text-base">Remark</label>
                         <input
-                            className="rounded-xl w-full shadow-sm shadow-black p-2"
+                            className="rounded-xl w-full dark:bg-color-11 dark:border shadow-sm shadow-black p-2"
                             type="text"
                             name="code"
                             disabled={readOnly ? true : false}
@@ -435,10 +435,11 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                     <div className="flex flex-col  w-full   p-2 justify-around  ">
                         <label className="w-full p-2 py-4 text-base xs:text-base">Payment Status</label>
                         <Steps
+                        className="dark:text-white"
                             size="small"
                             current={payStatus}
                             items={[
-                                {
+                                { 
                                     title: 'Tutor Initiated',
                                 },
                                 {
@@ -469,12 +470,12 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                                     {
 
                                         payment._id && payment.paymentStatus.isDoneByLearner ?
-                                            <button className="xs:w-2/5 bg-[#9a9a9a] text-white rounded-xl p-2 w-[15%]"
+                                            <button className="xs:w-2/5 bg-color-8 text-white rounded-xl p-2 w-[15%]"
                                                 onClick={() => onPaymentStatusChange(false)}
                                             >Not Done
                                             </button>
                                             :
-                                            <button className="xs:w-2/5 bg-[#30f65e] text-white rounded-xl p-2 w-[15%]"
+                                            <button className="xs:w-2/5 bg-color-10 text-white rounded-xl p-2 w-[15%]"
                                                 onClick={() => onPaymentStatusChange(true)}
                                             >Done
                                             </button>
@@ -485,13 +486,13 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                             {
                                 (payment._id && !payment.paymentStatus.isDoneByLearner)
                                 &&
-                                <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
+                                <button className="xs:w-2/5 bg-color-4 text-white rounded-xl p-2 w-[15%]"
 
                                     onClick={() => window.alert("Make payment on that uip and after payment done please update status as done for confiremation")}
                                 > Go to Payment
                                 </button>
                             }
-                            <button className=" xs:w-2/5 bg-[#f63730] text-white rounded-xl p-2 w-[15%]"
+                            <button className=" xs:w-2/5 bg-color-13 text-white rounded-xl p-2 w-[15%]"
                                 onClick={() => onCancelHandle()}
                             >Cancel
                             </button>
@@ -503,7 +504,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                             {payment._id && renderPaymentStatusBtn(payment)}
 
                             {renderInitialUpdateBtn(payment)}
-                            <button className=" xs:w-2/5 bg-[#f63730] text-white rounded-xl p-2 w-[15%]"
+                            <button className=" xs:w-2/5 bg-color-13 text-white rounded-xl p-2 w-[15%]"
                                 onClick={() => onCancelHandle()}
                             >Cancel
                             </button>

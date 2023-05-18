@@ -26,16 +26,14 @@ font-family: 'Lato', sans-serif;
   display: none;
 }
 
- 
+.dark{
+transition: all ease-in-out;
+transition-duration: 5s;
+
+}
  
 
-@media screen and (max-width: 385px) {
-  .education {
-    left: 2rem;
-    height: 350px;
-    width: 300px;
-  }
-}
+ 
 
 
 

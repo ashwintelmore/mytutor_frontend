@@ -50,7 +50,7 @@ export default function Register() {
             <img className="w-full     h-full " src={RegisterImage} />
          </div>
 
-         <div className="w-[43%] bg-white  sm:w-[97%] sm:p-7 xs:p-8 dark:bg-zinc-700 dark:text-white  xs:bg-[#ffff]  xs:justify-center sm:justify-center xs:gap-4 sm:gap-3   mx-auto h-full bg-[#f5f5f5] flex flex-col p-20 justify-between items-center">
+         <div className="w-[43%] bg-white  sm:w-[97%] sm:p-7 xs:p-8 dark:bg-color-11 dark:text-white    xs:justify-center sm:justify-center xs:gap-4 sm:gap-3   mx-auto h-full bg-white flex flex-col p-20 justify-between items-center">
             <h1 className="text-4xl text-stone-700 dark:text-white font-bold">My Tutor</h1>
 
             <div className="w-full xs:w-full flex flex-col max-w-[500px] ">
@@ -89,14 +89,14 @@ export default function Register() {
 
                   {
                      auth.loading ?
-                        <button className="w-full text-white my-2 bg-[#78653b] rounded-md p-4 text-center flext items-center justify-center shadow-sm shadow-slate-500 cursor-pointer"
+                        <button className="w-full text-white my-2 bg-color-6 rounded-md p-4 text-center flext items-center justify-center shadow-sm shadow-slate-500 cursor-pointer"
                            disabled={true}
 
                         >
                            loading...
                         </button>
                         :
-                        <button className="w-full text-white my-2 bg-[#fbb110] rounded-md p-4 text-center flext items-center justify-center sm:w-[95%] shadow-sm shadow-slate-500 cursor-pointer"
+                        <button className="w-full text-xl text-white my-2 bg-color-4 rounded-md p-4 sm:p-3 text-center border-black/40 hover:bg-[#e8bd6d] transition-all duration-500 ease-in-out shadow-sm hover:text-black border-px flext items-center justify-center  shadow-black cursor-pointer"
                            onClick={() => fetchData()}
                         >
                            Register

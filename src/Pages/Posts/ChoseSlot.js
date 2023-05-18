@@ -132,7 +132,7 @@ export default function ChoseSlot({ post, userData, _reqData }) {
     }, [_reqData])
     return (
         <>
-            <div className=" flex  flex-col w-2/5 p-2 xs:w-full dark:bg-zinc-800 xs:p-1 sm:w-full  ">
+            <div className=" flex  flex-col w-2/5 p-2 xs:w-full transition-all duration-500 ease-in-out dark:bg-color-11 xs:p-1 sm:w-full  ">
                 {contextHolder}
                 {
                     reqData._id ?
@@ -156,7 +156,7 @@ export default function ChoseSlot({ post, userData, _reqData }) {
 
                                 <Tag
                                     onClose={(e) => { }}
-                                    className=" text-sm border shadow-lg shadow-gray-400 rounded-xl p-2"
+                                    className=" text-sm border shadow-lg shadow-color-8 rounded-xl p-2"
                                     title={"bbjn"}
                                     key={i}
                                 >
@@ -196,7 +196,7 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                 <div className="p-3 w-4/5 flex flex-col gap-1">
                     <h3 className="font-semibold">Message</h3>
                     <input
-                        className="w-full p-2 rounded-2xl outline-none shadow-sm  dark:border  dark:bg-zinc-800 shadow-slate-500"
+                        className="w-full p-2 rounded-2xl outline-none shadow-sm  dark:border  dark:bg-color-11 shadow-color-8"
                         placeholder="Write something..."
                         type='text'
                         value={reqData.reqMassege}
@@ -205,7 +205,7 @@ export default function ChoseSlot({ post, userData, _reqData }) {
 
                     </input>
                 </div>
-                <div className="flex justify-center">
+                <div className="flex justify-end px-2">
                     {
                         auth.user._id ?
                             reqData._id ?
@@ -220,14 +220,14 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                                         </button>
                                     }
 
-                                    <button className="w-fit h-10 px-2 bg-[#F8AF6A] text-white font-semibold dark:text-black  rounded-lg p-1"
+                                    <button className="w-fit h-10 px-2 bg-color-4 text-white font-semibold dark:text-black  rounded-lg p-1"
                                         onClick={() => onHandleRequestUpdate()}
                                     >
                                         {reqData.cancelStatus ? "Request Again" : "Update"}
                                     </button>
                                 </>
                                 :
-                                <button className="w-fit h-10 px-2 bg-[#F8AF6A] text-white font-semibold dark:text-black  rounded-lg p-1"
+                                <button className="w-fit h-10 px-2 bg-color-4 text-white font-semibold dark:text-black  rounded-lg p-1"
                                     onClick={() => onHandleRequest()}
                                 >
                                     Request for Slot
@@ -235,7 +235,7 @@ export default function ChoseSlot({ post, userData, _reqData }) {
 
                             :
                             <Link to={'/login'}>
-                                <button className="w-32 h-10 bg-[#F8AF6A] text-white font-semibold dark:text-black  rounded-lg p-1"
+                                <button className="w-32 h-10 bg-color-4 text-white font-semibold dark:text-black  rounded-lg p-1"
 
                                 >
                                     Login first

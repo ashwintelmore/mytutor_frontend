@@ -62,9 +62,9 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
         {requests.length > 0 ? (
           requests.map((item, i) => (
             <div
-              className="flex flex-col   shadow-sm shadow-color-8 rounded-2xl  "
+              className="flex flex-col     shadow-sm shadow-color-8 rounded-2xl  "
               key={i}>
-              <div className="flex flex-col p-2   gap-2  ">
+              <div className="flex flex-col  p-2 rounded-2xl dark:bg-color-11 transition-all duration-500 ease-in-out bg-color-3 hover:shadow-md hover:shadow-[#5d899795]  transition-all ease-in-out duration-300  gap-2  ">
                 <div className="flex justify-between">
                   <div className="flex gap-2 ">
                     <img
@@ -73,14 +73,14 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                       alt=""
                     />
                     <div className="flex flex-col gap-1">
-                      <h3 className="text-color-9 ">{item.requesterId.name}</h3>
+                      <h3 className="text-color-9 dark:text-white ">{item.requesterId.name}</h3>
                       <p className="text-sm">{item.postId.postTitle}</p>
                     </div>
                   </div>
                   <div
                     // onClick={() => setOpenProfile((prev) => !prev)}
                     className="text-lg font-extrabold relative">
-                    <i className="fa-solid fa-ellipsis-vertical"
+                    <i className="fa-solid cursor-pointer px-2 fa-ellipsis-vertical"
                       onClick={() => onClickThreePoint(item, i)}
                     ></i>
                     {
@@ -123,7 +123,7 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                         <div className="">
 
                           <button
-                            className="p-1 shadow-sm shadow-color-8 rounded-xl dark:bg-zinc-800 dark:border bg-color-4  sm:text-[12px] sm:px-2"
+                            className="p-1 shadow-sm shadow-color-8 rounded-xl dark:bg-color-11 dark:border bg-color-4  sm:text-[12px] sm:px-2"
                             value={meetingLink}
                             onChange={handleLinkChange}
                             onClick={handleCopyClick}> Meeting Code : {item.meetingId?.meetingCode}
@@ -141,7 +141,7 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
 
 
                       <button
-                        className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px] text-white bg-color-4"
+                        className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px] text-white bg-color-13"
                         onClick={() => onManageClick(item, i)}>
                         Manage Meeting
                       </button>
@@ -156,7 +156,7 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                       )}
                       {item.reqAccept && (
                         <a href="https://myturt.onrender.com/" target="_blank">
-                          <button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-color-4">
+                          <button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-color-10">
                             Go to Meeting
                           </button>
                         </a>

@@ -38,17 +38,17 @@ function TagsInput({ resTags, setResTags, isEditable }) {
       };
   }, [])
   return (
-    <div className="flex flex-col-reverse gap-2 dark:bg-zinc-800">
-      <div className="flex gap-2 dark:bg-zinc-800  flex-wrap h-auto ">
+    <div className="flex flex-col-reverse gap-2 dark:bg-color-11">
+      <div className="flex gap-2 dark:bg-color-11  flex-wrap h-auto ">
         {tags.map((tag) => (
-          <span key={tag} className="rounded-2xl dark:bg-zinc-700 dark:text-white dark:border bg-[#f5e6c5]
-           text-base text-[#131517] px-2 py-1 flex items-center gap-2" >
+          <span key={tag} className="rounded-2xl dark:bg-color-11 dark:text-white dark:border bg-[#f5e6c5]
+           text-base text-color-11 px-2 py-1 flex items-center gap-2" >
             {tag}
             {
               isEditable
               &&
               <i
-                className="fa-solid fa-xmark text-red-600 cursor-pointer" onClick={() => handleRemoveTag(tag)}
+                className="fa-solid fa-xmark text-color-13 cursor-pointer" onClick={() => handleRemoveTag(tag)}
 
               ></i>
             }
@@ -59,7 +59,7 @@ function TagsInput({ resTags, setResTags, isEditable }) {
         isEditable
         &&
         <input
-          className="  rounded-xl w-full  p-2 shadow-sm dark:bg-zinc-800 dark:border shadow-black"
+          className="  rounded-xl w-full  p-2 shadow-sm dark:bg-color-11 dark:border shadow-black"
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}

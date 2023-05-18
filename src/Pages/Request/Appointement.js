@@ -47,7 +47,7 @@ const Appointement = () => {
     }, [profileToggler, refreshReqData])
     return (
         <>
-            <div className="flex w-full ml-16 h-screen rounded-t-3xl bg-white  dark:bg-zinc-800 p-3 mx-2 dark:text-white xs:flex-col xs:ml-0  xs:h-full " >
+            <div className="flex w-full ml-16 h-screen rounded-t-3xl bg-white  dark:bg-color-11 transition-all duration-500 ease-in-out p-3 mx-2 dark:text-white xs:flex-col xs:ml-0  xs:h-full " >
                 {/* <div className="w-1/3 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl xs:w-full  xs:hidden sm:hidden sm:ml-0 xs:ml-0  ">
                     <MultipleDatePicker
 
@@ -56,19 +56,19 @@ const Appointement = () => {
                 </div> */}
 
                 <div className="w-3/5 flex-col flex overflow-y-auto sm:w-full xs:relative   ">
-                    <h3 className="text-xl font-semibold p-2 text-[#FF0000]">Your Appointements</h3>
+                    <h3 className="text-xl font-semibold p-2 text-color-13">Your Appointements</h3>
 
-                    <div className="flex top-0 sticky bg-white dark:bg-zinc-800 p-2  gap-4 sm:w-full sm:text-[10px] sm:gap-1 sm:p-1 mt-1  mb-2 ">
+                    <div className="flex top-0 sticky bg-white dark:bg-color-11 p-2  gap-4 sm:w-full sm:text-[10px] sm:gap-1 sm:p-1 mt-1  mb-2 ">
 
                         <button
-                            className={profileToggler == 1 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 py-1 sm:rounded-lg sm:px-2 sm:w-auto sm:text-[10px]  shadow-md shadow-slate-400 dark:shadow-sm " : " dark:bg-zinc-800 dark:shadow-none dark:border bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
+                            className={profileToggler == 1 ? "bg-color-4 text-white rounded-2xl text-md px-4 py-1 sm:rounded-lg sm:px-2 sm:w-auto sm:text-[10px]  shadow-md shadow-color-8 dark:shadow-sm " : " dark:bg-color-11 dark:text-white dark:shadow-none dark:border bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
 
                             onClick={() => setProfileToggler('1')}
                         >
                             Send Requests
                         </button>
                         <button
-                            className={profileToggler == 2 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 sm:px-2 sm:w-auto sm:text-[10px] py-1 shadow-md shadow-slate-400  dark:shadow-sm" : " dark:bg-zinc-800 dark:shadow-none dark:border bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
+                            className={profileToggler == 2 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 sm:px-2 sm:w-auto sm:text-[10px] py-1 shadow-md shadow-color-8  dark:shadow-sm" : " dark:bg-color-11 dark:text-white dark:shadow-none dark:border bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
 
                             onClick={() => setProfileToggler('2')}
                         >

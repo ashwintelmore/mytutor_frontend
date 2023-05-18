@@ -204,8 +204,8 @@ function Meeting({ show, setShow, data, setData }) {
     return (
         <div className="flex w-full  items-center justify-center xs:flex-col absolute z-20 top-4 left-0">
             {contextHolder}
-            <div className=" bg-[#fff] relative w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-slate-600 xs:flex-col xs:w-11/12">
-                <h2 className="text-[#f48c2b] top-0 left-2 text-lg p-2 absolute  ">Meeting</h2>
+            <div className=" bg-white dark:bg-color-11 transition-all duration-500 ease-in-out dark:border  w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-color-8 xs:flex-col xs:w-11/12">
+               <div className="flex  w-full justify-start"> <h2 className="text-color-4 py-2 px-4 text-2xl p-2   ">Meeting</h2></div>
 
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
 
@@ -281,7 +281,7 @@ function Meeting({ show, setShow, data, setData }) {
                                 <select
                                     placeholder="select option"
                                     name="meeting"
-                                    className="rounded-xl w-full shadow-sm shadow-black p-2"
+                                    className="rounded-xl w-full shadow-sm dark:bg-color-11 dark:border shadow-black p-2"
                                     value={meeting.meetingName}
                                     onChange={(e) => onMeetingChange(e)}
                                 >
@@ -325,7 +325,7 @@ function Meeting({ show, setShow, data, setData }) {
                                     <input
                                         type="text"
                                         placeholder="Write something"
-                                        className="rounded-lg px-2 py-1  w-full  outline-none "
+                                        className="rounded-lg px-2 py-1 dark:bg-color-11   w-full  outline-none "
                                         value={meeting.meetingName}
                                         onChange={(e) => setMeeting({ ...meeting, meetingName: e.target.value })}
                                     ></input>
@@ -333,7 +333,7 @@ function Meeting({ show, setShow, data, setData }) {
                                         !meeting._id
                                         &&
                                         <Button
-                                            className="absolute rounded-xl text-sm  h-7 w-fit  text-white right-1   bg-blue-500"
+                                            className="absolute rounded-xl text-sm  h-7 w-fit dark:bg-color-11  dark:border  text-white right-1   bg-blue-500"
                                             type="primary"
                                             loading={loadings}
                                             onClick={() => generateMeetId()}
@@ -351,7 +351,7 @@ function Meeting({ show, setShow, data, setData }) {
                             <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                                 <label className="w-full p-2 text-base xs:text-base">Meeting Code</label>
                                 <input
-                                    className="rounded-xl w-full shadow-sm shadow-black p-2"
+                                    className="rounded-xl w-full dark:bg-color-11 dark:border dark:text-white shadow-sm shadow-black p-2"
                                     type="text"
                                     name="code"
                                     value={meeting.meetingCode}
@@ -362,7 +362,7 @@ function Meeting({ show, setShow, data, setData }) {
                         </div>
                         <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                             <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
-                                <label className="w-full p-2 text-base xs:text-base">Go to meeting</label>
+                                <label className="w-full p-2 text-base  xs:text-base">Go to meeting</label>
                                 <label className="text-xs ml-2 p-1">Write something</label>
                             </div>
                         </div>
@@ -371,16 +371,16 @@ function Meeting({ show, setShow, data, setData }) {
 
 
                 <div className="flex p-2 xs:w-full xs:justify-evenly gap-2 w-full justify-end">
-                    <button className="xs:w-2/5 bg-[#f63030] text-white rounded-xl p-2 w-[15%]"
+                    <button className="xs:w-2/5 bg-color-13 text-white rounded-xl p-2 w-[15%]"
 
                     >Delete
                     </button>
-                    <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
+                    <button className="xs:w-2/5 bg-color-4 text-white rounded-xl p-2 w-[15%]"
 
                         onClick={() => updateRequestDetails()}
                     >Send
                     </button>
-                    <button className=" xs:w-2/5 bg-[#30f65e] text-white rounded-xl p-2 w-[15%]"
+                    <button className=" xs:w-2/5 bg-color-10 text-white rounded-xl p-2 w-[15%]"
                         onClick={() => onCancelHandle()}
                     >Cancel
                     </button>
