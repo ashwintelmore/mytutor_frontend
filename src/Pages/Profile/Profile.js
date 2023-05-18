@@ -115,13 +115,13 @@ const Profile = ({ toggler = '1' }) => {
             <div className="flex top-0 sticky bg-white dark:bg-color-11  p-2 gap-4 mt-1  ">
 
               <button
-                className={profileToggler == 1 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 py-1  shadow-md dark:shadow-sm shadow-color-8 " : " bg-color-3 dark:shadow-sm dark:bg-color-11  dark:border dark:text-white  text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-color-8 "}
+                className={profileToggler == 1 ? "bg-color-14 text-white rounded-2xl text-md px-4 py-1  shadow-md dark:shadow-sm shadow-color-8 " : " bg-color-3 dark:shadow-sm dark:bg-color-11  dark:border dark:text-white  text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-color-8 "}
                 onClick={() => setProfileToggler('1')}
               >
                 About
               </button>
               <button
-                className={profileToggler == 2 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 py-1  shadow-md dark:shadow-sm shadow-color-8 " : " bg-color-3 dark:bg-color-11 dark:border dark:shadow-sm  dark:text-white text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-color-8 "}
+                className={profileToggler == 2 ? "bg-color-14 text-white rounded-2xl text-md px-4 py-1  shadow-md dark:shadow-sm shadow-color-8 " : " bg-color-3 dark:bg-color-11 dark:border dark:shadow-sm  dark:text-white text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-color-8 "}
 
                 onClick={() => setProfileToggler('2')}
               >
@@ -146,7 +146,7 @@ const Profile = ({ toggler = '1' }) => {
         <ConfigProvider
           theme={{
             token: {
-              colorPrimary: '#rgb(251 146 60)',
+              colorPrimary: '#1a0970',
               fontSize: '25',
               lineHeight: '0'
             },

@@ -29,30 +29,30 @@ const MultipleDatePicker = (props) => {
 
 
             if (reqArrValues.some(e => current.format("YYYY-MM-DD") == e)) {
-                return <div className={"bg-blue-400 text-white m-2"}>{day}</div>;
+                return <div className={"bg-color-9 text-white m-2"}>{day}</div>;
             }
 
             if (arrValues.some(e => current.format("YYYY-MM-DD") == e)) {
-                return <div className={"bg-green-400 text-white m-2"}>{day}</div>;
+                return <div className={"bg-color-10 text-white m-2"}>{day}</div>;
             }
 
             const currentDay = new Date(current.format("YYYY-MM-DD")).getDay();
 
             if (available === "weekend" && (currentDay == 0 || currentDay == 6)) {
-                return <div className={"bg-green-400 text-white m-2"}>{day}</div>;
+                return <div className={"bg-color-10 text-white m-2"}>{day}</div>;
             }
             if (available === "weekdays" && (currentDay != 0 && currentDay != 6)) {
-                return <div className={"bg-green-400 text-white m-2"}>{day}</div>;
+                return <div className={"bg-color-10 text-white m-2"}>{day}</div>;
             }
             if (available === "everyday") {
-                return <div className={"bg-green-400 text-white m-2"}>{day}</div>;
+                return <div className={"bg-color-10 text-white m-2"}>{day}</div>;
             }
             if (available === "not") {
-                return <div className={"bg-red-400 text-white m-2"}>{day}</div>;
+                return <div className={"bg-color-13 text-white m-2"}>{day}</div>;
             }
 
 
-            return <div className="m-2">{day}</div>;
+            return <div className="m-2 text-color-14">{day}</div>;
         },
         [arrValues, reqArrValues, available]
     );

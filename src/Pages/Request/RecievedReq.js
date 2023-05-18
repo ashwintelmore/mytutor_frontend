@@ -3,8 +3,10 @@ import Meeting from "./Meeting";
 import Payment from "./Payment";
 import { useAuth } from "../../providers/auth";
 import EditReq from "./EditReq";
+import { useAlert } from "../../Components/Alert";
 
 export default function RecievedReq({ requests, setRefreshReqData }) {
+  const [showNotification, contextHolder] = useAlert()
   const [show, setShow] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
   const [reqData, setReqData] = useState({});
@@ -17,10 +19,13 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
   console.log('requests', requests)
   const [meetingLink, setMeetingLink] = useState("");
 
-  const handleCopyClick = async () => {
+  const handleCopyClick = async (value) => {
+    console.log('e', value)
     try {
-      await navigator.clipboard.writeText(meetingLink);
+      await navigator.clipboard.writeText(value);
+      showNotification('Meeting link copied', '')
     } catch (err) {
+      showNotification('Failed to copy meeting link', '')
       console.error("Failed to copy meeting link: ", err);
     }
   };
@@ -58,6 +63,7 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
   }
   return (
     <>
+      {contextHolder}
       <div className=" w-full p-4 flex flex-col gap-4  overflow-scroll xs:w-full xs:p-1 xs:ml-1" ref={menuRef}>
         {requests.length > 0 ? (
           requests.map((item, i) => (
@@ -94,8 +100,8 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                 </div>
                 <div className="flex justify-between w-full">
                   <div className="flex flex-col gap-2 text-xs sm:text-xs w-full">
-                    {/* <p className="text-sm">message : {item.reqMassege}</p> */}
-                    {/* <p className="text-sm">Request for {item.reqTime} hour</p> */}
+                    <p className="text-sm">message : {item.reqMassege}</p>
+                    <p className="text-sm">Request for {item.reqTime} hour</p>
                     <div className="flex sm:text-xs justify-between">
                       {
                         item.reqAccept ?
@@ -123,10 +129,10 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                         <div className="">
 
                           <button
-                            className="p-1 shadow-sm shadow-color-8 rounded-xl dark:bg-color-11 dark:border bg-color-4  sm:text-[12px] sm:px-2"
-                            value={meetingLink}
-                            onChange={handleLinkChange}
-                            onClick={handleCopyClick}> Meeting Code : {item.meetingId?.meetingCode}
+                            className="p-1 shadow-sm shadow-color-8 rounded-xl dark:bg-color-11 dark:border bg-color-4 text-white px-4  sm:text-[12px] sm:px-2"
+                            value={item.meetingId?.meetingCode}
+                            // onChange={handleLinkChange}
+                            onClick={() => handleCopyClick(item.meetingId?.meetingCode)}> Meeting Code : {item.meetingId?.meetingCode}
                           </button>
                         </div>
 
