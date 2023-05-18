@@ -30,6 +30,7 @@ const Home = () => {
     const getallpost = async () => {
       setLoader({ ...loader, posts: true });
       const res = await getAllPosts();
+      console.log('res', res)
       if (res.error) {
         //handle error
         showAlert(res.error.errMessage);
@@ -40,8 +41,8 @@ const Home = () => {
         setLoader({ ...loader, posts: false });
       }
     };
-    if (!posts.length) getallpost();
-  }, [posts]);
+    getallpost();
+  }, []);
 
   const bufferToImage = (bufferData) => {
     return `data:${bufferData.image.contentType};base64, ${Buffer.from(
@@ -55,6 +56,7 @@ const Home = () => {
       // setLoader({ ...loader, posts: true })
       const res = await getAlllCatgories();
       if (res.error) {
+        showAlert(res.error.errMessage)
       } else if (res.payload) {
         // setImg(`data:${res.payload[0].image.contentType};base64, ${Buffer.from(res.payload[0].image.data.data).toString('base64')}`)
         // setImg({ data: res.payload.image.contentType ;base64, ${ Buffer.from(user.userPhoto.data).toString('base64') }
