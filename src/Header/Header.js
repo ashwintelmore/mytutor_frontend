@@ -46,7 +46,7 @@ const Header = ({ setOpen, open }) => {
 
 
           <i
-            title="Menu" className="fa-solid fa-bars hover:bg-color-6 transition-all duration-500 ease-in-out hover:text-white rounded-full p-2 cursor-pointer"
+            title="Menu" className="fa-solid fa-bars hover:bg-color-14 transition-all duration-500 ease-in-out text-color-14 hover:text-white rounded-full p-2 cursor-pointer"
             onClick={() => {
               setOpen(!open);
             }}></i>
@@ -60,18 +60,17 @@ const Header = ({ setOpen, open }) => {
         <div className="flex justify-between  items-center gap-10 sm:gap-3 sm:p-[2px] sm:text-base p-3 text-xl   ">
           <NavLink to={"/search"}>
 
-            <i className="cursor-pointer p-2 rounded-full fa-solid fa-magnifying-glass relative  hover:bg-color-6 transition-all duration-500 ease-in-out hover:text-white " title="Search"></i>
-
+            <i className="cursor-pointer p-2 rounded-full fa-solid fa-magnifying-glass relative text-color-14 hover:bg-color-14 transition-all duration-500 ease-in-out hover:text-white " title="Search"></i>
 
           </NavLink>
 
           <i
-            className="fa-regular fa-moon cursor-pointer hover:bg-color-6 transition-all duration-500 ease-in-out hover:text-white rounded-full p-2 xs:hidden sm:hidden   "
+            className="fa-regular fa-moon cursor-pointer text-color-14 hover:bg-color-14 transition-all duration-500 ease-in-out hover:text-white rounded-full p-2 xs:hidden sm:hidden   "
             onClick={handleThemeSwitch} title="Dark/Light mode"></i>
 
 
           <i
-            className="fa-solid fa-circle-plus cursor-pointer hover:bg-color-6 transition-all duration-500 ease-in-out hover:text-white p-2 rounded-full  " title="upload"
+            className="fa-solid fa-circle-plus cursor-pointer text-color-14 hover:bg-color-14 transition-all duration-500 ease-in-out hover:text-white p-2 rounded-full  " title="upload"
             onClick={() => setShow(true)}></i>
 
 
@@ -85,7 +84,7 @@ const Header = ({ setOpen, open }) => {
 
 
               <div title="Profile" className="flex  items-center gap-2">
-                <span className="rounded-full h-11 w-11 sm:h-10 sm:w-10 p-1 relative bg-[#d0782f]">
+                <span className="rounded-full h-11 w-11 sm:h-10 sm:w-10 p-1 relative bg-color-14">
                   <div className="absolute right-4  text-white text-transform: uppercase"> {auth.user.name[0]}</div>
                 </span>
                 {openProfile && <Backrop />}
@@ -94,7 +93,7 @@ const Header = ({ setOpen, open }) => {
 
             ) : (
               <Link to={"/login"}>
-                <button className="bg-[#e58832] text-white dark:border dark:bg-gray-500 rounded-lg sm:px-2 sm:text-sm px-3 py-1 text-base dark:bg-zinc-900 dark:border-white dark:border-solid">
+                <button className="bg-color-14 text-white dark:border dark:bg-gray-500 rounded-lg sm:px-2 sm:text-sm px-3 py-1 text-base dark:bg-zinc-900 dark:border-white dark:border-solid">
                   Register/Login
                 </button>
               </Link>

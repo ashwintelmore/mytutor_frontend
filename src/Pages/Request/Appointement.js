@@ -56,19 +56,19 @@ const Appointement = () => {
                 </div> */}
 
                 <div className="w-3/5 flex-col flex overflow-y-auto sm:w-full xs:relative   ">
-                    <h3 className="text-xl font-semibold p-2 text-color-13">Your Appointements</h3>
+                    <h3 className="text-xl font-semibold p-2 text-color-">Your Appointements</h3>
 
                     <div className="flex top-0 sticky bg-white dark:bg-color-11 p-2  gap-4 sm:w-full sm:text-[10px] sm:gap-1 sm:p-1 mt-1  mb-2 ">
 
                         <button
-                            className={profileToggler == 1 ? "bg-color-4 text-white rounded-2xl text-md px-4 py-1 sm:rounded-lg sm:px-2 sm:w-auto sm:text-[10px]  shadow-md shadow-color-8 dark:shadow-sm " : " dark:bg-color-11 dark:text-white dark:shadow-none dark:border bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
+                            className={profileToggler == 1 ? "bg-color-14 text-white rounded-2xl text-md px-4 py-1 sm:rounded-lg sm:px-2 sm:w-auto sm:text-[10px]  shadow-md shadow-color-8 dark:shadow-sm " : " dark:bg-color-11 dark:text-white dark:shadow-none dark:border bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
 
                             onClick={() => setProfileToggler('1')}
                         >
                             Send Requests
                         </button>
                         <button
-                            className={profileToggler == 2 ? "bg-[#fb923c] text-white rounded-2xl text-md px-4 sm:px-2 sm:w-auto sm:text-[10px] py-1 shadow-md shadow-color-8  dark:shadow-sm" : " dark:bg-color-11 dark:text-white dark:shadow-none dark:border bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
+                            className={profileToggler == 2 ? "bg-color-14 text-white rounded-2xl text-md px-4 sm:px-2 sm:w-auto sm:text-[10px] py-1 shadow-md shadow-color-8  dark:shadow-sm" : " dark:bg-color-11 dark:text-white dark:shadow-none dark:border bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
 
                             onClick={() => setProfileToggler('2')}
                         >

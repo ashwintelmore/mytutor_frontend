@@ -1,5 +1,8 @@
 # TODO list / Tasks
 ### 
+
+category=>
+
 ### Frontend Features
 - [ ] loader not working propery
 - [ ] category images in figma
@@ -19,6 +22,11 @@
 - [x] Change name of 'Your QR code' to 'QR code'
 - [x] Change name of 'Waiting learn' to 'Done by learner'
 - [ ] home page responsive category 
+- [ ] error massage at login and register
+- [ ] category loader
+- [ ] change login btn color to blue
+- [ ] change all input border color hover and active
+- [ ] all boxes should color-3
 ### Backend 
 - [ ] check all input should not empty
 - [ ] each category added priority

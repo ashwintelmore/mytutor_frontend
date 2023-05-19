@@ -31,16 +31,18 @@ transition: all ease-in-out;
 transition-duration: 5s;
 
 }
+a , h1,h2,h3,h4,h5,h6,p{
+  color: #1a0970;
+ }
 
 
 .active {
-  background-color: black;
+  background-color: #1a0970;
   color: white;
   border-radius: 100%;
 }
  
 
- 
 
 
 

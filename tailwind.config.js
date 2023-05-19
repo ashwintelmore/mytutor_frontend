@@ -17,22 +17,23 @@ module.exports = {
     },
     colors: {
       'color-1': '#FEE4CB',
-      'color-2': '#111114',
+      'color-2': '#1a0970',//black
       'color-3': '#EAF0FF',
-      'color-4': '#fb923c',
+      'color-4': '#1a0970',//orange
       'color-5': '#F2F2F2',
       'color-6': '#2a2929',
-      'color-7': '#c0eef4',//green
+      'color-7': '#c0eef4',//
       'color-8': '#808080',//red
       'color-9': '#4F39BE',
       'color-10': '#05FF00',
       'color-11': '#1a1a2e',
       'color-12': '#f187fb',
-      'color-13': '#ff0000',
-      'color-14': '#1a0970',
+      'color-13': '#ff0000',//red
+      'color-14': '#1a0970',//primary
       'color-15': '#C0A9FF',
       'white': '#FFFFFF',
-      'black': '#000000'
+      'black': '#1a0970',
+      'grey': '#1a0970'
     },
     fontFamily: {
       'font-logo': ['Lemon', 'cursive'],

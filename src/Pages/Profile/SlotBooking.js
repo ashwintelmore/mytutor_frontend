@@ -143,7 +143,7 @@ function SlotBooking({ isEditable }) {
                                         onSelect={(e) => onChange(e, 'from')}
                                     />
                                     to
-                                    <TimePicker  className="dark:bg-white dark:border "
+                                    <TimePicker className="dark:bg-white dark:border "
                                         disabled={auth.user.slots.isEveryTime}
                                         showTime={{ format: 'hh:mm A', use12Hours: true }}
                                         showSecond={false}
@@ -155,10 +155,10 @@ function SlotBooking({ isEditable }) {
                                     />
                                 </div>
 
-                                <button className="rounded-xl  w-20 h-7 dark:bg-color-11 dark:text-white  dark:border bg-color-4"
+                                <button className="rounded-xl  w-20 h-7 dark:bg-color-11 text-white  dark:border bg-color-4"
                                     onClick={() => handleAddClick()}
                                     disabled={auth.user.slots.isEveryTime}
-                                >add</button>{" "}
+                                >Add</button>{" "}
                             </div>
                         </>
                     }
@@ -203,7 +203,7 @@ function SlotBooking({ isEditable }) {
                 </div>
 
 
-                 
+
             </div>
 
         </>

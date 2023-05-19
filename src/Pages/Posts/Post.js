@@ -284,15 +284,15 @@ const Post = () => {
                       </div>
 
                       <div className="flex flex-col xs:text-xs cursor-pointer">
-                        <label>{post.createdTutor.name}</label>
-                        <label className="text-[#828282]">{post.createdTutor.analytics.favorite} Favourite</label>
+                        <label className="text-lg">{post.createdTutor.name}</label>
+                        <label className="text-color-14 text-sm">{post.createdTutor.analytics.favorite} Favourite</label>
                       </div>
                     </div>
                   </Link>
                   {
                     isFavourite ?
                       <button
-                        className={"bg-color-8 text-white px-3 py-1 sm:px-2 rounded-md xs:w-auto sm:text-sm"}
+                        className={"bg-color-6 text-white px-3 py-1 sm:px-2 rounded-md xs:w-auto sm:text-sm"}
                         onClick={(e) => onClickFavourit(false, auth.user, post.createdTutor)}
                       >
                         {"unfavourite"}

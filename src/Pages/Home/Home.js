@@ -12,7 +12,7 @@ import cat_image0 from "../Posts/../../assets/Thumbnail1.png";
 import { Link } from "react-router-dom";
 import { getAllPosts } from "../../App/postAPI";
 import { useAuth } from "../../providers/auth";
-import Loader from "../../Components/Helper/Loader";
+import Loader, { LoaderSmall } from "../../Components/Helper/Loader";
 import { useAlert } from "../../Components/Alert";
 import { getAlllCatgories, getCatgory } from "../../App/category.Api";
 import { postImgCollection } from "../../assets/postImages/postImg";
@@ -24,12 +24,14 @@ const Home = () => {
   const [categories, setCategories] = useState([]);
   const [loader, setLoader] = useState({
     posts: false,
+    cat: false
   });
   const [err, setErr] = useState("");
   useEffect(() => {
     const getallpost = async () => {
       setLoader({ ...loader, posts: true });
       const res = await getAllPosts();
+      console.log('res', res)
       if (res.error) {
         //handle error
         showAlert(res.error.errMessage);
@@ -40,8 +42,8 @@ const Home = () => {
         setLoader({ ...loader, posts: false });
       }
     };
-    if (!posts.length) getallpost();
-  }, [posts]);
+    getallpost();
+  }, []);
 
   const bufferToImage = (bufferData) => {
     return `data:${bufferData.image.contentType};base64, ${Buffer.from(
@@ -52,12 +54,15 @@ const Home = () => {
   const [img, setImg] = useState("");
   useEffect(() => {
     const getallpost = async () => {
-      // setLoader({ ...loader, posts: true })
+      setLoader({ ...loader, cat: true })
       const res = await getAlllCatgories();
       if (res.error) {
+        setLoader({ ...loader, cat: false })
+        showAlert(res.error.errMessage)
       } else if (res.payload) {
         // setImg(`data:${res.payload[0].image.contentType};base64, ${Buffer.from(res.payload[0].image.data.data).toString('base64')}`)
         // setImg({ data: res.payload.image.contentType ;base64, ${ Buffer.from(user.userPhoto.data).toString('base64') }
+        setLoader({ ...loader, cat: false })
         setCategories(res.payload);
       }
     };
@@ -65,6 +70,7 @@ const Home = () => {
     getallpost();
   }, []);
   console.log("posts", posts);
+  console.log("categories", categories);
   // if (auth.loading)
   //   return <Loader />
   return (
@@ -72,22 +78,28 @@ const Home = () => {
       {renderAlert}
       {/* category card  box*/}
       <div className="flex mt-3  overflow-y-hidden dark:text-slate-100">
-        {categories.map((item, i) => (
-          <Link to={"/search/" + item.catName} key={i}>
-            <div className="relative w-max flex m-4 justify-center sm:m-1 ">
-              <div className="w-44 h-44 rounded-full dark:bg-color-2 border- border-color-9 xs:w-32 xs:h-323 ">
-                <img
-                  className="w-full h-full rounded-full"
-                  src={bufferToImage(item)}
-                  alt="student"
-                />
-              </div>
-              <div className="absolute text-center p-2 bottom-0 dark:bg-amber-500 h-10  border border-color-9 px-4 bg-color-3 text-color-14  shadow-md shadow-color-7 rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
-                {item.catName}
-              </div>
-            </div>
-          </Link>
-        ))}
+        {
+          loader.cat ?
+            <Loader />
+            :
+            categories.map((item, i) => (
+              <Link to={"/search/" + item.catName} key={i}>
+                <div className="relative w-max flex m-4 justify-center sm:m-1 ">
+                  <div className="w-44 h-44 rounded-full dark:bg-color-2 border- border-color-9 xs:w-32 xs:h-323 ">
+                    <img
+                      className="w-full h-full rounded-full"
+                      src={bufferToImage(item)}
+                      alt="student"
+                    />
+                  </div>
+                  <div className="absolute text-center p-2 bottom-0 dark:bg-amber-500 h-10  border border-color-9 px-4 bg-color-3 text-color-14  shadow-md shadow-color-7 rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
+                    {item.catName}
+                  </div>
+                </div>
+              </Link>
+            ))
+        }
+
       </div>
       {loader.posts ? (
         <Loader />
