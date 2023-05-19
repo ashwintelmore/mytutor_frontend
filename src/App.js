@@ -19,6 +19,7 @@ import Sidebar from "./Header/Sidebar";
 import SidebarClose from "./Header/SidebarClose";
 import React, { useState, useEffect } from "react";
 import Favourite from "./Pages/Favourite/Favourite";
+import AboutUs from "./Header/AboutUs";
 
 const App = () => {
   const auth = useAuth();
@@ -95,6 +96,7 @@ const App = () => {
             <Route path="/appointement" element={<Appointement />} />
             <Route path="/search/:catName?" element={<SearchResult />} />
             <Route path="/favourite" element={<Favourite />} />
+            <Route path="/aboutus" element={<AboutUs/>} />
             <Route path="/" element={<Dummy />} />
           </Routes>
         </div>

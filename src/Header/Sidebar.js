@@ -47,7 +47,7 @@ const Sidebar = ({ open }) => {
           </div>
           <div className="flex flex-col gap-3 absolute bottom-0 w-full ">
             <div className="flex w-full text-sm gap-1  px-3 flex-wrap">
-              <label className="px-2 hover:underline transition-all duration-300 ease-in-out hover:text-color-9">About</label>
+          <Link to={"/aboutus"} >    <label className="px-2 hover:underline transition-all duration-300 ease-in-out hover:text-color-9">About Us</label></Link>
               <label className="px-2 hover:underline transition-all duration-300 ease-in-out hover:text-color-9">Copyright</label>
               <label className="px-2 hover:underline transition-all duration-300 ease-in-out hover:text-color-9">Contact us</label>
               <label className="px-2 hover:underline transition-all duration-300 ease-in-out hover:text-color-9">Creaters</label>

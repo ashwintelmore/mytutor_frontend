@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Buffer } from "buffer";
 import smallLogo from "../Posts/../../assets/brandng/small-logo.png";
-import cat_image3 from "../Posts/../../assets/cat_image3.jpg";
-import cat_image4 from "../Posts/../../assets/cat_image4.jpg";
-import cat_image5 from "../Posts/../../assets/cat_image5.jpg";
+// import cat_image3 from "../Posts/../../assets/cat_image3.jpg";
+// import cat_image4 from "../Posts/../../assets/cat_image4.jpg";
+// import cat_image5 from "../Posts/../../assets/cat_image5.jpg";
 // import cat_image0 from "../Posts/../../assets/cat_image0.jpeg";
 import cat_image0 from "../Posts/../../assets/Thumbnail1.png";
-import cat_image7 from "../Posts/../../assets/cat_image7.jpg";
-import cat_image8 from "../Posts/../../assets/cat_image8.jpg";
+// import cat_image7 from "../Posts/../../assets/cat_image7.jpg";
+// import cat_image8 from "../Posts/../../assets/cat_image8.jpg";
 
 import { Link } from "react-router-dom";
 import { getAllPosts } from "../../App/postAPI";
@@ -117,8 +117,8 @@ const Home = () => {
                         {item.postTitle}
                       </span>
 
-                      <div className="flex  sm:gap-[2px] items-center  absolute  bottom-3 sm:bottom-2 sm:left-2  left-3">
-                        <img src={smallLogo} className="sm:w-3 w-1/5"></img>
+                      <div className="flex  sm:gap-[2px] items-center  absolute  bottom-0 sm:bottom-2 sm:left-2  left-3">
+                        <img src={smallLogo} className="sm:w-3 h-[10%] w-[10%]"></img>
                         <label className="font-font-logo sm:text-xs text-white">{item.createdTutor.name}</label>
                       </div>
                     </div>
