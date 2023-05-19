@@ -40,12 +40,12 @@ export default function LoginForm() {
         {/* left field of login */}
         <div className="relative bg-white  w-[57%] h-full flex flex-col items-center xs:hidden sm:hidden">
           <div class="text-5xl w-[90%] font-extrabold flex my-4 justify-center">
-            <span class="bg-clip-text text-transparent py-2 bg-gradient-to-r from-color-9 to-color-12">
+            <span class="bg-clip-text text-transparent py-2 bg-gradient-to-r from-color-14 to-color-12">
               Welcome to My tutor
             </span>
           </div>
           <div class="text-3xl font-bold flex justify-center items-center">
-            <span class="bg-clip-text py-1 text-transparent bg-gradient-to-r from-color-12 to-color-9">
+            <span class="bg-clip-text py-1 text-transparent bg-gradient-to-r from-color-12 text-color-14">
               Start your new way of learning
             </span>
           </div>
@@ -58,13 +58,13 @@ export default function LoginForm() {
         </div>
         {/* right fiked of login page */}
         <div className="w-[43%] bg-white xs:w-full sm:w-full  dark:bg-color-11 dark:text-white sm:p-8 xs:mx-1 xs:p-7 xs:justify-evenly sm:justify-evenly sm:mx-1 mx-auto h-full flex flex-col py-16 px-7  justify-between items-center">
-          <h1 className="text-5xl text-[#075985] dark:text-white py-5 font-semibold">
+          <h1 className="text-5xl text-color-14 dark:text-white py-5 font-semibold">
             My Tutor
           </h1>
 
           <div className="w-full flex gap-2 flex-col  ">
             <div className="w-full flex flex-col mb-2">
-              <h3 className="text-3xl font-semibold mb-2 dark:text-white text-[#075985]">
+              <h3 className="text-3xl font-semibold mb-2 dark:text-white text-color-14">
                 Login
               </h3>
               <p className="text-sm mb-2 text-red-600">{error}</p>

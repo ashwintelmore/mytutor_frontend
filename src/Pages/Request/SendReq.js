@@ -4,20 +4,25 @@ import Meeting from "./Meeting";
 import Payment from "./Payment";
 // import Backrop from "../../Header/Backrop";
 import EditReq from "./EditReq";
+import { useAlert } from "../../Components/Alert";
 
 export default function SendReq({ requests, setRefreshReqData }) {
 
   const [meetingLink, setMeetingLink] = useState("");
   const [showPayment, setShowPayment] = useState(false);
   const [reqData, setReqData] = useState({});
+  const [showNotification, contextHolder] = useAlert()
 
 
 
 
-  const handleCopyClick = async () => {
+  const handleCopyClick = async (value) => {
+    console.log('e', value)
     try {
-      await navigator.clipboard.writeText(meetingLink);
+      await navigator.clipboard.writeText(value);
+      showNotification('Meeting link copied', '')
     } catch (err) {
+      showNotification('Failed to copy meeting link', '')
       console.error("Failed to copy meeting link: ", err);
     }
   };
@@ -61,6 +66,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
 
   return (
     <>
+      {contextHolder}
       <div
         ref={menuRef}
         className=" w-full p-4 flex flex-col gap-4 relative overflow-scroll xs:w-full xs:p-1 xs:ml-1">
@@ -102,8 +108,8 @@ export default function SendReq({ requests, setRefreshReqData }) {
                 </div>
                 <div className="flex justify-between w-full">
                   <div className="flex flex-col gap-2 text-xs w-full">
-                    {/* <p className="text-sm">message : {item.reqMassege}</p> */}
-                    {/* <p className="text-sm">Request for {item.reqTime} hour</p> */}
+                    <p className="text-sm">message : {item.reqMassege}</p>
+                    <p className="text-sm">Request for {item.reqTime} hour</p>
                     <div className="flex justify-between">
                       {
                         item.reqAccept ?
@@ -129,8 +135,12 @@ export default function SendReq({ requests, setRefreshReqData }) {
                       <>
                         <div className="">
 
-                          <button className="p-1 shadow-sm shadow-slate-500 rounded-xl dark:bg-color-11 dark:border bg-[#f5c782] " value={meetingLink}
-                            onChange={handleLinkChange} onClick={handleCopyClick}> Meeting Code : {item.meetingId?.meetingCode}</button>
+                          <button
+                            className="p-1 shadow-sm shadow-color-8 rounded-xl dark:bg-color-11 dark:border bg-color-4 text-white px-4  sm:text-[12px] sm:px-2"
+                            value={item.meetingId?.meetingCode}
+                            // onChange={handleLinkChange}
+                            onClick={() => handleCopyClick(item.meetingId?.meetingCode)}> Meeting Code : {item.meetingId?.meetingCode}
+                          </button>
                         </div>
 
                         {/* <p className="text-sm"> Meeting Name : {item.meetingName}</p> */}
