@@ -72,13 +72,13 @@ function SlotBooking({ isEditable }) {
                     isEditable
                     &&
                     <div className="p-2 gap-2 flex flex-col">
-                        <h2 className="text-lg text-color-13">Set Slot</h2>
+                        <h2 className="text-lg text-color-14 dark:text-white">Set Slot</h2>
                         <div className="flex gap-5">
                             <label className="w-[20%] px-2 py-1 text-base xs:text-xs" htmlFor="slots">Available: </label>
                             <select
                                 placeholder="select option"
                                 name="slots"
-                                className="rounded-xl w-[80%] shadow-sm dark:bg-color-11  dark:border shadow-black px-1"
+                                className="rounded-xl w-[80%]  dark:bg-color-11  dark:border transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none px-1"
                                 value={auth.user.slots.available}
                                 onChange={(e) => auth.setUser({ ...auth.user, slots: { ...auth.user.slots, available: e.target.value } })}
                             >
@@ -117,7 +117,7 @@ function SlotBooking({ isEditable }) {
                         isEditable
                         &&
                         <>
-                            <h2 className="font-semibold">Select Time Range</h2>
+                            <h2 className="font-semibold dark:text-white">Select Time Range</h2>
                             <div className="every sm:text-xs">
                                 <input
                                     type="checkbox"

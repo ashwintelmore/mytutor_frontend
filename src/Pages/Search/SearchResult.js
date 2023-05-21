@@ -281,13 +281,11 @@ const SearchResult = ({ search, category = "" }) => {
                 ) : users.length > 0 ? (
                   users.map((item, i) => (
                     <Link to={"/showProfile/" + item._id}>
-                      <div className="p-2 bg-blue-100 h-42 w-auto rounded-lg m-2 flex  ">
-                        <div className="flex  flex-row w-82">
-                          <img
-                            className="rounded-full h-32 w -32 mx-10 border-red-600 border-2"
-                            src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                            alt=""
-                          />
+                      <div className="p-2 bg-color-3 h-42 w-auto rounded-lg m-2 flex  ">
+                        <div className="flex items-center  flex-row w-82">
+                        <div className="bg-color-14 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
+                        <h1 className="absolute right-5 bottom-3  sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">K</h1>
+                      </div>
                           <div className="p-1 text-xs flex flex-col text-slate-600 py-8">
                             <div className="flex flex-col p-1">
                               <h1 classNamecmd="text-lg font-bold text-blue-900">

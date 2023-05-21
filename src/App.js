@@ -20,6 +20,7 @@ import SidebarClose from "./Header/SidebarClose";
 import React, { useState, useEffect } from "react";
 import Favourite from "./Pages/Favourite/Favourite";
 import AboutUs from "./Header/AboutUs";
+import Calender from "./Components/Calender";
 
 const App = () => {
   const auth = useAuth();
@@ -34,7 +35,7 @@ const App = () => {
         <Header setOpen={setOpen} open={open} />
         <SidebarClose setOpen={setOpen} open={open} />
         <Sidebar open={open} />
-        <div className="flex w-full mt-16  dark:bg-color-2 bg-color-3 relative">
+        <div className="flex w-full mt-16  dark:bg-color-16 bg-color-3 relative">
           <VerticalNav />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -98,6 +99,7 @@ const App = () => {
             <Route path="/favourite" element={<Favourite />} />
             <Route path="/aboutus" element={<AboutUs/>} />
             <Route path="/" element={<Dummy />} />
+            <Route path="/calender" element={<Calender />} />
           </Routes>
         </div>
       </BrowserRouter>

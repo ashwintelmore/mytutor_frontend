@@ -205,7 +205,7 @@ function Meeting({ show, setShow, data, setData }) {
         <div className="flex w-full  items-center justify-center xs:flex-col absolute z-20 top-4 left-0">
             {contextHolder}
             <div className=" bg-white dark:bg-color-11 transition-all duration-500 ease-in-out dark:border  w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-color-8 xs:flex-col xs:w-11/12">
-               <div className="flex  w-full justify-start"> <h2 className="text-color-4 py-2 px-4 text-2xl p-2   ">Meeting</h2></div>
+               <div className="flex  w-full justify-start"> <h2 className="text-[orange] py-2 px-4 text-2xl p-2   ">Meeting</h2></div>
 
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
 
@@ -281,7 +281,7 @@ function Meeting({ show, setShow, data, setData }) {
                                 <select
                                     placeholder="select option"
                                     name="meeting"
-                                    className="rounded-xl w-full shadow-sm dark:bg-color-11 dark:border shadow-black p-2"
+                                    className="rounded-xl w-full transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none dark:bg-color-11 dark:border  p-2"
                                     value={meeting.meetingName}
                                     onChange={(e) => onMeetingChange(e)}
                                 >
@@ -321,11 +321,11 @@ function Meeting({ show, setShow, data, setData }) {
                         <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                             <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                                 <label className="w-full p-2 text-base xs:text-base">Name of Meeting</label>
-                                <div className="flex items-center  relative border border-gray-500 shadow-slate-400 shadow-md text-sm   rounded-xl p-1  ">
+                                <div className="flex items-center  relative   transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none  text-sm   rounded-xl py-1 px-1  ">
                                     <input
                                         type="text"
                                         placeholder="Write something"
-                                        className="rounded-lg px-2 py-1 dark:bg-color-11   w-full  outline-none "
+                                        className="rounded-lg px-2 py-1 dark:bg-color-11   w-full  transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none "
                                         value={meeting.meetingName}
                                         onChange={(e) => setMeeting({ ...meeting, meetingName: e.target.value })}
                                     ></input>
@@ -333,7 +333,7 @@ function Meeting({ show, setShow, data, setData }) {
                                         !meeting._id
                                         &&
                                         <Button
-                                            className="absolute rounded-xl text-sm  h-7 w-fit dark:bg-color-11  dark:border  text-white right-1   bg-blue-500"
+                                            className="absolute rounded-xl text-sm  py-1 w-fit dark:bg-color-11  dark:border dark:border-white  text-white right-1   bg-color-14"
                                             type="primary"
                                             loading={loadings}
                                             onClick={() => generateMeetId()}
@@ -351,7 +351,7 @@ function Meeting({ show, setShow, data, setData }) {
                             <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                                 <label className="w-full p-2 text-base xs:text-base">Meeting Code</label>
                                 <input
-                                    className="rounded-xl w-full dark:bg-color-11 dark:border dark:text-white shadow-sm shadow-black p-2"
+                                    className="rounded-xl w-full dark:bg-color-11 dark:border dark:text-white transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
                                     type="text"
                                     name="code"
                                     value={meeting.meetingCode}

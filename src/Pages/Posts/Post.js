@@ -242,7 +242,7 @@ const Post = () => {
                     </div>
                   </div>
                   <div className="flex justify-between p-1 mx-1 items-center text-xl sm:text-xs xs:p-0">
-                    <h1 className=" line-clamp-5 font-font-primary px-2 sm:text-xs">
+                    <h1 className=" line-clamp-5 dark:text-white font-font-primary px-2 sm:text-xs">
                       {post.postTitle}
                     </h1>
                     <div className="flex   items-center gap-5 p-2 xs:gap-0  xs:p-1 sm:text-xs  sm:gap-1 px-4 ">
@@ -284,8 +284,8 @@ const Post = () => {
                       </div>
 
                       <div className="flex flex-col xs:text-xs cursor-pointer">
-                        <label className="text-lg">{post.createdTutor.name}</label>
-                        <label className="text-color-14 text-sm">{post.createdTutor.analytics.favorite} Favourite</label>
+                        <label className="text-lg dark:text-white">{post.createdTutor.name}</label>
+                        <label className="text-color-14 dark:text-white text-sm">{post.createdTutor.analytics.favorite} Favourite</label>
                       </div>
                     </div>
                   </Link>
@@ -307,8 +307,8 @@ const Post = () => {
                   }
                 </div>
                 <div className="flex items-center mx-2 sm:my-2 px-2 gap-3 xs:text-sm ">
-                  <div className="flex p-1 gap-1 ">
-                    <h3>286</h3>
+                  <div className="flex p-1 dark:text-white gap-1 ">
+                    <h3 className="dark:text-white">286</h3>
                     <label>Comments</label>
                   </div>
 
@@ -319,11 +319,9 @@ const Post = () => {
                     reqData.isPaymentComplete
                       ?
                       <div className=" relative flex items-center px-2 sm:w-[90%]  py-2 gap-4">
-                        <img
-                          className="rounded-full h-16 w-16 xs:h-12 xs:w-12 border-2 border-red-500"
-                          src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                          alt=""
-                        />
+                         <div className="bg-color-6 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
+                        <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">K</h1>
+                      </div>
                         <input
                           type="text"
                           placeholder="Add a public comment"
@@ -340,11 +338,9 @@ const Post = () => {
                       </div>
                       :
                       <div className=" sm:w-full relative flex items-center sm:gap-1 sm:p-0 p-2 gap-4">
-                        <img
-                          className="rounded-full h-16 w-16 xs:h-12 xs:w-12 border-2 border-red-500"
-                          src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                          alt=""
-                        />
+                          <div className="bg-color-6 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
+                        <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">K</h1>
+                      </div>
                         <input
                           type="text"
                           placeholder="You allow to comment on this after meeting"
@@ -374,11 +370,9 @@ const Post = () => {
                       comments.map((item, i) =>
                         <div className="flex flex-col  gap-1 ">
                           <div className="flex  gap-2  ">
-                            <img
-                              className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
-                              src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                              alt=""
-                            />
+                          <div className="bg-color-6 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
+                        <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">K</h1>
+                      </div>
                             <div className="flex justify-between w-full">
                               <div className="flex flex-col text-xs">
                                 <h3 className="text-violet-800 ">{item.learnerName}</h3>
@@ -404,7 +398,7 @@ const Post = () => {
                   :
                   post.createdTutor._id == auth.user._id ? //user to see all request recieved from other learner of that post
                     <div className=" flex  flex-col w-2/5 px-2 py-1 xs:w-full xs:p-1 sm:w-full  ">
-                      <h4 className="text-lg font-font-primary font-semibold mt-2 sm:px-2">All your requests  </h4>
+                      <h4 className="text-lg dark:text-white font-font-primary font-semibold mt-2 sm:px-2">All your requests  </h4>
                       <div className="flex flex-col p-4 gap-4 xs:p-2 xs:gap-2 xs:overflow-y-auto">
                         <RecievedReq
                           requests={requests}
@@ -414,7 +408,7 @@ const Post = () => {
                     ://learner will see
                     reqData.reqAccept ?
                       <div className=" flex  flex-col w-2/5 p-2 xs:w-full xs:p-1 sm:w-full  ">
-                        <h4 className="text-lg font-semibold mt-2">Your Request Accpeted</h4>
+                        <h4 className="text-lg dark:text-white font-semibold mt-2">Your Request Accpeted</h4>
                         <SendReq
                           requests={[reqData]}
                         />

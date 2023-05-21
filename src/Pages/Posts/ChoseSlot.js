@@ -136,9 +136,9 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                 {contextHolder}
                 {
                     reqData._id ?
-                        <h4 className="text-lg font-semibold mt-2">Your Previous Request </h4>
+                        <h4 className="text-lg font-semibold mt-2 dark:text-white">Your Previous Request </h4>
                         :
-                        <h4 className="text-lg font-semibold mt-2">Select available dates</h4>
+                        <h4 className="text-lg font-semibold mt-2 dark:text-white">Select available dates</h4>
                 }
                 {/* calender */}
                 <MultipleDatePicker
@@ -149,7 +149,7 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                     onChangeReValue={e => setReqData({ ...reqData, reqDates: e })}
                 />
                 <div className="flex flex-col p-3 xs:p-1  xs:mt-3 xs:gap-2">
-                    <h3 className="">Available Time Ranges</h3>
+                    <h3 className="dark:text-white">Available Time Ranges</h3>
                     <div>
                         {
                             !userData.slots.isEveryTime && userData.slots.timeRange?.map((item, i) => (
@@ -166,7 +166,7 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                             ))
                         }
                     </div>
-                    <h3 className="mt-5">Select Available Time</h3>
+                    <h3 className="mt-5 dark:text-white">Select Available Time</h3>
                     <div className="w-full xs:w-full  h-auto p-2 xs:p-1 flex flex-wrap gap-2 xs:gap-1 justify-evenly dark:text-black ">
 
 
@@ -194,9 +194,9 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                     </div>
                 </div>
                 <div className="p-3 w-4/5 flex flex-col gap-1">
-                    <h3 className="font-semibold">Message</h3>
+                    <h3 className="font-semibold dark:text-white">Message</h3>
                     <input
-                        className="w-full p-2 rounded-2xl outline-none shadow-sm  dark:border  dark:bg-color-11 shadow-color-8"
+                        className="w-full p-2 rounded-2xl   dark:border  dark:bg-color-11 transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none"
                         placeholder="Write something..."
                         type='text'
                         value={reqData.reqMassege}
@@ -213,7 +213,7 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                                     {
                                         !reqData.cancelStatus
                                         &&
-                                        <button className="w-fit h-10 px-2 mx-2 bg-[#f86a6a] text-white font-semibold dark:text-black  rounded-lg p-1"
+                                        <button className="w-fit h-10 px-2 mx-2 bg-[#f86a6a] text-white font-semibold  dark:text-white  rounded-lg p-1"
                                             onClick={() => onRequestCancel()}
                                         >
                                             Cancel Request
@@ -227,7 +227,7 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                                     </button>
                                 </>
                                 :
-                                <button className="w-fit h-10 px-2 bg-color-4 text-white font-semibold dark:text-black  rounded-lg p-1"
+                                <button className="w-fit h-10 px-2 bg-color-4 text-white font-semibold dark:text-white  rounded-lg p-1"
                                     onClick={() => onHandleRequest()}
                                 >
                                     Request for Slot
