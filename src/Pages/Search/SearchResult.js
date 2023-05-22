@@ -87,7 +87,7 @@ const SearchResult = ({ search, category = "" }) => {
                 type="text"
                 placeholder="search"
                 name="search"
-                className="w-full px-4 py-2 shadow-sm shadow-color-8 border-color-8  dark:border-2 dark:border-white dark:text-white dark:bg-color-11 rounded-2xl outline-none"
+                className="w-full px-4 py-2 transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none dark:border-2 dark:border-white dark:text-white dark:bg-color-11 rounded-2xl "
                 value={queryData.search}
                 onChange={(e) => onChangeFilter(e)}></input>
 
@@ -109,7 +109,7 @@ const SearchResult = ({ search, category = "" }) => {
                   <select
                     placeholder="select option"
                     name="sort"
-                    className="rounded-xl w-full shadow-sm dark:bg-color-11 dark:border shadow-black p-2"
+                    className="rounded-xl w-full  dark:bg-color-11 dark:border transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
                     onChange={(e) => onChangeFilter(e)}
                     value={queryData.sort}>
                     <option value={""}>Select</option>
@@ -130,7 +130,7 @@ const SearchResult = ({ search, category = "" }) => {
                   <select
                     placeholder="select option"
                     name="category"
-                    className="rounded-xl dark:bg-color-11 dark:border  w-full shadow-sm shadow-black p-2"
+                    className="rounded-xl dark:bg-color-11 dark:border  w-full transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
                     onChange={(e) => onChangeFilter(e)}
                     value={queryData.category}>
                     <option value={""}>All</option>

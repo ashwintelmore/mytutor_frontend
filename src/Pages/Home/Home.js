@@ -153,7 +153,7 @@ const Home = () => {
                         <di className="h-4 w-4 bg-color-10 rounded-full sm:h-2 sm:w-2"></di>
                         <label className="text-sm sm:text-xs text-color-9 dark:text-white font-light">{item.createdTutor.analytics.favorite} favorite</label>
                       </div>
-                      <button className="bg-white text-color-4 sm:w-auto px-7  sm:px-3  rounded-xl p-1 dark:bg-color-2 dark:border">
+                      <button className="bg-white text-color-4 sm:w-auto px-7  sm:px-3  rounded-xl p-1 dark:text-[orange] dark:border">
                         Rs.{item.pricePerHour || item.charges}/-
                       </button>
                     </div>

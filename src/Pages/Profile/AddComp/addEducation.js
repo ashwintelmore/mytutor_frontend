@@ -44,12 +44,12 @@ function Education({ show, setShow, }) {
     <div className="flex w-full  items-center justify-center xs:flex-col fixed overflow-scroll h-screen top-0 left-0 z-[12]">
       <div className=" bg-color-3 dark:bg-color-11 transition-all duration-500 ease-in-out dark:border dark:text-white z-[9] absolute my-[10%] top-0 px-6  w-4/6 h-auto py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-color-8 xs:flex-col xs:w-11/12">
         <div className="flex w-full">
-          <h2 className="text-[orange] text-3xl sm:text-xl  font-medium px-4 py-3  ">Education</h2></div>
+          <h2 className="text-color-14 text-3xl sm:text-xl  font-medium px-4 py-3  ">Education</h2></div>
 
         <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full sm:flex-col sm:w-full">
           <div className="flex flex-col relative  w-[45%] p-2  xs:w-full sm:w-full">
-            <label className="w-full p-2 text-base xs:text-base">Name of Education</label>
-            <input className="rounded-xl dark:bg-color-11 dark:border w-full transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2" type="text"
+            <label className="w-full p-2  text-base xs:text-base">Name of Education</label>
+            <input className="rounded-xl dark:bg-color-11 dark:border w-full transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2" type="text"
               name="title"
               onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
               value={userData.title}
