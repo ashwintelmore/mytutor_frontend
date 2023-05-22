@@ -1,5 +1,8 @@
 # TODO list / Tasks
 ### 
+### meeting link should be active   
+- [ ]  call notifiactio
+- [ ]  non loged 
 
 category=>
 
@@ -28,6 +31,8 @@ category=>
 - [ ] change all input border color hover and active
 - [ ] all boxes should color-3
 - [ ] after click on send loader should display
+
+
 ### Backend 
 - [ ] check all input should not empty
 - [ ] each category added priority
