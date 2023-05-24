@@ -224,13 +224,13 @@ const Post = () => {
                     <h4 className="xs:text-xs text-color-8"> {post.postType == "learner" ? "I want to learn" : "I can teach"}</h4>
                     <i className="fa-sharp fa-solid fa-ellipsis-vertical text-xl xs:text-xs"></i>
                   </div>
-                  <div className="bg-color-4    rounded-xl h-auto mx-3 xs:w-[97%]  xs:m-1 ">
-                    <img src={postImgCollection[post.thumbnailUrl.image]} className="w-full relative h-auto sm:h-[40%] rounded-xl"></img>
-                    <span className=" absolute sm:text-lg top-32 sm:top-28 text-4xl sm:left-14 left-32 font-font-logo  text-white w-[20%] line-clamp-4 sm:line-clamp-2   ">
+                  <div className="bg-color-4  relative  rounded-xl h-auto mx-3 xs:w-[97%]  xs:m-1 ">
+                    <img src={postImgCollection[post.thumbnailUrl.image]} className="w-full  h-auto sm:h-[40%] rounded-xl"></img>
+                    <span className=" absolute sm:text-lg top-14 sm:top-14 text-3xl sm:left-10 left-10 font-font-logo  text-white w-[30%] line-clamp-4 sm:line-clamp-2 p-2  ">
                       {post.postTitle}
                     </span>
 
-                    <div className="flex gap-2 sm:gap-[2px] items-center absolute  top-[450px] sm:top-44 text-2xl   sm:left-14  left-32">
+                    <div className="flex gap-2 sm:gap-[2px] items-center absolute  top-[230px] sm:top-32 text-2xl   sm:left-10  left-10">
                       <img src={cat_image1} className="h-5 sm:h-3 sm:w-3 w-5"></img>
                       <label className="font-font-logo sm:text-xs text-white">Username</label>
                     </div>
