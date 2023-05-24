@@ -10,6 +10,8 @@ import { updateUser } from "../../App/Api";
 import { getPost } from "../../App/postAPI";
 import { createPayment, getPayment, updatePayment } from "../../App/paymentApi";
 import { postImgCollection } from "../../assets/postImages/postImg";
+import { NotiMassages } from "../../Components/Helper/NotiMassages";
+import { createNotification } from "../../App/NotificationApi";
 
 
 
@@ -141,7 +143,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
             showNotification("Profile Updated successfully")
         }
     };
-
+    console.log('payment', payment)
     const onCreatePayment = async () => {
         //upreqDatate payment , request
 
@@ -176,10 +178,34 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
 
             }
 
+
             const res = await updateRequest(_reqData)
             console.log('res', res)
             if (res.payload) {
-                // showNotification("Request updated Successfull")
+                showNotification("Request updated Successfull")
+                //send notification
+
+                let notiData = {
+                    recieverId: resp.payload.learnerId,
+                    senderId: auth.user._id,
+                    type: 'payment',
+                    requestId: resp.payload.requestId,
+                    postId: resp.payload.postId,
+                    paymentId: resp.payload._id,
+                    message: NotiMassages.PAYMENT_INITIATED,
+                    read: false,
+                }
+                const resNotify = await createNotification(notiData)
+                console.log('resNotify', resNotify)
+                if (resNotify.error) {
+                    //error
+                    showNotification(resNotify.error.errMessage)
+                } else if (resNotify.payload) {
+                    //send notification to tutor that received request
+                    console.log('resNotify.payload', resNotify.payload)
+                    // showNotification(resNotify.message)
+                }
+
             } else if (res.error) {
                 showNotification(res.error.errMessage)
             }
@@ -202,6 +228,28 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         if (resp.payload) {
             setPayment(resp.payload)
             showNotification("Payment Request updated")
+
+            //send notification
+            let notiData = {
+                recieverId: resp.payload.learnerId,
+                senderId: auth.user._id,
+                type: 'payment',
+                requestId: resp.payload.requestId,
+                postId: resp.payload.postId,
+                paymentId: resp.payload._id,
+                message: NotiMassages.PAYMENT_UPDATED,
+                read: false,
+            }
+            const resNotify = await createNotification(notiData)
+            console.log('resNotify', resNotify)
+            if (resNotify.error) {
+                //error
+                showNotification(resNotify.error.errMessage)
+            } else if (resNotify.payload) {
+                //send notification to tutor that received request
+                console.log('resNotify.payload', resNotify.payload)
+                // showNotification(resNotify.message)
+            }
         } else if (resp.error) {
             showNotification(resp.error.errMessage)
         }
@@ -212,15 +260,20 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
 
         if (_payment.paymentStatus?.isCompletd) {
             // setPayStatus(5)
+            //send notification
             return 5;
         } else if (_payment.paymentStatus?.isReceivedByTutor) {
             // setPayStatus(3)
+
             return 3;
         } else if (_payment.paymentStatus?.isDoneByLearner) {
             // setPayStatus(2)
+            //send notification
+
             return 2;
         } else if (_payment._id) {
             // setPayStatus(1)
+
             return 1;
         } else {
             // setPayStatus(-1)
@@ -228,7 +281,30 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         }
     };
 
-    const onPaymentStatusChange = (value) => {
+    const onPaymentStatusChange = async (value) => {
+
+        let notiData = {
+            recieverId: payment.tutorId,
+            senderId: auth.user._id,
+            type: 'payment',
+            requestId: payment.requestId,
+            postId: payment.postId,
+            paymentId: payment._id,
+            message: NotiMassages.PAYMENT_DONE_BYLERNER,
+            read: false,
+        }
+        const resNotify = await createNotification(notiData)
+        console.log('resNotify', resNotify)
+        if (resNotify.error) {
+            //error
+            showNotification(resNotify.error.errMessage)
+        } else if (resNotify.payload) {
+            //send notification to tutor that received request
+            console.log('resNotify.payload', resNotify.payload)
+            // showNotification(resNotify.message)
+        }
+
+
         setPayment((prev, tet) => ({
             ...prev,
             paymentStatus: {
@@ -239,6 +315,75 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
 
         setIsDoneStateChanges(true)
     }
+    const onPaymentReceivedStatus = async (value) => {
+
+
+        if (value == 'received') {
+            if (window.confirm("Alert!! Once you clicked on ok you will not allow to undo that status")) {
+                setPayment({
+                    ...payment,
+                    paymentStatus: {
+                        ...payment.paymentStatus,
+                        isReceivedByTutor: true,
+                        isCompletd: true,
+                    }
+                })
+                setIsDoneStateChanges(!isDoneStateChanges)
+
+                let notiData = {
+                    recieverId: payment.learnerId,
+                    senderId: auth.user._id,
+                    type: 'payment',
+                    requestId: payment.requestId,
+                    postId: payment.postId,
+                    paymentId: payment._id,
+                    message: NotiMassages.PAYMENT_RECEVED_BYTUTOTR,
+                    read: false,
+                }
+                const resNotify = await createNotification(notiData)
+                console.log('resNotify', resNotify)
+                if (resNotify.error) {
+                    //error
+                    showNotification(resNotify.error.errMessage)
+                } else if (resNotify.payload) {
+                    //send notification to tutor that received request
+                    console.log('resNotify.payload', resNotify.payload)
+                    // showNotification(resNotify.message)
+                }
+
+            }
+        } else {//not received
+            setPayment({
+                ...payment,
+                paymentStatus: {
+                    ...payment.paymentStatus,
+                    isReceivedByTutor: false,
+                    isCompletd: false
+                }
+            })
+
+            let notiData = {
+                recieverId: payment.learnerId,
+                senderId: auth.user._id,
+                type: 'payment',
+                requestId: payment.requestId,
+                postId: payment.postId,
+                paymentId: payment._id,
+                message: NotiMassages.PAYMENT_RECEVED_BYTUTOTR,
+                read: false,
+            }
+            const resNotify = await createNotification(notiData)
+            console.log('resNotify', resNotify)
+            if (resNotify.error) {
+                //error
+                showNotification(resNotify.error.errMessage)
+            } else if (resNotify.payload) {
+                //send notification to tutor that received request
+                console.log('resNotify.payload', resNotify.payload)
+                // showNotification(resNotify.message)
+            }
+        }
+    }
 
     const renderPaymentStatusBtn = (payment) => {
         if (!payment._id || payment.paymentStatus.isCompletd || !payment.paymentStatus.isDoneByLearner) {
@@ -247,35 +392,14 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
 
             return (
                 <button className="xs:w-2/5 bg-[#9a9a9a] text-white rounded-xl p-2 w-[15%]"
-                    onClick={() =>
-                        setPayment({
-                            ...payment,
-                            paymentStatus: {
-                                ...payment.paymentStatus,
-                                isReceivedByTutor: false,
-                                isCompletd: false
-                            }
-                        })
-                    }
+                    onClick={() => onPaymentReceivedStatus('not_received')}
                 >Not Recieved
                 </button>
             )
         } else if (payment._id && payment.paymentStatus.isDoneByLearner) {
             return (
                 <button className="xs:w-2/5 bg-[#30f65e] text-white rounded-xl p-2 w-[15%]"
-                    onClick={() => {
-                        if (window.confirm("Alert!! Once you clicked on ok you will not allow to undo that status")) {
-                            setPayment({
-                                ...payment,
-                                paymentStatus: {
-                                    ...payment.paymentStatus,
-                                    isReceivedByTutor: true,
-                                    isCompletd: true,
-                                }
-                            })
-                            setIsDoneStateChanges(!isDoneStateChanges)
-                        }
-                    }}
+                    onClick={() => onPaymentReceivedStatus('received')}
                 >Recieved
                 </button>
             )
@@ -306,7 +430,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         }
     };
 
-
+    console.log('paystatus', payStatus)
     if (!showPayment)
         return null;
     return (

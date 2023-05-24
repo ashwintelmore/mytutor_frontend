@@ -21,6 +21,7 @@ import React, { useState, useEffect } from "react";
 import Favourite from "./Pages/Favourite/Favourite";
 import AboutUs from "./Header/AboutUs";
 import Calender from "./Components/Calender";
+import Notification from "./Pages/Notification/Notification";
 
 const App = () => {
   const auth = useAuth();
@@ -44,7 +45,7 @@ const App = () => {
               path="login"
               element={
                 auth.user._id ? (
-                  <Navigate replace to="/profile" />
+                  <Navigate replace to="/" />
                 ) : (
                   <LoginForm />
                 )
@@ -89,6 +90,16 @@ const App = () => {
                 )
               }
             />
+            <Route
+              path="notification"
+              element={
+                auth.user._id ? (
+                  <Notification />
+                ) : (
+                  <Navigate replace to="/login" />
+                )
+              }
+            />
             <Route path="/profile" element={<Profile />} />
             <Route path="/showProfile/:id?" element={<ShowProfile />} />
             <Route path="/postcontent/:id?" element={<Post />} />
@@ -97,9 +108,9 @@ const App = () => {
             <Route path="/appointement" element={<Appointement />} />
             <Route path="/search/:catName?" element={<SearchResult />} />
             <Route path="/favourite" element={<Favourite />} />
-            <Route path="/aboutus" element={<AboutUs/>} />
-            <Route path="/" element={<Dummy />} />
+            <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/calender" element={<Calender />} />
+            <Route path="*" element={<Dummy />} />
           </Routes>
         </div>
       </BrowserRouter>

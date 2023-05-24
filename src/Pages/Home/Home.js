@@ -69,8 +69,6 @@ const Home = () => {
 
     getallpost();
   }, []);
-  console.log("posts", posts);
-  console.log("categories", categories);
   // if (auth.loading)
   //   return <Loader />
   return (
