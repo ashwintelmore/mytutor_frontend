@@ -59,7 +59,7 @@ function TagsInput({ resTags, setResTags, isEditable }) {
         isEditable
         &&
         <input
-          className="  rounded-xl w-full  p-2  dark:bg-color-11 dark:border transition-all ease-in-out bg-color-3 border-white focus:ring-[#6868ea]  duration-500 focus:border-color-17 border-[2px] outline-none "
+          className="  rounded-xl w-full  p-2  dark:bg-color-11 dark:border transition-all ease-in-out bg-color-3 border-[#4f6da877] focus:ring-[#6868ea]  duration-500 focus:border-color-17 border-[2px] outline-none "
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}

@@ -58,7 +58,7 @@ function Education({ show, setShow, }) {
           </div>
           <div className="flex flex-col   w-[45%] p-2 xs:w-full sm:w-full">
             <label className="w-full p-2 text-base xs:text-base">School/College/University</label>
-            <input className="rounded-xl w-full dark:bg-color-11 dark:border transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2" type="text"
+            <input className="rounded-xl w-full dark:bg-color-11 dark:border transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2" type="text"
               name="orginization"
               onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
               value={userData.orginization}
@@ -70,7 +70,7 @@ function Education({ show, setShow, }) {
         <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full sm:flex-col sm:w-full">
           <div className="flex flex-col   w-[45%]  p-2  xs:w-full sm:w-full  ">
             <label className="w-full text-base p-2 ">From</label>
-            <input className="  rounded-xl w-full dark:bg-color-11 dark:text-white dark:border  p-2 transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none" type="date"
+            <input className="  rounded-xl w-full dark:bg-color-11 dark:text-white dark:border  p-2 transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none" type="date"
               name="from"
               onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
               value={userData.from}
@@ -80,7 +80,7 @@ function Education({ show, setShow, }) {
           </div>
           <div className="flex flex-col  xs:w-full  w-[45%] p-2 justify-around sm:w-full ">
             <label className="w-full text-base p-2">To</label>
-            <input className="  rounded-xl w-full p-2 dark:bg-color-11 dark:text-white dark:border  transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none" type="date"
+            <input className="  rounded-xl w-full p-2 dark:bg-color-11 dark:text-white dark:border  transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none" type="date"
               name="to"
               onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
               value={userData.date}
@@ -94,7 +94,7 @@ function Education({ show, setShow, }) {
 
           <div className="flex  flex-col  w-[45%]  p-2 xs:w-full sm:w-full">
             <label className="w-full p-2 text-base xs:w-1/4">Location</label>
-            <input className="  rounded-xl w-full p-2 dark:bg-color-11 dark:border transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none" type="text"
+            <input className="  rounded-xl w-full p-2 dark:bg-color-11 dark:border transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none" type="text"
               name="location"
               onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
               value={userData.location}
@@ -106,7 +106,7 @@ function Education({ show, setShow, }) {
 
         <div className="p-1">
           <h2>Description :</h2>
-          <textarea rows={5} cols={110} className="rounded-2xl px-2 py-1 xs:h-24 w-4/5 xs:w-11/12 dark:bg-color-11 dark:border transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none sm:w-full"
+          <textarea rows={5} cols={110} className="rounded-2xl px-2 py-1 xs:h-24 w-4/5 xs:w-11/12 dark:bg-color-11 dark:border transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none sm:w-full"
             name="descrp"
             onChange={(e) => setUserData({ ...userData, [e.target.name]: e.target.value })}
             value={userData.descrp}

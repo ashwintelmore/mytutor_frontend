@@ -73,6 +73,11 @@ function SlotBooking({ isEditable }) {
                     &&
                     <div className="p-2 gap-2 flex flex-col">
                         <h2 className="text-lg text-color-14 dark:text-white">Set Slot</h2>
+                        <div className="flex w-full justify-evenly placeholder:">
+                            <div className="text-lg"><i class="fa-solid fa-calendar-check text-color-10 bg-color-5 rounded-full p-[5px]"> </i> Available</div>
+                            <div className="text-lg"><i class="fa-solid fa-calendar-xmark text-color-13 bg-color-5 rounded-full p-[5px]"></i> Not Available</div>
+                            <div className="text-lg"><i class="fa-solid fa-calendar-plus text-color-14 bg-color-5 rounded-full p-[5px]"></i> Selected</div>
+                        </div>
                         <div className="flex gap-5">
                             <label className="w-[20%] px-2 py-1 text-base xs:text-xs" htmlFor="slots">Available: </label>
                             <select

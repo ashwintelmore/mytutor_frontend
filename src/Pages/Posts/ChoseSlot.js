@@ -141,6 +141,11 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                         <h4 className="text-lg font-semibold mt-2 dark:text-white">Select available dates</h4>
                 }
                 {/* calender */}
+                <div className="flex w-full py-2 justify-evenly placeholder:">
+                            <div className="text-lg"><i class="fa-solid fa-calendar-check text-color-10 bg-color-5 rounded-full p-[5px]"> </i> Available</div>
+                            <div className="text-lg"><i class="fa-solid fa-calendar-xmark text-color-13 bg-color-5 rounded-full p-[5px]"></i> Not Available</div>
+                            <div className="text-lg"><i class="fa-solid fa-calendar-plus text-color-14 bg-color-5 rounded-full p-[5px]"></i> Selected</div>
+                        </div>
                 <MultipleDatePicker
                 
                     value={userData.slots.customDates}

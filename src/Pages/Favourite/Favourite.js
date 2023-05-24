@@ -50,7 +50,7 @@ function Favourite() {
   return (
     <div className="bg-white w-full dark:bg-color-11 transition-all duration-500 ease-in-out rounded-3xl sm:ml-0 sm:h-screen ml-16 py-4 px-2">
       <div id="result " className="w-1/2 mt-16 dark:bg-color-11  p-2 relative sm:w-full">
-        <div className="w-full fixed z-[11]  dark:bg-color-11 dark:text-white bg-white top-16 ">
+        <div className="w-full fixed z-[10]  dark:bg-color-11 dark:text-white bg-white top-16 ">
           <h1 className="text-color-14   font-semibold  px-4 py-4  w-fit text-2xl ">
             Your Favourite Tutors
           </h1>

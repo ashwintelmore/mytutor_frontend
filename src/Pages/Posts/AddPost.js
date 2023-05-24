@@ -130,7 +130,7 @@ function AddPost({ show, setShow, post, reFresh }) {
     <div className="flex w-full h-screen items-center transition-all ease-in-out   duration-500 justify-center xs:flex-col  fixed left-0 ,  top-0 overflow-scroll  z-20">
       {contextHolder}
       <div className=" bg-color-3 dark:bg-color-11 z-[9] dark:text-white dark:border absolute my-[10%] top-0 w-4/6 px-6 py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-color-8 xs:flex-col xs:w-11/12   ">
-        <h2 className="text-[#f48c2b] top-0 left-2 text-3xl px-4 py-3 font-medium absolute ">
+        <h2 className="text-color-14 top-0 left-2 text-3xl px-4 py-3 font-medium absolute ">
           Add Post
         </h2>
 
@@ -144,7 +144,7 @@ function AddPost({ show, setShow, post, reFresh }) {
             <select
               placeholder="select option"
               name="postType"
-              className="rounded-xl w-full dark:bg-color-11 bg-color-3 dark:border  transition-all ease-in-out border-white focus:ring-[#6868ea]  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
+              className="rounded-xl w-full dark:bg-color-11 bg-color-3 dark:border  transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea]  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
               onChange={(e) =>
                 setUserData({ ...userData, [e.target.name]: e.target.value })
               }
@@ -166,7 +166,7 @@ function AddPost({ show, setShow, post, reFresh }) {
             <select
               placeholder="select option"
               name="category"
-              className="rounded-xl dark:bg-color-11 dark:border bg-color-3  w-full transition-all ease-in-out border-white focus:ring-[#6868ea]  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
+              className="rounded-xl dark:bg-color-11 dark:border bg-color-3  w-full transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea]  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
               onChange={(e) =>
                 setUserData({ ...userData, [e.target.name]: e.target.value })
               }
@@ -189,7 +189,7 @@ function AddPost({ show, setShow, post, reFresh }) {
               Title Of Post
             </label>
             <input
-              className="rounded-xl dark:bg-color-11 dark:border bg-color-3 w-full  transition-all ease-in-out border-white focus:ring-[#6868ea]  duration-500 focus:border-color-17 border-[2px] outline-none p-2 "
+              className="rounded-xl dark:bg-color-11 dark:border bg-color-3 w-full  transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea]  duration-500 focus:border-color-17 border-[2px] outline-none p-2 "
               type="text"
               name="postTitle"
               onChange={(e) =>
@@ -202,7 +202,7 @@ function AddPost({ show, setShow, post, reFresh }) {
           <div className="flex flex-col   w-[45%]  p-2  xs:w-full  ">
             <label className="w-full text-base p-2 ">Offering Charges</label>
             <input
-              className=" dark:bg-color-11 dark:border bg-color-3  rounded-xl w-full  p-2 transition-all ease-in-out border-white focus:ring-[#6868ea]  duration-500 focus:border-color-17 border-[2px] outline-none"
+              className=" dark:bg-color-11 dark:border bg-color-3  rounded-xl w-full  p-2 transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea]  duration-500 focus:border-color-17 border-[2px] outline-none"
               type="number"
               name="charges"
               onChange={(e) =>
@@ -245,7 +245,7 @@ function AddPost({ show, setShow, post, reFresh }) {
           <textarea
             rows={5}
             cols={112}
-            className="rounded-2xl w-full dark:bg-color-11 dark:border  pl-2 xs:h-24  xs:w-11/12 transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none"
+            className="rounded-2xl w-full dark:bg-color-11 dark:border  pl-2 xs:h-24  xs:w-11/12 transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none"
             name="descrp"
             onChange={(e) =>
               setUserData({ ...userData, [e.target.name]: e.target.value })
