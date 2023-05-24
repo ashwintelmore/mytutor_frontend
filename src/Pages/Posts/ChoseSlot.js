@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import { Radio, Tag, notification } from "antd";
 import { createRequest, updateRequest } from '../../App/RequestApi';
 import MultipleDatePicker from '../../Components/Helper/multiDate';
+import { useAlert } from '../../Components/Alert';
+import { NotiMassages } from '../../Components/Helper/NotiMassages';
+import { createNotification } from '../../App/NotificationApi';
 
 
 export default function ChoseSlot({ post, userData, _reqData }) {
@@ -12,20 +15,10 @@ export default function ChoseSlot({ post, userData, _reqData }) {
         return ['0', '1', ' 2', '3', '4', '5', '6']
     }, [])
 
-    const [api, contextHolder] = notification.useNotification();
+    const [showNotification, contextHolder] = useAlert();
     notification.config({
         duration: 0,
     })
-
-    const showNotification = (e) => {
-        api.info({
-            message: ` ${e}`,
-            description: "test",
-            e,
-        });
-    };
-
-
     const auth = useAuth()
     const [reqData, setReqData] = useState({
         ..._reqData,
@@ -64,7 +57,6 @@ export default function ChoseSlot({ post, userData, _reqData }) {
     };
     const onHandleRequest = async (e) => {
 
-
         const data = {
             ...reqData,
             requesterName: auth.user.name,
@@ -84,6 +76,27 @@ export default function ChoseSlot({ post, userData, _reqData }) {
             // updatePostRequest(res.payload)
             setReqData(res.payload)
             showNotification("Request send successfully")
+
+            //send notification
+            let notiData = {
+                recieverId: userData._id,
+                senderId: auth.user._id,
+                type: 'request',
+                requestId: res.payload._id,
+                postId: post._id,
+                message: NotiMassages.REQUEST_RECEIVED,
+                read: false,
+            }
+            const resNotify = await createNotification(notiData)
+            console.log('resNotify', resNotify)
+            if (resNotify.error) {
+                //error
+                showNotification(resNotify.error.errMessage)
+            } else if (resNotify.payload) {
+                //send notification to tutor that received request
+                console.log('resNotify.payload', resNotify.payload)
+                // showNotification(resNotify.message)
+            }
         }
     };
     const onHandleRequestUpdate = async (e) => {
@@ -101,6 +114,27 @@ export default function ChoseSlot({ post, userData, _reqData }) {
             // updatePostRequest(res.payload)
             setReqData(res.payload)
             showNotification("Request Updated successfully")
+
+            //send notification
+            let notiData = {
+                recieverId: userData._id,
+                senderId: auth.user._id,
+                type: 'request',
+                requestId: res.payload._id,
+                postId: post._id,
+                message: NotiMassages.REQUEST_UPDATED,
+                read: false,
+            }
+            const resNotify = await createNotification(notiData)
+            console.log('resNotify', resNotify)
+            if (resNotify.error) {
+                //error
+                showNotification(resNotify.error.errMessage)
+            } else if (resNotify.payload) {
+                //send notification to tutor that received request
+                console.log('resNotify.payload', resNotify.payload)
+                // showNotification(resNotify.message)
+            }
         }
     };
     const onRequestCancel = async (e) => {
@@ -123,6 +157,27 @@ export default function ChoseSlot({ post, userData, _reqData }) {
             // updatePostRequest(res.payload)
             setReqData(res.payload)
             showNotification("Request Canceled successfully")
+
+            //send notification
+            let notiData = {
+                recieverId: userData._id,
+                senderId: auth.user._id,
+                type: 'request',
+                requestId: res.payload._id,
+                postId: post._id,
+                message: NotiMassages.REQUEST_CANCELED,
+                read: false,
+            }
+            const resNotify = await createNotification(notiData)
+            console.log('resNotify', resNotify)
+            if (resNotify.error) {
+                //error
+                showNotification(resNotify.error.errMessage)
+            } else if (resNotify.payload) {
+                //send notification to tutor that received request
+                console.log('resNotify.payload', resNotify.payload)
+                // showNotification(resNotify.message)
+            }
         }
     };
 
@@ -142,7 +197,7 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                 }
                 {/* calender */}
                 <MultipleDatePicker
-                
+
                     value={userData.slots.customDates}
                     available={userData.slots.available}
                     reqValue={reqData.reqDates}

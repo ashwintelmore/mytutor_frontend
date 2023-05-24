@@ -28,7 +28,7 @@ function AddPost({ show, setShow, post, reFresh }) {
   });
 
   const [cats, setCats] = useState([]);
-  console.log('post', post)
+
   //fetch all categoreis
 
   useEffect(() => {
@@ -64,10 +64,10 @@ function AddPost({ show, setShow, post, reFresh }) {
       return
 
     const emptyFields = isEmptyObjects(userData, 'descrp')
-    console.log('emptyFields', emptyFields)
+
     if (emptyFields) {
       const message = emptyFields.join(', ') + " should not empty"
-      console.log('message', message)
+
       showNotification(message, '')
       return
     }
@@ -96,9 +96,7 @@ function AddPost({ show, setShow, post, reFresh }) {
   };
   const onUpdateDetails = async () => {
 
-    console.log('userData', userData)
     const res = await updatePost(userData._id, userData)
-    console.log('res', res)
     if (res.error) {
       //handle error
     } else if (res.payload) {
@@ -123,7 +121,6 @@ function AddPost({ show, setShow, post, reFresh }) {
     setUserData({ ...userData, thumbnailUrl: { ...userData.thumbnailUrl, image: value } })
   };
 
-  console.log('userData', userData)
   if (!show) return null;
   return (
     // <form action="/" enctype="multipart/form-data">

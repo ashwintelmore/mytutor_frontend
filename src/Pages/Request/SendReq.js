@@ -1,11 +1,14 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Meeting from "./Meeting";
 import Payment from "./Payment";
 // import Backrop from "../../Header/Backrop";
 import EditReq from "./EditReq";
+import { useAlert } from "../../Components/Alert";
+import { getTimeAgo } from "../../Components/Helper/helper";
 
 export default function SendReq({ requests, setRefreshReqData }) {
+  const [showNotification, contextHolder] = useAlert()
 
   const [meetingLink, setMeetingLink] = useState("");
   const [showPayment, setShowPayment] = useState(false);
@@ -13,14 +16,17 @@ export default function SendReq({ requests, setRefreshReqData }) {
 
 
 
-
-  const handleCopyClick = async () => {
+  const handleCopyClick = async (value) => {
+    console.log('e', value)
     try {
-      await navigator.clipboard.writeText(meetingLink);
+      await navigator.clipboard.writeText(value);
+      showNotification('Meeting link copied', '')
     } catch (err) {
+      showNotification('Failed to copy meeting link', '')
       console.error("Failed to copy meeting link: ", err);
     }
   };
+
 
   const handleLinkChange = (event) => {
     setMeetingLink(event.target.value);
@@ -57,10 +63,11 @@ export default function SendReq({ requests, setRefreshReqData }) {
   };
 
   // console.log('reqData', reqData)
-  // console.log('requests', requests)
+  console.log('requests', requests)
 
   return (
     <>
+      {contextHolder}
       <div
         ref={menuRef}
         className=" w-full p-4 flex flex-col gap-4 relative overflow-scroll xs:w-full xs:p-1 xs:ml-1">
@@ -74,12 +81,14 @@ export default function SendReq({ requests, setRefreshReqData }) {
               <div className="flex flex-col p-2   gap-2  ">
                 <div className="flex justify-between">
                   <div className="flex gap-2 items-center dark:text-white ">
-                  <div className="bg-color-14 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
-                        <h1 className="absolute right-5 bottom-3 sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">P</h1>
+                    <Link to={'/showprofile/' + item.requestedId._id}>
+                      <div className="bg-color-14 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
+                        <h1 className="absolute right-5 bottom-3 sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">{item.requestedId.name[0]}</h1>
                       </div>
+                    </Link>
                     <div className="flex flex-col gap-1">
-                      <h3 className="dark:text-white ">{item.requesterId.name}</h3>
-                      <p className="text-sm dark:text-white">{item.postId.postTitle}</p>
+                      <h3 className="dark:text-white text-sm">{item.requestedId.name}</h3>
+                      <p className="text-lg  dark:text-white">{item.postId.postTitle}</p>
                     </div>
                   </div>
 
@@ -100,8 +109,8 @@ export default function SendReq({ requests, setRefreshReqData }) {
                 </div>
                 <div className="flex justify-between w-full">
                   <div className="flex flex-col gap-2 text-xs w-full">
-                    {/* <p className="text-sm">message : {item.reqMassege}</p> */}
-                    {/* <p className="text-sm">Request for {item.reqTime} hour</p> */}
+                    <p className="text-sm">message : {item.reqMassege}</p>
+                    <p className="text-sm">Request for {item.reqTime} hour</p>
                     <div className="flex justify-between">
                       {
                         item.reqAccept ?
@@ -119,7 +128,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
                             </p>
                           </div>
                       }
-                      <p className="text-sm dark:text-white">on Dated : {item.reqDates[0]}</p>{" "}
+                      <p className="text-sm dark:text-white">on  : {getTimeAgo(item.reqDates[0])}</p>
                       <p className="text-sm dark:text-white">At time : {item.reqTime}</p>
                     </div>
 
@@ -127,8 +136,12 @@ export default function SendReq({ requests, setRefreshReqData }) {
                       <>
                         <div className="">
 
-                          <button className="p-1 shadow-sm shadow-slate-500 rounded-xl dark:bg-color-11 dark:border bg-[#f5c782] " value={meetingLink}
-                            onChange={handleLinkChange} onClick={handleCopyClick}> Meeting Code : {item.meetingId?.meetingCode}</button>
+                          <button
+                            className="p-1 transition-all ease-in-out border-white focus:ring-[#6868ea]   duration-500 focus:border-color-17 border-[2px] outline-none rounded-xl dark:bg-color-11 dark:border bg-color-4 text-white px-4  sm:text-[12px] sm:px-2"
+                            value={item.meetingId?.meetingCode}
+                            // onChange={handleLinkChange}
+                            onClick={() => handleCopyClick(item.meetingId?.meetingCode)}> Meeting Code : {item.meetingId?.meetingCode}
+                          </button>
                         </div>
 
                         {/* <p className="text-sm"> Meeting Name : {item.meetingName}</p> */}

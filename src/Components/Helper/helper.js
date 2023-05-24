@@ -82,3 +82,32 @@ export const isEmptyFiled = (...args) => {
     return 1
 };
 
+
+export const getTimeAgo = (dateString) => {
+    const date = new Date(dateString);
+    const now = new Date();
+
+    const timeDiffInSeconds = Math.floor((now - date) / 1000);
+
+    if (timeDiffInSeconds < 5) {
+        return 'just now';
+    } else if (timeDiffInSeconds < 60) {
+        return `${timeDiffInSeconds} seconds ago`;
+    } else if (timeDiffInSeconds < 3600) {
+        const minutes = Math.floor(timeDiffInSeconds / 60);
+        return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+    } else if (timeDiffInSeconds < 86400) {
+        const hours = Math.floor(timeDiffInSeconds / 3600);
+        return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+    } else if (timeDiffInSeconds < 172800) {
+        return 'yesterday';
+    } else {
+        const formattedDate = date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        return formattedDate;
+    }
+}
+

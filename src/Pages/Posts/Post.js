@@ -13,6 +13,8 @@ import { createFavourite, getFavourites, updateFavourite } from "../../App/favor
 import cat_image0 from "../Posts/../../assets/Thumbnail.png";
 import cat_image1 from "../Posts/../../assets/user.png";
 import { postImgCollection } from "../../assets/postImages/postImg";
+import { NotiMassages } from "../../Components/Helper/NotiMassages";
+import { createNotification } from "../../App/NotificationApi";
 
 const Post = () => {
   const auth = useAuth()
@@ -64,32 +66,6 @@ const Post = () => {
       fetchgetPost()
   }, [])
 
-  //get user data mainly for slot details
-  // useEffect(() => {
-
-  //   const fetchgetUserData = async () => {
-
-  //     setLoading({ ...loading, userData: true })
-  //     const res = await getUser(post.createdTutor);
-
-  //     if (res.error) {
-  //       setErr(res.error.errMessage)
-  //       setLoading({ ...loading, userData: false })
-  //     } else if (res.payload) {
-  //       setUserData(res.payload)
-  //       setLoading({ ...loading, userData: false })
-  //     }
-  //   };
-
-  //   if (!userData._id && post.createdTutor)
-  //     fetchgetUserData()
-
-  //   return () => {
-
-  //   };
-  // }, [post])
-
-
   //get all requsets with postid and requsted id
   useEffect(() => {
     const fetchUserAllRequest = async () => {
@@ -128,7 +104,6 @@ const Post = () => {
     if (post._id && auth.user._id)
       fetchUserAllRequest()
   }, [post._id, auth.user._id])
-
 
   //get fovourit
   useEffect(() => {
@@ -181,7 +156,26 @@ const Post = () => {
       if (res.error) {
 
       } else if (res.payload) {
-
+        let notiData = {
+          recieverId: res.payload.tutorId,
+          senderId: auth.user._id,
+          type: 'favourite',
+          // requestId: res.payload.requestId,
+          // postId: res.payload.postId,
+          // paymentId: res.payload._id,
+          message: NotiMassages.FAVOURITE_TUTOR,
+          read: false,
+        }
+        const resNotify = await createNotification(notiData)
+        console.log('resNotify', resNotify)
+        if (resNotify.error) {
+          //error
+          // showNotification(resNotify.error.errMessage)
+        } else if (resNotify.payload) {
+          //send notification to tutor that received request
+          console.log('resNotify.payload', resNotify.payload)
+          // showNotification(resNotify.message)
+        }
       }
     }
   };
@@ -206,11 +200,11 @@ const Post = () => {
     setComments(t);
   };
 
-  console.log('requests', requests)
-  console.log('reqData', reqData)
-  console.log('favourite', favourite)
-  console.log('post', post)
-  console.log('userData', userData)
+  // console.log('requests', requests)
+  // console.log('reqData', reqData)
+  // console.log('favourite', favourite)
+  // console.log('post', post)
+  // console.log('userData', userData)
 
   if (auth.loading)
     return <Loader />
@@ -319,9 +313,9 @@ const Post = () => {
                     reqData.isPaymentComplete
                       ?
                       <div className=" relative flex items-center px-2 sm:w-[90%]  py-2 gap-4">
-                         <div className="bg-color-6 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
-                        <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">K</h1>
-                      </div>
+                        <div className="bg-color-6 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
+                          <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">K</h1>
+                        </div>
                         <input
                           type="text"
                           placeholder="Add a public comment"
@@ -338,9 +332,9 @@ const Post = () => {
                       </div>
                       :
                       <div className=" sm:w-full relative flex items-center sm:gap-1 sm:p-0 p-2 gap-4">
-                          <div className="bg-color-6 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
-                        <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">K</h1>
-                      </div>
+                        <div className="bg-color-6 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
+                          <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">K</h1>
+                        </div>
                         <input
                           type="text"
                           placeholder="You allow to comment on this after meeting"
@@ -370,9 +364,9 @@ const Post = () => {
                       comments.map((item, i) =>
                         <div className="flex flex-col  gap-1 ">
                           <div className="flex  gap-2  ">
-                          <div className="bg-color-6 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
-                        <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">K</h1>
-                      </div>
+                            <div className="bg-color-6 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
+                              <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">K</h1>
+                            </div>
                             <div className="flex justify-between w-full">
                               <div className="flex flex-col text-xs">
                                 <h3 className="text-violet-800 ">{item.learnerName}</h3>

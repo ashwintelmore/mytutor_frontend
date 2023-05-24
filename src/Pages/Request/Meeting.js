@@ -4,13 +4,18 @@ import { Button, Radio, TimePicker, notification } from "antd";
 import moment from 'moment'
 import { createMeeting, generateMeetingId, getUserallMeets } from "../../App/videoApi";
 import { updateRequest } from "../../App/RequestApi";
+import { NotiMassages } from "../../Components/Helper/NotiMassages";
+import { createNotification } from "../../App/NotificationApi";
 
 
 
 
-function Meeting({ show, setShow, data, setData }) {
+function Meeting({ show, setShow, data, setData, refresh }) {
     const auth = useAuth()
     const [api, contextHolder] = notification.useNotification();
+
+    console.log('data', data)
+
 
     const showNotification = (e) => {
         api.info({
@@ -41,6 +46,7 @@ function Meeting({ show, setShow, data, setData }) {
     useEffect(() => {
         const fetchAllUserMeeting = async () => {
             const res = await getUserallMeets(auth.user._id)
+            console.log('res', res)
             if (res.payload) {
                 setMeets(res.payload)
                 showNotification("All meet fetch")
@@ -57,25 +63,15 @@ function Meeting({ show, setShow, data, setData }) {
 
     // request updated from data
     useEffect(() => {
-        if (data._id && !reqData._id) {
-            setReqData({
-                ...reqData,
-                ...data,
-            })
+        if (data._id) {
+            setReqData(data)
+        }
+        if (data._id && data.meetingId) {
+            setMeeting(data.meetingId)
         }
     }, [data])
 
     //updated meeting data from previeouse meeting data seted
-    useEffect(() => {
-        if (data._id && meets.length > 0) {
-            let temp = [...meets]
-            temp = temp.filter(m => m._id == data.meetingId)
-            setMeeting({
-                ...temp[0]
-            })
-        }
-    }, [meets, data._id])
-
     const generateMeetId = async () => {
         setLoadings(true)
         const id = await generateMeetingId()
@@ -131,10 +127,37 @@ function Meeting({ show, setShow, data, setData }) {
             meetingCode: meeting.meetingCode
         }
         const res = await updateRequest(_data)
+        console.log('res', res)
         if (res.payload) {
             setMeeting(res.payload)
             showNotification("Request sended Successfull")
             // setShow(!show)
+            console.log('res.payload', res.payload)
+            //send notification
+            let notiData = {
+                recieverId: res.payload.requesterId,
+                senderId: auth.user._id,
+                type: 'request',
+                requestId: res.payload._id,
+                postId: res.payload.postId,
+                message: NotiMassages.REQUEST_ACCEPTED,
+                read: false,
+            }
+            if (reqData.reqAccept == false) {
+                notiData = {
+                    ...notiData,
+                    message: NotiMassages.REQUEST_REJECTED,
+                }
+            }
+            const resNotify = await createNotification(notiData)
+            console.log('resNotify', resNotify)
+            if (resNotify.error) {
+                //error
+                showNotification(resNotify.error.errMessage)
+            } else if (resNotify.payload) {
+                //send notification to tutor that received request
+                // showNotification(resNotify.message)
+            }
         } else if (res.error) {
             showNotification(res.error.errMessage)
         }
@@ -205,7 +228,7 @@ function Meeting({ show, setShow, data, setData }) {
         <div className="flex w-full  items-center justify-center xs:flex-col absolute z-20 top-4 left-0">
             {contextHolder}
             <div className=" bg-white dark:bg-color-11 transition-all duration-500 ease-in-out dark:border  w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-color-8 xs:flex-col xs:w-11/12">
-               <div className="flex  w-full justify-start"> <h2 className="text-[orange] py-2 px-4 text-2xl p-2   ">Meeting</h2></div>
+                <div className="flex  w-full justify-start"> <h2 className="text-[orange] py-2 px-4 text-2xl p-2   ">Meeting</h2></div>
 
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
 

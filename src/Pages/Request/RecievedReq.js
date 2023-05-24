@@ -4,16 +4,19 @@ import Payment from "./Payment";
 import { useAuth } from "../../providers/auth";
 import EditReq from "./EditReq";
 import { useAlert } from "../../Components/Alert";
+import { Link } from "react-router-dom";
 
 export default function RecievedReq({ requests, setRefreshReqData }) {
   const [showNotification, contextHolder] = useAlert()
   const [show, setShow] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
   const [reqData, setReqData] = useState({});
+  const [refresh, setRefresh] = useState(false)
   const auth = useAuth()
   const onManageClick = (item, i) => {
     setShow(!show);
     setReqData(item);
+
   };
   console.log('reqData', reqData)
   console.log('requests', requests)
@@ -73,9 +76,11 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
               <div className="flex flex-col  p-2 rounded-2xl dark:bg-color-11 transition-all duration-500 ease-in-out bg-color-3 hover:shadow-md hover:shadow-[#5d899795]    gap-2  ">
                 <div className="flex justify-between">
                   <div className="flex items-center gap-2 ">
-                  <div className="bg-color-14 relative  dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
-                        <h1 className="absolute right-4 bottom-2  sm:right-3 sm:bottom-1 font-semibold text-2xl text-white p-1">P</h1>
+                    <Link to={'/showprofile/' + item.requestedId._id}>
+                      <div className="bg-color-14 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
+                        <h1 className="absolute right-5 bottom-3 sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">{item.requestedId.name[0]}</h1>
                       </div>
+                    </Link>
                     <div className="flex flex-col gap-1">
                       <h3 className="text-color-9 dark:text-white ">{item.requesterId.name}</h3>
                       <p className="text-sm dark:text-white">{item.postId.postTitle}</p>
@@ -177,14 +182,19 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
       </div>
       <Meeting
         show={show}
-        setShow={() => setShow(!show)}
+        setShow={() => {
+          setShow(!show)
+          setRefreshReqData(true)
+        }}
         data={reqData}
+        refresh={refresh}
       />
       <Payment
         showPayment={showPayment}
         setShowPayment={handleShowPayment}
         reqData={reqData}
         setReqData={(res) => setReqData(res)}
+        refresh={refresh}
       />
     </>
   );
