@@ -436,12 +436,12 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
     return (
         <div className="flex w-full  items-center justify-center xs:flex-col absolute z-20 top-4 left-0">
             {contextHolder}
-            <div className=" bg-white border-[1px] border-color-8 shadow-md shadow-color-8 dark:bg-color-11 transition-all duration-500 ease-in-out dark:border  w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center   xs:flex-col xs:w-11/12">
+            <div className=" bg-color-3 border-[1px] border-color-8 shadow-md shadow-color-8 dark:bg-color-11 transition-all duration-500 ease-in-out dark:border  w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center   xs:flex-col xs:w-11/12">
                 <div className="flex  w-full justify-start"> <h2 className="text-color-4 py-2 px-4 text-2xl p-2   ">Payment details</h2></div>
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                         <label className="w-full p-2 text-base xs:text-base"> {readOnly ? "Reciever's UPI id" : 'Your UPI id'}</label>
-                        <div className="flex items-center  relative  text-sm   rounded-xl p-1 transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none  ">
+                        <div className="flex items-center  relative  text-sm   rounded-xl p-1 transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none  ">
                             <input
                                 type="text"
                                 placeholder="Write something"
@@ -506,7 +506,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                         <label className="w-full p-2 text-base xs:text-base">Final Charges</label>
                         <input
-                            className="rounded-xl w-full dark:bg-color-11 dark:border transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
+                            className="rounded-xl w-full dark:bg-color-11 dark:border transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
                             type="number"
                             name="charges"
                             disabled={readOnly ? true : false}
@@ -518,7 +518,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                         <label className="w-full p-2 text-base xs:text-base">Remark</label>
                         <input
-                            className="rounded-xl w-full dark:bg-color-11 dark:border transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
+                            className="rounded-xl w-full dark:bg-color-11 dark:border transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
                             type="text"
                             name="code"
                             disabled={readOnly ? true : false}
@@ -534,7 +534,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                         <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                             <label className="w-full p-2 text-base xs:text-base">Upload QR Code</label>
                             <input
-                                className="rounded-xl w-full transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
+                                className="rounded-xl w-full transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
                                 type="file"
                                 name="qrCode"
                                 disabled={readOnly ? true : false}

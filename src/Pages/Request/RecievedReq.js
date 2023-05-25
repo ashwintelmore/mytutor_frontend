@@ -123,8 +123,8 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                           </div>
                       }
 
-                      <p className="text-sm sm:text-[10px] dark:text-white">On Dated : {item.reqDates[0]}</p>{" "}
-                      <p className="text-sm sm:text-[10px] dark:text-white">At time : {item.reqTime}</p>
+                      <p className="text-sm sm:text-[10px] dark:text-white"><i class="fa-solid fa-calendar-days"></i> : {item.reqDates[0]}</p>{" "}
+                      <p className="text-sm sm:text-[10px] dark:text-white"><i class="fa-solid fa-clock"></i> : {item.reqTime}</p>
                     </div>
 
                     {item.reqAccept && (

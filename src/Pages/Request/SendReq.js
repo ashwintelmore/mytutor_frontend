@@ -128,8 +128,8 @@ export default function SendReq({ requests, setRefreshReqData }) {
                             </p>
                           </div>
                       }
-                      <p className="text-sm dark:text-white">on  : {getTimeAgo(item.reqDates[0])}</p>
-                      <p className="text-sm dark:text-white">At time : {item.reqTime}</p>
+                      <p className="text-sm dark:text-white"><i class="fa-solid fa-calendar-days"></i> : {getTimeAgo(item.reqDates[0])}</p>
+                      <p className="text-sm dark:text-white"><i class="fa-solid fa-clock"></i> : {item.reqTime}</p>
                     </div>
 
                     {item.reqAccept && (

@@ -50,8 +50,8 @@ const Header = ({ setOpen, open }) => {
             onClick={() => {
               setOpen(!open);
             }}></i>
-          <Link to={"/"} className="w-1/4 sm:w-1/2 dark:bg-color-3 rounded-md px-3">
-            <img src={fullLogo} alt="" />
+          <Link to={"/"} >
+            <img className=" sm:w-1/2  w-1/2 " src={fullLogo} alt="" />
           </Link>
 
 

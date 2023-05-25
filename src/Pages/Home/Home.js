@@ -83,9 +83,9 @@ const Home = () => {
             categories.map((item, i) => (
               <Link to={"/search/" + item.catName} key={i}>
                 <div className="relative w-max flex m-4 justify-center sm:m-1 ">
-                  <div className="w-44 h-44 rounded-full dark:bg-color-2 border- border-color-9 xs:w-32 xs:h-323 ">
+                  <div className=" w-44 h-44 rounded-full dark:bg-color-2 border- border-color-9   ">
                     <img
-                      className="w-full h-full rounded-full"
+                      className="w-full h-full  rounded-full"
                       src={bufferToImage(item)}
                       alt="student"
                     />

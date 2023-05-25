@@ -271,29 +271,29 @@ const Post = () => {
                 </div>
                 <div className="flex justify-between mx-1  p-3 xs:p-2">
                   <Link to={'/showProfile/' + post.createdTutor._id}>
-                    <div className="flex items-center gap-2 px-3 xs:gap-1 cursor-pointer ">
+                    <div className="flex items-center gap-2 px-3 sm:px-1 xs:gap-1 cursor-pointer ">
 
                       <div className="bg-color-6 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
-                        <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">K</h1>
+                        <h1 className="absolute right-5 bottom-4 sm:text-sm sm:right-3 sm:bottom-2 font-semibold text-xl text-white p-1">K</h1>
                       </div>
 
                       <div className="flex flex-col xs:text-xs cursor-pointer">
-                        <label className="text-lg dark:text-white">{post.createdTutor.name}</label>
-                        <label className="text-color-14 dark:text-white text-sm">{post.createdTutor.analytics.favorite} Favourite</label>
+                        <label className="text-lg sm:text-sm dark:text-white">{post.createdTutor.name}</label>
+                        <label className="text-color-14 sm:text-xs dark:text-white text-sm">{post.createdTutor.analytics.favorite} Favourite</label>
                       </div>
                     </div>
                   </Link>
                   {
                     isFavourite ?
                       <button
-                        className={"bg-color-6 text-white px-3 py-1 sm:px-2 rounded-md xs:w-auto sm:text-sm"}
+                        className={"bg-color-6 text-white px-3 sm:h-fit sm:py-2 sm:px-1 rounded-md xs:w-auto sm:text-xs"}
                         onClick={(e) => onClickFavourit(false, auth.user, post.createdTutor)}
                       >
                         {"unfavourite"}
                       </button>
                       :
                       <button
-                        className={"bg-color-4 text-white px-3  sm:px-2 rounded-md xs:w-auto sm:text-sm"}
+                        className={"bg-color-4 text-white px-3 sm:h-fit sm:py-2  sm:px-1 rounded-md xs:w-auto sm:text-xs"}
                         onClick={(e) => onClickFavourit(true, auth.user, post.createdTutor)}
                       >
                         {"Favourite"}
@@ -314,7 +314,7 @@ const Post = () => {
                       ?
                       <div className=" relative flex items-center px-2 sm:w-[90%]  py-2 gap-4">
                         <div className="bg-color-6 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
-                          <h1 className="absolute right-5 bottom-4  sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">K</h1>
+                          <h1 className="absolute right-5 bottom-4 sm:text-xm  sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">K</h1>
                         </div>
                         <input
                           type="text"
@@ -326,7 +326,7 @@ const Post = () => {
 
                         </input>
                         <button
-                          className="absolute bg-color-4 right-2 rounded-xl p-2 top-2 text-white xs:p-2 xs:text-xs "
+                          className="absolute bg-color-4 right-2 rounded-xl p-2 top-2 sm:top-1 text-white xs:p-2 xs:text-xs "
                           onClick={onCommentClicked}
                         >Comment</button>
                       </div>
