@@ -28,7 +28,7 @@ function AddPost({ show, setShow, post, reFresh }) {
   });
 
   const [cats, setCats] = useState([]);
-  console.log('post', post)
+
   //fetch all categoreis
 
   useEffect(() => {
@@ -64,10 +64,10 @@ function AddPost({ show, setShow, post, reFresh }) {
       return
 
     const emptyFields = isEmptyObjects(userData, 'descrp')
-    console.log('emptyFields', emptyFields)
+
     if (emptyFields) {
       const message = emptyFields.join(', ') + " should not empty"
-      console.log('message', message)
+
       showNotification(message, '')
       return
     }
@@ -96,9 +96,7 @@ function AddPost({ show, setShow, post, reFresh }) {
   };
   const onUpdateDetails = async () => {
 
-    console.log('userData', userData)
     const res = await updatePost(userData._id, userData)
-    console.log('res', res)
     if (res.error) {
       //handle error
     } else if (res.payload) {
@@ -123,14 +121,13 @@ function AddPost({ show, setShow, post, reFresh }) {
     setUserData({ ...userData, thumbnailUrl: { ...userData.thumbnailUrl, image: value } })
   };
 
-  console.log('userData', userData)
   if (!show) return null;
   return (
     // <form action="/" enctype="multipart/form-data">
-    <div className="flex w-full h-screen items-center transition-all ease-in-out delay-1000 duration-500 justify-center xs:flex-col  fixed left-0 ,  top-0 overflow-scroll  z-20">
+    <div className="flex w-full h-screen items-center transition-all ease-in-out   duration-500 justify-center xs:flex-col  fixed left-0 ,  top-0 overflow-scroll  z-20">
       {contextHolder}
       <div className=" bg-color-3 dark:bg-color-11 z-[9] dark:text-white dark:border absolute my-[10%] top-0 w-4/6 px-6 py-10 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-color-8 xs:flex-col xs:w-11/12   ">
-        <h2 className="text-[#f48c2b] top-0 left-2 text-3xl px-4 py-3 font-medium absolute ">
+        <h2 className="text-color-14 top-0 left-2 text-3xl px-4 py-3 font-medium absolute ">
           Add Post
         </h2>
 
@@ -144,7 +141,7 @@ function AddPost({ show, setShow, post, reFresh }) {
             <select
               placeholder="select option"
               name="postType"
-              className="rounded-xl w-full dark:bg-color-11 bg-color-3 dark:border shadow-sm shadow-black p-2"
+              className="rounded-xl w-full dark:bg-color-11 bg-color-3 dark:border  transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea]  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
               onChange={(e) =>
                 setUserData({ ...userData, [e.target.name]: e.target.value })
               }
@@ -166,7 +163,7 @@ function AddPost({ show, setShow, post, reFresh }) {
             <select
               placeholder="select option"
               name="category"
-              className="rounded-xl dark:bg-color-11 dark:border bg-color-3  w-full shadow-sm shadow-black p-2"
+              className="rounded-xl dark:bg-color-11 dark:border bg-color-3  w-full transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea]  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
               onChange={(e) =>
                 setUserData({ ...userData, [e.target.name]: e.target.value })
               }
@@ -189,7 +186,7 @@ function AddPost({ show, setShow, post, reFresh }) {
               Title Of Post
             </label>
             <input
-              className="rounded-xl dark:bg-color-11 dark:border bg-color-3 w-full shadow-sm transition-all duration-500 ease-in-out focus:outline-color-14 shadow-black p-2 "
+              className="rounded-xl dark:bg-color-11 dark:border bg-color-3 w-full  transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea]  duration-500 focus:border-color-17 border-[2px] outline-none p-2 "
               type="text"
               name="postTitle"
               onChange={(e) =>
@@ -202,7 +199,7 @@ function AddPost({ show, setShow, post, reFresh }) {
           <div className="flex flex-col   w-[45%]  p-2  xs:w-full  ">
             <label className="w-full text-base p-2 ">Offering Charges</label>
             <input
-              className=" dark:bg-color-11 dark:border  rounded-xl w-full  p-2 shadow-sm shadow-black"
+              className=" dark:bg-color-11 dark:border bg-color-3  rounded-xl w-full  p-2 transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea]  duration-500 focus:border-color-17 border-[2px] outline-none"
               type="number"
               name="charges"
               onChange={(e) =>
@@ -245,7 +242,7 @@ function AddPost({ show, setShow, post, reFresh }) {
           <textarea
             rows={5}
             cols={112}
-            className="rounded-2xl w-full dark:bg-color-11 dark:border  pl-2 xs:h-24  xs:w-11/12 shadow-sm shadow-black"
+            className="rounded-2xl w-full dark:bg-color-11 dark:border  pl-2 xs:h-24  xs:w-11/12 transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none"
             name="descrp"
             onChange={(e) =>
               setUserData({ ...userData, [e.target.name]: e.target.value })
@@ -283,7 +280,7 @@ function AddPost({ show, setShow, post, reFresh }) {
               >Update
               </button>
               :
-              <button className="xs:w-2/5 bg-color-4 text-white rounded-xl p-2 w-[15%]"
+              <button className="xs:w-2/5 bg-color-4 text-white rounded-xl p-2 w-[15%] transition-all ease-in-out    duration-500  border-[2px] "
 
                 onClick={() => onAddDetails()}
               >Add

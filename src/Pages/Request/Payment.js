@@ -10,6 +10,8 @@ import { updateUser } from "../../App/Api";
 import { getPost } from "../../App/postAPI";
 import { createPayment, getPayment, updatePayment } from "../../App/paymentApi";
 import { postImgCollection } from "../../assets/postImages/postImg";
+import { NotiMassages } from "../../Components/Helper/NotiMassages";
+import { createNotification } from "../../App/NotificationApi";
 
 
 
@@ -141,7 +143,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
             showNotification("Profile Updated successfully")
         }
     };
-
+    console.log('payment', payment)
     const onCreatePayment = async () => {
         //upreqDatate payment , request
 
@@ -176,10 +178,34 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
 
             }
 
+
             const res = await updateRequest(_reqData)
             console.log('res', res)
             if (res.payload) {
-                // showNotification("Request updated Successfull")
+                showNotification("Request updated Successfull")
+                //send notification
+
+                let notiData = {
+                    recieverId: resp.payload.learnerId,
+                    senderId: auth.user._id,
+                    type: 'payment',
+                    requestId: resp.payload.requestId,
+                    postId: resp.payload.postId,
+                    paymentId: resp.payload._id,
+                    message: NotiMassages.PAYMENT_INITIATED,
+                    read: false,
+                }
+                const resNotify = await createNotification(notiData)
+                console.log('resNotify', resNotify)
+                if (resNotify.error) {
+                    //error
+                    showNotification(resNotify.error.errMessage)
+                } else if (resNotify.payload) {
+                    //send notification to tutor that received request
+                    console.log('resNotify.payload', resNotify.payload)
+                    // showNotification(resNotify.message)
+                }
+
             } else if (res.error) {
                 showNotification(res.error.errMessage)
             }
@@ -202,6 +228,28 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         if (resp.payload) {
             setPayment(resp.payload)
             showNotification("Payment Request updated")
+
+            //send notification
+            let notiData = {
+                recieverId: resp.payload.learnerId,
+                senderId: auth.user._id,
+                type: 'payment',
+                requestId: resp.payload.requestId,
+                postId: resp.payload.postId,
+                paymentId: resp.payload._id,
+                message: NotiMassages.PAYMENT_UPDATED,
+                read: false,
+            }
+            const resNotify = await createNotification(notiData)
+            console.log('resNotify', resNotify)
+            if (resNotify.error) {
+                //error
+                showNotification(resNotify.error.errMessage)
+            } else if (resNotify.payload) {
+                //send notification to tutor that received request
+                console.log('resNotify.payload', resNotify.payload)
+                // showNotification(resNotify.message)
+            }
         } else if (resp.error) {
             showNotification(resp.error.errMessage)
         }
@@ -212,15 +260,20 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
 
         if (_payment.paymentStatus?.isCompletd) {
             // setPayStatus(5)
+            //send notification
             return 5;
         } else if (_payment.paymentStatus?.isReceivedByTutor) {
             // setPayStatus(3)
+
             return 3;
         } else if (_payment.paymentStatus?.isDoneByLearner) {
             // setPayStatus(2)
+            //send notification
+
             return 2;
         } else if (_payment._id) {
             // setPayStatus(1)
+
             return 1;
         } else {
             // setPayStatus(-1)
@@ -228,7 +281,30 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         }
     };
 
-    const onPaymentStatusChange = (value) => {
+    const onPaymentStatusChange = async (value) => {
+
+        let notiData = {
+            recieverId: payment.tutorId,
+            senderId: auth.user._id,
+            type: 'payment',
+            requestId: payment.requestId,
+            postId: payment.postId,
+            paymentId: payment._id,
+            message: NotiMassages.PAYMENT_DONE_BYLERNER,
+            read: false,
+        }
+        const resNotify = await createNotification(notiData)
+        console.log('resNotify', resNotify)
+        if (resNotify.error) {
+            //error
+            showNotification(resNotify.error.errMessage)
+        } else if (resNotify.payload) {
+            //send notification to tutor that received request
+            console.log('resNotify.payload', resNotify.payload)
+            // showNotification(resNotify.message)
+        }
+
+
         setPayment((prev, tet) => ({
             ...prev,
             paymentStatus: {
@@ -239,6 +315,75 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
 
         setIsDoneStateChanges(true)
     }
+    const onPaymentReceivedStatus = async (value) => {
+
+
+        if (value == 'received') {
+            if (window.confirm("Alert!! Once you clicked on ok you will not allow to undo that status")) {
+                setPayment({
+                    ...payment,
+                    paymentStatus: {
+                        ...payment.paymentStatus,
+                        isReceivedByTutor: true,
+                        isCompletd: true,
+                    }
+                })
+                setIsDoneStateChanges(!isDoneStateChanges)
+
+                let notiData = {
+                    recieverId: payment.learnerId,
+                    senderId: auth.user._id,
+                    type: 'payment',
+                    requestId: payment.requestId,
+                    postId: payment.postId,
+                    paymentId: payment._id,
+                    message: NotiMassages.PAYMENT_RECEVED_BYTUTOTR,
+                    read: false,
+                }
+                const resNotify = await createNotification(notiData)
+                console.log('resNotify', resNotify)
+                if (resNotify.error) {
+                    //error
+                    showNotification(resNotify.error.errMessage)
+                } else if (resNotify.payload) {
+                    //send notification to tutor that received request
+                    console.log('resNotify.payload', resNotify.payload)
+                    // showNotification(resNotify.message)
+                }
+
+            }
+        } else {//not received
+            setPayment({
+                ...payment,
+                paymentStatus: {
+                    ...payment.paymentStatus,
+                    isReceivedByTutor: false,
+                    isCompletd: false
+                }
+            })
+
+            let notiData = {
+                recieverId: payment.learnerId,
+                senderId: auth.user._id,
+                type: 'payment',
+                requestId: payment.requestId,
+                postId: payment.postId,
+                paymentId: payment._id,
+                message: NotiMassages.PAYMENT_RECEVED_BYTUTOTR,
+                read: false,
+            }
+            const resNotify = await createNotification(notiData)
+            console.log('resNotify', resNotify)
+            if (resNotify.error) {
+                //error
+                showNotification(resNotify.error.errMessage)
+            } else if (resNotify.payload) {
+                //send notification to tutor that received request
+                console.log('resNotify.payload', resNotify.payload)
+                // showNotification(resNotify.message)
+            }
+        }
+    }
 
     const renderPaymentStatusBtn = (payment) => {
         if (!payment._id || payment.paymentStatus.isCompletd || !payment.paymentStatus.isDoneByLearner) {
@@ -247,35 +392,14 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
 
             return (
                 <button className="xs:w-2/5 bg-[#9a9a9a] text-white rounded-xl p-2 w-[15%]"
-                    onClick={() =>
-                        setPayment({
-                            ...payment,
-                            paymentStatus: {
-                                ...payment.paymentStatus,
-                                isReceivedByTutor: false,
-                                isCompletd: false
-                            }
-                        })
-                    }
+                    onClick={() => onPaymentReceivedStatus('not_received')}
                 >Not Recieved
                 </button>
             )
         } else if (payment._id && payment.paymentStatus.isDoneByLearner) {
             return (
                 <button className="xs:w-2/5 bg-[#30f65e] text-white rounded-xl p-2 w-[15%]"
-                    onClick={() => {
-                        if (window.confirm("Alert!! Once you clicked on ok you will not allow to undo that status")) {
-                            setPayment({
-                                ...payment,
-                                paymentStatus: {
-                                    ...payment.paymentStatus,
-                                    isReceivedByTutor: true,
-                                    isCompletd: true,
-                                }
-                            })
-                            setIsDoneStateChanges(!isDoneStateChanges)
-                        }
-                    }}
+                    onClick={() => onPaymentReceivedStatus('received')}
                 >Recieved
                 </button>
             )
@@ -288,7 +412,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
     const renderInitialUpdateBtn = (payment) => {
         if (!payment._id) {
             return (
-                <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
+                <button className="xs:w-2/5 bg-color-4 text-white rounded-xl p-2 w-[15%]"
                     onClick={() => onCreatePayment()}
                 > Initiate
                 </button>
@@ -306,22 +430,22 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         }
     };
 
-
+    console.log('paystatus', payStatus)
     if (!showPayment)
         return null;
     return (
         <div className="flex w-full  items-center justify-center xs:flex-col absolute z-20 top-4 left-0">
             {contextHolder}
-            <div className=" bg-white border-[1px] border-color-8 shadow-md shadow-color-8 dark:bg-color-11 transition-all duration-500 ease-in-out dark:border  w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center   xs:flex-col xs:w-11/12">
+            <div className=" bg-color-3 border-[1px] border-color-8 shadow-md shadow-color-8 dark:bg-color-11 transition-all duration-500 ease-in-out dark:border  w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center   xs:flex-col xs:w-11/12">
                 <div className="flex  w-full justify-start"> <h2 className="text-color-4 py-2 px-4 text-2xl p-2   ">Payment details</h2></div>
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                         <label className="w-full p-2 text-base xs:text-base"> {readOnly ? "Reciever's UPI id" : 'Your UPI id'}</label>
-                        <div className="flex items-center  relative border border-gray-500 shadow-slate-400 shadow-md text-sm   rounded-xl p-1  ">
+                        <div className="flex items-center  relative  text-sm   rounded-xl p-1 transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none  ">
                             <input
                                 type="text"
                                 placeholder="Write something"
-                                className="rounded-lg px-2 py-1 dark:bg-color-11  w-full  outline-none "
+                                className="rounded-lg px-2 py-1 dark:bg-color-11  w-full transition-all ease-in-out border-color-3 focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none "
                                 value={readOnly ? payment.upiId : auth.user.payment.upiId}
                                 onChange={(e) => { auth.setUser({ ...auth.user, payment: { ...auth.user.payment, upiId: e.target.value } }); setPayment({ ...payment, upiId: e.target.value }) }}
                                 disabled={readOnly ? true : isUipCorrect}
@@ -382,7 +506,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                         <label className="w-full p-2 text-base xs:text-base">Final Charges</label>
                         <input
-                            className="rounded-xl w-full dark:bg-color-11 dark:border shadow-sm shadow-black p-2"
+                            className="rounded-xl w-full dark:bg-color-11 dark:border transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
                             type="number"
                             name="charges"
                             disabled={readOnly ? true : false}
@@ -394,7 +518,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                     <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                         <label className="w-full p-2 text-base xs:text-base">Remark</label>
                         <input
-                            className="rounded-xl w-full dark:bg-color-11 dark:border shadow-sm shadow-black p-2"
+                            className="rounded-xl w-full dark:bg-color-11 dark:border transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
                             type="text"
                             name="code"
                             disabled={readOnly ? true : false}
@@ -410,7 +534,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                         <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                             <label className="w-full p-2 text-base xs:text-base">Upload QR Code</label>
                             <input
-                                className="rounded-xl w-full shadow-sm shadow-black p-2"
+                                className="rounded-xl w-full transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2"
                                 type="file"
                                 name="qrCode"
                                 disabled={readOnly ? true : false}

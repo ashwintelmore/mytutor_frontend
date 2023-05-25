@@ -41,17 +41,17 @@ const Header = ({ setOpen, open }) => {
 
   return (
     <>
-      <div className="flex  sm:w-full bg-color-3 fixed w-full top-0 z-[11] dark:bg-color-2 transition-all duration-500 ease-in-out dark:text-white  justify-between p-2 h-16 xs:z-11">
+      <div className="flex  sm:w-full bg-color-3 fixed w-full top-0 z-[11] dark:bg-color-16 transition-all duration-500 ease-in-out dark:text-white  justify-between p-2 h-16 xs:z-11">
         <div className="flex items-center gap-9 p-2 text-lg xs:gap-4   ">
 
 
           <i
-            title="Menu" className="fa-solid fa-bars hover:bg-color-14 transition-all duration-500 ease-in-out text-color-14 hover:text-white rounded-full p-2 cursor-pointer"
+            title="Menu" className="fa-solid fa-bars dark:text-white hover:bg-color-14 transition-all duration-500 ease-in-out text-color-2 hover:text-white rounded-full p-2 cursor-pointer"
             onClick={() => {
               setOpen(!open);
             }}></i>
-          <Link to={"/"} className="w-1/4 sm:w-1/2 dark:bg-color-3 rounded-md px-3">
-            <img src={fullLogo} alt="" />
+          <Link to={"/"} >
+            <img className=" sm:w-1/2  w-1/2 " src={fullLogo} alt="" />
           </Link>
 
 
@@ -60,17 +60,17 @@ const Header = ({ setOpen, open }) => {
         <div className="flex justify-between  items-center gap-10 sm:gap-3 sm:p-[2px] sm:text-base p-3 text-xl   ">
           <NavLink to={"/search"}>
 
-            <i className="cursor-pointer p-2 rounded-full fa-solid fa-magnifying-glass relative text-color-14 hover:bg-color-14 transition-all duration-500 ease-in-out hover:text-white " title="Search"></i>
+            <i className="cursor-pointer p-2 rounded-full fa-solid fa-magnifying-glass relative text-color-14 hover:bg-color-14 dark:text-white transition-all duration-500 ease-in-out hover:text-white " title="Search"></i>
 
           </NavLink>
 
           <i
-            className="fa-regular fa-moon cursor-pointer text-color-14 hover:bg-color-14 transition-all duration-500 ease-in-out hover:text-white rounded-full p-2 xs:hidden sm:hidden   "
+            className="fa-regular fa-moon cursor-pointer text-color-14 hover:bg-color-14 transition-all duration-500 ease-in-out dark:text-white hover:text-white rounded-full p-2 xs:hidden sm:hidden   "
             onClick={handleThemeSwitch} title="Dark/Light mode"></i>
 
 
           <i
-            className="fa-solid fa-circle-plus cursor-pointer text-color-14 hover:bg-color-14 transition-all duration-500 ease-in-out hover:text-white p-2 rounded-full  " title="upload"
+            className="fa-solid fa-circle-plus cursor-pointer text-color-14 hover:bg-color-14 transition-all duration-500 ease-in-out dark:text-white hover:text-white p-2 rounded-full  " title="upload"
             onClick={() => setShow(true)}></i>
 
 
@@ -83,12 +83,12 @@ const Header = ({ setOpen, open }) => {
             {auth.user._id ? (
 
 
-              <div title="Profile" className="flex  items-center gap-2">
-                <span className="rounded-full h-11 w-11 sm:h-10 sm:w-10 p-1 relative bg-color-14">
-                  <div className="absolute right-4  text-white text-transform: uppercase"> {auth.user.name[0]}</div>
+              <div title="Profile" className="flex sm:text-xs  items-center gap-2">
+                <span className="rounded-full h-11 w-11 sm:h-7 sm:w-10 p-1 relative bg-color-14">
+                  <div className="absolute right-4 sm:right-2  text-white text-transform: uppercase"> {auth.user.name[0]}</div>
                 </span>
                 {openProfile && <Backrop />}
-                <span> {auth.user.name} </span>
+                <span className="sm:line-clamp-1"> {auth.user.name} </span>
               </div>
 
             ) : (

@@ -82,3 +82,63 @@ export const isEmptyFiled = (...args) => {
     return 1
 };
 
+
+export const getTimeAgo = (dateString) => {
+    const date = new Date(dateString);
+    const now = new Date();
+
+    const timeDiffInSeconds = Math.floor((now - date) / 1000);
+
+    if (timeDiffInSeconds < 5) {
+        return 'just now';
+    } else if (timeDiffInSeconds < 60) {
+        return `${timeDiffInSeconds} seconds ago`;
+    } else if (timeDiffInSeconds < 3600) {
+        const minutes = Math.floor(timeDiffInSeconds / 60);
+        return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+    } else if (timeDiffInSeconds < 86400) {
+        const hours = Math.floor(timeDiffInSeconds / 3600);
+        return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+    } else if (timeDiffInSeconds < 172800) {
+        return 'yesterday';
+    } else {
+        const formattedDate = date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        return formattedDate;
+    }
+}
+
+export const validatePassword = (password) => {
+    // Password should have at least 8 characters
+    if (password.length < 8) {
+        return false;
+    }
+
+    // Password should contain at least one lowercase letter
+    // if (!/[a-z]/.test(password)) {
+    //     return false;
+    // }
+
+    // // Password should contain at least one uppercase letter
+    // if (!/[A-Z]/.test(password)) {
+    //     return false;
+    // }
+
+    // // Password should contain at least one digit
+    // if (!/[0-9]/.test(password)) {
+    //     return false;
+    // }
+
+    // Password is valid
+    return true;
+}
+export const validateMobileNumber = (number) => {
+    // Password should have at least 8 characters
+
+    var pattern = /^[6-9]\d{9}$/;
+    return pattern.test(number);
+
+}

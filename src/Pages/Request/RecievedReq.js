@@ -4,16 +4,19 @@ import Payment from "./Payment";
 import { useAuth } from "../../providers/auth";
 import EditReq from "./EditReq";
 import { useAlert } from "../../Components/Alert";
+import { Link } from "react-router-dom";
 
 export default function RecievedReq({ requests, setRefreshReqData }) {
   const [showNotification, contextHolder] = useAlert()
   const [show, setShow] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
   const [reqData, setReqData] = useState({});
+  const [refresh, setRefresh] = useState(false)
   const auth = useAuth()
   const onManageClick = (item, i) => {
     setShow(!show);
     setReqData(item);
+
   };
   console.log('reqData', reqData)
   console.log('requests', requests)
@@ -70,17 +73,17 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
             <div
               className="flex flex-col     shadow-sm shadow-color-8 rounded-2xl  "
               key={i}>
-              <div className="flex flex-col  p-2 rounded-2xl dark:bg-color-11 transition-all duration-500 ease-in-out bg-color-3 hover:shadow-md hover:shadow-[#5d899795]  transition-all ease-in-out duration-300  gap-2  ">
+              <div className="flex flex-col  p-2 rounded-2xl dark:bg-color-11 transition-all duration-500 ease-in-out bg-color-3 hover:shadow-md hover:shadow-[#5d899795]    gap-2  ">
                 <div className="flex justify-between">
-                  <div className="flex gap-2 ">
-                    <img
-                      className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-[1px]  border-red-500"
-                      src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                      alt=""
-                    />
+                  <div className="flex items-center gap-2 ">
+                    <Link to={'/showprofile/' + item.requestedId._id}>
+                      <div className="bg-color-14 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
+                        <h1 className="absolute right-5 bottom-3 sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">{item.requestedId.name[0]}</h1>
+                      </div>
+                    </Link>
                     <div className="flex flex-col gap-1">
                       <h3 className="text-color-9 dark:text-white ">{item.requesterId.name}</h3>
-                      <p className="text-sm">{item.postId.postTitle}</p>
+                      <p className="text-sm dark:text-white">{item.postId.postTitle}</p>
                     </div>
                   </div>
                   <div
@@ -99,15 +102,15 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                   </div>
                 </div>
                 <div className="flex justify-between w-full">
-                  <div className="flex flex-col gap-2 text-xs sm:text-xs w-full">
-                    <p className="text-sm">message : {item.reqMassege}</p>
-                    <p className="text-sm">Request for {item.reqTime} hour</p>
+                  <div className="flex flex-col gap-2 dark:text-white text-xs sm:text-xs w-full">
+                    <p className="text-sm dark:text-white ">message : {item.reqMassege}</p>
+                    <p className="text-sm dark:text-white ">Request for {item.reqTime} hour</p>
                     <div className="flex sm:text-xs justify-between">
                       {
                         item.reqAccept ?
                           <div className="flex items-center gap-2 sm:gap-1 sm:text-xs text-lg">
                             <i className="fa-solid fa-circle-check text-color-10"></i>
-                            <p className="text-sm sm:text-[10px]">
+                            <p className="text-sm dark:text-white sm:text-[10px]">
                               Accepeted
                             </p>
                           </div>
@@ -120,8 +123,8 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                           </div>
                       }
 
-                      <p className="text-sm sm:text-[10px]">On Dated : {item.reqDates[0]}</p>{" "}
-                      <p className="text-sm sm:text-[10px]">At time : {item.reqTime}</p>
+                      <p className="text-sm sm:text-[10px] dark:text-white"><i class="fa-solid fa-calendar-days"></i> : {item.reqDates[0]}</p>{" "}
+                      <p className="text-sm sm:text-[10px] dark:text-white"><i class="fa-solid fa-clock"></i> : {item.reqTime}</p>
                     </div>
 
                     {item.reqAccept && (
@@ -129,7 +132,7 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                         <div className="">
 
                           <button
-                            className="p-1 shadow-sm shadow-color-8 rounded-xl dark:bg-color-11 dark:border bg-color-4 text-white px-4  sm:text-[12px] sm:px-2"
+                            className="p-1 transition-all ease-in-out border-white focus:ring-[#6868ea]   duration-500 focus:border-color-17 border-[2px] outline-none rounded-xl dark:bg-color-11 dark:border bg-color-4 text-white px-4  sm:text-[12px] sm:px-2"
                             value={item.meetingId?.meetingCode}
                             // onChange={handleLinkChange}
                             onClick={() => handleCopyClick(item.meetingId?.meetingCode)}> Meeting Code : {item.meetingId?.meetingCode}
@@ -174,19 +177,24 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
             </div>
           ))
         ) : (
-          <p> No Requests recieved </p>
+          <p className="dark:text-white"> No Requests recieved </p>
         )}
       </div>
       <Meeting
         show={show}
-        setShow={() => setShow(!show)}
+        setShow={() => {
+          setShow(!show)
+          setRefreshReqData(true)
+        }}
         data={reqData}
+        refresh={refresh}
       />
       <Payment
         showPayment={showPayment}
         setShowPayment={handleShowPayment}
         reqData={reqData}
         setReqData={(res) => setReqData(res)}
+        refresh={refresh}
       />
     </>
   );

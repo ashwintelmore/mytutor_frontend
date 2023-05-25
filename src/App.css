@@ -26,11 +26,7 @@ font-family: 'Lato', sans-serif;
   display: none;
 }
 
-.dark{
-transition: all ease-in-out;
-transition-duration: 5s;
-
-}
+ 
 a , h1,h2,h3,h4,h5,h6,p{
   color: #1a0970;
  }

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Buffer } from "buffer";
 import smallLogo from "../Posts/../../assets/brandng/small-logo.png";
-import cat_image3 from "../Posts/../../assets/cat_image3.jpg";
-import cat_image4 from "../Posts/../../assets/cat_image4.jpg";
-import cat_image5 from "../Posts/../../assets/cat_image5.jpg";
+// import cat_image3 from "../Posts/../../assets/cat_image3.jpg";
+// import cat_image4 from "../Posts/../../assets/cat_image4.jpg";
+// import cat_image5 from "../Posts/../../assets/cat_image5.jpg";
 // import cat_image0 from "../Posts/../../assets/cat_image0.jpeg";
 import cat_image0 from "../Posts/../../assets/Thumbnail1.png";
-import cat_image7 from "../Posts/../../assets/cat_image7.jpg";
-import cat_image8 from "../Posts/../../assets/cat_image8.jpg";
+// import cat_image7 from "../Posts/../../assets/cat_image7.jpg";
+// import cat_image8 from "../Posts/../../assets/cat_image8.jpg";
 
 import { Link } from "react-router-dom";
 import { getAllPosts } from "../../App/postAPI";
@@ -69,8 +69,6 @@ const Home = () => {
 
     getallpost();
   }, []);
-  console.log("posts", posts);
-  console.log("categories", categories);
   // if (auth.loading)
   //   return <Loader />
   return (
@@ -85,9 +83,9 @@ const Home = () => {
             categories.map((item, i) => (
               <Link to={"/search/" + item.catName} key={i}>
                 <div className="relative w-max flex m-4 justify-center sm:m-1 ">
-                  <div className="w-44 h-44 rounded-full dark:bg-color-2 border- border-color-9 xs:w-32 xs:h-323 ">
+                  <div className=" w-44 h-44 rounded-full dark:bg-color-2 border- border-color-9   ">
                     <img
-                      className="w-full h-full rounded-full"
+                      className="w-full h-full  rounded-full"
                       src={bufferToImage(item)}
                       alt="student"
                     />
@@ -129,8 +127,8 @@ const Home = () => {
                         {item.postTitle}
                       </span>
 
-                      <div className="flex  sm:gap-[2px] items-center  absolute  bottom-3 sm:bottom-2 sm:left-2  left-3">
-                        <img src={smallLogo} className="sm:w-3 w-1/5"></img>
+                      <div className="flex  sm:gap-[2px] items-center  absolute  bottom-0 sm:bottom-2 sm:left-2  left-3">
+                        <img src={smallLogo} className="sm:w-3 h-[10%] w-[10%]"></img>
                         <label className="font-font-logo sm:text-xs text-white">{item.createdTutor.name}</label>
                       </div>
                     </div>
@@ -153,7 +151,7 @@ const Home = () => {
                         <di className="h-4 w-4 bg-color-10 rounded-full sm:h-2 sm:w-2"></di>
                         <label className="text-sm sm:text-xs text-color-9 dark:text-white font-light">{item.createdTutor.analytics.favorite} favorite</label>
                       </div>
-                      <button className="bg-white text-color-4 sm:w-auto px-7  sm:px-3  rounded-xl p-1 dark:bg-color-2 dark:border">
+                      <button className="bg-white text-color-4 sm:w-auto px-7  sm:px-3  rounded-xl p-1 dark:text-[orange] dark:border">
                         Rs.{item.pricePerHour || item.charges}/-
                       </button>
                     </div>

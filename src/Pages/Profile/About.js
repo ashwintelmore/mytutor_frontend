@@ -54,7 +54,7 @@ export default function About({ isEditable = true }) {
         <div className="w-1/2  p-2 flex flex-col gap-3  xs:w-full h-auto sm:w-full ">
 
           <div className="p-2 flex flex-col gap-1">
-            <h2 className="font-semibold text-lg text-color-14 dark:text-color-13">Skills</h2>
+            <h2 className="font-semibold text-lg text-color-14 dark:text-white">Skills</h2>
             <TagsInput
               isEditable={isEditable}
               setResTags={(tagsarray) => auth.setUser({ ...auth.user, skills: tagsarray })}
@@ -65,7 +65,7 @@ export default function About({ isEditable = true }) {
           {/* education section */}
           <div className="flex flex-col p-2 gap-6 ">
             <div className="flex   justify-between">
-              <label className="font-semibold text-lg  text-color-13 ">Education</label>
+              <label className="font-semibold text-lg  dark:text-white text-color-14 ">Education</label>
               <div>
                 {
                   isEditable
@@ -114,7 +114,7 @@ export default function About({ isEditable = true }) {
           {/* Work experience section */}
           <div className="flex flex-col p-2 gap-6 ">
             <div className="flex  justify-between">
-              <label className="font-semibold text-lg  text-color-13 "> Work Experience </label>
+              <label className="font-semibold text-lg  text-color-14 dark:text-white "> Work Experience </label>
               <div>
                 {
                   isEditable
@@ -162,7 +162,7 @@ export default function About({ isEditable = true }) {
           {/* Other section */}
           <div className="flex flex-col p-2 gap-6 ">
             <div className="flex  justify-between">
-              <label className="font-semibold text-lg  text-color-13 "> Achivement/Project/Other </label>
+              <label className="font-semibold text-lg  dark:text-white text-color-14"> Achivement/Project/Other </label>
               <div>
                 {
                   isEditable

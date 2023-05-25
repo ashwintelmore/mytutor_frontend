@@ -38,9 +38,9 @@ const Profile = ({ toggler = '1' }) => {
         <div className="flex dark:bg-color-11 dark:text-white w-full sm:flex sm:flex-col sm:w-full rounded-t-3xl">
           {contextHolder}
           <div className="w-1/4 flex dark:text-white flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl  sm:w-full  ">
-            <h3 className="text-lg font-semibold text-color-13 ">Profile Details</h3>
+            <h3 className="text-xl font-semibold dark:text-white text-color-14 ">Profile Details</h3>
             <div className="h-28 w-28  rounded-full bg-color-4 dark:bg-color-11 dark:border  relative ">
-              <div className="absolute right-9 top-4 text-5xl p-2 text-white text-transform: uppercase"> {auth.user.name[0]}</div>
+              <div className="absolute right-7 top-6 text-5xl p-2 text-white text-transform: uppercase"> {auth.user.name[0]}</div>
               {/* <i className="fa-solid fa-user-pen absolute bottom-2 h-8 w-8 dark:text-black bg-slate-50 rounded-full p-2 right-0 "></i> */}
             </div>
             <div className="flex flex-col  items-center text-lg  ">
@@ -66,26 +66,26 @@ const Profile = ({ toggler = '1' }) => {
               </div>
             </div>
             <div className="flex flex-col w-[95%]  mx-2 items-center gap-1 text-base p-1">
-              <label className="text-color-14 dark:text-color-13">Bio</label>
+              <label className="text-color-14 text-xl dark:text-white">Bio</label>
               <p className="w-full ">
                 <textarea
 
                   type="text"
                   placeholder="Write something"
-                  className="rounded-lg w-full text-sm px-2 py-1 border shadow-xs shadow-black sm:w-[95%] sm:px-4 outline-none dark:bg-color-11  dark:border "
+                  className="rounded-lg w-full dark:text-white text-sm px-2 py-1    dark:border-white sm:w-[95%] sm:px-4  dark:bg-color-11  dark:border transition-all ease-in-out border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none "
                   value={auth.user.bio}
                   onChange={(e) => auth.setUser({ ...auth.user, bio: e.target.value })}
                 />
               </p>
             </div>
             <div className="text-lg w-11/12 gap-3 flex flex-col">
-              <h3 className="text-color-14 dark:text-color-13">Your UPI id</h3>
+              <h3 className="text-color-14 dark:text-white">Your UPI id</h3>
               <div className="flex flex-col gap-8">
                 <div className="flex items-center sm:w-full relative border border-gray-500 dark:border-white shadow-sm shadow-black text-xs   rounded-xl p-1  ">
                   <input
-                    type="number"
+                    type="text"
                     placeholder="91850*******"
-                    className="rounded-lg px-2 py-1 text-[10px]  sm:px-4 dark:bg-color-11 dark:text-white  w-full  outline-none "
+                    className="rounded-lg px-2 py-1 text-[10px]  sm:px-4 dark:bg-color-11 dark:text-white  w-full  transition-all ease-in-out dark:border-none border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none"
                     value={auth.user.payment.upiId}
                     onChange={(e) => auth.setUser({ ...auth.user, payment: { ...auth.user.payment, upiId: e.target.value } })}
                   ></input>
@@ -93,7 +93,7 @@ const Profile = ({ toggler = '1' }) => {
 
                   {/* <button className="absolute rounded-xl text-sm  h-7 w-20  text-white right-1   bg-orange-500">Save</button> */}
                   <h6 className="text-xs left-2 absolute -bottom-10 ">
-                    <label className="text-xs ml-2 p-1">e.g. 9824xxxxx@ybl, 9824xxxxx@okayhdfs, etc </label>
+                    <label className="text-xs dark:text-white ml-2 p-1">e.g. 9824xxxxx@ybl, 9824xxxxx@okayhdfs, etc </label>
                   </h6>
                 </div>
 
@@ -142,7 +142,7 @@ const Profile = ({ toggler = '1' }) => {
         </div>
 
       </div>
-      <div className="absolute w-full bottom-0 bg-slate-600">
+      <div className="absolute w-full bottom-0 ">
         <ConfigProvider
           theme={{
             token: {

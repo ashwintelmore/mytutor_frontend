@@ -1,18 +1,19 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Meeting from "./Meeting";
 import Payment from "./Payment";
 // import Backrop from "../../Header/Backrop";
 import EditReq from "./EditReq";
 import { useAlert } from "../../Components/Alert";
+import { getTimeAgo } from "../../Components/Helper/helper";
 
 export default function SendReq({ requests, setRefreshReqData }) {
+  const [showNotification, contextHolder] = useAlert()
 
   const [meetingLink, setMeetingLink] = useState("");
   const [showPayment, setShowPayment] = useState(false);
   const [reqData, setReqData] = useState({});
   const [showNotification, contextHolder] = useAlert()
-
 
 
 
@@ -26,6 +27,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
       console.error("Failed to copy meeting link: ", err);
     }
   };
+
 
   const handleLinkChange = (event) => {
     setMeetingLink(event.target.value);
@@ -62,7 +64,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
   };
 
   // console.log('reqData', reqData)
-  // console.log('requests', requests)
+  console.log('requests', requests)
 
   return (
     <>
@@ -79,15 +81,15 @@ export default function SendReq({ requests, setRefreshReqData }) {
             >
               <div className="flex flex-col p-2   gap-2  ">
                 <div className="flex justify-between">
-                  <div className="flex gap-2 ">
-                    <img
-                      className="rounded-full h-14 w-14 xs:h-10 xs:w-10 border-2 border-red-500"
-                      src="https://www.fakepersongenerator.com/Face/female/female20161025115339539.jpg"
-                      alt=""
-                    />
+                  <div className="flex gap-2 items-center dark:text-white ">
+                    <Link to={'/showprofile/' + item.requestedId._id}>
+                      <div className="bg-color-14 relative dark:bg-orange-400 dark:text-white rounded-full h-14 w-14 xs:h-10 xs:w-10 ">
+                        <h1 className="absolute right-5 bottom-3 sm:right-3 sm:bottom-1 font-semibold text-xl text-white p-1">{item.requestedId.name[0]}</h1>
+                      </div>
+                    </Link>
                     <div className="flex flex-col gap-1">
-                      <h3 className="text-violet-800 ">{item.requesterId.name}</h3>
-                      <p className="text-sm">{item.postId.postTitle}</p>
+                      <h3 className="dark:text-white text-sm">{item.requestedId.name}</h3>
+                      <p className="text-lg  dark:text-white">{item.postId.postTitle}</p>
                     </div>
                   </div>
 
@@ -114,8 +116,8 @@ export default function SendReq({ requests, setRefreshReqData }) {
                       {
                         item.reqAccept ?
                           <div className="flex items-center gap-2 text-lg">
-                            <i className="fa-solid fa-circle-check text-color-10"></i>
-                            <p className="text-sm">
+                            <i className="fa-solid fa-circle-check  text-color-10"></i>
+                            <p className="text-sm dark:text-white">
                               Accepeted
                             </p>
                           </div>
@@ -127,8 +129,8 @@ export default function SendReq({ requests, setRefreshReqData }) {
                             </p>
                           </div>
                       }
-                      <p className="text-sm">on Dated : {item.reqDates[0]}</p>{" "}
-                      <p className="text-sm">At time : {item.reqTime}</p>
+                      <p className="text-sm dark:text-white"><i class="fa-solid fa-calendar-days"></i> : {getTimeAgo(item.reqDates[0])}</p>
+                      <p className="text-sm dark:text-white"><i class="fa-solid fa-clock"></i> : {item.reqTime}</p>
                     </div>
 
                     {item.reqAccept && (
@@ -136,7 +138,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
                         <div className="">
 
                           <button
-                            className="p-1 shadow-sm shadow-color-8 rounded-xl dark:bg-color-11 dark:border bg-color-4 text-white px-4  sm:text-[12px] sm:px-2"
+                            className="p-1 transition-all ease-in-out border-white focus:ring-[#6868ea]   duration-500 focus:border-color-17 border-[2px] outline-none rounded-xl dark:bg-color-11 dark:border bg-color-4 text-white px-4  sm:text-[12px] sm:px-2"
                             value={item.meetingId?.meetingCode}
                             // onChange={handleLinkChange}
                             onClick={() => handleCopyClick(item.meetingId?.meetingCode)}> Meeting Code : {item.meetingId?.meetingCode}
@@ -175,7 +177,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
             </div>
           ))
         ) : (
-          <p> No Requests Sended </p>
+          <p className="dark:text-white"> No Requests Sended </p>
         )}
       </div>
       <Payment

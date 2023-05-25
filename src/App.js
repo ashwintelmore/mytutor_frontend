@@ -19,6 +19,11 @@ import Sidebar from "./Header/Sidebar";
 import SidebarClose from "./Header/SidebarClose";
 import React, { useState, useEffect } from "react";
 import Favourite from "./Pages/Favourite/Favourite";
+import AboutUs from "./Header/AboutUs";
+import Calender from "./Components/Calender";
+import Notification from "./Pages/Notification/Notification";
+import PrivateRoute from "./PrivateRoute";
+import VerifyEmail from "./Auth/VerifyEmail";
 
 const App = () => {
   const auth = useAuth();
@@ -33,7 +38,7 @@ const App = () => {
         <Header setOpen={setOpen} open={open} />
         <SidebarClose setOpen={setOpen} open={open} />
         <Sidebar open={open} />
-        <div className="flex w-full mt-16  dark:bg-color-2 bg-color-3 relative">
+        <div className="flex w-full mt-16  dark:bg-color-16 bg-color-3 relative">
           <VerticalNav />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -62,6 +67,44 @@ const App = () => {
             {/* <Route path="/login" element={<LoginForm />} /> */}
 
             <Route
+              path="/:email/:token"
+              element={
+                auth.user.isVerified ? (
+                  <Navigate replace to="/profile" />
+                ) : (
+                  <VerifyEmail />
+                )
+              }
+            />
+            <Route
+              path="/VerifyEmail"
+              element={
+                !auth.user._id ?
+                  <Navigate replace to="/" />
+                  :
+                  auth.user.isVerified ? (
+                    <Navigate replace to="/" />
+                  ) : (
+                    <VerifyEmail />
+                  )
+              }
+            />
+
+            <Route element={<PrivateRoute />}>
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/showProfile/:id?" element={<ShowProfile />} />
+              <Route path="/dummy" element={<Dummy />} />
+              <Route path="/comment" element={<Comment />} />
+              <Route path="/appointement" element={<Appointement />} />
+              <Route path="/search/:catName?" element={<SearchResult />} />
+              <Route path="/favourite" element={<Favourite />} />
+              <Route path="/notification" element={<Notification />} />
+            </Route>
+            <Route path="/calender" element={<Calender />} />
+            <Route path="/postcontent/:id?" element={<Post />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+
+            {/* <Route
               path="profile"
               element={
                 auth.user._id ? <Profile /> : <Navigate replace to="/login" />
@@ -87,15 +130,20 @@ const App = () => {
                 )
               }
             />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/showProfile/:id?" element={<ShowProfile />} />
-            <Route path="/postcontent/:id?" element={<Post />} />
-            <Route path="/dummy" element={<Dummy />} />
-            <Route path="/comment" element={<Comment />} />
-            <Route path="/appointement" element={<Appointement />} />
-            <Route path="/search/:catName?" element={<SearchResult />} />
-            <Route path="/favourite" element={<Favourite />} />
-            <Route path="/" element={<Dummy />} />
+            <Route
+              path="notification"
+              element={
+                auth.user._id ? (
+                  <Notification />
+                ) : (
+                  <Navigate replace to="/login" />
+                )
+              }
+            />
+ */}
+
+
+            <Route path="*" element={<Dummy />} />
           </Routes>
         </div>
       </BrowserRouter>
