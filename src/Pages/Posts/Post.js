@@ -232,7 +232,7 @@ const Post = () => {
 
                     <div className="flex gap-2 sm:gap-[2px] items-center absolute  top-[230px] sm:top-32 text-2xl   sm:left-10  left-10">
                       <img src={cat_image1} className="h-5 sm:h-3 sm:w-3 w-5"></img>
-                      <label className="font-font-logo sm:text-xs text-white">Username</label>
+                      <label className="font-font-logo sm:text-xs text-white">{post.createdTutor.name}</label>
                     </div>
                   </div>
                   <div className="flex justify-between p-1 mx-1 items-center text-xl sm:text-xs xs:p-0">

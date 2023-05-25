@@ -197,10 +197,10 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                 }
                 {/* calender */}
                 <div className="flex w-full py-2 justify-evenly placeholder:">
-                            <div className="text-lg"><i class="fa-solid fa-calendar-check text-color-10 bg-color-5 rounded-full p-[5px]"> </i> Available</div>
-                            <div className="text-lg"><i class="fa-solid fa-calendar-xmark text-color-13 bg-color-5 rounded-full p-[5px]"></i> Not Available</div>
-                            <div className="text-lg"><i class="fa-solid fa-calendar-plus text-color-14 bg-color-5 rounded-full p-[5px]"></i> Selected</div>
-                        </div>
+                    <div className="text-lg"><i class="fa-solid fa-calendar-check text-color-10 bg-color-5 rounded-full p-[5px]"> </i> Available</div>
+                    <div className="text-lg"><i class="fa-solid fa-calendar-xmark text-color-13 bg-color-5 rounded-full p-[5px]"></i> Not Available</div>
+                    <div className="text-lg"><i class="fa-solid fa-calendar-plus text-color-14 bg-color-5 rounded-full p-[5px]"></i> Selected</div>
+                </div>
                 <MultipleDatePicker
 
                     value={userData.slots.customDates}
@@ -268,35 +268,43 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                 <div className="flex justify-end px-2">
                     {
                         auth.user._id ?
-                            reqData._id ?
-                                <>
-                                    {
-                                        !reqData.cancelStatus
-                                        &&
-                                        <button className="w-fit h-10 px-2 mx-2 bg-[#f86a6a] text-white font-semibold  dark:text-white  rounded-lg p-1"
-                                            onClick={() => onRequestCancel()}
-                                        >
-                                            Cancel Request
-                                        </button>
-                                    }
+                            !auth.user.isVerified ?
+                                <Link to={'/VerifyEmail'}>
+                                    <button className="w-32 h-10 bg-color-4 text-white font-semibold dark:text-black  rounded-lg p-1"
 
-                                    <button className="w-fit h-10 px-2 bg-color-4 text-white font-semibold dark:text-black  rounded-lg p-1"
-                                        onClick={() => onHandleRequestUpdate()}
                                     >
-                                        {reqData.cancelStatus ? "Request Again" : "Update"}
+                                        Verify Email
                                     </button>
-                                </>
+                                </Link>
                                 :
-                                <button className="w-fit h-10 px-2 bg-color-4 text-white font-semibold dark:text-white  rounded-lg p-1"
-                                    onClick={() => onHandleRequest()}
-                                >
-                                    Request for Slot
-                                </button>
+                                reqData._id ?
+                                    <>
+                                        {
+                                            !reqData.cancelStatus
+                                            &&
+                                            <button className="w-fit h-10 px-2 mx-2 bg-[#f86a6a] text-white font-semibold  dark:text-white  rounded-lg p-1"
+                                                onClick={() => onRequestCancel()}
+                                            >
+                                                Cancel Request
+                                            </button>
+                                        }
 
+                                        <button className="w-fit h-10 px-2 bg-color-4 text-white font-semibold dark:text-black  rounded-lg p-1"
+                                            onClick={() => onHandleRequestUpdate()}
+                                        >
+                                            {reqData.cancelStatus ? "Request Again" : "Update"}
+                                        </button>
+                                    </>
+                                    :
+                                    <button className="w-fit h-10 px-2 bg-color-4 text-white font-semibold dark:text-white  rounded-lg p-1"
+                                        onClick={() => onHandleRequest()}
+                                    >
+                                        Request for Slot
+                                    </button>
                             :
+
                             <Link to={'/login'}>
                                 <button className="w-32 h-10 bg-color-4 text-white font-semibold dark:text-black  rounded-lg p-1"
-
                                 >
                                     Login first
                                 </button>

@@ -5,12 +5,12 @@ import cat_image12 from "../assets/woman-1063100__180.jpg";
 function AboutUs() {
   return (
     <div className="w-full ml-16 bg-white flex flex-col sm:ml-0  h-auto rounded-3xl dark:bg-color-11 dark:text-white">
-      <div className="  justify-center dark:bg-color-11 dark:text-white sm:flex-col-reverse sm:w-full flex items-center w-full  ">
+      <div className="  justify-center mx-auto my-9 dark:bg-color-11 dark:text-white sm:flex-col-reverse sm:w-full flex items-center w-[80%]  ">
         <div className="w-1/2 sm:w-full gap-7 px-2 flex flex-col  p-2">
           <h1 className="font-bold px-4 sm:px-auto sm:font-medium sm:text-xl font-font-primary dark:text-white text-color-14 text-6xl">
             ABOUT US
           </h1>
-          <p className="px-4 dark:text-white sm:px-auto sm:w-full  sm:text-sm">
+          <p className="px-4 dark:text-white sm:px-auto sm:w-full para sm:text-sm">
             MyTutor is an Indian organization and an authentic destination for
             all your learnings. We provide students, tutors and institutions
             with simplified and accurate results based on their needs. Our aim
@@ -41,6 +41,64 @@ function AboutUs() {
         </div>
         <div className="flex sm:mb-16 items-center sm:flex-col sm:w-full  gap-4 flex-wrap justify-center w-full h-auto">
           <div className="w-[40%] sm:w-[95%] sm:mx-1 sm:px-1 mx-4 my-4 justify-center bg-color-3 px-3 py-2   flex  ">
+            <div className="w-[30%] rounded-full     h-auto">
+              <img
+                className="rounded-full h-[130px] w-[130px]"
+                src={cat_image12}></img>
+            </div>
+            <div className="w-[60%] flex justify-center gap-2  flex-col">
+              <label className="px-2 text-xl font-font-logo text-color-14">
+                Ashwin s. Telmore
+              </label>
+              <label className="px-2 text-sm text-color-9 font-font-logo">
+                AshwinTelmore@gmail.com
+              </label>
+              <div className="flex gap-5 w-full   px-1">
+                <i
+                  class="fa-brands fa-github text-2xl cursor-pointer transition-all duration-500 ease-in-out hover:bg-color-14 rounded-full py-1 px-2 hover:text-white"
+                  title="Github"></i>
+                <i
+                  class="fa-brands fa-linkedin-in text-2xl cursor-pointer transition-all duration-500 ease-in-out hover:bg-color-14 rounded-full py-1 px-2 hover:text-white"
+                  title="Linked In"></i>
+                <i
+                  class="fa-brands fa-whatsapp text-2xl cursor-pointer transition-all duration-500 ease-in-out hover:bg-color-14 rounded-full py-1 px-2 hover:text-white"
+                  title="Whats-app"></i>
+                <i
+                  class="fa-solid fa-envelope text-2xl cursor-pointer transition-all duration-500 ease-in-out hover:bg-color-14 rounded-full py-1 px-2 hover:text-white"
+                  title="Mail"></i>
+              </div>
+            </div>
+          </div>
+          <div className="w-[40%] sm:w-[95%] mx-4 my-4 sm:mx-1 sm:px-1 justify-center bg-color-3 px-3 py-2   flex  ">
+            <div className="w-[30%] rounded-full     h-auto">
+              <img
+                className="rounded-full h-[130px] w-[130px]"
+                src={cat_image12}></img>
+            </div>
+            <div className="w-[60%] flex justify-center gap-2  flex-col">
+              <label className="px-2 text-xl font-font-logo text-color-14">
+                Ashwin s. Telmore
+              </label>
+              <label className="px-2 text-sm text-color-9 font-font-logo">
+                AshwinTelmore@gmail.com
+              </label>
+              <div className="flex gap-5 w-full   px-1">
+                <i
+                  class="fa-brands fa-github text-2xl cursor-pointer transition-all duration-500 ease-in-out hover:bg-color-14 rounded-full py-1 px-2 hover:text-white"
+                  title="Github"></i>
+                <i
+                  class="fa-brands fa-linkedin-in text-2xl cursor-pointer transition-all duration-500 ease-in-out hover:bg-color-14 rounded-full py-1 px-2 hover:text-white"
+                  title="Linked In"></i>
+                <i
+                  class="fa-brands fa-whatsapp text-2xl cursor-pointer transition-all duration-500 ease-in-out hover:bg-color-14 rounded-full py-1 px-2 hover:text-white"
+                  title="Whats-app"></i>
+                <i
+                  class="fa-solid fa-envelope text-2xl cursor-pointer transition-all duration-500 ease-in-out hover:bg-color-14 rounded-full py-1 px-2 hover:text-white"
+                  title="Mail"></i>
+              </div>
+            </div>
+          </div>
+          <div className="w-[40%] sm:w-[95%] mx-4 my-4 sm:mx-1 sm:px-1 justify-center bg-color-3 px-3 py-2   flex  ">
             <div className="w-[30%] rounded-full     h-auto">
               <img
                 className="rounded-full h-[130px] w-[130px]"

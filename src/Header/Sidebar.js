@@ -22,11 +22,10 @@ const Sidebar = ({ open }) => {
   return (
     <>
       <div
-        className={`sidebar sm:z-[11] border-color-8 border-[1px] sm:mt-2 z-[11] dark:bg-color-11  dark:text-white dark:border w-[330px] sm:w-[270px] h-screen bg-white  rounded-r-3xl left-0 top-0 fixed transition-transform ease-in-out duration-500 ${
-          open
-            ? "sidebar-open translate-x-[0%]"
-            : "sidebar-close -translate-x-full"
-        }`}>
+        className={`sidebar sm:z-[11] border-color-8 border-[1px] sm:mt-2 z-[11] dark:bg-color-11  dark:text-white dark:border w-[330px] sm:w-[270px] h-screen bg-white  rounded-r-3xl left-0 top-0 fixed transition-transform ease-in-out duration-500 ${open
+          ? "sidebar-open translate-x-[0%]"
+          : "sidebar-close -translate-x-full"
+          }`}>
         <div className="flex w-full flex-col p-2">
           <Link to={"/profile"}>
             {" "}
@@ -58,12 +57,17 @@ const Sidebar = ({ open }) => {
                   About Us
                 </label>
               </Link>
-              <label className="px-2 hover:underline transition-all duration-300 ease-in-out hover:text-color-9">
-                Copyright
-              </label>
-              <label className="px-2 hover:underline transition-all duration-300 ease-in-out hover:text-color-9">
-                Contact us
-              </label>
+              <Link to={"/aboutus"}>
+                {" "}
+                <label className="px-2 hover:underline transition-all duration-300 ease-in-out hover:text-color-9">
+                  FeedBack
+                </label>
+              </Link>
+              <Link to={"/aboutus"}>
+                <label className="px-2 hover:underline transition-all duration-300 ease-in-out hover:text-color-9">
+                  Contact us
+                </label>
+              </Link>
               <label className="px-2 hover:underline transition-all duration-300 ease-in-out hover:text-color-9">
                 Creaters
               </label>

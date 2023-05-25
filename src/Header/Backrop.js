@@ -16,8 +16,8 @@ const Backrop = () => {
       <Link to={"/profile"}>
         <div className="flex w-full justify-around items-center">
           <div className="w-[30%] p-1">
-          <div className="rounded-full relative h-12 w-12 bg-color-4">
-        <div className="absolute right-3 p-2 text-white text-transform: uppercase"> {auth.user.name[0]}</div></div></div> 
+            <div className="rounded-full relative h-12 w-12 bg-color-4">
+              <div className="absolute right-3 p-2 text-white text-transform: uppercase"> {auth.user.name[0]}</div></div></div>
           <div className="flex cursor-pointer dark:text-white w-[70%] flex-col text-sm font-semibold">
             <label className="cursor-pointer">{auth.user.name}</label>
             <label className="cursor-pointer">{auth.user.email}</label>
@@ -33,10 +33,10 @@ const Backrop = () => {
             <label className="cursor-pointer transition-all duration-300 ease-in-out dark:hover:text-color-8 dark:text-white hover:text-color-8">Edit profile </label>
           </li>
         </Link>
-        <li className="flex  items-center gap-7">
+        {/* <li className="flex  items-center gap-7">
           <i className="fa-solid fa-gear"></i> <label className="cursor-pointer transition-all duration-300 ease-in-out hover:text-color-8">Setting </label>
-        </li>
-        <li className="flex  items-center gap-7"
+        </li> */}
+        <li className="flex  items-center gap-7 text-color-14"
           onClick={() => logout()}
         >
           <i className="fa-solid  fa-right-to-bracket"></i>

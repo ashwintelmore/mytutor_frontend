@@ -59,7 +59,7 @@ function Notification() {
                         Notification
                     </h1>
                 </div>
-                {notification.length > 0 &&
+                {notification.length > 0 ?
                     notification.map((item, i) => (
                         <Link to={"/postcontent/" + item.postId?._id} key={i}>
                             <div
@@ -79,7 +79,7 @@ function Notification() {
                                             {item.postTitle}
                                         </span> */}
                                         <div className="flex justify-center  h-fit py-4 px-5 gap-2 sm:gap-[2px] rounded-full bg-color-14 items-center ">
-                                        <i class="fa-solid fa-bell text-white text-xl"></i>
+                                            <i class="fa-solid fa-bell text-white text-xl"></i>
                                         </div>
                                     </div>
                                     <div className="p-1 text-xs flex flex-col w-[100%]  dark:text-white">
@@ -90,13 +90,16 @@ function Notification() {
                                             <h1 className="text-base dark:text-white line-clamp-2 text-blue-900">
                                                 {NotiMassagesToShow[item.message]} <b>{item.postId?.postTitle}</b> from <b>{item.senderId?.name}</b>
                                             </h1>
-                                           
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </Link>
-                    ))}
+                    ))
+                    :
+                    <p>No data found</p>
+                }
             </div>
         </div>
     );

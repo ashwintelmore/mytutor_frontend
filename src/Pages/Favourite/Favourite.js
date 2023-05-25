@@ -55,7 +55,7 @@ function Favourite() {
             Your Favourite Tutors
           </h1>
         </div>
-        {favourite.length > 0 &&
+        {favourite.length > 0 ?
           favourite.map((item, i) => (
             <Link to={"/showProfile/" + item.tutorId} key={i}>
               <div
@@ -95,7 +95,11 @@ function Favourite() {
                 </div>
               </div>
             </Link>
-          ))}
+          ))
+          :
+          <p>No data found</p>
+        }
+
       </div>
     </div>
   );
