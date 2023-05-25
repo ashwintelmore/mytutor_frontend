@@ -54,8 +54,9 @@ const VerticalNav = () => {
           <i className="cursor-pointer p-2 dark:text-white hover:bg-color-14 transition-all duration-500 ease-in-out  hover:text-white rounded-full fa-solid fa-heart" title="Likes"></i>
         </NavLink>
         <NavLink to={'/notification'}>
-          <i className="cursor-pointer p-2 dark:text-white hover:bg-color-14 transition-all duration-500 ease-in-out  hover:text-white rounded-full fa-solid fa-bell" title="Likes"></i>
-          <p className="text-color-13">{notification.length}</p>
+         <div className=" relative">
+          <i className="cursor-pointer p-2 dark:text-white hover:bg-color-14 transition-all duration-500 ease-in-out  hover:text-white rounded-full fa-solid fa-bell" title="Notifications"></i>
+          <p className="text-color-13 -right-2 px-2 -top-3 absolute text-xs bg-white rounded-full p-1">{notification.length}</p></div>
         </NavLink>
       </div>
     </div>

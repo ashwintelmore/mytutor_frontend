@@ -100,8 +100,8 @@ const SearchResult = ({ search, category = "" }) => {
             <div id="recomendation " className=" w-[30%]  sm:w-full mx-2">
               <h1 className="text-color-13 text-xl">Apply Filter :</h1>
 
-              <div className="p-1  h-auto w-full rounded-sm m-2 sm:flex flex-wrap   sm:w-full">
-                <div className="  w-[95%] p-2  sm:w-[50%]">
+              <div className="p-1   h-auto w-full rounded-sm m-2 sm:m-0 sm:flex flex-wrap sm:text-xs sm:items-center  sm:w-full">
+                <div className="  w-[98%] p-2  sm:w-[50%]">
                   <label
                     className="w-full p-2 text-base xs:text-base"
                     htmlFor="slots">
@@ -124,7 +124,7 @@ const SearchResult = ({ search, category = "" }) => {
 
                 <div className="  w-[95%] p-2  sm:w-[50%]">
                   <label
-                    className="w-full p-2 text-base xs:text-base"
+                    className="w-full p-2 text-sm "
                     htmlFor="slots">
                     Select Category :
                   </label>
@@ -163,6 +163,7 @@ const SearchResult = ({ search, category = "" }) => {
                       style={
                         {
                           // margin: 10
+                          
                         }
                       }>
                       Users
@@ -227,17 +228,17 @@ const SearchResult = ({ search, category = "" }) => {
                     posts.map((item, i) => (
                       <Link to={"/postcontent/" + item._id}>
                         <div
-                          className="p-2 w-[70%]  bg-color-3 transition-all ease-in-out duration-300 hover:shadow-md hover:shadow-[#5d899795] h-auto dark:bg-color-11 dark:border dark:text-white rounded-lg m-2 flex sm:w-full "
+                          className="p-2 sm:py-2 sm:m-1 w-[70%]  bg-color-3 transition-all ease-in-out duration-300 hover:shadow-md hover:shadow-[#5d899795] h-auto dark:bg-color-11 dark:border dark:text-white rounded-lg m-2 flex sm:w-full "
                           key={i}>
-                          <div className="flex  flex-row w-full">
-                            <div className=" relative  w-[40%] h-auto rounded-lg">
+                          <div className="flex items-center  flex-row w-full">
+                            <div className=" relative  w-[40%] h-full sm:w-1/2 rounded-lg">
                               <img
                                 src={
                                   item.thumbnailUrl &&
                                   postImgCollection[item.thumbnailUrl.image]
                                 }
-                                className="h-auto   w-full rounded-xl sm:h-auto sm:w-full "></img>
-                              <span className="font-semibold  absolute  text-white font-font-logo top-7 w-[35%] left-3 line-clamp-3 text-sm xs:text-xs ">
+                                className="   w-auto rounded-xl sm:h-full sm:w-full "></img>
+                              <span className="font-semibold  absolute  text-white font-font-logo top-7 sm:top-4 sm:line-clamp-1  w-[35%] left-3 line-clamp-3 text-sm xs:text-xs ">
                                 {item.postTitle}
                               </span>
                               <div className="flex gap-2 sm:gap-[2px] items-center absolute  bottom-3 sm:bottom-2 sm:left-2  left-3">
@@ -249,20 +250,20 @@ const SearchResult = ({ search, category = "" }) => {
                                 </label>
                               </div>
                             </div>
-                            <div className="p-1 text-xs flex flex-col w-[60%]  dark:text-white">
-                              <span>
+                            <div className="p-1 text-xs flex flex-col w-[60%] sm:w-1/2 sm:gap-2  dark:text-white">
+                              <span className="sm:text-xs">
                                 {getTimeAgo(item.createdAt)}
                               </span>
                               <div className="flex flex-col p-1">
-                                <h1 className="text-lg font-bold dark:text-white line-clamp-2 text-blue-900">
+                                <h1 className="text-lg font-bold dark:text-white line-clamp-2 sm:text-xs  text-blue-900">
                                   {item.postTitle}
                                 </h1>
-                                <span className="text-base">
+                                <span className="text-base sm:text-xs">
                                   {item.createdTutor.name}
                                 </span>
                                 <div className="flex  gap-1 items-center xs:gap-1 xs:text-xs  px-3 bg-white dark:bg-color-11 text-color-4 rounded-xl   dark:border dark:border-white  w-fit font-bold ">
                                   {" "}
-                                  <label className="text-lg  px-5">
+                                  <label className="text-lg sm:text-xs  px-5">
                                     <i className="fa-solid fa-indian-rupee-sign   dark:text-white"> </i>
                                     {item.charges}
                                     <span className="text-xs font-thin  dark:text-white">
