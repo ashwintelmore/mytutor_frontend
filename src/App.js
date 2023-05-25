@@ -22,6 +22,7 @@ import Favourite from "./Pages/Favourite/Favourite";
 import AboutUs from "./Header/AboutUs";
 import Calender from "./Components/Calender";
 import Notification from "./Pages/Notification/Notification";
+import PrivateRoute from "./PrivateRoute";
 
 const App = () => {
   const auth = useAuth();
@@ -63,8 +64,46 @@ const App = () => {
             />
             {/* <Route path="/register" element={<Register />} /> */}
             {/* <Route path="/login" element={<LoginForm />} /> */}
-
+            {/* 
             <Route
+              path="/:email/:token"
+              element={
+                auth.user.isVerified ? (
+                  <Navigate replace to="/profile" />
+                ) : (
+                  <VerifyEmail />
+                )
+              }
+            /> */}
+            {/* <Route
+              path="/VerifyEmail"
+              element={
+                !auth.user._id ?
+                  <Navigate replace to="/" />
+                  :
+                  auth.user.isVerified ? (
+                    <Navigate replace to="/" />
+                  ) : (
+                    <VerifyEmail />
+                  )
+              }
+            /> */}
+
+            <Route element={<PrivateRoute />}>
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/showProfile/:id?" element={<ShowProfile />} />
+              <Route path="/postcontent/:id?" element={<Post />} />
+              <Route path="/dummy" element={<Dummy />} />
+              <Route path="/comment" element={<Comment />} />
+              <Route path="/appointement" element={<Appointement />} />
+              <Route path="/search/:catName?" element={<SearchResult />} />
+              <Route path="/favourite" element={<Favourite />} />
+              <Route path="/aboutus" element={<AboutUs />} />
+              <Route path="/calender" element={<Calender />} />
+              <Route path="/notification" element={<Notification />} />
+            </Route>
+
+            {/* <Route
               path="profile"
               element={
                 auth.user._id ? <Profile /> : <Navigate replace to="/login" />
@@ -100,16 +139,9 @@ const App = () => {
                 )
               }
             />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/showProfile/:id?" element={<ShowProfile />} />
-            <Route path="/postcontent/:id?" element={<Post />} />
-            <Route path="/dummy" element={<Dummy />} />
-            <Route path="/comment" element={<Comment />} />
-            <Route path="/appointement" element={<Appointement />} />
-            <Route path="/search/:catName?" element={<SearchResult />} />
-            <Route path="/favourite" element={<Favourite />} />
-            <Route path="/aboutus" element={<AboutUs />} />
-            <Route path="/calender" element={<Calender />} />
+ */}
+
+
             <Route path="*" element={<Dummy />} />
           </Routes>
         </div>

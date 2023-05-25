@@ -111,3 +111,34 @@ export const getTimeAgo = (dateString) => {
     }
 }
 
+export const validatePassword = (password) => {
+    // Password should have at least 8 characters
+    if (password.length < 8) {
+        return false;
+    }
+
+    // Password should contain at least one lowercase letter
+    // if (!/[a-z]/.test(password)) {
+    //     return false;
+    // }
+
+    // // Password should contain at least one uppercase letter
+    // if (!/[A-Z]/.test(password)) {
+    //     return false;
+    // }
+
+    // // Password should contain at least one digit
+    // if (!/[0-9]/.test(password)) {
+    //     return false;
+    // }
+
+    // Password is valid
+    return true;
+}
+export const validateMobileNumber = (number) => {
+    // Password should have at least 8 characters
+
+    var pattern = /^[6-9]\d{9}$/;
+    return pattern.test(number);
+
+}

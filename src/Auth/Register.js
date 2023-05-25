@@ -5,6 +5,8 @@ import RegisterImage from '../assets/register1.png'
 // import Google from '../assets/Google-logo.png'
 import { useAuth } from "../providers/auth";
 import Loader from "../Components/Helper/Loader";
+import { validatePassword } from "../Components/Helper/helper";
+import { useAlert } from "../Components/Alert";
 
 export default function Register() {
    const [name, setName] = useState('')
@@ -13,11 +15,17 @@ export default function Register() {
    const [confiPass, setConfiPass] = useState('')
    const [error, setError] = useState('Please enter your details.')
 
+   const [showNotification, contextHolder] = useAlert()
+
    const auth = useAuth()
 
 
 
    async function fetchData() {
+      // if (!validatePassword(password)) {
+      //    showNotification("Please use strong password")
+      //    return
+      // }
       if (password !== confiPass) {
          setError("Password does not match")
          return
@@ -40,12 +48,13 @@ export default function Register() {
 
    return (
       <div className="w-full ml-16 bg-white sm:ml-0  h-screen xs:flex xs:flex-col flex items-start">
+         {contextHolder}
          <div className="relative   w-[57%] h-full flex flex-col items-center  xs:hidden sm:hidden ">
-            <div className="absolute top-[5%] items-center  flex flex-col"> 
-            <span class="text-5xl font-extrabold bg-clip-text text-transparent py-2 bg-gradient-to-r from-[#439cfb] to-[#7e7280]">
-              Welcome to My tutor
-            </span>
-          
+            <div className="absolute top-[5%] items-center  flex flex-col">
+               <span class="text-5xl font-extrabold bg-clip-text text-transparent py-2 bg-gradient-to-r from-[#439cfb] to-[#7e7280]">
+                  Welcome to My tutor
+               </span>
+
             </div>
             <img className="w-full     h-full " src={RegisterImage} />
          </div>
