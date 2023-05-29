@@ -22,10 +22,10 @@ export default function Register() {
 
 
    async function fetchData() {
-      // if (!validatePassword(password)) {
-      //    showNotification("Please use strong password")
-      //    return
-      // }
+      if (!validatePassword(password)) {
+         showNotification("Please use strong password")
+         return
+      }
       if (password !== confiPass) {
          setError("Password does not match")
          return

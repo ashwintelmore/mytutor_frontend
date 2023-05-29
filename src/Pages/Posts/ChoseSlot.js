@@ -8,6 +8,8 @@ import MultipleDatePicker from '../../Components/Helper/multiDate';
 import { useAlert } from '../../Components/Alert';
 import { NotiMassages } from '../../Components/Helper/NotiMassages';
 import { createNotification } from '../../App/NotificationApi';
+import { getTimeAgo } from '../../Components/Helper/helper';
+import { formatDateToShow } from '../../Components/Helper/helper';
 
 
 export default function ChoseSlot({ post, userData, _reqData }) {
@@ -202,13 +204,29 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                     <div className="text-lg"><i class="fa-solid fa-calendar-plus text-color-14 bg-color-5 rounded-full p-[5px]"></i> Selected</div>
                 </div>
                 <MultipleDatePicker
-
                     value={userData.slots.customDates}
                     available={userData.slots.available}
                     reqValue={reqData.reqDates}
                     onChangeReValue={e => setReqData({ ...reqData, reqDates: e })}
                 />
                 <div className="flex flex-col p-3 xs:p-1  xs:mt-3 xs:gap-2">
+                    <h3 className="dark:text-white">Selected Dates</h3>
+                    <p className='mb-4'>
+                        {
+                            reqData.reqDates.map((item, i) => (
+
+                                <Tag
+                                    onClose={(e) => { }}
+                                    className=" text-sm border shadow-lg shadow-color-8 rounded-xl p-2"
+                                    title={"test"}
+                                    key={i}
+                                >
+                                    {formatDateToShow(item)}
+                                </Tag>
+                            ))
+                        }
+                    </p>
+                    <span></span>
                     <h3 className="dark:text-white">Available Time Ranges</h3>
                     <div>
                         {

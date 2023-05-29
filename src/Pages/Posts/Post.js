@@ -29,6 +29,8 @@ const Post = () => {
   })
   const [err, setErr] = useState('')
   const [userData, setUserData] = useState({})
+  const [refreshReqData, setRefreshReqData] = useState(false)
+
   const [comment, setComment] = useState({
     comment: ''
   })
@@ -70,7 +72,7 @@ const Post = () => {
   useEffect(() => {
     const fetchUserAllRequest = async () => {
       let res
-      // setLoading({ ...loading, request: true })
+      setLoading({ ...loading, post: true })
       if (post.createdTutor._id == auth.user._id) {
         res = await getAllPostRequested(post._id, auth.user._id);
         if (res.error) {
@@ -80,17 +82,18 @@ const Post = () => {
 
         } else if (res.payload) {
           setRequests(res.payload)
-          setLoading({ ...loading, request: false })
+          setLoading({ ...loading, post: false })
 
         }
       } else {
-        // setLoading({ ...loading, request: true })
+        setLoading({ ...loading, post: true })
         res = await getAllPostRequester(post._id, auth.user._id);
 
         if (res.error) {
           setErr(res.error.errMessage)
+          setLoading({ ...loading, post: false })
         } else if (res.payload) {
-          setLoading({ ...loading, request: false })
+          setLoading({ ...loading, post: false })
           if (res.payload.length > 0) {
             setReqData(res.payload[0])
 
@@ -103,7 +106,7 @@ const Post = () => {
     };
     if (post._id && auth.user._id)
       fetchUserAllRequest()
-  }, [post._id, auth.user._id])
+  }, [post._id, auth.user._id, refreshReqData])
 
   //get fovourit
   useEffect(() => {
@@ -396,6 +399,7 @@ const Post = () => {
                       <div className="flex flex-col p-4 gap-4 xs:p-2 xs:gap-2 xs:overflow-y-auto">
                         <RecievedReq
                           requests={requests}
+                          setRefreshReqData={() => setRefreshReqData(!refreshReqData)}
                         />
                       </div>
                     </div>
@@ -405,6 +409,7 @@ const Post = () => {
                         <h4 className="text-lg dark:text-white font-semibold mt-2">Your Request Accpeted</h4>
                         <SendReq
                           requests={[reqData]}
+                          setRefreshReqData={() => setRefreshReqData(!refreshReqData)}
                         />
                       </div>
                       :

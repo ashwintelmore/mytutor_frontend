@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../App/Api";
+import { forgetPassword, login } from "../App/Api";
 import loginImage from "../assets/Tablet login-rafiki.png";
 import { useAuth } from "../providers/auth";
 import Loader from "../Components/Helper/Loader";
+import { useAlert } from "../Components/Alert";
 
 export default function LoginForm() {
   const navaigate = useNavigate();
@@ -12,6 +13,11 @@ export default function LoginForm() {
   const [error, setError] = useState(
     "Welcome Back! Please enter your details."
   );
+  const [showNotification, contextHolder] = useAlert()
+
+  const [loader, setLoader] = useState({
+    forgetPass: false,
+  })
 
   const auth = useAuth();
   async function fetchData() {
@@ -24,11 +30,41 @@ export default function LoginForm() {
     if (res.error) {
       //error
       setError(res.error.errMessage);
+      showNotification(res.error.errMessage)
       auth.setLoading(false);
     } else if (res.payload) {
       auth.setUser(res.payload);
       auth.setLoading(false);
+      showNotification(res.message)
       localStorage.setItem("_id", res.payload._id);
+    }
+  }
+
+  async function onHandleforgetPassword(e) {
+    if (email == '') {
+      showNotification("Email field should not empty")
+      return
+    }
+    // return
+    // auth.setLoading(true)
+    setLoader({ ...loader, forgetPass: true })
+    const res = await forgetPassword({
+      email
+    });
+    console.log('res', res)
+    if (res.error) {
+      //error
+      showNotification(res.error.errMessage)
+      setLoader({ ...loader, forgetPass: false })
+
+      // auth.setLoading(false)
+    } else if (res.payload) {
+      // auth.setUser(res.payload)
+      // auth.setLoading(false)
+      showNotification(res.message)
+      setLoader({ ...loader, forgetPass: false })
+
+      // localStorage.setItem('_id', res.payload._id)
     }
   }
 
@@ -36,6 +72,7 @@ export default function LoginForm() {
 
   return (
     <div className="w-[100%] ml-16 sm:ml-0 overflow-auto scrollbar-hide md:scrollbar-default">
+      {contextHolder}
       <div className="w-full   sm:ml-0 h-screen   flex  xs:flex-col">
         {/* left field of login */}
         <div className="relative bg-white  w-[57%] h-full flex flex-col items-center xs:hidden sm:hidden">
@@ -92,9 +129,21 @@ export default function LoginForm() {
               </div>
             </div>
             <div className="w-full flex items-center justify-betwwen">
-              <p className="text-sm font-medium whitespace-nowrap cursor-pointer underline underline-offset-2">
-                Forget Password?
-              </p>
+              {
+                loader.forgetPass ?
+
+                  <p className="text-sm font-medium whitespace-nowrap cursor-pointer underline underline-offset-2"
+
+                  >
+                    Loading...
+                  </p>
+                  :
+                  <p className="text-sm font-medium whitespace-nowrap cursor-pointer underline underline-offset-2"
+                    onClick={(e) => onHandleforgetPassword(e)}
+                  >
+                    Forget Password?
+                  </p>
+              }
             </div>
             <div className="w-full flex flex-col my-2 font-semibold text-lg">
               {auth.loading ? (

@@ -26,7 +26,11 @@ const MultipleDatePicker = (props) => {
         current => {
 
             const day = current.format("DD")
+            const currentDate = moment();
 
+            if (current.isBefore(currentDate.subtract(1, "day"))) {
+                return <div className="m-2 text-color-8" title="Could Not Select">{day}</div>;
+            }
 
             if (reqArrValues.some(e => current.format("YYYY-MM-DD") == e)) {
                 return <div className={"bg-color-9 text-white m-2"}>{day}</div>;
@@ -70,6 +74,13 @@ const MultipleDatePicker = (props) => {
 
     const _onChange = useCallback(
         selected => {
+
+            const currentDate = moment();
+
+            if (selected.isBefore(currentDate.subtract(1, "day"))) {
+                return
+            }
+
             const index = arrValues.findIndex(e => selected.format("YYYY-MM-DD") == e);
 
             // console.log('selected', moment(selected.format("YYYY-DD-MM")).day())
@@ -90,6 +101,11 @@ const MultipleDatePicker = (props) => {
     );
     const _onChangeReqValue = useCallback(
         selected => {
+            const currentDate = moment();
+
+            if (selected.isBefore(currentDate.subtract(1, "day"))) {
+                return
+            }
             const index = reqArrValues.findIndex(e => selected.format("YYYY-MM-DD") == e);
 
             // console.log('selected', moment(selected.format("YYYY-DD-MM")).day())

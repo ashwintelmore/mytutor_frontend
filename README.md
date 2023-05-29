@@ -31,6 +31,9 @@ category=>
 - [ ] change all input border color hover and active
 - [ ] all boxes should color-3
 - [ ] after click on send loader should display
+- [ ] remove compnet  
+- [ ] Sort request
+- [ ] Other can edit post
 
 
 ### Backend 

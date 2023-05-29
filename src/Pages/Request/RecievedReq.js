@@ -5,6 +5,8 @@ import { useAuth } from "../../providers/auth";
 import EditReq from "./EditReq";
 import { useAlert } from "../../Components/Alert";
 import { Link } from "react-router-dom";
+import { formatDateToShow, getTimeAgo } from "../../Components/Helper/helper";
+import moment from "moment";
 
 export default function RecievedReq({ requests, setRefreshReqData }) {
   const [showNotification, contextHolder] = useAlert()
@@ -123,7 +125,7 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                           </div>
                       }
 
-                      <p className="text-sm sm:text-[10px] dark:text-white"><i class="fa-solid fa-calendar-days"></i> : {item.reqDates[0]}</p>{" "}
+                      <p className="text-sm sm:text-[10px] dark:text-white"><i class="fa-solid fa-calendar-days"></i> : {formatDateToShow(item.reqDates[0])}</p>{" "}
                       <p className="text-sm sm:text-[10px] dark:text-white"><i class="fa-solid fa-clock"></i> : {item.reqTime}</p>
                     </div>
 
@@ -164,22 +166,29 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                         </button>
                       )}
                       {item.reqAccept && (
-                        <a href="https://myturt.onrender.com/" target="_blank">
-                          <button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-color-10">
-                            Go to Meeting
+                        moment(item.reqDates[0], 'YYYY-MM-DD').isAfter(moment().subtract(1, "day")) ?
+                          <button button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-color-8">
+                            Meeting Not started
                           </button>
-                        </a>
+                          :
+                          <a href="https://myturt.onrender.com/" target="_blank">
+                            <button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-color-10">
+                              Go to Meeting
+                            </button>
+                          </a>
+
                       )}
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </div >
           ))
         ) : (
           <p className="dark:text-white"> No Requests recieved </p>
-        )}
-      </div>
+        )
+        }
+      </div >
       <Meeting
         show={show}
         setShow={() => {

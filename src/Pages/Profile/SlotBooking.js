@@ -57,7 +57,6 @@ function SlotBooking({ isEditable }) {
     const onChange = (value, t) => {
         if (t === "from") {
             setFromTime(moment(value, 'hh:mm A'));
-
         }
         else if (t === "to") {
             setToTime(moment(value, 'hh:mm A'));

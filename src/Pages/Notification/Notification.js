@@ -63,15 +63,28 @@ function Notification() {
                     notification.map((item, i) => (
                         <Link to={"/postcontent/" + item.postId?._id} key={i}>
                             <div
-                                className={item.read ? "bg-color-3 border-sm border-[#4f6da877] border p-2 w-[100%] transition-all ease-in-out duration-300 hover:shadow-md hover:shadow-[#5d899795] h-auto dark:bg-color-11 dark:border dark:text-white rounded-lg m-2 flex sm:w-full " : "bg-color-3  border p-2 w-[100%] transition-all ease-in-out duration-300 hover:shadow-md hover:shadow-[#5d899795] h-auto dark:bg-color-11 dark:border dark:text-white rounded-lg m-2 flex sm:w-full border-sm border-[#4f6da877] "}
+                                className={item.read ? "bg-white border-sm border-[#4f6da877] border p-2 w-[100%] transition-all ease-in-out duration-300 hover:shadow-md hover:shadow-[#5d899795] h-auto dark:bg-color-11 dark:border dark:text-white rounded-lg m-2 flex sm:w-full "
+                                    :
+                                    "bg-color-3 border border-[#4f6da877]  p-2 w-[100%] transition-all ease-in-out duration-300 hover:shadow-md hover:shadow-[#5d899795] h-auto dark:bg-color-11 dark:border dark:text-white rounded-lg m-2 flex sm:w-full "
+                                }
                                 key={i}
                                 onClick={() => onClickNotification(item)}
                             >
                                 <div className="flex    w-full">
                                     <div className=" relative px-4 flex w-fit h-auto rounded-lg">
-                                        
+
                                         <div className="flex justify-center  h-fit py-4 px-5 gap-2 sm:gap-[2px] rounded-full bg-color-14 items-center ">
-                                            <i class="fa-solid fa-bell text-white text-xl"></i>
+                                            {
+                                                item.type === 'payment'
+                                                    ?
+                                                    <i class="fa-solid fa-indian-rupee-sign text-white text-xl"></i>
+                                                    :
+                                                    item.type === 'request'
+                                                        ?
+                                                        <i class="fa-solid fa-paper-plane text-white text-xl"></i>
+                                                        :
+                                                        <i class="fa-solid fa-bell text-white text-xl"></i>
+                                            }
                                         </div>
                                     </div>
                                     <div className="p-1 text-xs flex flex-col w-[100%]  dark:text-white">

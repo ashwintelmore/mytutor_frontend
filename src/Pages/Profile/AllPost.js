@@ -87,7 +87,7 @@ function AllPost({ resPost = false, isEditable = true }) {
   if (loader.post) {
     return <LoaderSmall />
   }
-  console.log('posts', posts)
+  console.log('userData', userData)
   return (
     <>
 
@@ -99,21 +99,25 @@ function AllPost({ resPost = false, isEditable = true }) {
               <div className="flex flex-col  gap-[2px] bg-color-3 shadow-lg shadow-color-8 dark:bg-color-11 transition-all duration-500 ease-in-out dark:shadow-sm w-4/6 p-2 rounded-2xl  dark:border-white border xs:w-full xs:text-xs" key={i}>
                 <div className="flex justify-between px-2 ">
                   <span className="text-xs">{item.createdAt}</span>
-                  <div
-                    className="text-lg font-extrabold relative">
-                    <i className="fa-solid fa-ellipsis-vertical"
-                      onClick={() => onClickThreePoint(item, i)}
-                    ></i>
-                    {
-                      (openProfile && i == cardActioveInd)
-                      &&
-                      <EditReq
-                        type={'post'}
-                        item={item}
-                        onClickEdit={(e) => onHandleClickForEdit(e)}
-                        onDeletePost={(e) => onHandleClickForDeletePost(e)}
-                      />}
-                  </div>
+                  {
+
+                    item.createdTutor._id === auth.user._id &&
+                    <div
+                      className="text-lg font-extrabold relative">
+                      <i className="fa-solid fa-ellipsis-vertical"
+                        onClick={() => onClickThreePoint(item, i)}
+                      ></i>
+                      {
+                        (openProfile && i == cardActioveInd)
+                        &&
+                        <EditReq
+                          type={'post'}
+                          item={item}
+                          onClickEdit={(e) => onHandleClickForEdit(e)}
+                          onDeletePost={(e) => onHandleClickForDeletePost(e)}
+                        />}
+                    </div>
+                  }
                 </div>
                 <div className="flex w-full gap-2">
                   <div className="h-auto w-2/5  sm:h-auto  dark:bg-color-9 bg-color-4   rounded-xl">
