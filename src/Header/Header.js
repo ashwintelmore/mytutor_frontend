@@ -60,7 +60,7 @@ const Header = ({ setOpen, open }) => {
         <div className="flex justify-between  items-center gap-10 sm:gap-3 sm:p-[2px] sm:text-base p-3 text-xl   ">
           <NavLink to={"/search"}>
 
-            <i className="cursor-pointer p-2 rounded-full fa-solid fa-magnifying-glass relative text-color-14 hover:bg-color-14 dark:text-white transition-all duration-500 ease-in-out hover:text-white " title="Search"></i>
+            <i className="cursor-pointer  p-2 rounded-full fa-solid fa-magnifying-glass relative text-color-14 hover:bg-color-14 dark:text-white transition-all duration-500 ease-in-out hover:text-white " title="Search"></i>
 
           </NavLink>
 
@@ -84,7 +84,7 @@ const Header = ({ setOpen, open }) => {
 
 
               <div title="Profile" className="flex sm:text-xs  items-center gap-2">
-                <span className="rounded-full h-11 w-11 sm:h-7 sm:w-10 p-1 relative bg-color-14">
+                <span className="rounded-full h-11 w-11 sm:h-7  p-1 relative bg-color-14">
                   <div className="absolute right-4 sm:right-2  text-white text-transform: uppercase"> {auth.user.name[0]}</div>
                 </span>
                 {openProfile && <Backrop />}

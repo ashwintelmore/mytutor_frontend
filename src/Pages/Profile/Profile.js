@@ -81,11 +81,11 @@ const Profile = ({ toggler = '1' }) => {
             <div className="text-lg w-11/12 gap-3 flex flex-col">
               <h3 className="text-color-14 dark:text-white">Your UPI id</h3>
               <div className="flex flex-col gap-8">
-                <div className="flex items-center sm:w-full relative border border-gray-500 dark:border-white shadow-sm shadow-black text-xs   rounded-xl p-1  ">
+                <div className="flex items-center sm:w-full relative border border-gray-500 dark:border-white shadow-sm shadow-black text-xs bg-color-3  rounded-xl p-1  ">
                   <input
                     type="text"
                     placeholder="91850*******"
-                    className="rounded-lg px-2 py-1 text-[10px]  sm:px-4 dark:bg-color-11 dark:text-white  w-full  transition-all ease-in-out dark:border-none border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none"
+                    className="rounded-lg px-2 py-1 text-[10px]  sm:px-4 dark:bg-color-11 dark:text-white  w-full  transition-all border-none ease-in-out dark:border-none border-white focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none"
                     value={auth.user.payment.upiId}
                     onChange={(e) => auth.setUser({ ...auth.user, payment: { ...auth.user.payment, upiId: e.target.value } })}
                   ></input>
@@ -142,7 +142,7 @@ const Profile = ({ toggler = '1' }) => {
         </div>
 
       </div>
-      <div className="absolute w-full bottom-0 ">
+      <div className="absolute  w-full bottom-0 ">
         <ConfigProvider
           theme={{
             token: {
@@ -153,10 +153,11 @@ const Profile = ({ toggler = '1' }) => {
           }}
         >
           <FloatButton
+          className="sm:mb-16"
             onClick={() => updateUserData(auth.user)}
             description={"Update"}
             shape="square"
-            style={{ right: '40%', width: 100, zIndex: 2 }}
+            style={{ right: '40%', width: 100 , zIndex: 2 }}
             type="primary"
           />
         </ConfigProvider></div>

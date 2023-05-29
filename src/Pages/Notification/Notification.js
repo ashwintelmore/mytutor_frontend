@@ -52,7 +52,7 @@ function Notification() {
     console.log("notification", notification);
 
     return (
-        <div className="bg-white w-full dark:bg-color-11 transition-all duration-500 ease-in-out rounded-3xl sm:ml-0 sm:h-screen ml-16 py-4 px-2">
+        <div className="bg-white w-full dark:bg-color-11 transition-all duration-500 ease-in-out rounded-3xl sm:ml-0 sm:h-screen sm:mb-16 ml-16 py-4 px-2">
             <div id="result " className="w-1/2 mt-16 dark:bg-color-11  p-2 relative sm:w-full ">
                 <div className="w-full fixed z-[10]  dark:bg-color-11 dark:text-white bg-white top-16 ">
                     <h1 className="text-color-14   font-semibold  px-4 py-4  w-fit text-2xl ">
@@ -67,17 +67,9 @@ function Notification() {
                                 key={i}
                                 onClick={() => onClickNotification(item)}
                             >
-                                <div className="flex  flex-row w-full">
-                                    <div className=" relative px-4 flex w-[30%] h-auto rounded-lg">
-                                        {/* <img
-                                            src={
-                                                item.thumbnailUrl &&
-                                                postImgCollection[item.thumbnailUrl.image]
-                                            }
-                                            className="h-auto   w-full rounded-xl sm:h-auto sm:w-full "></img> */}
-                                        {/* <span className="font-semibold  absolute  text-white font-font-logo top-7 w-[35%] left-3 line-clamp-3 text-sm xs:text-xs ">
-                                            {item.postTitle}
-                                        </span> */}
+                                <div className="flex    w-full">
+                                    <div className=" relative px-4 flex w-fit h-auto rounded-lg">
+                                        
                                         <div className="flex justify-center  h-fit py-4 px-5 gap-2 sm:gap-[2px] rounded-full bg-color-14 items-center ">
                                             <i class="fa-solid fa-bell text-white text-xl"></i>
                                         </div>

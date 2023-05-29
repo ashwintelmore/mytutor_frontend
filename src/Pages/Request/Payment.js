@@ -391,14 +391,14 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         } else if (payment._id && payment.paymentStatus.isDoneByLearner && payment.paymentStatus.isReceivedByTutor) {
 
             return (
-                <button className="xs:w-2/5 bg-[#9a9a9a] text-white rounded-xl p-2 w-[15%]"
+                <button className="xs:w-[30%] sm:text-xs bg-[#9a9a9a] text-white rounded-xl p-2 w-[15%]"
                     onClick={() => onPaymentReceivedStatus('not_received')}
                 >Not Recieved
                 </button>
             )
         } else if (payment._id && payment.paymentStatus.isDoneByLearner) {
             return (
-                <button className="xs:w-2/5 bg-[#30f65e] text-white rounded-xl p-2 w-[15%]"
+                <button className="xs:w-[30%] sm:text-xs bg-[#30f65e] text-white rounded-xl p-2 w-[15%]"
                     onClick={() => onPaymentReceivedStatus('received')}
                 >Recieved
                 </button>
@@ -412,7 +412,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
     const renderInitialUpdateBtn = (payment) => {
         if (!payment._id) {
             return (
-                <button className="xs:w-2/5 bg-color-4 text-white rounded-xl p-2 w-[15%]"
+                <button className="xs:w-[30%] sm:text-xs bg-color-4 text-white rounded-xl p-2 w-[15%]"
                     onClick={() => onCreatePayment()}
                 > Initiate
                 </button>
@@ -421,7 +421,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
             return null
         } else if (payment._id) {
             return (
-                <button className="xs:w-2/5 bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
+                <button className="xs:w-[30%] sm:text-xs bg-[#f68f30] text-white rounded-xl p-2 w-[15%]"
 
                     onClick={() => onCreatePayment()}
                 > Update
@@ -594,12 +594,12 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                                     {
 
                                         payment._id && payment.paymentStatus.isDoneByLearner ?
-                                            <button className="xs:w-2/5 bg-color-8 text-white rounded-xl p-2 w-[15%]"
+                                            <button className="xs:w-[30%] sm:text-xs bg-color-8 text-white rounded-xl p-2 w-[15%]"
                                                 onClick={() => onPaymentStatusChange(false)}
                                             >Not Done
                                             </button>
                                             :
-                                            <button className="xs:w-2/5 bg-color-10 text-white rounded-xl p-2 w-[15%]"
+                                            <button className="xs:w-[30%] sm:text-xs bg-color-10 text-white rounded-xl p-2 w-[15%]"
                                                 onClick={() => onPaymentStatusChange(true)}
                                             >Done
                                             </button>
@@ -610,13 +610,13 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                             {
                                 (payment._id && !payment.paymentStatus.isDoneByLearner)
                                 &&
-                                <button className="xs:w-2/5 bg-color-4 text-white rounded-xl p-2 w-[15%]"
+                                <button className="xs:w-[30%] sm:text-xs bg-color-4 text-white rounded-xl p-2 w-[15%]"
 
                                     onClick={() => window.alert("Make payment on that uip and after payment done please update status as done for confiremation")}
                                 > Go to Payment
                                 </button>
                             }
-                            <button className=" xs:w-2/5 bg-color-13 text-white rounded-xl p-2 w-[15%]"
+                            <button className=" xs:w-[30%] sm:text-xs bg-color-13 text-white rounded-xl p-2 w-[15%]"
                                 onClick={() => onCancelHandle()}
                             >Cancel
                             </button>
@@ -628,7 +628,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                             {payment._id && renderPaymentStatusBtn(payment)}
 
                             {renderInitialUpdateBtn(payment)}
-                            <button className=" xs:w-2/5 bg-color-13 text-white rounded-xl p-2 w-[15%]"
+                            <button className=" xs:w-[30%] sm:text-xs bg-color-13 text-white rounded-xl p-2 w-[15%]"
                                 onClick={() => onCancelHandle()}
                             >Cancel
                             </button>

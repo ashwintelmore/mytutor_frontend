@@ -20,6 +20,7 @@ export const generateMeetingId = async (data) => {
 
 
         const { roomId } = await res.json();
+        console.log(res.json())
         return roomId
     } catch (error) {
         console.log('error :>> ', error);
