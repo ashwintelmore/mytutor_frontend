@@ -36,7 +36,7 @@ const Backrop = () => {
         {/* <li className="flex  items-center gap-7">
           <i className="fa-solid fa-gear"></i> <label className="cursor-pointer transition-all duration-300 ease-in-out hover:text-color-8">Setting </label>
         </li> */}
-        <li className="flex  items-center gap-7 sm:gap-5 text-color-14"
+        <li className="flex  items-center gap-7 sm:gap-5 dark:text-white text-color-14"
           onClick={() => logout()}
         >
           <i className="fa-solid  fa-right-to-bracket"></i>
