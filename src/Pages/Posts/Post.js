@@ -217,7 +217,7 @@ const Post = () => {
           <Loader />
           :
           post._id ?
-            <div className="w-[96%] ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-color-11 transition-all duration-500 ease-in-out bg-white xs:w-full xs:flex-col sm:ml-0 sm:flex-col sm:w-full">
+            <div className="w-[96%] sm:mb-[80px] ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-color-11 transition-all duration-500 ease-in-out bg-white xs:w-full xs:flex-col sm:ml-0 sm:flex-col sm:w-full">
               <div className="flex flex-col w-3/5  sm:w-full">
                 <div className=" h-auto p-1 xs:p-1 mx-2 sm:mx-0 ">
                   <div className="flex justify-between mx-3 py-2 px-2  sm:px-4  sm:mx-1  items-center">

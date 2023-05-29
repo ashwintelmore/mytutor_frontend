@@ -225,14 +225,14 @@ function Meeting({ show, setShow, data, setData, refresh }) {
     if (!show)
         return null;
     return (
-        <div className="flex w-full  items-center justify-center xs:flex-col absolute z-20 top-4 left-0">
+        <div className="flex w-full   items-center justify-center xs:flex-col absolute z-20 top-4 left-0">
             {contextHolder}
-            <div className=" bg-color-3 dark:bg-color-11 transition-all duration-500 ease-in-out dark:border  w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  shadow-md shadow-color-8 xs:flex-col xs:w-11/12">
+            <div className=" bg-color-3 dark:bg-color-11 transition-all duration-500 ease-in-out dark:border  w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center  sm:h-auto shadow-md shadow-color-8 xs:flex-col xs:w-11/12">
                 <div className="flex  w-full justify-start"> <h2 className="text-color-14 py-2 px-4 text-2xl p-2   ">Meeting</h2></div>
 
                 <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
 
-                    <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
+                    <div className="flex flex-col relative w-[45%] p-2  xs:w-full">
                         <label className="w-full p-2 text-base xs:text-base">Would You like to</label>
                         <div className="mt-2">
                             <Radio.Group
@@ -344,11 +344,11 @@ function Meeting({ show, setShow, data, setData, refresh }) {
                         <div className="flex p-1   w-full justify-between text-sm xs:text-xs xs:gap-0 xs:p-1 xs:flex-col xs:w-full">
                             <div className="flex flex-col relative  w-[45%] p-2  xs:w-full">
                                 <label className="w-full p-2 text-base xs:text-base">Name of Meeting</label>
-                                <div className="flex items-center  relative   transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none  text-sm   rounded-xl py-1 px-1  ">
+                                <div className="flex items-center  relative   transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px]   text-sm   rounded-xl py-1 px-1  ">
                                     <input
                                         type="text"
                                         placeholder="Write something"
-                                        className="rounded-lg px-2 py-1 dark:bg-color-11   w-full  transition-all ease-in-out border-none focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none "
+                                        className="rounded-lg px-2 py-1 dark:bg-color-11   w-full  transition-all ease-in-out border-none bg-color-3 border-[2px] outline-none "
                                         value={meeting.meetingName}
                                         onChange={(e) => setMeeting({ ...meeting, meetingName: e.target.value })}
                                     ></input>

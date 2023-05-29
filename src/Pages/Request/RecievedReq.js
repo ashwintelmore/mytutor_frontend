@@ -67,7 +67,7 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
   return (
     <>
       {contextHolder}
-      <div className=" w-full p-4 flex flex-col gap-4  overflow-scroll xs:w-full xs:p-1 xs:ml-1" ref={menuRef}>
+      <div className=" w-full p-4 flex flex-col gap-4 h-screen overflow-scroll xs:w-full xs:p-1 xs:ml-1" ref={menuRef}>
         {requests.length > 0 ? (
           requests.map((item, i) => (
             <div

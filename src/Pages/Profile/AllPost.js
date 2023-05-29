@@ -92,7 +92,7 @@ function AllPost({ resPost = false, isEditable = true }) {
     <>
 
       {contextHolder}
-      <div className="  w-full px-2 py-1 flex flex-col gap-4 overflow-scroll xs:w-full xs:p-1 xs:ml-1" ref={menuRef}>
+      <div className="sm:mb-16  w-full px-2 py-1 flex flex-col gap-4 overflow-scroll xs:w-full xs:p-1 xs:ml-1" ref={menuRef}>
         {
           posts.length > 0 ?
             posts.map((item, i) => (
@@ -120,7 +120,7 @@ function AllPost({ resPost = false, isEditable = true }) {
                     <Link to={'/postcontent/' + item._id}
                       className="relative" >
 
-                      <img src={item.thumbnailUrl && postImgCollection[item.thumbnailUrl.image]} className="h-auto   w-full rounded-xl sm:h-auto sm:w-full "></img>
+                      <img src={item.thumbnailUrl && postImgCollection[item.thumbnailUrl.image]} className="h-auto   w-full rounded-xl sm:h-full sm:w-full "></img>
                       <span className="font-semibold  absolute  text-white font-font-logo top-7 w-[35%] left-3 line-clamp-3 text-sm xs:text-xs ">
                         {item.postTitle}
                       </span>

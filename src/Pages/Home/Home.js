@@ -75,7 +75,7 @@ const Home = () => {
     <div className="home w-[95%] sm:relative ml-16 sm:w-full sm:m-1 xs:p-1  h-auto bg-white light dark:text-white dark:bg-color-11 transition-all duration-500 ease-in-out  p-2 rounded-t-3xl  ">
       {renderAlert}
       {/* category card  box*/}
-      <div className="flex mt-3  overflow-y-hidden dark:text-slate-100">
+      <div className="flex mt-3  sm:h-auto overflow-y-hidden dark:text-slate-100">
         {
           loader.cat ?
             <Loader />
@@ -83,14 +83,14 @@ const Home = () => {
             categories.map((item, i) => (
               <Link to={"/search/" + item.catName} key={i}>
                 <div className="relative w-max flex m-4 justify-center sm:m-1 ">
-                  <div className=" w-44 h-44 rounded-full dark:bg-color-2 border- border-color-9   ">
+                  <div className=" w-44 h-44 sm:w-24 sm:h-24 rounded-full dark:bg-color-2 border- border-color-9   ">
                     <img
                       className="w-full h-full  rounded-full"
                       src={bufferToImage(item)}
                       alt="student"
                     />
                   </div>
-                  <div className="absolute text-center p-2 bottom-0 dark:bg-amber-500 h-10  border border-color-9 px-4 bg-color-3 text-color-14  shadow-md shadow-color-7 rounded-2xl xs:h-9 xs:w-24 xs:rounded-2xl xs:p-1    ">
+                  <div className="absolute  text-center p-2 sm:px-2 sm:py-1 sm:-bottom-1 sm:text-xs  bottom-0 dark:bg-amber-500 h-10  border border-color-9 px-4 bg-color-3 text-color-14  shadow-md shadow-color-7 rounded-2xl xs:h-fit sm:w-fit xs:rounded-xl     ">
                     {item.catName}
                   </div>
                 </div>
@@ -102,7 +102,7 @@ const Home = () => {
       {loader.posts ? (
         <Loader />
       ) : (
-        <div className="flex flex-wrap  mt-3 sm:w-full sm:h-auto sm:mt-1 font-semibold overflow-y-auto  sm:overflow-y-auto w-full xs:w-full xs:mt-2   ">
+        <div className="flex flex-wrap sm:mb-16 mt-3 sm:w-full sm:h-auto sm:mt-1 font-semibold overflow-y-auto  sm:overflow-y-auto w-full   ">
           {/* one post card */}
           {posts.length > 0 ? (
             posts.map((item, i) => (
