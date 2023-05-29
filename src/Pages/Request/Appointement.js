@@ -86,7 +86,7 @@ const Appointement = () => {
                         loader.post ?
                             <Loader />
                             :
-                            <div className=" xs:overflow-y-auto " >
+                            <div className=" xs:overflow-y-auto overflow-y-auto " >
                                 {
                                     profileToggler === '1' ?
                                         <SendReq

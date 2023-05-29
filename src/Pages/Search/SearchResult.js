@@ -80,10 +80,14 @@ const SearchResult = ({ search, category = "" }) => {
 
   return (
     <>
-      <div className="bg-white ml-16 sm:ml-0 flex justify-center py-5 sm:px-2 dark:bg-color-11 transition-all duration-500 ease-in-out  rounded-3xl dark:text-white  w-full h-full ">
-        <div id="outer" className=" w-[90%] dark:bg-color-11 transition-all duration-500 ease-in-out sm:mx-4 sm:full h-full bg-white  my-10">
-          <div id="filter" className="p-5 flex">
-            <div className="mx-2 relative dark:bg-color-11 dark:bg-white dark:text-black text-sm  flex   w-96 sm:w-full items-center rounded-2xl  ">
+      <div className="bg-white ml-16 sm:ml-0 flex justify-center py-5 sm:px-2 dark:bg-color-11 transition-all duration-500 ease-in-out  rounded-3xl dark:text-white  w-full h-screen ">
+        <div id="outer" className=" w-[90%] dark:bg-color-11 transition-all duration-500 ease-in-out sm:mx-4 sm:full h-auto bg-white   my-10">
+       
+          <div className="  flex  flex-row w-full h-auto relative  p-2 dark:bg-color-11 sm:flex-col sm:w-full ">
+            {/* left hand side of search */}
+            <div id="recomendation " className=" w-[40%] dark:bg-color-11  overflow-y-hidden flex flex-col fixed   sm:w-full mx-2">
+            <div id="filter" className="px-5 py-4  w-full flex">
+            <div className="mx-2 relative dark:bg-color-11  dark:text-black text-sm  flex   w-96 sm:w-full items-center rounded-2xl  ">
               <input
                 type="text"
                 placeholder="search"
@@ -95,13 +99,10 @@ const SearchResult = ({ search, category = "" }) => {
               <i className="fa-solid fa-magnifying-glass active cursor-pointer absolute dark:text-white right-2 p-2"></i>
             </div>
           </div>
-          <div className="  flex  flex-row w-full h-auto  p-2  sm:flex-col sm:w-full ">
-            {/* left hand side of search */}
-            <div id="recomendation " className=" w-[30%]  sm:w-full mx-2">
               <h1 className="text-color-13 text-xl">Apply Filter :</h1>
 
-              <div className="p-1   h-auto w-full rounded-sm m-2 sm:m-0 sm:flex flex-wrap sm:flex-wrap sm:text-xs sm:items-center  sm:w-full">
-                <div className="  w-[98%] p-2  sm:w-[50%]">
+              <div className="p-1   h-auto w-[80%] rounded-sm m-2 sm:m-0 sm:flex flex-wrap sm:flex-wrap sm:text-xs sm:items-center  sm:w-full">
+                <div className="  w-[95%] p-2  sm:w-[50%]">
                   <label
                     className="w-full p-2 text-base xs:text-base"
                     htmlFor="slots">
@@ -221,14 +222,14 @@ const SearchResult = ({ search, category = "" }) => {
             {loader.posts ? (
               <Loader />
             ) : (
-              <div id="result " className="w-[70%] sm:overflow-y-auto dark:bg-color-11  sm:w-full">
-                <h1 className="text-color-13 text-xl px-3  ">Result</h1>
+              <div id="result " className="w-[60%] overflow-y-auto right-0  absolute sm:overflow-y-auto dark:bg-color-11 sm:top-0 mt-20 sm:w-full">
+                <h1 className="text-color-13 text-xl px-3 sticky top-0  ">Result</h1>
                 {queryData.type === "posts" ? (
                   posts.length > 0 ? (
                     posts.map((item, i) => (
                       <Link to={"/postcontent/" + item._id}>
                         <div
-                          className="p-2 sm:py-2 sm:m-1 w-[70%]  bg-color-3 transition-all ease-in-out duration-300 hover:shadow-md hover:shadow-[#5d899795] h-auto dark:bg-color-11 dark:border dark:text-white rounded-lg m-2 flex sm:w-full "
+                          className="p-2 sm:py-2 sm:m-1 w-[70%]  bg-color-3 transition-all ease-in-out duration-300 hover:shadow-md hover:shadow-[#5d899795] h-auto dark:bg-color-11 dark:border dark:text-white overflow-y-auto rounded-lg m-2 flex sm:w-full "
                           key={i}>
                           <div className="flex items-center  flex-row w-full">
                             <div className=" relative  w-[40%] h-full sm:w-1/2 rounded-lg">

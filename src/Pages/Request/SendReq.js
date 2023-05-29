@@ -180,6 +180,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
         )}
       </div>
       <Payment
+      className="absolute "
         showPayment={showPayment}
         setShowPayment={handleShowPayment}
         reqData={reqData}

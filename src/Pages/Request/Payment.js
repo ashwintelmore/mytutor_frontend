@@ -434,7 +434,7 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
     if (!showPayment)
         return null;
     return (
-        <div className="flex w-full  items-center justify-center xs:flex-col absolute z-20 top-4 left-0">
+        <div className="flex w-full  items-center justify-center xs:flex-col absolute z-10 top-4 left-0">
             {contextHolder}
             <div className=" bg-color-3 border-[1px] border-color-8 shadow-md shadow-color-8 dark:bg-color-11 transition-all duration-500 ease-in-out dark:border  w-4/6 h-auto p-3 rounded-3xl flex flex-col  items-center justify-center   xs:flex-col xs:w-11/12">
                 <div className="flex  w-full justify-start"> <h2 className="text-color-4 py-2 px-4 text-2xl p-2   ">Payment details</h2></div>

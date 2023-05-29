@@ -51,8 +51,10 @@ const Header = ({ setOpen, open }) => {
               setOpen(!open);
             }}></i>
           <Link to={"/"} >
-            <img className=" sm:w-1/2  w-1/2 " src={fullLogo} alt="" />
-          </Link>
+            <div className="w-[50%]  px-3 sm:w-full ">
+            <img className="w-[80%] dark:bg-white rounded-2xl  dark:px-4    sm:w-[80%]"  src={fullLogo} alt="" />
+            </div></Link>
+
 
 
         </div>
