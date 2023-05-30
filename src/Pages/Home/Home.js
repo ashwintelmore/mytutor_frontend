@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Buffer } from "buffer";
 import smallLogo from "../Posts/../../assets/brandng/small-logo.png";
-import Ribbion from "../Posts/../../assets/ribbion-1.png";
+import LearnerRibbion from "../Posts/../../assets/leaner.png";
+import tutorRibbion from "../Posts/../../assets/tutor.png";
 // import cat_image4 from "../Posts/../../assets/cat_image4.jpg";
 // import cat_image5 from "../Posts/../../assets/cat_image5.jpg";
 // import cat_image0 from "../Posts/../../assets/cat_image0.jpeg";
@@ -111,8 +112,12 @@ const Home = () => {
                   <div className="h-auto p-3 w-full  sm:p-1 xs:m-1 m-2   dark:shadow-md dark:bg-color-2 bg-color-3  rounded-2xl flex flex-col   ">
                     <div className="flex relative justify-between sm:text-xs sm:px-1 sm:py-1 text-color-9 px-2  dark:text-white">
                       <div className="w-[50%]">
-                        <img src={Ribbion} className="absolute left-0 -top-16  w-[50%]"></img>
-                        
+                        {
+                          item.postType === 'learner' ?
+                            <img src={LearnerRibbion} className="absolute left-0 -top-16  w-[50%]"></img>
+                            :
+                            <img src={tutorRibbion} className="absolute left-0 -top-16  w-[50%]"></img>
+                        }
                       </div>
                       <i className="fa-solid fa-ellipsis-vertical px-2 sm:text-xs text-lg"></i>
                     </div>

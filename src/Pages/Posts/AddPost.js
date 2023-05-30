@@ -82,6 +82,7 @@ function AddPost({ show, setShow, post, reFresh }) {
     } else if (res.payload) {
       //handle sussece responce
       showNotification("Created successfully")
+      setShow(!show)
       // setUserData({
       //     postTitle: '',
       //     thumbnailUrl: '',
@@ -92,7 +93,6 @@ function AddPost({ show, setShow, post, reFresh }) {
       //     tags: []
       // })
     }
-    // setShow(!show)
   };
   const onUpdateDetails = async () => {
 
