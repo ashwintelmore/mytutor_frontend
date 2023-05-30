@@ -92,7 +92,7 @@ function AddPost({ show, setShow, post, reFresh }) {
       //     tags: []
       // })
     }
-    // setShow(!show)
+    setShow(!show)
   };
   const onUpdateDetails = async () => {
 

@@ -8,32 +8,32 @@ category=>
 
 ### Frontend Features
 - [ ] loader not working propery
-- [ ] category images in figma
+- [x] category images in figma
 - [x] when add post category 
-- [ ] calender color and naming 
-- [ ] font 
+- [x] calender color and naming 
+- [x] font 
 - [x] all active classs
-- [ ] about left sidebar pages
-- [ ] remove that girl from every page
-- [ ] added all tag in postcontent page
+- [x] about left sidebar pages
+- [x] remove that girl from every page
+- [x] added all tag in postcontent page
 - [ ] once meeting completed manage meeting should not appear
-- [ ] in dark mode site not working proper
-- [ ] date function in where it appearn the date
-- [ ] dark mode is not working at non loged user profile
-- [ ] dark mode is not working in request page
-- [ ] small edit btn and style of it
+- [x] in dark mode site not working proper
+- [x] date function in where it appearn the date
+- [x] dark mode is not working at non loged user profile
+- [x] dark mode is not working in request page
+- [x] small edit btn and style of it
 - [x] Change name of 'Your QR code' to 'QR code'
 - [x] Change name of 'Waiting learn' to 'Done by learner'
-- [ ] home page responsive category 
-- [ ] error massage at login and register
+- [x] home page responsive category 
+- [x] error massage at login and register
 - [ ] category loader
-- [ ] change login btn color to blue
-- [ ] change all input border color hover and active
-- [ ] all boxes should color-3
+- [x] change login btn color to blue
+- [x] change all input border color hover and active
+- [x] all boxes should color-3
 - [ ] after click on send loader should display
-- [ ] remove compnet  
-- [ ] Sort request
-- [ ] Other can edit post
+- [x] remove compnet  
+- [x] Sort request
+- [x] Other can edit post
 
 
 ### Backend 

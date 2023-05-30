@@ -50,9 +50,12 @@ const Header = ({ setOpen, open }) => {
             onClick={() => {
               setOpen(!open);
             }}></i>
+
+
+
           <Link to={"/"} >
             <div className="w-[50%]  px-3 sm:w-full ">
-            <img className="w-[80%] dark:bg-white rounded-2xl  dark:px-4    sm:w-[80%]"  src={fullLogo} alt="" />
+              <img className="w-[80%] dark:bg-white rounded-2xl  dark:px-4    sm:w-[80%]" src={fullLogo} alt="" />
             </div></Link>
 
 
@@ -71,11 +74,13 @@ const Header = ({ setOpen, open }) => {
             onClick={handleThemeSwitch} title="Dark/Light mode"></i>
 
 
-          <i
-            className="fa-solid fa-circle-plus cursor-pointer text-color-14 hover:bg-color-14 transition-all duration-500 ease-in-out dark:text-white hover:text-white p-2 rounded-full  " title="upload"
-            onClick={() => setShow(true)}></i>
+          {
+            auth.user._id &&
+            <i
+              className="fa-solid fa-circle-plus cursor-pointer text-color-14 hover:bg-color-14 transition-all duration-500 ease-in-out dark:text-white hover:text-white p-2 rounded-full  " title="upload"
+              onClick={() => setShow(true)}></i>
 
-
+          }
 
           {/* <i className="fa-solid fa-bell xs:hidden sm:hidden"></i> */}
           <div
