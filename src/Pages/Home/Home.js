@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Buffer } from "buffer";
 import smallLogo from "../Posts/../../assets/brandng/small-logo.png";
-// import cat_image3 from "../Posts/../../assets/cat_image3.jpg";
+import Ribbion from "../Posts/../../assets/ribbion-1.png";
 // import cat_image4 from "../Posts/../../assets/cat_image4.jpg";
 // import cat_image5 from "../Posts/../../assets/cat_image5.jpg";
 // import cat_image0 from "../Posts/../../assets/cat_image0.jpeg";
@@ -24,14 +24,14 @@ const Home = () => {
   const [categories, setCategories] = useState([]);
   const [loader, setLoader] = useState({
     posts: false,
-    cat: false
+    cat: false,
   });
   const [err, setErr] = useState("");
   useEffect(() => {
     const getallpost = async () => {
       setLoader({ ...loader, posts: true });
       const res = await getAllPosts();
-      console.log('res', res)
+      console.log("res", res);
       if (res.error) {
         //handle error
         showAlert(res.error.errMessage);
@@ -54,15 +54,15 @@ const Home = () => {
   const [img, setImg] = useState("");
   useEffect(() => {
     const getallpost = async () => {
-      setLoader({ ...loader, cat: true })
+      setLoader({ ...loader, cat: true });
       const res = await getAlllCatgories();
       if (res.error) {
-        setLoader({ ...loader, cat: false })
-        showAlert(res.error.errMessage)
+        setLoader({ ...loader, cat: false });
+        showAlert(res.error.errMessage);
       } else if (res.payload) {
         // setImg(`data:${res.payload[0].image.contentType};base64, ${Buffer.from(res.payload[0].image.data.data).toString('base64')}`)
         // setImg({ data: res.payload.image.contentType ;base64, ${ Buffer.from(user.userPhoto.data).toString('base64') }
-        setLoader({ ...loader, cat: false })
+        setLoader({ ...loader, cat: false });
         setCategories(res.payload);
       }
     };
@@ -76,28 +76,26 @@ const Home = () => {
       {renderAlert}
       {/* category card  box*/}
       <div className="flex mt-3  sm:h-auto overflow-y-hidden dark:text-slate-100">
-        {
-          loader.cat ?
-            <Loader />
-            :
-            categories.map((item, i) => (
-              <Link to={"/search/" + item.catName} key={i}>
-                <div className="relative w-max flex m-4 justify-center sm:m-1 ">
-                  <div className=" w-44 h-44 sm:w-24 sm:h-24 rounded-full dark:bg-color-2 border- border-color-9   ">
-                    <img
-                      className="w-full h-full  rounded-full"
-                      src={bufferToImage(item)}
-                      alt="student"
-                    />
-                  </div>
-                  <div className="absolute  text-center p-2 sm:px-2 sm:py-1 sm:-bottom-1 sm:text-xs  bottom-0 dark:bg-amber-500 h-10  border border-color-9 px-4 bg-color-3 text-color-14  shadow-md shadow-color-7 rounded-2xl xs:h-fit sm:w-fit xs:rounded-xl     ">
-                    {item.catName}
-                  </div>
+        {loader.cat ? (
+          <Loader />
+        ) : (
+          categories.map((item, i) => (
+            <Link to={"/search/" + item.catName} key={i}>
+              <div className="relative w-max flex m-4 justify-center sm:m-1 ">
+                <div className=" w-44 h-44 sm:w-24 sm:h-24 rounded-full dark:bg-color-2 border- border-color-9   ">
+                  <img
+                    className="w-full h-full  rounded-full"
+                    src={bufferToImage(item)}
+                    alt="student"
+                  />
                 </div>
-              </Link>
-            ))
-        }
-
+                <div className="absolute  text-center p-2 sm:px-2 sm:py-1 sm:-bottom-1 sm:text-xs  bottom-0 dark:bg-amber-500 h-10  border border-color-9 px-4 bg-color-3 text-color-14  shadow-md shadow-color-7 rounded-2xl xs:h-fit sm:w-fit xs:rounded-xl     ">
+                  {item.catName}
+                </div>
+              </div>
+            </Link>
+          ))
+        )}
       </div>
       {loader.posts ? (
         <Loader />
@@ -111,12 +109,11 @@ const Home = () => {
                 key={i}>
                 <Link to={"/postcontent/" + item._id}>
                   <div className="h-auto p-3 w-full  sm:p-1 xs:m-1 m-2   dark:shadow-md dark:bg-color-2 bg-color-3  rounded-2xl flex flex-col   ">
-                    <div className="flex justify-between sm:text-xs sm:px-1 sm:py-1 text-color-9 px-2  dark:text-white">
-                      <span className="sm:text-xs font-normal  text-[12px]">
-                        {item.postType == "learner"
-                          ? "I want to learn"
-                          : "I can teach"}
-                      </span>
+                    <div className="flex relative justify-between sm:text-xs sm:px-1 sm:py-1 text-color-9 px-2  dark:text-white">
+                      <div className="w-[50%]">
+                        <img src={Ribbion} className="absolute left-0 -top-16  w-[50%]"></img>
+                        
+                      </div>
                       <i className="fa-solid fa-ellipsis-vertical px-2 sm:text-xs text-lg"></i>
                     </div>
                     <div className=" relative h-auto w-full sm:max-w-[100%] mx-auto my-3 dark:bg-violet-200  rounded-2xl">
@@ -128,8 +125,12 @@ const Home = () => {
                       </span>
 
                       <div className="flex  sm:gap-[2px] items-center  absolute  bottom-0 sm:bottom-2 sm:left-2  left-3">
-                        <img src={smallLogo} className="sm:w-3 h-[10%] w-[10%]"></img>
-                        <label className="font-font-logo sm:text-xs text-white">{item.createdTutor.name}</label>
+                        <img
+                          src={smallLogo}
+                          className="sm:w-3 h-[10%] w-[10%]"></img>
+                        <label className="font-font-logo sm:text-xs text-white">
+                          {item.createdTutor.name}
+                        </label>
                       </div>
                     </div>
                     <div className="flex justify-between text-sm ">
@@ -141,7 +142,6 @@ const Home = () => {
                           {item.createdTutor.name}
                         </span>
                       </div>
-
                     </div>
                     <div className="flex justify-between p-1  item-center xs:text-[10px] ">
                       {/* <label className="sm:font-medium  sm:text-[#30f830]">
@@ -149,7 +149,9 @@ const Home = () => {
                       </label> */}
                       <div className="flex gap-1 items-center">
                         <di className="h-4 w-4 bg-color-10 rounded-full sm:h-2 sm:w-2"></di>
-                        <label className="text-sm sm:text-xs text-color-9 dark:text-white font-light">{item.createdTutor.analytics.favorite} favorite</label>
+                        <label className="text-sm sm:text-xs text-color-9 dark:text-white font-light">
+                          {item.createdTutor.analytics.favorite} favorite
+                        </label>
                       </div>
                       <button className="bg-white text-color-4 sm:w-auto px-7  sm:px-3  rounded-xl p-1 dark:text-[orange] dark:border">
                         Rs.{item.pricePerHour || item.charges}/-
