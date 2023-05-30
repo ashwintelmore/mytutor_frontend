@@ -60,7 +60,7 @@ function AddWorkExpe({ show, setShow, }) {
                         <p className="text-xs ml-2 p-1">Write something</p>
                     </div>
                     <div className="flex flex-col   w-[45%] p-2 xs:w-full">
-                        <label className="w-full p-2 text-base xs:text-base">Institute/University</label>
+                        <label className="w-full p-2 text-base xs:text-base">Company/Organization</label>
                         <input className="rounded-xl w-full  dark:bg-color-11 dark:border transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none p-2" type="text"
                             name="orginization"
                             onChange={(e) => onHandleChange(e)}
