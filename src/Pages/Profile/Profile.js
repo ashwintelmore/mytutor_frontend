@@ -81,7 +81,7 @@ const Profile = ({ toggler = '1' }) => {
             <div className="text-lg w-11/12 gap-3 flex flex-col">
               <h3 className="text-color-14 dark:text-white">Your UPI id</h3>
               <div className="flex flex-col gap-8">
-                <div className="flex items-center sm:w-full relative border border-gray-500 dark:border-white shadow-sm shadow-black text-xs bg-color-3  rounded-xl p-1  ">
+                <div className="flex items-center sm:w-full relative border border-gray-500 dark:border-white   text-xs bg-color-3  rounded-xl p-1  ">
                   <input
                     type="text"
                     placeholder="91850*******"
@@ -92,7 +92,7 @@ const Profile = ({ toggler = '1' }) => {
 
 
                   {/* <button className="absolute rounded-xl text-sm  h-7 w-20  text-white right-1   bg-orange-500">Save</button> */}
-                  <h6 className="text-xs left-2 absolute -bottom-10 ">
+                  <h6 className="text-xs left-2 absolute -bottom-7 ">
                     <label className="text-xs dark:text-white ml-2 p-1">e.g. 9824xxxxx@ybl, 9824xxxxx@okayhdfs, etc </label>
                   </h6>
                 </div>

@@ -70,7 +70,7 @@ export default function About({ isEditable = true }) {
                 {
                   isEditable
                   &&
-                  <button className="rounded-2xl bg-color-4 text-xs w-14 text-white p-2 font-semibold"
+                  <button className="rounded-2xl bg-color-4 hover:bg-[#55559f] text-xs w-14 text-white p-2 font-semibold"
                     onClick={() => setShow(!show)}
                   >
                     Add
@@ -119,7 +119,7 @@ export default function About({ isEditable = true }) {
                 {
                   isEditable
                   &&
-                  <button className="rounded-2xl bg-color-4 text-xs w-14 text-white p-2 font-semibold"
+                  <button className="rounded-2xl bg-color-4 text-xs w-14 hover:bg-[#55559f] text-white p-2 font-semibold"
                     onClick={() => setWorEx(!WorEx)}
                   >
                     Add
@@ -167,7 +167,7 @@ export default function About({ isEditable = true }) {
                 {
                   isEditable
                   &&
-                  <button className="rounded-2xl bg-color-4 text-xs w-14 text-white p-2 font-semibold"
+                  <button className="rounded-2xl bg-color-4 hover:bg-[#55559f] text-xs w-14 text-white p-2 font-semibold"
                     onClick={() => setOther(!other)}
                   >
                     Add

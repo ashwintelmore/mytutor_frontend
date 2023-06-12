@@ -22,7 +22,7 @@ const Sidebar = ({ open }) => {
   return (
     <>
       <div
-        className={`sidebar sm:z-[11] border-color-8 border-[1px] sm:mt-2 z-[11] dark:bg-color-11  dark:text-white dark:border w-[330px] sm:w-[270px] h-screen bg-white  rounded-r-3xl left-0 top-0 fixed transition-transform ease-in-out duration-500 ${open
+        className={`sidebar  sm:z-[12] border-color-8 border-[1px] sm:mt-2 z-[11] dark:bg-color-11  dark:text-white dark:border w-[330px] sm:w-[270px] h-screen bg-white  rounded-r-3xl left-0 top-0 fixed transition-transform ease-in-out duration-500 ${open
           ? "sidebar-open translate-x-[0%]"
           : "sidebar-close -translate-x-full"
           }`}>
