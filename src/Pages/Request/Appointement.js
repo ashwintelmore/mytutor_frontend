@@ -101,28 +101,29 @@ const Appointement = () => {
     return (
         <>
             <div className="flex w-full ml-16 h-screen rounded-t-3xl bg-white  dark:bg-color-11 transition-all duration-500 ease-in-out p-3 mx-2 dark:text-white xs:flex-col xs:ml-0" >
-                <div className="w-[40%] flex flex-col h-full items-center p-1 gap-6 mt-5 sm:mt-1 overflow-y-hidden  rounded-tl-3xl xs:w-full  sm:ml-0 xs:ml-0  ">
-                <div className="flex w-full py-2 flex-wrap justify-evenly placeholder:">
-                    <div className="text-lg"><i class="fa-solid fa-calendar-check text-color-10 bg-color-5 rounded-full p-[5px]"> </i> Available</div>
-                    <div className="text-lg"><i class="fa-solid fa-calendar-xmark text-color-13 bg-color-5 rounded-full p-[5px]"></i> Not Available</div>
-                    <div className="text-lg"><i class="fa-solid fa-calendar-plus text-color-14 bg-color-5 rounded-full p-[5px]"></i>Requested</div>
-                    <div className="text-lg"><i class="fa-solid fa-check-to-slot text-color-8 bg-color-5 rounded-full p-[5px]"></i>Completed</div>
-                    <div className="text-lg"><i class="fa-solid fa-check-to-slot text-[#ee85d3] bg-color-5 rounded-full p-[5px]"></i>Upcoming</div>
+                <div className="w-[40%] flex flex-col h-full items-center p-1 gap-6 mt-5 sm:mt-1   rounded-tl-3xl xs:w-full  sm:ml-0 xs:ml-0  ">
+                    <div className="flex w-full py-2 flex-wrap justify-evenly placeholder:">
+                        <div className="text-lg"><i class="fa-solid fa-calendar-check text-color-10 bg-color-5 rounded-full p-[5px]"> </i> Available</div>
+                        <div className="text-lg"><i class="fa-solid fa-calendar-xmark text-color-13 bg-color-5 rounded-full p-[5px]"></i> Not Available</div>
+                        <div className="text-lg"><i class="fa-solid fa-calendar-plus text-color-14 bg-color-5 rounded-full p-[5px]"></i>Requested</div>
+                        <div className="text-lg"><i class="fa-solid fa-check-to-slot text-color-8 bg-color-5 rounded-full p-[5px]"></i>Completed</div>
+                        <div className="text-lg"><i class="fa-solid fa-check-to-slot text-[#ee85d3] bg-color-5 rounded-full p-[5px]"></i>Upcoming</div>
+
+                    </div>
+                    <div>
+                        <MultipleDatePicker
+                            value={auth.user.slots.customDates}
+                            available={auth.user.slots.available}
+                            // reqValue={requests[0].reqDates}
+                            appointementDates={appointementDates}
+                            onChangeAppointementDate={(value) => setselectedDateAppointment(value)}
+                            selectedDate={selectedDateAppointment}
+                        />
+                    </div>
 
                 </div>
-                    
-                    <MultipleDatePicker
-                        value={auth.user.slots.customDates}
-                        available={auth.user.slots.available}
-                        // reqValue={requests[0].reqDates}
-                        appointementDates={appointementDates}
-                        onChangeAppointementDate={(value) => setselectedDateAppointment(value)}
-                        selectedDate={selectedDateAppointment}
-                    />
 
-                </div>
-
-                <div className="w-3/5 flex-col flex overflow-y-auto sm:w-full xs:relative sm:mb-16  ">
+                <div className="w-3/5 flex-col flex  sm:w-full xs:relative sm:mb-16  ">
                     <h3 className="text-xl font-semibold p-2 dark:text-white">Your Appointements</h3>
 
                     <div className="flex top-0 sticky bg-white dark:bg-color-11 p-2  gap-4 sm:w-full sm:text-[10px] sm:gap-1 sm:p-1 mt-1  mb-2 ">
