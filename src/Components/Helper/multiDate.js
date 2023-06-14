@@ -182,7 +182,7 @@ const MultipleDatePicker = (props) => {
     return (
         <>
 
-            <div className={"calendar dark:bg-color-2 "}>
+            <div className={"calendar  dark:bg-color-2 "}>
                 {
                     reqValue ?
                         <Calendar
