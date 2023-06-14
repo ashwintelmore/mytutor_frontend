@@ -91,7 +91,7 @@ const Header = ({ setOpen, open }) => {
 
 
               <div title="Profile" className="flex sm:text-xs  items-center gap-2">
-                <span className="rounded-full h-11 w-11 sm:h-7  p-1 relative bg-color-14">
+                <span className="rounded-full h-11 w-11 sm:h-7 sm:w-fit sm:px-3 p-1 relative bg-color-14">
                   <div className="absolute right-4 sm:right-2  text-white text-transform: uppercase"> {auth.user.name[0]}</div>
                 </span>
                 {openProfile && <Backrop />}

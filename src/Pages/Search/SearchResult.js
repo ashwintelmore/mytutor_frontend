@@ -77,14 +77,14 @@ const SearchResult = ({ search, category = "" }) => {
 
   return (
     <>
-      <div className="bg-white ml-16 sm:ml-0 flex justify-center py-5 sm:px-2 dark:bg-color-11 transition-all duration-500 ease-in-out  rounded-3xl dark:text-white  w-full h-screen ">
-        <div id="outer" className=" w-[90%] dark:bg-color-11 transition-all duration-500 ease-in-out sm:mx-4 sm:full h-auto bg-white   my-10">
+      <div className="bg-white ml-16 sm:ml-0 flex justify-center py-5 sm:px-2 dark:bg-color-11 transition-all duration-500 ease-in-out  rounded-3xl dark:text-white h-screen w-full ">
+        <div id="outer" className=" w-[90%] dark:bg-color-11 transition-all duration-500 ease-in-out sm:w-full h-auto dark:h-screen bg-white   my-10">
 
-          <div className="  flex  flex-row w-full h-auto relative  p-2 dark:bg-color-11 sm:flex-col sm:w-full ">
+          <div className="  flex  flex-row w-full h-auto relative   p-2 dark:bg-color-11   sm:w-full ">
             {/* left hand side of search */}
-            <div id="recomendation " className=" w-[40%] dark:bg-color-11  overflow-y-hidden flex flex-col fixed   sm:w-full mx-2">
-              <div id="filter" className="px-5 py-4  w-full flex">
-                <div className="mx-2 relative dark:bg-color-11  dark:text-black text-sm  flex   w-96 sm:w-full items-center rounded-2xl  ">
+            <div id="recomendation " className=" w-[40%] dark:bg-color-11  overflow-y-hidden flex flex-col fixed sm:mx-0 sm:z-[11] sm:bg-white sm:top-16   sm:w-full mx-2">
+              <div id="filter" className="px-5 py-4 sm:px-0  sm:w-full w-full flex">
+                <div className="mx-2 relative sm:mx-0 sm:mr-7 dark:bg-color-11  dark:text-black text-sm  flex   w-96  items-center rounded-2xl  ">
                   <input
                     type="text"
                     placeholder="search"
@@ -98,7 +98,7 @@ const SearchResult = ({ search, category = "" }) => {
               </div>
               <h1 className="text-color-13 text-xl">Apply Filter :</h1>
 
-              <div className="p-1   h-auto w-[80%] rounded-sm m-2 sm:m-0 sm:flex flex-wrap sm:flex-wrap sm:text-xs sm:items-center  sm:w-full">
+              <div className="p-1 sm:mx-4 h-auto w-[80%] rounded-sm m-2 sm:m-0 sm:flex flex-wrap sm:flex-wrap sm:text-xs sm:items-center   sm:w-fit">
                 <div className="  w-[95%] p-2  sm:w-[50%]">
                   <label
                     className="w-full p-2 text-base xs:text-base"
@@ -219,7 +219,7 @@ const SearchResult = ({ search, category = "" }) => {
             {loader.posts ? (
               <Loader />
             ) : (
-              <div id="result " className="w-[60%] overflow-y-auto right-0  absolute sm:overflow-y-auto dark:bg-color-11 sm:top-0 mt-20 sm:w-full">
+              <div id="result " className="w-[60%] overflow-y-auto right-0  absolute sm:overflow-y-auto dark:bg-color-11 sm:mt-72 sm:z-10   sm:w-full">
                 <h1 className="text-color-13 text-xl px-3 sticky top-0  ">Result</h1>
                 {queryData.type === "posts" ? (
                   posts.length > 0 ? (
@@ -263,9 +263,9 @@ const SearchResult = ({ search, category = "" }) => {
                                   {" "}
                                   <label className="text-lg sm:text-xs sm:w-fit px-5">
                                     <i className="fa-solid fa-indian-rupee-sign   dark:text-white"> </i>
-                                    {item.charges}
-                                    <span className="text-xs font-thin  dark:text-white">
-                                      -/
+
+                                    <span className="  font-thin px-2  dark:text-[orange]">
+                                      {item.charges}/-
                                     </span>
                                   </label>
                                 </div>
