@@ -16,6 +16,9 @@ import { postImgCollection } from "../../assets/postImages/postImg";
 import { NotiMassages } from "../../Components/Helper/NotiMassages";
 import { createNotification } from "../../App/NotificationApi";
 
+import LearnerRibbion from "../Posts/../../assets/leaner.png";
+import tutorRibbion from "../Posts/../../assets/tutor.png";
+
 const Post = () => {
   const auth = useAuth()
   const param = useParams()
@@ -223,9 +226,17 @@ const Post = () => {
             <div className="w-[96%] sm:mb-[80px] ml-16 h-auto rounded-t-3xl flex  dark:text-white dark:bg-color-11 transition-all duration-500 ease-in-out bg-white xs:w-full xs:flex-col sm:ml-0 sm:flex-col sm:w-full">
               <div className="flex flex-col w-3/5  sm:w-full">
                 <div className=" h-auto p-1 xs:p-1 mx-2 sm:mx-0 ">
-                  <div className="flex justify-between mx-3 py-2 px-2  sm:px-4  sm:mx-1  items-center">
-                    <h4 className="xs:text-xs text-color-8"> {post.postType == "learner" ? "I want to learn" : "I can teach"}</h4>
-                    <i className="fa-sharp fa-solid fa-ellipsis-vertical text-xl xs:text-xs"></i>
+                  <div className="flex w-full justify-between mx-3 py-5 px-2 relative  sm:px-4  sm:mx-1  items-center">
+                  <div className="w-[45%] h-fit absolute py-2 ">
+                      
+                          {/* // item.postType === 'learner' ? */}
+                            {/* <img src={LearnerRibbion} className="absolute left-0 -top-16 sm:-top-10  w-[50%]"></img> */}
+                            {/* // : */}
+                            <img src={tutorRibbion} className=" -top-16 sm:-top-16  w-[50%]"></img>
+                        
+                      </div>
+                    {/* <h4 className="xs:text-xs text-color-8"> {post.postType == "learner" ? "I want to learn" : "I can teach"}</h4> */}
+                    <i className="fa-sharp fa-solid fa-ellipsis-vertical mx-7 right-0 absolute text-xl xs:text-xs"></i>
                   </div>
                   <div className="bg-color-4  relative  rounded-xl h-auto mx-3 xs:w-[97%]  xs:m-1 ">
                     <img src={postImgCollection[post.thumbnailUrl.image]} className="w-full  h-auto sm:h-[40%] rounded-xl"></img>

@@ -76,7 +76,7 @@ const Home = () => {
     <div className="home w-[95%] sm:relative ml-16 sm:w-full sm:m-1 xs:p-1  h-auto bg-white light dark:text-white dark:bg-color-11 transition-all duration-500 ease-in-out  p-2 rounded-t-3xl  ">
       {renderAlert}
       {/* category card  box*/}
-      <div className="flex mt-3  sm:h-auto overflow-y-hidden dark:text-slate-100">
+      <div className="flex mt-3 sm:sticky  sm:z-[2] sm:h-auto overflow-y-hidden dark:text-slate-100">
         {loader.cat ? (
           <Loader />
         ) : (
@@ -110,13 +110,13 @@ const Home = () => {
                 key={i}>
                 <Link to={"/postcontent/" + item._id}>
                   <div className="h-auto p-3 w-full  sm:p-1 xs:m-1 m-2   dark:shadow-md dark:bg-color-2 bg-color-3  rounded-2xl flex flex-col   ">
-                    <div className="flex relative justify-between sm:text-xs sm:px-1 sm:py-1 text-color-9 px-2  dark:text-white">
-                      <div className="w-[50%]">
+                    <div className="flex relative justify-between sm:text-xs  sm:px-1 sm:py-1 text-color-9 px-2  dark:text-white">
+                      <div className="w-[50%]  sm:w-auto">
                         {
                           item.postType === 'learner' ?
-                            <img src={LearnerRibbion} className="absolute left-0 -top-16  w-[50%]"></img>
+                            <img src={LearnerRibbion} className="absolute  left-0 -top-16 sm:-top-10  w-[50%]"></img>
                             :
-                            <img src={tutorRibbion} className="absolute left-0 -top-16  w-[50%]"></img>
+                            <img src={tutorRibbion} className="absolute left-0 -top-16 sm:-top-10 w-[50%]"></img>
                         }
                       </div>
                       <i className="fa-solid fa-ellipsis-vertical px-2 sm:text-xs text-lg"></i>
