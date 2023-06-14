@@ -9,6 +9,7 @@ import { getAlllCatgories } from "../../App/category.Api";
 import { postImgCollection } from "../../assets/postImages/postImg";
 import cat_image1 from "../Posts/../../assets/user.png";
 import { getTimeAgo } from "../../Components/Helper/helper";
+import LearnerRibbion from "../Posts/../../assets/leaner.png";
 
 
 const SearchResult = ({ search, category = "" }) => {
@@ -230,16 +231,17 @@ const SearchResult = ({ search, category = "" }) => {
                           key={i}>
                           <div className="flex items-center  flex-row w-full">
                             <div className=" relative  w-[40%] h-full sm:w-1/2 rounded-lg">
+                              <img src={LearnerRibbion} className="absolute -top-10 w-[50%]"></img>
                               <img
                                 src={
                                   item.thumbnailUrl &&
                                   postImgCollection[item.thumbnailUrl.image]
                                 }
-                                className="   w-auto rounded-xl sm:h-full sm:w-full "></img>
+                                className="   w-auto rounded-xl h-full sm:h-full sm:w-full "></img>
                               <span className="font-semibold  absolute  text-white font-font-logo top-7 sm:top-4 sm:line-clamp-1  w-[35%] left-3 line-clamp-3 text-sm xs:text-xs ">
                                 {item.postTitle}
                               </span>
-                              <div className="flex gap-2 sm:gap-[2px] items-center absolute  bottom-3 sm:bottom-2 sm:left-2  left-3">
+                              <div className="flex gap-2 sm:gap-[2px] items-center absolute  bottom-1 sm:bottom-2 sm:left-2  left-3">
                                 <img
                                   src={cat_image1}
                                   className="h-5 sm:h-3 sm:w-3 w-5"></img>
@@ -264,7 +266,7 @@ const SearchResult = ({ search, category = "" }) => {
                                   <label className="text-lg sm:text-xs sm:w-fit px-5">
                                     <i className="fa-solid fa-indian-rupee-sign   dark:text-white"> </i>
 
-                                    <span className="  font-thin px-2  dark:text-[orange]">
+                                    <span className="  font-thin px-2 text-[orange] dark:text-[orange]">
                                       {item.charges}/-
                                     </span>
                                   </label>
