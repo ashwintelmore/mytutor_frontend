@@ -170,13 +170,13 @@ const Post = () => {
           read: false,
         }
         const resNotify = await createNotification(notiData)
-        console.log('resNotify', resNotify)
+
         if (resNotify.error) {
           //error
           // showNotification(resNotify.error.errMessage)
         } else if (resNotify.payload) {
           //send notification to tutor that received request
-          console.log('resNotify.payload', resNotify.payload)
+
           // showNotification(resNotify.message)
         }
       }
@@ -287,20 +287,28 @@ const Post = () => {
                     </div>
                   </Link>
                   {
-                    isFavourite ?
-                      <button
-                        className={"bg-color-6 text-white px-3 sm:h-fit sm:py-2 sm:px-1 rounded-md xs:w-auto sm:text-xs"}
-                        onClick={(e) => onClickFavourit(false, auth.user, post.createdTutor)}
-                      >
-                        {"unfavourite"}
-                      </button>
+                    !auth.user._id ?
+                      <Link to={'/login'}>
+                        <button className="w-32 h-10 bg-color-4 text-white font-semibold dark:text-black  rounded-lg p-1"
+                        >
+                          Favourite
+                        </button>
+                      </Link>
                       :
-                      <button
-                        className={"bg-color-4 text-white px-3 sm:h-fit sm:py-2  sm:px-1 rounded-md xs:w-auto sm:text-xs"}
-                        onClick={(e) => onClickFavourit(true, auth.user, post.createdTutor)}
-                      >
-                        {"Favourite"}
-                      </button>
+                      isFavourite ?
+                        <button
+                          className={"bg-color-6 text-white px-3 sm:h-fit sm:py-2 sm:px-1 rounded-md xs:w-auto sm:text-xs"}
+                          onClick={(e) => onClickFavourit(false, auth.user, post.createdTutor)}
+                        >
+                          {"unfavourite"}
+                        </button>
+                        :
+                        <button
+                          className={"bg-color-4 text-white px-3 sm:h-fit sm:py-2  sm:px-1 rounded-md xs:w-auto sm:text-xs"}
+                          onClick={(e) => onClickFavourit(true, auth.user, post.createdTutor)}
+                        >
+                          {"Favourite"}
+                        </button>
                   }
                 </div>
                 <div className="flex items-center mx-2 sm:my-2 px-2 gap-3 xs:text-sm ">

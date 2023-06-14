@@ -13,16 +13,39 @@ import Loader from "../../Components/Helper/Loader";
 const Appointement = () => {
     const auth = useAuth()
     const [profileToggler, setProfileToggler] = useState('1')
+    const [commpletedToggler, setCommpletedToggler] = useState(false)
     const [requests, setRequests] = useState([])
     const [refreshReqData, setRefreshReqData] = useState(false)
+    const [appointementDates, setAppointementDates] = useState([])
+    const [selectedDateAppointment, setselectedDateAppointment] = useState(null)
+
+    const [updateReqWhenSelectDate, setUpdateReqWhenSelectDate] = useState(false)
     const [loader, setLoader] = useState({
         post: false
     })
+    const appointementDatesFillUp = (data) => {
+        let dates = []
+        for (let index = 0; index < data.length; index++) {
+            const element = data[index];
+            for (let j = 0; j < element.reqDates.length; j++) {
+                const ele = element.reqDates[j];
+                let date = {
+                    _id: element._id,
+                    date: ele,
+                    reqAccept: element.reqAccept,
+                    isPaymentComplete: element.isPaymentComplete
+                }
+                dates.push(date)
+            }
+        }
+        setAppointementDates(dates)
+        console.log('dates', dates)
+    };
 
     useEffect(() => {
         const getListAppointements = async () => {
-            console.log('refreshReqData', refreshReqData)
             let res;
+            setUpdateReqWhenSelectDate(false)
 
             if (profileToggler == '1') {//send
 
@@ -33,27 +56,62 @@ const Appointement = () => {
                 setLoader({ ...loader, post: true })
                 res = await getAllRequested(auth.user._id);
             }
+
+
             if (res.error) {
                 setLoader({ ...loader, post: false })
             } else if (res.payload) {
                 setLoader({ ...loader, post: false })
-                setRequests(res.payload)
+
+                appointementDatesFillUp(res.payload)
+                if (commpletedToggler) {
+                    setRequests(res.payload.filter(r => r.isPaymentComplete === true))
+                    setUpdateReqWhenSelectDate(true)
+                    return
+                }
+                setRequests(res.payload.filter(r => r.isPaymentComplete === false))
+                setUpdateReqWhenSelectDate(true)
             }
         };
         getListAppointements()
         return () => {
 
         };
-    }, [profileToggler, refreshReqData])
+    }, [profileToggler, refreshReqData, commpletedToggler, selectedDateAppointment])
+
+    useEffect(() => {
+        let sortedRequests = []
+        console.log('requests', requests)
+        if (updateReqWhenSelectDate && requests.length && selectedDateAppointment) {
+            for (let index = 0; index < requests.length; index++) {
+                const element = requests[index];
+
+                for (let j = 0; j < element.reqDates.length; j++) {
+                    const ele = element.reqDates[j];
+                    if (selectedDateAppointment == ele)
+                        sortedRequests.push(element)
+                }
+            }
+            setRequests(sortedRequests)
+        }
+    }, [selectedDateAppointment, updateReqWhenSelectDate])
+
+    console.log('selectedDateAppointment', selectedDateAppointment)
+
     return (
         <>
             <div className="flex w-full ml-16 h-screen rounded-t-3xl bg-white  dark:bg-color-11 transition-all duration-500 ease-in-out p-3 mx-2 dark:text-white xs:flex-col xs:ml-0" >
-                {/* <div className="w-1/3 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl xs:w-full  xs:hidden sm:hidden sm:ml-0 xs:ml-0  ">
+                <div className="w-1/3 flex flex-col h-auto items-center p-1 gap-6 mt-5 overflow-y-hidden  rounded-tl-3xl xs:w-full  xs:hidden sm:hidden sm:ml-0 xs:ml-0  ">
                     <MultipleDatePicker
-
+                        value={auth.user.slots.customDates}
+                        available={auth.user.slots.available}
+                        // reqValue={requests[0].reqDates}
+                        appointementDates={appointementDates}
+                        onChangeAppointementDate={(value) => setselectedDateAppointment(value)}
+                        selectedDate={selectedDateAppointment}
                     />
 
-                </div> */}
+                </div>
 
                 <div className="w-3/5 flex-col flex overflow-y-auto sm:w-full xs:relative sm:mb-16 ">
                     <h3 className="text-xl font-semibold p-2 dark:text-white">Your Appointements</h3>
@@ -63,23 +121,30 @@ const Appointement = () => {
                         <button
                             className={profileToggler == 1 ? "bg-color-14 text-white rounded-2xl text-md px-4 py-1 sm:rounded-lg sm:px-2 sm:w-auto sm:text-[10px]  shadow-md shadow-color-8 dark:shadow-sm " : " dark:bg-color-11 dark:text-white dark:shadow-none dark:border bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
 
-                            onClick={() => setProfileToggler('1')}
+                            onClick={() => {
+                                setCommpletedToggler(false)
+                                setProfileToggler('1')
+                            }}
                         >
                             Send Requests
                         </button>
                         <button
                             className={profileToggler == 2 ? "bg-color-14 text-white rounded-2xl text-md px-4 sm:px-2 sm:w-auto sm:text-[10px] py-1 shadow-md shadow-color-8  dark:shadow-sm" : " dark:bg-color-11 dark:text-white dark:shadow-none dark:border bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
 
-                            onClick={() => setProfileToggler('2')}
+                            onClick={() => {
+                                setCommpletedToggler(false)
+                                setProfileToggler('2')
+                            }}
                         >
                             Received Requests
                         </button>
-                        {/* <button
-                            className={profileToggler == 2 ? "bg-[#fb923c] dark:shadow-sm text-white rounded-2xl text-md px-4 sm:px-2 sm:w-auto sm:text-[10px] py-1 shadow-md shadow-slate-400 " : " bg-[#EAF0FF] text-black dark:shadow-sm rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
-                            onClick={() => setProfileToggler('2')}
+                        <button
+                            className={commpletedToggler ? "bg-color-14 text-white rounded-2xl text-md px-4 sm:px-2 sm:w-auto sm:text-[10px] py-1 shadow-md shadow-color-8  dark:shadow-sm" : " dark:bg-color-11 dark:text-white dark:shadow-none dark:border bg-[#EAF0FF] text-black rounded-2xl text-md px-4 py-1 shadow-md shadow-slate-400 "}
+
+                            onClick={() => setCommpletedToggler(true)}
                         >
                             Completed Meeting
-                        </button> */}
+                        </button>
                     </div>
                     {/* ccalender and about */}
                     {
@@ -96,6 +161,7 @@ const Appointement = () => {
                                         :
                                         <RecievedReq
                                             requests={requests}
+                                            profileToggler={profileToggler}
                                             setRefreshReqData={() => setRefreshReqData(!refreshReqData)}
                                         />
                                 }

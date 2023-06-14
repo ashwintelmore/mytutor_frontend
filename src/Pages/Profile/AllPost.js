@@ -69,7 +69,7 @@ function AllPost({ resPost = false, isEditable = true }) {
 
 
   const onHandleClickForEdit = (e) => {
-    console.log('e', e)
+
     setShow(!show)
   };
   const onHandleClickForDeletePost = async (item) => {

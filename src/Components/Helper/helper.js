@@ -3,7 +3,7 @@ import React from 'react'
 import { Buffer } from 'buffer';
 
 export const isEmptyObjects = (...args) => {
-    console.log('args', args)
+
     const obj = args[0]
     const exceptArrKey = args[1] || []
     const emptyFields = [];
@@ -28,7 +28,7 @@ export const isEmptyObjects = (...args) => {
 };
 export const isEmptyField = (...args) => {
 
-    console.log('args', args)
+
     for (let index = 0; index < args.length; index++) {
         const e = args[index];
         if (e == '')
@@ -72,7 +72,7 @@ export const bufferToImage = (bufferData) => {
 };
 
 export const isEmptyFiled = (...args) => {
-    console.log('args', args)
+
 
     for (let index = 0; index < args.length; index++) {
         const element = args[index];

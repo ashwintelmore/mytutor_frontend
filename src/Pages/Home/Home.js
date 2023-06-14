@@ -32,7 +32,7 @@ const Home = () => {
     const getallpost = async () => {
       setLoader({ ...loader, posts: true });
       const res = await getAllPosts();
-      console.log("res", res);
+
       if (res.error) {
         //handle error
         showAlert(res.error.errMessage);

@@ -51,7 +51,6 @@ export default function LoginForm() {
     const res = await forgetPassword({
       email
     });
-    console.log('res', res)
     if (res.error) {
       //error
       showNotification(res.error.errMessage)
@@ -67,9 +66,6 @@ export default function LoginForm() {
       // localStorage.setItem('_id', res.payload._id)
     }
   }
-
-  console.log("auth", auth);
-
   return (
     <div className="w-[100%] ml-16 sm:ml-0 overflow-auto scrollbar-hide md:scrollbar-default">
       {contextHolder}

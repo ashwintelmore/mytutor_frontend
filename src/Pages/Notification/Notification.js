@@ -39,7 +39,7 @@ function Notification() {
             read: true
         };
         const res = await updateNotification(item._id, data);
-        console.log("res", res);
+
         if (res.error) {
             showNotification(res.error.errMessage)
         } else if (res.payload) {
@@ -49,7 +49,6 @@ function Notification() {
 
     };
 
-    console.log("notification", notification);
 
     return (
         <div className="bg-white w-full dark:bg-color-11 transition-all duration-500 ease-in-out rounded-3xl sm:ml-0 sm:h-screen sm:mb-16 ml-16 py-4 px-2">

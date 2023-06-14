@@ -7,8 +7,9 @@ import { useAlert } from "../../Components/Alert";
 import { Link } from "react-router-dom";
 import { formatDateToShow, getTimeAgo } from "../../Components/Helper/helper";
 import moment from "moment";
+import { debugg } from "../../Components/Helper/Debug";
 
-export default function RecievedReq({ requests, setRefreshReqData }) {
+export default function RecievedReq({ requests, setRefreshReqData, profileToggler }) {
   const [showNotification, contextHolder] = useAlert()
   const [show, setShow] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
@@ -20,12 +21,10 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
     setReqData(item);
 
   };
-  console.log('reqData', reqData)
-  console.log('requests', requests)
   const [meetingLink, setMeetingLink] = useState("");
 
   const handleCopyClick = async (value) => {
-    console.log('e', value)
+
     try {
       await navigator.clipboard.writeText(value);
       showNotification('Meeting link copied', '')
@@ -66,6 +65,10 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
     setcardActioveInd(i)
     setOpenProfile((prev) => !prev)
   }
+
+
+  debugg('request', requests)
+
   return (
     <>
       {contextHolder}
@@ -171,11 +174,16 @@ export default function RecievedReq({ requests, setRefreshReqData }) {
                             Meeting Not started
                           </button>
                           :
-                          <a href="https://myturt.onrender.com/" target="_blank">
-                            <button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-color-10">
-                              Go to Meeting
+                          moment(item.reqDates[0], 'YYYY-MM-DD').isBefore(moment().subtract(1, "day")) ?
+                            <button button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-color-8">
+                              Meeting Ended
                             </button>
-                          </a>
+                            :
+                            <a href="https://myturt.onrender.com/" target="_blank">
+                              <button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-color-10">
+                                Go to Meeting
+                              </button>
+                            </a>
 
                       )}
                     </div>

@@ -68,15 +68,11 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         // fetchgetPost()
     }, [reqData])
 
-    console.log('reqData', reqData)
-    console.log('payment', payment)
     //get payment details
     useEffect(() => {
         const fetchPayment = async () => {
-            console.log("fethc payment")
             // setLoadings({ ...loadings, post: true })
             const res = await getPayment(reqData.paymentId);
-            console.log(res)
             if (res.error) {
                 // setLoadings({ ...loadings, post: false })
             } else if (res.payload) {
@@ -143,7 +139,6 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
             showNotification("Profile Updated successfully")
         }
     };
-    console.log('payment', payment)
     const onCreatePayment = async () => {
         //upreqDatate payment , request
 
@@ -161,13 +156,12 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
             return
         }
 
-        console.log('paymentData', paymentData)
         let formData = new FormData()
         formData.append('payload', JSON.stringify(paymentData))
         formData.append('qrCode', qrCode)
 
         const resp = await createPayment(formData)
-        console.log('resp', resp)
+
         if (resp.payload) {
             setPayment(resp.payload)
             showNotification("Payment Request Initiated")
@@ -180,7 +174,6 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
 
 
             const res = await updateRequest(_reqData)
-            console.log('res', res)
             if (res.payload) {
                 showNotification("Request updated Successfull")
                 //send notification
@@ -196,13 +189,11 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                     read: false,
                 }
                 const resNotify = await createNotification(notiData)
-                console.log('resNotify', resNotify)
                 if (resNotify.error) {
                     //error
                     showNotification(resNotify.error.errMessage)
                 } else if (resNotify.payload) {
                     //send notification to tutor that received request
-                    console.log('resNotify.payload', resNotify.payload)
                     // showNotification(resNotify.message)
                 }
 
@@ -224,7 +215,6 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
 
 
         const resp = await updatePayment(payment._id, formData)
-        console.log('resp', resp)
         if (resp.payload) {
             setPayment(resp.payload)
             showNotification("Payment Request updated")
@@ -241,13 +231,11 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                 read: false,
             }
             const resNotify = await createNotification(notiData)
-            console.log('resNotify', resNotify)
             if (resNotify.error) {
                 //error
                 showNotification(resNotify.error.errMessage)
             } else if (resNotify.payload) {
                 //send notification to tutor that received request
-                console.log('resNotify.payload', resNotify.payload)
                 // showNotification(resNotify.message)
             }
         } else if (resp.error) {
@@ -294,13 +282,11 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
             read: false,
         }
         const resNotify = await createNotification(notiData)
-        console.log('resNotify', resNotify)
         if (resNotify.error) {
             //error
             showNotification(resNotify.error.errMessage)
         } else if (resNotify.payload) {
             //send notification to tutor that received request
-            console.log('resNotify.payload', resNotify.payload)
             // showNotification(resNotify.message)
         }
 
@@ -341,13 +327,11 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                     read: false,
                 }
                 const resNotify = await createNotification(notiData)
-                console.log('resNotify', resNotify)
                 if (resNotify.error) {
                     //error
                     showNotification(resNotify.error.errMessage)
                 } else if (resNotify.payload) {
                     //send notification to tutor that received request
-                    console.log('resNotify.payload', resNotify.payload)
                     // showNotification(resNotify.message)
                 }
 
@@ -373,13 +357,11 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
                 read: false,
             }
             const resNotify = await createNotification(notiData)
-            console.log('resNotify', resNotify)
             if (resNotify.error) {
                 //error
                 showNotification(resNotify.error.errMessage)
             } else if (resNotify.payload) {
                 //send notification to tutor that received request
-                console.log('resNotify.payload', resNotify.payload)
                 // showNotification(resNotify.message)
             }
         }
@@ -430,7 +412,6 @@ function Payment({ showPayment, setShowPayment, reqData, setReqData, readOnly = 
         }
     };
 
-    console.log('paystatus', payStatus)
     if (!showPayment)
         return null;
     return (

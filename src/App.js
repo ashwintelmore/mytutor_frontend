@@ -96,10 +96,10 @@ const App = () => {
               <Route path="/dummy" element={<Dummy />} />
               <Route path="/comment" element={<Comment />} />
               <Route path="/appointement" element={<Appointement />} />
-              <Route path="/search/:catName?" element={<SearchResult />} />
               <Route path="/favourite" element={<Favourite />} />
               <Route path="/notification" element={<Notification />} />
             </Route>
+            <Route path="/search/:catName?" element={<SearchResult />} />
             <Route path="/calender" element={<Calender />} />
             <Route path="/postcontent/:id?" element={<Post />} />
             <Route path="/aboutus" element={<AboutUs />} />

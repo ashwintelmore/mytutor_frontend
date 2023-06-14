@@ -8,7 +8,6 @@ function VerifyEmail() {
     const auth = useAuth()
     const [showNotification, contextHolder] = useAlert()
     const params = useParams()
-    console.log('auth', auth)
 
     const resendVerifyMail = async (e) => {
         if (!auth.user._id) {
@@ -17,7 +16,7 @@ function VerifyEmail() {
         }
         auth.setLoading(true)
         const res = await resendVerification({ name: auth.user.name, email: auth.user.email })
-        console.log('res', res)
+
         if (res.error) {
             //error
             showNotification(res.error.errMessage)
@@ -34,7 +33,7 @@ function VerifyEmail() {
         const fetchData = async (params) => {
             auth.setLoading(true)
             const res = await verify({ email: params.email, token: params.token })
-            console.log('res', res)
+
             if (res.error) {
                 showNotification(res.error.errMessage)
                 auth.setLoading(false)

@@ -23,7 +23,6 @@ const SearchResult = ({ search, category = "" }) => {
     page: 1,
     category: params.catName ? params.catName : "",
   });
-  console.log("queryData", queryData);
   const [loader, setLoader] = useState({
     posts: false,
     user: false,
@@ -40,7 +39,7 @@ const SearchResult = ({ search, category = "" }) => {
     const fetchSearchResult = async (e) => {
       setLoader({ ...loader, posts: true });
       const res = await searchPost(queryData);
-      console.log("res", res);
+
       if (res.error) {
         setLoader({ ...loader, posts: false });
       } else if (res.payload) {
@@ -76,29 +75,27 @@ const SearchResult = ({ search, category = "" }) => {
     fetchAllCats();
   }, []);
 
-  console.log('posts', posts)
-
   return (
     <>
       <div className="bg-white ml-16 sm:ml-0 flex justify-center py-5 sm:px-2 dark:bg-color-11 transition-all duration-500 ease-in-out  rounded-3xl dark:text-white  w-full h-screen ">
         <div id="outer" className=" w-[90%] dark:bg-color-11 transition-all duration-500 ease-in-out sm:mx-4 sm:full h-auto bg-white   my-10">
-       
+
           <div className="  flex  flex-row w-full h-auto relative  p-2 dark:bg-color-11 sm:flex-col sm:w-full ">
             {/* left hand side of search */}
             <div id="recomendation " className=" w-[40%] dark:bg-color-11  overflow-y-hidden flex flex-col fixed   sm:w-full mx-2">
-            <div id="filter" className="px-5 py-4  w-full flex">
-            <div className="mx-2 relative dark:bg-color-11  dark:text-black text-sm  flex   w-96 sm:w-full items-center rounded-2xl  ">
-              <input
-                type="text"
-                placeholder="search"
-                name="search"
-                className="w-full px-4 py-2 transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none dark:border-2 dark:border-white dark:text-white dark:bg-color-11 rounded-2xl "
-                value={queryData.search}
-                onChange={(e) => onChangeFilter(e)}></input>
+              <div id="filter" className="px-5 py-4  w-full flex">
+                <div className="mx-2 relative dark:bg-color-11  dark:text-black text-sm  flex   w-96 sm:w-full items-center rounded-2xl  ">
+                  <input
+                    type="text"
+                    placeholder="search"
+                    name="search"
+                    className="w-full px-4 py-2 transition-all ease-in-out border-[#4f6da877] focus:ring-[#6868ea] bg-color-3  duration-500 focus:border-color-17 border-[2px] outline-none dark:border-2 dark:border-white dark:text-white dark:bg-color-11 rounded-2xl "
+                    value={queryData.search}
+                    onChange={(e) => onChangeFilter(e)}></input>
 
-              <i className="fa-solid fa-magnifying-glass active cursor-pointer absolute dark:text-white right-2 p-2"></i>
-            </div>
-          </div>
+                  <i className="fa-solid fa-magnifying-glass active cursor-pointer absolute dark:text-white right-2 p-2"></i>
+                </div>
+              </div>
               <h1 className="text-color-13 text-xl">Apply Filter :</h1>
 
               <div className="p-1   h-auto w-[80%] rounded-sm m-2 sm:m-0 sm:flex flex-wrap sm:flex-wrap sm:text-xs sm:items-center  sm:w-full">
@@ -164,7 +161,7 @@ const SearchResult = ({ search, category = "" }) => {
                       style={
                         {
                           // margin: 10
-                          
+
                         }
                       }>
                       Users

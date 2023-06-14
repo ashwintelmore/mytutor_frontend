@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 function EditReq({ type, item, onClickEdit, onDeletePost }) {
 
-  console.log('item', item)
 
   if (type == 'requestSend')
     return (

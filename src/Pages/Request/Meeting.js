@@ -14,7 +14,7 @@ function Meeting({ show, setShow, data, setData, refresh }) {
     const auth = useAuth()
     const [api, contextHolder] = notification.useNotification();
 
-    console.log('data', data)
+
 
 
     const showNotification = (e) => {
@@ -46,7 +46,7 @@ function Meeting({ show, setShow, data, setData, refresh }) {
     useEffect(() => {
         const fetchAllUserMeeting = async () => {
             const res = await getUserallMeets(auth.user._id)
-            console.log('res', res)
+
             if (res.payload) {
                 setMeets(res.payload)
                 showNotification("All meet fetch")
@@ -127,12 +127,11 @@ function Meeting({ show, setShow, data, setData, refresh }) {
             meetingCode: meeting.meetingCode
         }
         const res = await updateRequest(_data)
-        console.log('res', res)
+
         if (res.payload) {
             setMeeting(res.payload)
             showNotification("Request sended Successfull")
             // setShow(!show)
-            console.log('res.payload', res.payload)
             //send notification
             let notiData = {
                 recieverId: res.payload.requesterId,
@@ -150,7 +149,7 @@ function Meeting({ show, setShow, data, setData, refresh }) {
                 }
             }
             const resNotify = await createNotification(notiData)
-            console.log('resNotify', resNotify)
+
             if (resNotify.error) {
                 //error
                 showNotification(resNotify.error.errMessage)

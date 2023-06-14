@@ -90,13 +90,13 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                 read: false,
             }
             const resNotify = await createNotification(notiData)
-            console.log('resNotify', resNotify)
+
             if (resNotify.error) {
                 //error
                 showNotification(resNotify.error.errMessage)
             } else if (resNotify.payload) {
                 //send notification to tutor that received request
-                console.log('resNotify.payload', resNotify.payload)
+
                 // showNotification(resNotify.message)
             }
         }
@@ -128,13 +128,13 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                 read: false,
             }
             const resNotify = await createNotification(notiData)
-            console.log('resNotify', resNotify)
+
             if (resNotify.error) {
                 //error
                 showNotification(resNotify.error.errMessage)
             } else if (resNotify.payload) {
                 //send notification to tutor that received request
-                console.log('resNotify.payload', resNotify.payload)
+
                 // showNotification(resNotify.message)
             }
         }
@@ -171,13 +171,13 @@ export default function ChoseSlot({ post, userData, _reqData }) {
                 read: false,
             }
             const resNotify = await createNotification(notiData)
-            console.log('resNotify', resNotify)
+
             if (resNotify.error) {
                 //error
                 showNotification(resNotify.error.errMessage)
             } else if (resNotify.payload) {
                 //send notification to tutor that received request
-                console.log('resNotify.payload', resNotify.payload)
+
                 // showNotification(resNotify.message)
             }
         }

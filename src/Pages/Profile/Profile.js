@@ -31,7 +31,7 @@ const Profile = ({ toggler = '1' }) => {
   };
   if (auth.loading || loader.user)
     return <Loader />
-  console.log('auth', auth)
+
   return (
     <>
       <div className="flex flex-col w-full ml-16 h-screen rounded-t-3xl bg-white dark:bg-color-11  transition-all duration-500 ease-in-out dark:text-white  sm:flex-col  sm:p-2    sm:ml-0  sm:h-full sm:w-full" >
@@ -153,11 +153,11 @@ const Profile = ({ toggler = '1' }) => {
           }}
         >
           <FloatButton
-          className="sm:mb-16"
+            className="sm:mb-16"
             onClick={() => updateUserData(auth.user)}
             description={"Update"}
             shape="square"
-            style={{ right: '40%', width: 100 , zIndex: 2 }}
+            style={{ right: '40%', width: 100, zIndex: 2 }}
             type="primary"
           />
         </ConfigProvider></div>

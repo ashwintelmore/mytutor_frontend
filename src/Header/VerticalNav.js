@@ -15,7 +15,7 @@ const VerticalNav = () => {
   useEffect(() => {
     const fetchData = async (id) => {
       const res = await getNotifications({ receiverId: auth.user._id, read: false });
-      console.log('res', res)
+
       if (res.error) {
         // showNotification(res.error.errMessage)
       } else if (res.payload) {

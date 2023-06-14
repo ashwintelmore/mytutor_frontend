@@ -16,17 +16,35 @@ const MultipleDatePicker = (props) => {
         format = "DD/MM",
         available,
         reqValue = false,
-        onChangeReValue = () => { }
+        onChangeReValue = () => { },
+        onChangeAppointementDate = () => { },
+        selectedDate = false,
+        appointementDates = false
     } = props;
 
     const arrValues = useMemo(() => toValidArray(value), [value]);
     const reqArrValues = useMemo(() => toValidArray(reqValue), [reqValue]);
-
+    const arrAppointementDates = useMemo(() => toValidArray(appointementDates), [appointementDates]);
+    console.log('arrAppointementDates', arrAppointementDates)
     const customRenderDate = useCallback(
         current => {
 
             const day = current.format("DD")
             const currentDate = moment();
+
+            if (current.format("YYYY-MM-DD") == selectedDate) {
+                return <div className={"border border-bg-color-9 m-2"}>{day}</div>;
+            }
+            //appointented scheduling to user
+            if (arrAppointementDates.some(e => current.format("YYYY-MM-DD") == e.date && e.isPaymentComplete == true)) {
+                return <div className={"bg-color-8 text-white m-2"}>{day}</div>;
+            }
+            if (arrAppointementDates.some(e => current.format("YYYY-MM-DD") == e.date && e.reqAccept == true)) {
+                return <div className={"bg-color-12 text-white m-2"}>{day}</div>;
+            }
+            if (arrAppointementDates.some(e => current.format("YYYY-MM-DD") == e.date)) {
+                return <div className={"bg-color-9 text-white m-2"}>{day}</div>;
+            }
 
             if (current.isBefore(currentDate.subtract(1, "day"))) {
                 return <div className="m-2 text-color-8" title="Could Not Select">{day}</div>;
@@ -58,7 +76,7 @@ const MultipleDatePicker = (props) => {
 
             return <div className="m-2 text-color-14">{day}</div>;
         },
-        [arrValues, reqArrValues, available]
+        [arrValues, reqArrValues, available, arrAppointementDates, selectedDate]
     );
 
     const renderTag = useCallback(
@@ -124,6 +142,34 @@ const MultipleDatePicker = (props) => {
         },
         [reqArrValues, onChangeReValue]
     );
+    const _onChangeAppointementDate = useCallback(
+        selected => {
+            const currentDate = moment();
+
+            // if (selected.isBefore(currentDate.subtract(1, "day"))) {
+            //     return
+            // }
+            // const index = reqArrValues.findIndex(e => selected.format("YYYY-MM-DD") == e);
+
+            // console.log('selected', selected.format("YYYY-MM-DD"))
+
+            const temp = [];
+
+            // if (index !== -1) {
+            //     temp.splice(index, 1);
+            // } else {
+
+            //     // temp.push(selected);
+            //     temp.push(selected.format("YYYY-MM-DD"));
+            // }
+
+            if (selectedDate == selected.format("YYYY-MM-DD"))
+                onChangeAppointementDate(null);
+            else
+                onChangeAppointementDate(selected.format("YYYY-MM-DD"));
+        },
+        [onChangeAppointementDate, selectedDate]
+    );
 
     const onDeselect = useCallback(
         oldSelect => {
@@ -144,12 +190,20 @@ const MultipleDatePicker = (props) => {
                             fullCellRender={customRenderDate}
                             onSelect={_onChangeReqValue}
                         />
+
                         :
-                        <Calendar
-                            fullscreen={false}
-                            fullCellRender={customRenderDate}
-                            onSelect={_onChange}
-                        />
+                        appointementDates ?
+                            <Calendar
+                                fullscreen={false}
+                                fullCellRender={customRenderDate}
+                                onSelect={_onChangeAppointementDate}
+                            />
+                            :
+                            <Calendar
+                                fullscreen={false}
+                                fullCellRender={customRenderDate}
+                                onSelect={_onChange}
+                            />
                 }
 
             </div>

@@ -38,7 +38,7 @@ function Favourite() {
         isFavourite: status,
       };
       const res = await updateFavourite(favourite._id, data);
-      console.log("res", res);
+
       if (res.error) {
       } else if (res.payload) {
       }

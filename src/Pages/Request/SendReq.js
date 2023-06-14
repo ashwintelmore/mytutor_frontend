@@ -19,7 +19,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
 
 
   const handleCopyClick = async (value) => {
-    console.log('e', value)
+
     try {
       await navigator.clipboard.writeText(value);
       showNotification('Meeting link copied', '')
@@ -63,9 +63,6 @@ export default function SendReq({ requests, setRefreshReqData }) {
     setShowPayment(!showPayment)
     setRefreshReqData(true)
   };
-
-  // console.log('reqData', reqData)
-  console.log('requests', requests)
 
   return (
     <>
@@ -170,11 +167,16 @@ export default function SendReq({ requests, setRefreshReqData }) {
                             Meeting Not started
                           </button>
                           :
-                          <a href="https://myturt.onrender.com/" target="_blank">
-                            <button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-color-10">
-                              Go to Meeting
+                          moment(item.reqDates[0], 'YYYY-MM-DD').isBefore(moment().subtract(1, "day")) ?
+                            <button button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-color-8">
+                              Meeting Ended
                             </button>
-                          </a>
+                            :
+                            <a href="https://myturt.onrender.com/" target="_blank">
+                              <button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-color-10">
+                                Go to Meeting
+                              </button>
+                            </a>
 
                       )}
                     </div>
@@ -188,7 +190,7 @@ export default function SendReq({ requests, setRefreshReqData }) {
         )}
       </div>
       <Payment
-      className="absolute "
+        className="absolute "
         showPayment={showPayment}
         setShowPayment={handleShowPayment}
         reqData={reqData}
