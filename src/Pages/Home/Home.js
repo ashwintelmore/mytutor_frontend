@@ -109,17 +109,17 @@ const Home = () => {
                 className="w-[24.8%]  h-auto  p-1 sm:p-px sm:w-[49%]  sm:text-sm  sm:h-auto "
                 key={i}>
                 <Link to={"/postcontent/" + item._id}>
-                  <div className="h-auto p-3 w-full  sm:p-1 xs:m-1 m-2   dark:shadow-md dark:bg-color-2 bg-color-3  rounded-2xl flex flex-col   ">
-                    <div className="flex relative justify-between sm:text-xs  sm:px-1 sm:py-1 text-color-9 px-2  dark:text-white">
-                      <div className="w-[50%]  sm:w-auto">
+                  <div className="h-auto p-3  w-full  sm:p-1 xs:m-1 m-2   dark:shadow-md dark:bg-color-2 bg-color-3  rounded-2xl flex flex-col   ">
+                    <div className="flex relative  justify-between sm:text-xs  h-auto sm:px-1 sm:py-1 text-color-9 px-2  dark:text-white">
+                      <div className="w-[50%] z-10 absolute top-0 ">
                         {
                           item.postType === 'learner' ?
-                            <img src={LearnerRibbion} className="absolute  left-0 -top-16 sm:-top-10  w-[50%]"></img>
+                            <img src={LearnerRibbion} className="w-full"></img>
                             :
-                            <img src={tutorRibbion} className="absolute left-0 -top-16 sm:-top-10 w-[50%]"></img>
+                            <img src={tutorRibbion} className="w-full"></img>
                         }
                       </div>
-                      <i className="fa-solid fa-ellipsis-vertical px-2 sm:text-xs text-lg"></i>
+                      {/* <i className="fa-solid fa-ellipsis-vertical px-2 sm:text-xs text-lg"></i> */}
                     </div>
                     <div className=" relative h-auto w-full sm:max-w-[100%] mx-auto my-3 dark:bg-violet-200  rounded-2xl">
                       <img
