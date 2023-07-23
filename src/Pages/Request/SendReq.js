@@ -161,8 +161,11 @@ export default function SendReq({ requests, setRefreshReqData }) {
                           {item.paymentId.paymentStatus?.isCompletd ? 'View Payment' : 'Make Payment'}
                         </button>
                       }
+                      {
+                        console.log(moment(item.reqDates[0], 'YYYY-MM-DD').isAfter(moment().subtract(1, "day")))
+                      }
                       {item.reqAccept && (
-                        moment(item.reqDates[0], 'YYYY-MM-DD').isAfter(moment().subtract(1, "day")) ?
+                        !moment(item.reqDates[0], 'YYYY-MM-DD').isAfter(moment().subtract(1, "day")) ?
                           <button button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-color-8">
                             Meeting Not started
                           </button>
