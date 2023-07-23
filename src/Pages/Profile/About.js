@@ -9,6 +9,7 @@ import AddOther from './AddComp/addOther'
 import UpdateOther from './UpdateComp/update.other'
 import SlotBooking from './SlotBooking'
 import { useUserData } from '../../providers/userData'
+import { formatDateYMD } from '../../Components/Helper/helper'
 
 export default function About({ isEditable = true }) {
   const [tags, setTags] = useState([])
@@ -97,7 +98,7 @@ export default function About({ isEditable = true }) {
                         </div>
                         <div className="flex justify-between ">
                           <label className="text-color-8 dark:text-white">{item.location} | {item.orginization}</label>{" "}
-                          <label className="font-semibold">{item.from}-{item.to}</label>
+                          <label className="font-semibold">{formatDateYMD(item.from)}-{formatDateYMD(item.to)}</label>
                         </div>
                       </div>
                       <p className="text-[#0D0E2F] dark:text-white">

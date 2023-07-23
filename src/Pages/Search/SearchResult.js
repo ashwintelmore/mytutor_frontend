@@ -10,6 +10,8 @@ import { postImgCollection } from "../../assets/postImages/postImg";
 import cat_image1 from "../Posts/../../assets/user.png";
 import { getTimeAgo } from "../../Components/Helper/helper";
 import LearnerRibbion from "../Posts/../../assets/leaner.png";
+import tutorRibbion from "../Posts/../../assets/tutor.png";
+
 
 
 const SearchResult = ({ search, category = "" }) => {
@@ -231,7 +233,13 @@ const SearchResult = ({ search, category = "" }) => {
                           key={i}>
                           <div className="flex items-center  flex-row w-full">
                             <div className=" relative  w-[40%] h-full sm:w-1/2 rounded-lg">
-                              <img src={LearnerRibbion} className="absolute -top-10 w-[50%]"></img>
+                              {
+                                item.postType == 'learner' ?
+                                  <img src={LearnerRibbion} className="absolute  w-[50%] z-30"></img>
+                                  :
+                                  <img src={tutorRibbion} className="absolute  w-[50%] z-30"></img>
+
+                              }
                               <img
                                 src={
                                   item.thumbnailUrl &&

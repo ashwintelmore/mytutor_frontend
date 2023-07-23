@@ -32,7 +32,7 @@ const VerticalNav = () => {
   console.log('notification', notification)
 
   return (
-    <div className=" fixed left-0 footer w-16 h-screen transition-all duration-500 ease-in-out  bg-color-3 sm:border-t-[.5px] text-lg flex flex-col dark:bg-color-16 dark:text-white xs:bg-orange-100 xs:h-[5%] xs:p-1 xs:fixed z-20  xs:bottom-0 sm:z-[5]  sm:h-[8%] sm:text-2xl sm:p-1 sm:fixed  sm:bottom-0 sm:w-full   ">
+    <div className=" fixed left-0 footer w-16 h-screen transition-all duration-500 ease-in-out  bg-color-3 sm:border-t-[.5px] text-lg flex flex-col dark:bg-color-16 dark:text-white xs:bg-orange-100 xs:h-[5%] xs:p-1 xs:fixed z-[12]  xs:bottom-0 sm:z-[5]  sm:h-[8%] sm:text-2xl sm:p-1 sm:fixed  sm:bottom-0 sm:w-full   ">
       <div className="flex flex-col items-center p-8 gap-10 sm:flex  xs:flex sm:p-2 xs:p-2 sm:gap2 xs:gap-2 sm:flex-row xs:flex-row  sm:items-center xs:items-center  sm:justify-evenly xs:justify-evenly  ">
         <NavLink to={"/"}>
 
@@ -62,8 +62,9 @@ const VerticalNav = () => {
           {/* <i className="cursor-pointer p-2 dark:text-white hover:bg-color-14 transition-all duration-500 ease-in-out  hover:text-white rounded-full fa-solid fa-heart" title="Favourite"></i> */}
           <i class="fa-solid fa-headset cursor-pointer p-2 dark:text-white hover:bg-color-14 transition-all duration-500 ease-in-out  hover:text-white rounded-full" title="Support"></i>
         </NavLink>
-      </div>
+      </div>/
     </div>
   );
 };
 export default VerticalNav;
+//gjgj
