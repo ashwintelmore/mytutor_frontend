@@ -24,6 +24,7 @@ import Calender from "./Components/Calender";
 import Notification from "./Pages/Notification/Notification";
 import PrivateRoute from "./PrivateRoute";
 import VerifyEmail from "./Auth/VerifyEmail";
+import Landing_page from "./Pages/Home/Landing_page";
 
 const App = () => {
   const auth = useAuth();
@@ -103,45 +104,7 @@ const App = () => {
             <Route path="/calender" element={<Calender />} />
             <Route path="/postcontent/:id?" element={<Post />} />
             <Route path="/aboutus" element={<AboutUs />} />
-
-            {/* <Route
-              path="profile"
-              element={
-                auth.user._id ? <Profile /> : <Navigate replace to="/login" />
-              }
-            />
-            <Route
-              path="appointement"
-              element={
-                auth.user._id ? (
-                  <Appointement />
-                ) : (
-                  <Navigate replace to="/login" />
-                )
-              }
-            />
-            <Route
-              path="favourite"
-              element={
-                auth.user._id ? (
-                  <Favourite />
-                ) : (
-                  <Navigate replace to="/login" />
-                )
-              }
-            />
-            <Route
-              path="notification"
-              element={
-                auth.user._id ? (
-                  <Notification />
-                ) : (
-                  <Navigate replace to="/login" />
-                )
-              }
-            />
- */}
-
+            <Route path="/landing_page" element={<Landing_page />} />
 
             <Route path="*" element={<Dummy />} />
           </Routes>

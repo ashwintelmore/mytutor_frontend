@@ -62,6 +62,10 @@ const VerticalNav = () => {
           {/* <i className="cursor-pointer p-2 dark:text-white hover:bg-color-14 transition-all duration-500 ease-in-out  hover:text-white rounded-full fa-solid fa-heart" title="Favourite"></i> */}
           <i class="fa-solid fa-headset cursor-pointer p-2 dark:text-white hover:bg-color-14 transition-all duration-500 ease-in-out  hover:text-white rounded-full" title="Support"></i>
         </NavLink>
+        <NavLink to={'/landing_page'}>
+          {/* <i className="cursor-pointer p-2 dark:text-white hover:bg-color-14 transition-all duration-500 ease-in-out  hover:text-white rounded-full fa-solid fa-heart" title="Favourite"></i> */}
+          <i class="fa-solid fa-scroll cursor-pointer p-2 dark:text-white hover:bg-color-14 transition-all duration-500 ease-in-out  hover:text-white rounded-full" title="Landing_page"></i>
+        </NavLink>
       </div>/
     </div>
   );
