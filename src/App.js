@@ -42,13 +42,13 @@ const App = () => {
         <div className="flex w-full mt-16  dark:bg-color-16 bg-color-3 relative">
           <VerticalNav />
           <Routes>
-            <Route path="/" element={<Home />} />
-
+            <Route path="/" element={<Landing_page />} />
+            <Route path="/explore" element={<Home />} />
             <Route
               path="login"
               element={
                 auth.user._id ? (
-                  <Navigate replace to="/" />
+                  <Navigate replace to="/explore" />
                 ) : (
                   <LoginForm />
                 )
@@ -81,10 +81,10 @@ const App = () => {
               path="/VerifyEmail"
               element={
                 !auth.user._id ?
-                  <Navigate replace to="/" />
+                  <Navigate replace to="/explore" />
                   :
                   auth.user.isVerified ? (
-                    <Navigate replace to="/" />
+                    <Navigate replace to="/explore" />
                   ) : (
                     <VerifyEmail />
                   )
@@ -104,7 +104,7 @@ const App = () => {
             <Route path="/calender" element={<Calender />} />
             <Route path="/postcontent/:id?" element={<Post />} />
             <Route path="/aboutus" element={<AboutUs />} />
-            <Route path="/landing_page" element={<Landing_page />} />
+            
 
             <Route path="*" element={<Dummy />} />
           </Routes>

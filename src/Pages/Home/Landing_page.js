@@ -9,6 +9,7 @@ import landingimage7 from "../../assets/YT Thumbnail1.png";
 import landingimage8 from "../../assets/YT Thumbnail2.png";
 import landingimage9 from "../../assets/YT Thumbnail3.png";
 import landingimage10 from "../../assets/landing10.png";
+import { Link } from "react-router-dom";
 
 function Landing_page() {
   return (
@@ -29,9 +30,9 @@ function Landing_page() {
         <p className="text-[#898CA9] text-[15px]  sm:text-[11px]">
           Look no further – MyTutor is here.
         </p>
-        <button className="w-28 mt-7 border text-color-3 border-color-7 h-auto p-2 rounded-lg bg-gradient-to-r from-[#933FFE] to-[#18C8FF]">
+        <Link to="/explore" className="w-28 mt-7 text-center border text-color-3 border-color-7 h-auto p-2 rounded-lg bg-gradient-to-r from-[#933FFE] to-[#18C8FF]">
           Explore
-        </button>
+        </Link>
       </div>
       <div className="flex justify-around items-center   mt-[17%] sm:hidden  pt-5 w-full">
         <div>
@@ -39,6 +40,58 @@ function Landing_page() {
         </div>
         <div>
           <img src={landingimage2} className="h-60 w-72"></img>
+        </div>
+      </div>
+
+      <div className="flex flex-col w-[45%]  mt-[11%]    items-center sm:w-full">
+        <h1 className="text-5xl font-extrabold mt-2 text-[#0D0E2F] sm:text-2xl">
+          {" "}
+          How It Works:{" "}
+        </h1>
+      </div>
+      <div className="flex mt-[2%] sm:w-full  relative">
+        <div className="w-[90%] bg-color-13 h-fit sm:hidden ">
+          <img className="h-[600px]  w-full " src={landingimage10}></img>
+        </div>
+        <div className="absolute w-[75%] flex flex-col  -right-56 sm:w-full sm:left-0 sm:ml-10  top-10">
+          <label className="mt-5 text-2xl text-[#0D0E2F] font-semibold sm:text-xl sm:font-extrabold">
+            Step 1. Sign Up
+          </label>
+          <p className="text-[#898CA9] sm:text-[10px]">
+            Create your MyTutor profile, showcasing your skills, expertise, and
+            availability.
+          </p>
+          <label className="mt-9  text-2xl text-[#0D0E2F] font-semibold  sm:text-xl sm:font-extrabold">
+            Step 2. Browse Requests
+          </label>
+          <p className="text-[#898CA9] sm:text-[10px]">
+            Browse through learner requests for specific topics or skills.
+            Choose the ones that align with your expertise.
+          </p>
+
+          <label className="mt-9  text-2xl text-[#0D0E2F] font-semibold  sm:text-xl sm:font-extrabold">
+            Step 3. Schedule Sessions
+          </label>
+          <p className="text-[#898CA9] sm:text-[10px]">
+            Coordinate with learners to schedule video call sessions at mutually
+            convenient times.
+          </p>
+
+          <label className="mt-9 text-2xl text-[#0D0E2F] font-semibold  sm:text-xl sm:font-extrabold">
+            Step 4. Share Knowledge
+          </label>
+          <p className="text-[#898CA9] sm:text-[10px]">
+            During the video call, engage with your learners, share your
+            insights, and guide them on their learning journey.
+          </p>
+
+          <label className="mt-9  text-2xl text-[#0D0E2F] font-semibold  sm:text-xl sm:font-extrabold">
+            Step 5. Get Rewarded
+          </label>
+          <p className="text-[#898CA9] sm:text-[10px]">
+            Earn rewards for your time and expertise. The more you share, the
+            more you earn!
+          </p>
         </div>
       </div>
       <div className="flex flex-col w-[45%]  mt-[11%] sm:w-full  sm:mt-[80%]    items-center   sm:items-center">
@@ -136,59 +189,9 @@ function Landing_page() {
           <img src={landingimage9} className="h-60 w-72"></img>
         </div>
       </div>
-      <div className="flex flex-col w-[45%]  mt-[11%]    items-center sm:w-full">
-        <h1 className="text-5xl font-extrabold mt-2 text-[#0D0E2F] sm:text-2xl">
-          {" "}
-          How It Works:{" "}
-        </h1>
-      </div>
-      <div className="flex mt-[2%] sm:w-full  relative">
-        <div className="w-[90%] bg-color-13 h-fit sm:hidden ">
-          <img className="h-[600px]  w-full " src={landingimage10}></img>
-        </div>
-        <div className="absolute w-[75%] flex flex-col  -right-56 sm:w-full sm:left-0 sm:ml-10  top-10">
-          <label className="mt-5 text-2xl text-[#0D0E2F] font-semibold sm:text-xl sm:font-extrabold">
-            Step 1. Sign Up
-          </label>
-          <p className="text-[#898CA9] sm:text-[10px]">
-            Create your MyTutor profile, showcasing your skills, expertise, and
-            availability.
-          </p>
-          <label className="mt-9  text-2xl text-[#0D0E2F] font-semibold  sm:text-xl sm:font-extrabold">
-            Step 2. Browse Requests
-          </label>
-          <p className="text-[#898CA9] sm:text-[10px]">
-            Browse through learner requests for specific topics or skills.
-            Choose the ones that align with your expertise.
-          </p>
+    
 
-          <label className="mt-9  text-2xl text-[#0D0E2F] font-semibold  sm:text-xl sm:font-extrabold">
-            Step 3. Schedule Sessions
-          </label>
-          <p className="text-[#898CA9] sm:text-[10px]">
-            Coordinate with learners to schedule video call sessions at mutually
-            convenient times.
-          </p>
-
-          <label className="mt-9 text-2xl text-[#0D0E2F] font-semibold  sm:text-xl sm:font-extrabold">
-            Step 4. Share Knowledge
-          </label>
-          <p className="text-[#898CA9] sm:text-[10px]">
-            During the video call, engage with your learners, share your
-            insights, and guide them on their learning journey.
-          </p>
-
-          <label className="mt-9  text-2xl text-[#0D0E2F] font-semibold  sm:text-xl sm:font-extrabold">
-            Step 5. Get Rewarded
-          </label>
-          <p className="text-[#898CA9] sm:text-[10px]">
-            Earn rewards for your time and expertise. The more you share, the
-            more you earn!
-          </p>
-        </div>
-      </div>
-
-      <div className="flex flex-col w-[55%] mt-[8%]    items-center sm:w-full sm:mt-[500px] ">
+      <div className="flex flex-col w-[55%] mt-[8%]  mb-20  items-center sm:w-full sm:mt-[500px] ">
         <h1 className="text-5xl font-extrabold mt-2 text-[#0D0E2F] sm:text-2xl">
           {" "}
           Ready to Get Started?{" "}
