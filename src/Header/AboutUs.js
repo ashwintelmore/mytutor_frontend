@@ -1,6 +1,6 @@
 import React from "react";
 import cat_image8 from "../assets/Online learning-amico.png";
-import cat_image12 from "../assets/woman-1063100__180.jpg";
+import cat_image12 from "../assets/brandng/new1.png";
 import ashwint from "../assets/brandng/ashwint.png";
 
 function AboutUs() {
@@ -83,10 +83,10 @@ function AboutUs() {
             </div>
             <div className="w-[60%] flex justify-center gap-2  flex-col">
               <label className="px-2 text-xl font-font-logo text-color-14">
-                Pranay ...
+                Pranav...
               </label>
               <label className="px-2 text-sm text-color-9 font-font-logo">
-                pranay@gmail.com
+                pranadate908@gmail.com
               </label>
               <div className="flex gap-5 w-full   px-1">
                 <a href="https://github.com/ashwintelmore">

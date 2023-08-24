@@ -10,6 +10,7 @@ import landingimage8 from "../../assets/YT Thumbnail2.png";
 import landingimage9 from "../../assets/YT Thumbnail3.png";
 import landingimage10 from "../../assets/landing10.png";
 import { Link } from "react-router-dom";
+import landingvideo from "../../assets/Mytutorwebapplicatio (2).mp4";
 
 function Landing_page() {
   return (
@@ -19,7 +20,9 @@ function Landing_page() {
           {" "}
           Your Knowledge Sharing{" "}
         </h1>
-        <h1 className="text-5xl font-extrabold mb-2 text-[#0D0E2F] sm:text-2xl ">Platform</h1>
+        <h1 className="text-5xl font-extrabold mb-2 text-[#0D0E2F] sm:text-2xl ">
+          Platform
+        </h1>
         <p className="text-[#898CA9] text-[15px]  sm:text-[11px] sm:mt-3 ">
           Are you passionate about sharing your expertise and knowledge with
           others?{" "}
@@ -30,7 +33,9 @@ function Landing_page() {
         <p className="text-[#898CA9] text-[15px]  sm:text-[11px]">
           Look no further – MyTutor is here.
         </p>
-        <Link to="/explore" className="w-28 mt-7 text-center border text-color-3 border-color-7 h-auto p-2 rounded-lg bg-gradient-to-r from-[#933FFE] to-[#18C8FF]">
+        <Link
+          to="/explore"
+          className="w-28 mt-7 text-center border text-color-3 border-color-7 h-auto p-2 rounded-lg bg-gradient-to-r from-[#933FFE] to-[#18C8FF]">
           Explore
         </Link>
       </div>
@@ -42,7 +47,16 @@ function Landing_page() {
           <img src={landingimage2} className="h-60 w-72"></img>
         </div>
       </div>
-
+      <div className="p-5 mt-[10%] sm:mt-[95%]">
+        <p>Have a Quick Review .. </p>
+        <video
+          src={landingvideo}
+          autoPlay="true"
+          width="1000"
+          height="500"
+          controls="controls"
+          className="rounded-lg"></video>
+      </div>
       <div className="flex flex-col w-[45%]  mt-[11%]    items-center sm:w-full">
         <h1 className="text-5xl font-extrabold mt-2 text-[#0D0E2F] sm:text-2xl">
           {" "}
@@ -94,7 +108,7 @@ function Landing_page() {
           </p>
         </div>
       </div>
-      <div className="flex flex-col w-[45%]  mt-[11%] sm:w-full  sm:mt-[80%]    items-center   sm:items-center">
+      <div className="flex flex-col w-[45%]  mt-[11%] sm:w-full  sm:mt-[500px]    items-center   sm:items-center">
         <h1 className="text-5xl font-extrabold mt-2 text-[#0D0E2F] sm:text-2xl">
           {" "}
           Why Choose MyTutor?{" "}
@@ -158,10 +172,11 @@ function Landing_page() {
       <div className="w-[80%] flex mt-[7%] items-center justify-around ml-10 sm:w-full sm:flex-col">
         <div className="w-1/2 flex flex-col gap-3 sm:w-full sm:items-center">
           <h1 className="text-4xl font-extrabold mt-2 text-[#0D0E2F] sm:text-2xl">
-          Flexible Schedule
+            Flexible Schedule
           </h1>
           <p className="sm:text-[11px] sm:w-[80%]">
-          Set your availability according to your convenience. MyTutor lets you manage your time and commitments effortlessly.
+            Set your availability according to your convenience. MyTutor lets
+            you manage your time and commitments effortlessly.
           </p>
         </div>
         <div className="w-1/2 sm:w-[85%]">
@@ -189,9 +204,8 @@ function Landing_page() {
           <img src={landingimage9} className="h-60 w-72"></img>
         </div>
       </div>
-    
 
-      <div className="flex flex-col w-[55%] mt-[8%]  mb-20  items-center sm:w-full sm:mt-[500px] ">
+      <div className="flex flex-col w-[55%] mt-[8%]  mb-20  items-center sm:w-full sm:mt-10 ">
         <h1 className="text-5xl font-extrabold mt-2 text-[#0D0E2F] sm:text-2xl">
           {" "}
           Ready to Get Started?{" "}
