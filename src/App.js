@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense  } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -14,26 +14,21 @@ import Sidebar from "./Header/Sidebar";
 import PrivateRoute from "./PrivateRoute";
 import VerifyEmail from "./Auth/VerifyEmail";
 import Landing_page from "./Pages/Home/Landing_page";
-import Loader from './Components/Helper/Loader';
+import Loader from "./Components/Helper/Loader";
 
 import { useAuth } from "./providers/auth";
 
+const Profile = lazy(() => import("./Pages/Profile/Profile"));
+const ShowProfile = lazy(() => import("./Pages/Profile/ShowProfile"));
+const Post = lazy(() => import("./Pages/Posts/Post"));
+const SearchResult = lazy(() => import("./Pages/Search/SearchResult"));
+const Appointement = lazy(() => import("./Pages/Request/Appointement"));
+const SidebarClose = lazy(() => import("./Header/SidebarClose"));
+const Favourite = lazy(() => import("./Pages/Favourite/Favourite"));
+const Calender = lazy(() => import("./Components/Calender"));
+const Notification = lazy(() => import("./Pages/Notification/Notification"));
 
-
-const Profile = lazy(()=>import("./Pages/Profile/Profile"))
-const ShowProfile = lazy(()=>import("./Pages/Profile/ShowProfile"))
-const Post = lazy(()=>import("./Pages/Posts/Post"))
-const SearchResult = lazy(()=>import("./Pages/Search/SearchResult"))
-const Appointement = lazy(()=>import("./Pages/Request/Appointement"))
-const SidebarClose = lazy(()=>import("./Header/SidebarClose"))
-const Favourite = lazy(()=>import("./Pages/Favourite/Favourite"))
-const Calender = lazy(()=>import("./Components/Calender"))
-const Notification = lazy(()=>import("./Pages/Notification/Notification"))
-
-
-
-
-const AboutUs = lazy(() => import("./Header/AboutUs"))
+const AboutUs = lazy(() => import("./Header/AboutUs"));
 
 const App = () => {
   const auth = useAuth();
@@ -44,8 +39,14 @@ const App = () => {
   };
   return (
     <>
-      <ErrorBoundary fallback={<div>Something went wrong please contact support on ashwintelmore@gmail.com</div>}>
-        <Suspense fallback={<Loader />} >
+      <ErrorBoundary
+        fallback={
+          <div>
+            Something went wrong please contact support on
+            ashwintelmore@gmail.com
+          </div>
+        }>
+        <Suspense fallback={<Loader />}>
           <BrowserRouter>
             <Header setOpen={setOpen} open={open} />
             <SidebarClose setOpen={setOpen} open={open} />
@@ -75,8 +76,6 @@ const App = () => {
                     )
                   }
                 />
-                {/* <Route path="/register" element={<Register />} /> */}
-                {/* <Route path="/login" element={<LoginForm />} /> */}
 
                 <Route
                   path="/:email/:token"
@@ -91,14 +90,13 @@ const App = () => {
                 <Route
                   path="/VerifyEmail"
                   element={
-                    !auth.user._id ?
+                    !auth.user._id ? (
                       <Navigate replace to="/explore" />
-                      :
-                      auth.user.isVerified ? (
-                        <Navigate replace to="/explore" />
-                      ) : (
-                        <VerifyEmail />
-                      )
+                    ) : auth.user.isVerified ? (
+                      <Navigate replace to="/explore" />
+                    ) : (
+                      <VerifyEmail />
+                    )
                   }
                 />
 
@@ -114,7 +112,6 @@ const App = () => {
                 <Route path="/calender" element={<Calender />} />
                 <Route path="/postcontent/:id?" element={<Post />} />
                 <Route path="/aboutus" element={<AboutUs />} />
-
 
                 <Route path="*" element={<Dummy />} />
               </Routes>

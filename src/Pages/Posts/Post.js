@@ -10,7 +10,7 @@ import RecievedReq from "../Request/RecievedReq";
 import SendReq from "../Request/SendReq";
 import ChoseSlot from "./ChoseSlot";
 import { createFavourite, getFavourites, updateFavourite } from "../../App/favoriteApi";
-import cat_image0 from "../Posts/../../assets/Thumbnail.png";
+import cat_image0 from "../Posts/../../assets/Thumbnail1.png";
 import cat_image1 from "../Posts/../../assets/user.png";
 import { postImgCollection } from "../../assets/postImages/postImg";
 import { NotiMassages } from "../../Components/Helper/NotiMassages";
