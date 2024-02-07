@@ -4,6 +4,7 @@ const VIDEOSDK_TOKEN = process.env.REACT_APP_VIDEOSDK_TOKEN
 
 export const generateMeetingId = async (data) => {
     const token = VIDEOSDK_TOKEN
+
     try {
         const res = await fetch(`https://api.videosdk.live/v2/rooms`, {
             method: "POST",

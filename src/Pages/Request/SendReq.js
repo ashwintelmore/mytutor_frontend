@@ -175,12 +175,11 @@ export default function SendReq({ requests, setRefreshReqData }) {
                               Meeting Ended
                             </button>
                             :
-                            <a href="https://myturt.onrender.com/" target="_blank">
+                            <a href={`${process.env.REACT_APP_VIDEO_SDK}?meetingId=${item.meetingId.meetingCode}`} target="_blank">
                               <button className=" rounded-xl text-sm  h-7 w-fit px-4 sm:px-2 sm:w-auto sm:text-[10px]  text-white bg-color-10">
                                 Go to Meeting
                               </button>
                             </a>
-
                       )}
                     </div>
                   </div>

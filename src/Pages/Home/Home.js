@@ -86,7 +86,8 @@ const Home = () => {
                 <div className=" w-44 h-44 sm:w-24 sm:h-24 rounded-full dark:bg-color-2 border- border-color-9   ">
                   <img
                     className="w-full h-full  rounded-full"
-                    src={bufferToImage(item)}
+                    // src={bufferToImage(item)}
+                    src={item?.imgUrl}
                     alt="student"
                   />
                 </div>
